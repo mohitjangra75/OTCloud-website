@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="con2-hero">
+    <div class="container">
+        <span class="badge"><span class="dot"></span> OT Cloud Learning Centre</span>
+        <h1>Helping Parents Understand Child Development with Confidence</h1>
+        <p class="hero-lead">Access reliable, therapist-led resources designed to provide families with practical insights, developmental clarity, and the peace of mind that comes with evidence-based knowledge.</p>
+        <div class="con2-cta-actions" style="justify-content:center;">
+            <a href="{% url 'blog_list' %}" class="btn btn-primary">Explore Articles</a>
+            <a href="{% url 'assessment' %}#booking" class="btn btn-ghost">Book an Assessment</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ WHY WE CREATED ============ -->
+<section class="section tint">
+    <div class="container obs-grid">
+        <div class="obs-img" style="position:relative;">
+            <img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA97uwnTm0TuvJJCIH8Bd7wnXxPdOOTXxbLW4J1MogXLQnQssrxM9IZ8oe0XubvIR13bCFtBuAuKqbYB09pI6Cr1f_7ZWmU28Ny5axdIDx2llZ115Bp-ynOV5EkIMrOn5TkzTryRpUELlHrXrSj5Z1LdHvHu_W9v7S2qASHDF5SiAiFAVCfl-PDhS-GWjo3L6w5BciqJDddq2FBGUv0QX73v9qTENebZa31-ki463lA38B_DRE16Gj" alt="A therapist gently interacting with a young child.">
+            <div class="res-quote">"Transparency is the foundation of effective pediatric care."</div>
+        </div>
+        <div>
+            <h2 class="section-title" style="text-align:left; margin-bottom:14px;">Why We Created the Learning Centre</h2>
+            <p class="msg" style="margin-bottom:24px;">The journey of child development shouldn't be navigated in the dark. We built this hub to offer absolute transparency, helping parents recognize developmental patterns without the anxiety of self-diagnosis.</p>
+            <div class="obs-features">
+                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h4>Clarity Over Confusion</h4><p>We strip away clinical jargon to provide clear markers of growth and support.</p></div></div>
+                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg></span><div><h4>Evidence-Based Insights</h4><p>Every resource is vetted by registered clinical specialists for medical accuracy.</p></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ EXPLORE BY TOPIC ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head" style="text-align:left; margin-bottom:28px;">
+            <h2 class="section-title" style="text-align:left;">Explore by Topic</h2>
+            <p style="color:var(--on-surface-variant); margin-top:6px;">Navigate our knowledge base by clinical domain.</p>
+        </div>
+        <div class="topic-bento">
+            <a href="{% url 'concerns' %}" class="topic-card teal wide">
+                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5"/><path d="M9.5 9.5h.01M14.5 9.5h.01M9.5 12s1 1 2.5 1 2.5-1 2.5-1"/><path d="M5 21v-1a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1"/></svg></span>
+                <h3>Child Development</h3><p>From neonatal milestones to adolescent growth transitions.</p><span class="tc-link">View Resources →</span>
+            </a>
+            <a href="{% url 'service_speech' %}" class="topic-card blue">
+                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                <h3>Speech &amp; Communication</h3><p>Language acquisition, articulation, and social speech.</p><span class="tc-link">View Resources →</span>
+            </a>
+            <a href="{% url 'service_ot' %}" class="topic-card green">
+                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/></svg></span>
+                <h3>Occupational Therapy</h3><p>Fine motor skills, sensory regulation, and daily living.</p>
+            </a>
+            <a href="{% url 'service_se' %}" class="topic-card outline">
+                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+                <h3>Learning &amp; School</h3><p>Classroom readiness and academic skill building.</p>
+            </a>
+            <a href="{% url 'services' %}" class="topic-card teal">
+                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/><path d="M12 10v4"/></svg></span>
+                <h3>Movement &amp; Physical</h3><p>Gross motor coordination and core stability.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FEATURED ARTICLES ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="services-head">
+            <div>
+                <h2 class="section-title" style="text-align:left;">Featured Educational Articles</h2>
+                <p style="color:var(--on-surface-variant); margin-top:8px;">Cornerstone knowledge for informed parenting.</p>
+            </div>
+            <a href="{% url 'blog_list' %}" class="link-arrow">View All Articles →</a>
+        </div>
+        {% if featured %}
+        <div class="blog-grid">
+            {% for post in featured %}
+            <article class="blog-card">
+                <a href="{{ post.get_absolute_url }}" class="thumb">
+                    {% if post.cover_image %}<img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy">{% else %}<span class="ph">OT Cloud</span>{% endif %}
+                </a>
+                <div class="body">
+                    <div class="meta">{{ post.published_at|date:"M j, Y" }}</div>
+                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
+                    <a href="{{ post.get_absolute_url }}" class="read-more">Read more →</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="blog-empty">New articles are on the way. Check back soon.</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- ============ MYTH vs FACT ============ -->
+<section class="section">
+    <div class="container">
+        <div class="myth-box">
+            <div class="myth-intro">
+                <h2>Myth vs Fact</h2>
+                <p>We're here to debunk common misconceptions and replace anxiety with evidence-based facts.</p>
+                <a href="{% url 'contact' %}" class="btn btn-on-teal">Submit a Question</a>
+            </div>
+            <div class="myth-list">
+                <div class="myth-card">
+                    <div class="mc-row"><span class="mc-myth">Myth:</span><p>"Boys always talk later than girls, it's just their nature."</p></div>
+                    <div class="mc-row fact"><span class="mc-fact">Fact:</span><p>Developmental timelines are similar across genders. Waiting to see if they 'grow out of it' can miss critical early-intervention windows.</p></div>
+                </div>
+                <div class="myth-card">
+                    <div class="mc-row"><span class="mc-myth">Myth:</span><p>"Therapy is only necessary after a formal diagnosis."</p></div>
+                    <div class="mc-row fact"><span class="mc-fact">Fact:</span><p>Support can begin the moment a challenge is identified, often helping children overcome hurdles before they become barriers.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ COMMON QUESTIONS ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head"><h2 class="section-title">Common Questions</h2></div>
+        <div class="asm-faq" id="res-faq">
+            <div class="faq-list">
+                <details class="faq-item" open>
+                    <summary><span class="q">How do I know if my child needs an assessment?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">If you've noticed consistent difficulty with skills your child's peers are mastering, or your parental intuition is signaling a concern, an assessment provides a professional baseline.</div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="q">Is Occupational Therapy just for physical issues?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">Not at all. OT also addresses sensory processing, emotional regulation, executive functioning, and social-emotional skills.</div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="q">How long does an assessment process take?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">Typically, an initial assessment lasts 60–90 minutes, with a comprehensive report provided within 10 business days.</div>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PROFESSIONAL AUTHORITY ============ -->
+<section class="section">
+    <div class="container">
+        <div class="authority-box">
+            <span class="auth-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+            <div>
+                <h3>Understanding Before Intervention</h3>
+                <p>While the resources in our Learning Centre are designed to inform and empower, please remember that <strong>online information does not replace individual clinical assessment.</strong> Every child is unique, and professional observation is the only way to create a tailored therapy plan that works.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ COMMUNITY EDUCATION ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="services-head">
+            <div>
+                <h2 class="section-title" style="text-align:left;">Community Education</h2>
+                <p style="color:var(--on-surface-variant); margin-top:8px;">Empowering the entire ecosystem around the child — parents, teachers, and caregivers.</p>
+            </div>
+            <a href="{% url 'contact' %}" class="btn btn-ghost">View Workshop Calendar</a>
+        </div>
+        <div class="workshop-grid">
+            <div class="workshop-card">
+                <img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApf2ITj8m5myjAjm1YZqpCqwyAXJLHkqGOb2UhqGhY2HCIXINA3o9CmtBbaGsofSHO_nIO69ZYtFhw4XlHWfLYOC57aSBwSpGd0W6NHbdUzMp6eXDt4fig9CUWqP3UChMESYVQdNrkh43ns6QlGGx8obi4hQJfpp9K1nd81LTQogW8vBL5ZP9Z5bDMQ4iripevBgbxRD_8LKn3ThiR65n2FAXtUyh1dE68kHJJHOJBklyu-DujZigf" alt="Parent awareness workshop.">
+                <div class="wc-overlay"><h4>Parent Awareness Workshops</h4><p>In-person sessions focusing on practical home strategies.</p></div>
+            </div>
+            <div class="workshop-card">
+                <img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8OwqYlwEBg1xCc2Ge3OovSS8_bbqCHhSy_rvOt97b4fqgBYYFg2wV5xzfRPiQxOZ0fY_YdMhdRBbhNBLJuwX7qNQt4guJhqJviEEvG2RoenA7sxCh31iOc8rHngYp3OJGWcoe10ZQxfOoyzUFibqZfhT1loozj20zcdAbn2f_VELmPd1KeuA45WEa0l98V1SxPAeJvgEMA1FJR04QQpAW2mZE_QugBMTSQVW6CNvHU9Yd4h-46inO" alt="Teacher seminar.">
+                <div class="wc-overlay"><h4>Teacher Seminars</h4><p>Supporting educators in identifying and managing classroom challenges.</p></div>
+            </div>
+            <div class="workshop-card">
+                <img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHOkn2ERoT30R6yRPLrqPABizxzpVy0WyVIFyPitsSHzTCuvF_FUGCIrdNy9RwHjYxnFjmjgtG31Bf6xk5FQuoPHl6YnHqp5wv5v_86YVef04uff0JMjm4eXwM7HGWKaC7MglbZVfPvOkSVPcCOakrbUyt4WmPAWuTmomHBIj7FU1k8hrWVm5g7A43D7dPHPphZpqbAklQGiEsXqNQZ56836PX2asjERZJFhg4duey-oQfBbvVTqGe" alt="Digital webinar.">
+                <div class="wc-overlay"><h4>Digital Webinars</h4><p>Expert-led online sessions accessible from anywhere.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section">
+    <div class="container" style="text-align:center; max-width:820px;">
+        <h2 class="section-title" style="font-size:36px; margin-bottom:24px;">When Knowledge Meets Professional Guidance, <span class="text-teal" style="font-style:italic;">Children Benefit.</span></h2>
+        <a href="{% url 'assessment' %}#booking" class="btn btn-primary" style="font-size:16px;">Book a Clinical Consultation</a>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('#res-faq .faq-item').forEach(function (el) {
+        el.addEventListener('toggle', function () {
+            if (!el.open) return;
+            document.querySelectorAll('#res-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="section legal-hero">
+    <div class="container">
+        <nav class="legal-breadcrumb" aria-label="Breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span>Terms of Service</span>
+        </nav>
+        <h1>Terms of Service</h1>
+        <p class="hero-lead">Last updated: 19 July 2026. These terms explain how you may use the {{ site_name }}
+            website and services, along with our approach to appointments, our materials, and cookies. We value
+            transparency as much as we value your child's progress.</p>
+    </div>
+</section>
+
+<!-- ============ CONTENT ============ -->
+<section class="section legal-body">
+    <div class="container legal-layout">
+
+        <!-- Sticky section nav -->
+        <aside class="legal-sidebar">
+            <h4>On this page</h4>
+            <ul class="legal-nav">
+                <li><a href="#terms" class="active">Terms &amp; Conditions</a></li>
+                <li><a href="#booking">Appointments &amp; Cancellations</a></li>
+                <li><a href="#intellectual">Our Materials</a></li>
+                <li><a href="#cookies">Cookies</a></li>
+            </ul>
+        </aside>
+
+        <!-- Document -->
+        <article class="legal-content">
+
+            <section id="terms">
+                <h2>1. General Terms &amp; Conditions</h2>
+                <p>By using the {{ site_name }} website and services, you agree to these terms. Our services are
+                    dedicated to pediatric therapy and child development support. When you contact us or book an
+                    assessment, please give accurate, current, and complete information so we can care for your
+                    child effectively.</p>
+
+                <div class="terms-card">
+                    <h3>Parent &amp; Guardian Responsibilities</h3>
+                    <p>To help us provide the best care, we ask that parents and guardians:</p>
+                    <ul>
+                        <li>Share accurate details about your child and relevant history.</li>
+                        <li>Provide any past reports or observations that support therapy planning.</li>
+                        <li>Arrive on time and let us know in advance if plans change.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="booking">
+                <h2>2. Appointments &amp; Cancellations</h2>
+                <div class="terms-2col">
+                    <div class="terms-panel">
+                        <h4>Booking</h4>
+                        <p>Appointments can be requested through our website form, by phone, or on WhatsApp. All
+                            bookings are subject to availability and, for new families, an initial assessment.</p>
+                    </div>
+                    <div class="terms-panel" id="cancellation">
+                        <h4>Cancellations &amp; Rescheduling</h4>
+                        <p>If you need to cancel or reschedule, please give us as much notice as you can — ideally
+                            at least 24 hours — so we can offer the slot to another family who needs it.</p>
+                        <p>We understand children get unwell and emergencies happen; we handle these with care and
+                            flexibility. Any specific charges will always be communicated to you clearly in
+                            advance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="intellectual">
+                <h2>3. Our Materials</h2>
+                <p>The content, therapy materials, methods, name, and logo on this website belong to
+                    {{ site_name }} or the people we work with. You're welcome to read and use our resources for
+                    your own family's benefit.</p>
+                <p>Please don't copy, republish, or reproduce our materials for commercial use without our written
+                    permission.</p>
+            </section>
+
+            <section id="cookies">
+                <h2>4. Cookies</h2>
+                <p>Our website may use cookies to help it work properly and to understand, in aggregate, how the
+                    site is used. Here's how we group them:</p>
+
+                <div class="cookie-grid">
+                    <div class="cookie-card">
+                        <div class="cookie-ic">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h4>Essential</h4>
+                        <p>Needed for the website to function — such as basic security and making pages load
+                            correctly.</p>
+                        <span class="cookie-tag">Always on</span>
+                    </div>
+                    <div class="cookie-card">
+                        <div class="cookie-ic">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                        </div>
+                        <h4>Analytics</h4>
+                        <p>Help us see how visitors use the site, in an anonymised way, so we can keep improving
+                            it.</p>
+                        <span class="cookie-tag muted">Optional</span>
+                    </div>
+                    <div class="cookie-card">
+                        <div class="cookie-ic">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/></svg>
+                        </div>
+                        <h4>Advertising</h4>
+                        <p>We do not use advertising or marketing tracking cookies, and we do not sell your
+                            information.</p>
+                        <span class="cookie-tag muted">Not used</span>
+                    </div>
+                </div>
+                <p class="cookie-note">You can manage or disable cookies at any time through your browser settings.</p>
+            </section>
+
+            <!-- CTA -->
+            <div class="terms-cta">
+                <h3>Questions about these terms?</h3>
+                <p>Our team is happy to talk through any of our policies or how they apply to your child's care.</p>
+                <div class="terms-cta-actions">
+                    <a href="{% url 'contact' %}" class="btn btn-onprimary">Contact Us</a>
+                    <a href="tel:{{ site_tel }}" class="btn btn-ghost-light">Call {{ site_phone_display }}</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<script>
+    // Scroll-spy: highlight the sidebar link for the section in view
+    (function () {
+        var links = document.querySelectorAll('.legal-nav a');
+        var map = {};
+        links.forEach(function (a) {
+            var id = a.getAttribute('href').slice(1);
+            var target = document.getElementById(id);
+            if (target) map[id] = a;
+        });
+        var ids = Object.keys(map);
+        function onScroll() {
+            var current = ids[0];
+            for (var i = 0; i < ids.length; i++) {
+                var el = document.getElementById(ids[i]);
+                if (el && el.getBoundingClientRect().top <= 140) current = ids[i];
+            }
+            links.forEach(function (a) { a.classList.remove('active'); });
+            if (map[current]) map[current].classList.add('active');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    })();
+</script>
+
+{% endblock %}

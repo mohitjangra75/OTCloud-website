@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "My 2-year-old is not talking yet. Is this normal?", "acceptedAnswer": { "@type": "Answer", "text": "While every child develops at their own pace, by age 2 most children have a vocabulary of at least 50 words and are starting to combine two words. If your child is not yet using words or gestures to communicate, an evaluation by a speech-language pathologist can help determine if support is needed." } },
+    { "@type": "Question", "name": "Why does my child walk on their toes?", "acceptedAnswer": { "@type": "Answer", "text": "Toe walking can be common in toddlers learning to walk. However, if it persists beyond age 2, it may be related to sensory processing, muscle tightness, or motor planning. An Occupational Therapist can assess whether it is a sensory preference or a physical requirement." } },
+    { "@type": "Question", "name": "How can I tell the difference between a tantrum and a meltdown?", "acceptedAnswer": { "@type": "Answer", "text": "A tantrum is usually goal-oriented and stops once the child gets what they want or realizes it will not work. A meltdown is a sensory or emotional overload where the child loses control and cannot stop easily even if the trigger is removed." } },
+    { "@type": "Question", "name": "What should I do if my child avoids eye contact?", "acceptedAnswer": { "@type": "Answer", "text": "Avoiding eye contact can be a sign of social-communication challenges or sensory overstimulation. It is best observed alongside other behaviors, like how they share interest or respond to their name. A professional assessment can provide clarity." } },
+    { "@type": "Question", "name": "Will my child grow out of these behaviors?", "acceptedAnswer": { "@type": "Answer", "text": "Some behaviors are transitional, but wait-and-see can lead to missed opportunities for early intervention. If a behavior is impacting daily life, learning, or social play, it is always safer and more beneficial to seek professional advice." } }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="con2-hero">
+    <div class="container">
+        <span class="badge"><span class="dot"></span> Understanding Your Child</span>
+        <h1>Every Child Develops Differently. Some Children Need Extra Support Along the Way.</h1>
+        <p class="hero-lead">As a parent, you know your child best. If you've noticed subtle differences in how they play, communicate, or interact, it's natural to have questions. We're here to provide the clarity, professional insight, and compassionate support your family deserves.</p>
+        <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book a Professional Assessment
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- ============ WHY EARLY OBSERVATION ============ -->
+<section class="section tint">
+    <div class="container obs-grid">
+        <div class="obs-img"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBUbjoG1POrnde35qDs6cbNskQXRKiHdDSIlheMVCRV-rJma8XHUsIXWl7JMMDtGfzSxEoHRJa7nrXkscmxMw1T2PTFJm7PeGMag9zL1Cuwpg5Hg0ePRdZYPF-JaJ9i-PDHiNhMFoyTZaD257jAZj9sPGjKOnR19Wi4YarAlhtaKq52H3UAUVyjbCYtbyPslQMn0XpduIzLlSlF4MM5Pj-j9WI_8p7tM3dqcoDaxCBO0zreVHcBUTK" alt="A serene, professional pediatric therapy room."></div>
+        <div>
+            <h2 class="section-title" style="text-align:left; margin-bottom:24px;">Why Early Observation Matters</h2>
+            <div class="obs-features">
+                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg></span><div><h4>Empowering Clarity</h4><p>Replacing uncertainty with professional insight lets you create a concrete roadmap for your child's success.</p></div></div>
+                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg></span><div><h4>Targeted Skill Building</h4><p>Early identification lets us leverage periods of high brain plasticity to build foundational neural pathways.</p></div></div>
+                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><h4>Social Participation</h4><p>Supporting developmental gaps early ensures children feel confident and capable in social and school settings.</p></div></div>
+                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.5 1-1a5.5 5.5 0 0 0 0-7.9z"/></svg></span><div><h4>Family Wellbeing</h4><p>Understanding the 'why' behind behaviors reduces stress and strengthens the parent-child bond.</p></div></div>
+                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><div><h4>Long-term Independence</h4><p>Proactive support creates the best possible trajectory for future academic and life achievements.</p></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ DEVELOPMENTAL AREAS ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Developmental Areas We Assess</h2>
+            <p class="section-sub">We look at the whole child across multiple domains to understand their unique profile of strengths and needs.</p>
+        </div>
+        <div class="area-grid">
+            {% for a in areas %}
+            <div class="area-card">
+                <span class="area-icon">{{ a.icon|safe }}</span>
+                <h3>{{ a.title }}</h3>
+                <ul class="area-list">{% for p in a.points %}<li>{{ p }}</li>{% endfor %}</ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ COMMON CONDITIONS ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Common Developmental Conditions</h2>
+            <p class="section-sub">Understanding the diagnosis is the first step toward specialized care and meaningful progress.</p>
+        </div>
+        <div class="cond2-grid">
+            {% for c in conditions %}
+            <a href="{% url 'contact' %}" class="cond2-card"><h3>{{ c }}</h3><span class="c2-link">Learn More →</span></a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ AGE-WISE GUIDE ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Age-Wise Development Guide</h2>
+            <p class="section-sub">Track your child's progress through key developmental windows and know when to seek a professional opinion.</p>
+        </div>
+        <div class="age-tabs" id="ageTabs">
+            <button class="age-tab active" data-age="0-6m">0–6 Months</button>
+            <button class="age-tab" data-age="6-12m">6–12 Months</button>
+            <button class="age-tab" data-age="1-2y">1–2 Years</button>
+            <button class="age-tab" data-age="2-3y">2–3 Years</button>
+            <button class="age-tab" data-age="3-5y">3–5 Years</button>
+            <button class="age-tab" data-age="5-7y">5–7 Years</button>
+        </div>
+        <div class="age-panels">
+            <div class="age-col milestones">
+                <h4><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg> Expected Milestones</h4>
+                <ul id="ageMilestones"></ul>
+            </div>
+            <div class="age-col consult">
+                <h4><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> When to Consult</h4>
+                <ul id="ageConcerns"></ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ DECISION GUIDE ============ -->
+<section class="section">
+    <div class="container">
+        <div class="decision">
+            <div class="decision-grid">
+                <div>
+                    <h2>When Should Parents Seek Professional Guidance?</h2>
+                    <p class="d-lead">Trust your parental instinct. If you notice any of these consistent patterns, a professional screening can offer valuable insights.</p>
+                    <div class="decision-checks">
+                        <div class="dc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Significant loss of previously acquired skills</div>
+                        <div class="dc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Difficulty being understood by unfamiliar people</div>
+                        <div class="dc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Intense reactions to sensory input (sounds, lights)</div>
+                        <div class="dc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Frequent, extreme emotional meltdowns</div>
+                    </div>
+                </div>
+                <div class="checklist-card">
+                    <h3>Quick Checklist</h3>
+                    <p class="cc-sub">Ask yourself if your child consistently struggles with:</p>
+                    <label><input type="checkbox"> Responding to their name</label>
+                    <label><input type="checkbox"> Pointing to show interest</label>
+                    <label><input type="checkbox"> Using words to express needs</label>
+                    <label><input type="checkbox"> Engaging in pretend play</label>
+                    <a href="{% url 'contact' %}" class="btn btn-block" style="background:var(--primary-fixed-dim); color:var(--on-primary-fixed); margin-top:20px;">Request the Full Guide</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PATHWAY (walkthrough) ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">The Pathway to Support</h2>
+            <p class="section-sub">A structured, clinical, yet warm process designed to make families feel heard and children feel safe.</p>
+        </div>
+        <div class="process-track">
+            <div class="process-step"><span class="process-num">1</span><h4>Initial Discussion</h4><p>A detailed talk about your child's history and your specific concerns.</p></div>
+            <div class="process-step"><span class="process-num">2</span><h4>Clinical Observation</h4><p>Watching how your child plays, moves, and interacts in a natural environment.</p></div>
+            <div class="process-step"><span class="process-num">3</span><h4>Standard Assessment</h4><p>Using evidence-based tools to measure developmental levels accurately.</p></div>
+            <div class="process-step"><span class="process-num">4</span><h4>Detailed Findings</h4><p>A thorough report explaining our findings and your child's unique profile.</p></div>
+            <div class="process-step"><span class="process-num">5</span><h4>Personal Roadmap</h4><p>Actionable recommendations and therapeutic goals for the future.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-sub">Common questions from parents about developmental behaviors.</p>
+        </div>
+        <div class="asm-faq" id="con-faq">
+            <div class="faq-list">
+                <details class="faq-item" open>
+                    <summary><span class="q">My 2-year-old is not talking yet. Is this normal?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">While every child develops at their own pace, by age 2 most children have a vocabulary of at least 50 words and are starting to combine two words. If your child is not yet using words or gestures to communicate, an evaluation by a speech-language pathologist can help determine if support is needed.</div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="q">Why does my child walk on their toes?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">Toe walking can be common in toddlers learning to walk. However, if it persists beyond age 2, it may be related to sensory processing, muscle tightness, or motor planning. An Occupational Therapist can assess whether it's a sensory preference or a physical requirement.</div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="q">How can I tell the difference between a tantrum and a meltdown?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">A tantrum is usually goal-oriented (wanting a toy) and stops once the child gets what they want or realizes it won't work. A meltdown is a sensory or emotional overload — the child loses control and cannot stop easily even if the "trigger" is removed.</div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="q">What should I do if my child avoids eye contact?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">Avoiding eye contact can be a sign of social-communication challenges or sensory overstimulation. It's best to observe this alongside other behaviors, like how they share interest or respond to their name. A professional assessment can provide clarity.</div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="q">Will my child "grow out" of these behaviors?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">Some behaviors are transitional, but "wait and see" can often lead to missed opportunities for early intervention. If a behavior is impacting daily life, learning, or social play, it's always safer and more beneficial to seek professional advice.</div>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PARENT RESOURCES ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="services-head">
+            <div>
+                <h2 class="section-title" style="text-align:left;">Parent Resources</h2>
+                <p style="color:var(--on-surface-variant); margin-top:8px;">Educational articles and tools to support your journey.</p>
+            </div>
+            <a href="{% url 'blog_list' %}" class="link-arrow">Explore All →</a>
+        </div>
+        <div class="resources-grid">
+            <a href="{% url 'blog_list' %}" class="resource-card">
+                <div class="rc-thumb"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB53vFsQYX_vzActEOx8IFKvoZtbPEoImqN2edZBVj5JMI8jXnHx9eWG3TKHtIx7WSC8Td8bWOAkm0MZcFE1gI1WMbyRz0QhaB19ttNat8_CCDMGBR9GRwo6khzJ9VregMhXNkR2A4PTSdL-pXlnMi8OQodR5OCz-dsqsLejhiRWcNczJctLHx1w6XjEFCVgY3_kw_OXiJJXsPzCuWn1xwvB7i1lfsYEu0OHavBJsY6YSllXeMvw92t" alt="Sensory play at home."></div>
+                <span class="rc-tag">Sensory Support</span>
+                <h3>The Parent's Guide to Sensory Processing at Home</h3>
+                <p>Practical strategies to help your child navigate sensory triggers in their daily environment.</p>
+            </a>
+            <a href="{% url 'blog_list' %}" class="resource-card">
+                <div class="rc-thumb"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlaPjXRFTFGE9taqtPw7GmCYa81ARt7T7rJWr3eb24CmBudfLP1WlE0ixQT2m0Ad4-HRi3TiJSZzD9jbah14Oyuo76cCQQS_gpqG70zrjWbtBFvLjc0EGPZSdjGEVtJcjDT266AZMyJfIcATolXuidUeRHZAQNki6Cy7y1jTppZoDLZLY5QzRbEeXxyPliEo1otDafdWWUkfF1e-W9pNxh3Q71E2yPhgrXzAjOe4gIVMhYFO6CpQgN" alt="Child confident at school."></div>
+                <span class="rc-tag">School Readiness</span>
+                <h3>Is Your Child Ready for Primary School?</h3>
+                <p>A checklist of the cognitive, social, and motor skills needed for a smooth transition.</p>
+            </a>
+            <a href="{% url 'blog_list' %}" class="resource-card">
+                <div class="rc-thumb"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa0IkJ5MNnEmp5U6-KWEEH5icla3GmqgYG-K-eOMF2jKZI4hgGLuwIBFhP-KNh2OdP4ZechM2uW_Gfwhgaxdq7wKx6OcXi_H3wSw7FUpCuO4sOiNRrdyPL2cpehfMD3fYATM2I9TKn5tk_Ni_ZDDr-n9RoYeJK59Pru8ZmKGbJlUw_cPckXNmOqXlzJlc6jE924ycjSqWqgj_Nmm0Yx1Kz053RJpgHbPLsJPvn5cZWC0y-cz-j1iNU" alt="Children playing together."></div>
+                <span class="rc-tag">Social Skills</span>
+                <h3>Building Social Confidence in Early Childhood</h3>
+                <p>How to help your child navigate playground dynamics and develop meaningful friendships.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section">
+    <div class="container">
+        <div class="con2-cta">
+            <h2>Concerned About Your Child?</h2>
+            <p>Don't navigate this alone. Speak with a professional clinical coordinator today to discuss your concerns and book a tailored assessment.</p>
+            <div class="con2-cta-actions">
+                <a href="{% url 'assessment' %}#booking" class="btn btn-on-teal">Book Assessment</a>
+                <a href="tel:{{ site_tel }}" class="btn btn-navy"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
+                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        var AGE = {
+            '0-6m': { m: ['Makes eye contact and smiles at parents.','Makes cooing sounds (ooh, aah).','Brings hands to mouth and pushes up during tummy time.','Follows moving objects with eyes.'], c: ['Does not respond to loud sounds.',"Doesn't watch things as they move.",'Persistent difficulty with feeding or weight gain.',"Doesn't smile at people by 4 months."] },
+            '6-12m': { m: ['Sits without support.','Responds to own name.','Babbles (mama, dada).','Picks up small objects using a pincer grasp.'], c: ['Does not crawl or drags one side.','Cannot stand with support.','Does not say single words like "mama" or "dada".','Does not use gestures like waving.'] },
+            '1-2y': { m: ['Walks alone.','Points to show things to others.','Says several individual words.','Follows simple 1-step commands.'], c: ['Does not walk by 18 months.','Does not point to show things.','Vocabulary of fewer than 15 words.','Loses skills they once had.'] },
+            '2-3y': { m: ['Combines 2–3 words in a sentence.','Engages in simple pretend play.','Runs and kicks a ball.','Climbs furniture without help.'], c: ['Frequent falling or difficulty with stairs.','Extremely unclear speech.','Does not use two-word phrases.','Does not understand simple instructions.'] },
+            '3-5y': { m: ['Plays cooperatively with other children.','Can tell a simple story.','Dresses and undresses mostly independently.','Shows a wide range of emotions.'], c: ['Extreme difficulty separating from parents.','Not interested in interactive games.','Cannot jump or hop.','Speech still hard for strangers to understand.'] },
+            '5-7y': { m: ['Follows rules and takes turns in games.','Writes several letters and numbers.','Stands on one foot for 10+ seconds.','Understands concepts like time and sequence.'], c: ['Significant trouble making friends.','Cannot follow a 3-step instruction.','Difficulty holding a pencil or using scissors.','Persistent bedwetting or behavioral outbursts.'] }
+        };
+        var mUl = document.getElementById('ageMilestones');
+        var cUl = document.getElementById('ageConcerns');
+        function render(age) {
+            var d = AGE[age];
+            mUl.innerHTML = d.m.map(function (x) { return '<li class="ok">' + x + '</li>'; }).join('');
+            cUl.innerHTML = d.c.map(function (x) { return '<li class="flag">' + x + '</li>'; }).join('');
+        }
+        document.querySelectorAll('#ageTabs .age-tab').forEach(function (t) {
+            t.addEventListener('click', function () {
+                document.querySelectorAll('#ageTabs .age-tab').forEach(function (o) { o.classList.remove('active'); });
+                t.classList.add('active');
+                render(t.getAttribute('data-age'));
+            });
+        });
+        render('0-6m');
+
+        // FAQ single-open
+        document.querySelectorAll('#con-faq .faq-item').forEach(function (el) {
+            el.addEventListener('toggle', function () {
+                if (!el.open) return;
+                document.querySelectorAll('#con-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
+            });
+        });
+    })();
+</script>
+
+{% endblock %}

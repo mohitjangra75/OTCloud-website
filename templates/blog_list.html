@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog | OT Cloud Child Development{% endblock %}
+{% block description %}Insights, guidance, and clinical perspectives on child development from the OT Cloud team.{% endblock %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h1 class="section-title">OT Cloud Blog</h1>
+            <p class="section-sub">Insights, guidance, and clinical perspectives on your child's developmental journey.</p>
+        </div>
+
+        {% if posts %}
+        <div class="blog-grid">
+            {% for post in posts %}
+            <article class="blog-card">
+                <a href="{{ post.get_absolute_url }}" class="thumb">
+                    {% if post.cover_image %}
+                    <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy" decoding="async">
+                    {% else %}
+                    <span class="ph">OT Cloud</span>
+                    {% endif %}
+                </a>
+                <div class="body">
+                    <div class="meta">{{ post.published_at|date:"M j, Y" }}</div>
+                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
+                    <a href="{{ post.get_absolute_url }}" class="read-more">Read article →</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="blog-empty">No articles published yet. Check back soon.</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

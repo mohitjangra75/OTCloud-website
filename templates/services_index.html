@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="con2-hero">
+    <div class="container">
+        <span class="badge"><span class="dot"></span> Our Services</span>
+        <h1>Comprehensive Pediatric Therapy — Tailored to Every Child</h1>
+        <p class="hero-lead">A multidisciplinary team under one roof. Explore our specialized programmes, each built on precise clinical assessment and delivered with compassionate, evidence-based care.</p>
+        <div class="con2-cta-actions" style="justify-content:center;">
+            <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book an Assessment</a>
+            <a href="{% url 'contact' %}" class="btn btn-ghost">Speak to Our Team</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SERVICES GRID ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="svc-index-grid">
+            {% for s in services %}
+            <a href="{% url s.url_name %}" class="svc-index-card">
+                <span class="sic-icon">{{ s.icon|safe }}</span>
+                <h3>{{ s.title }}</h3>
+                <p>{{ s.desc }}</p>
+                <span class="sic-link">Explore Service →</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ WHY OT CLOUD ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Why Families Choose OT Cloud</h2>
+            <p class="section-sub">Every programme is connected — because child development is interconnected.</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card"><h3>Integrated Care</h3><p>Our specialists collaborate daily on shared clinical goals, so your child's plan is coordinated across every domain.</p></div>
+            <div class="why-card"><h3>Assessment-First</h3><p>Every journey begins with a comprehensive evaluation — we understand before we intervene.</p></div>
+            <div class="why-card"><h3>Parent Partnership</h3><p>You are our greatest partner. We coach you so progress continues at home, where it matters most.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section">
+    <div class="container">
+        <div class="con2-cta">
+            <h2>Not Sure Which Service Your Child Needs?</h2>
+            <p>Start with a professional assessment. Our team will map your child's profile and recommend the right pathway.</p>
+            <div class="con2-cta-actions">
+                <a href="{% url 'assessment' %}#booking" class="btn btn-on-teal">Book an Assessment</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light">Contact Us</a>
+                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

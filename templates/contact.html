@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="section ct-hero">
+    <div class="container ct-hero-grid">
+        <div>
+            <span class="badge"><span class="dot"></span> Expert Pediatric Guidance</span>
+            <h1>Every Journey Begins with a Conversation</h1>
+            <p class="hero-lead">Whether you've noticed changes in communication, behavior, movement, or attention, our team is here to listen and guide you.</p>
+            <div class="ct-hero-actions">
+                <a href="#booking-hub" class="btn btn-primary">Book an Assessment</a>
+                <a href="tel:{{ site_tel }}" class="btn btn-ghost"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
+                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a>
+            </div>
+        </div>
+        <div class="ct-hero-img"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2O0n7NnsrHuU2f9GTnNccoGzt_NqAwasLvQVeuxT4EhI3OPu-aYAkz2dCSogBzy2Riv9Zh7BVPLvyqsWUYlZVENARL1xUpLXEFx8C1gSS0xSyed4XxXOaZmoEqQGyV9CpwIAffOvJ7_ZjO5vTqn42r1hmkFxcTXb7jL_nwdtINPSfQnQIdfFqLqCsYzr2dj1Y8_zjrh9gTFMQSnRrbqh1_UETo9Gj4UuSlLgAIm7RDlKfsfPbVpMU" alt="A bright, modern pediatric clinic reception area."></div>
+    </div>
+</section>
+
+<!-- ============ CONNECTION CARDS ============ -->
+<section class="section" style="padding-top:0;">
+    <div class="container">
+        <div class="ct-cards">
+            <div class="ct-card">
+                <span class="ctc-icon teal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                <h3>Visit Our Centre</h3><p>{{ site_address }}</p><a href="#map" class="ctc-link">Get Directions →</a>
+            </div>
+            <div class="ct-card">
+                <span class="ctc-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                <h3>Call Us</h3><p><a href="tel:{{ site_tel }}">{{ site_phone_display }}</a></p><span class="ctc-meta">Mon–Sat, 9am–7pm</span>
+            </div>
+            <div class="ct-card">
+                <span class="ctc-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+                <h3>WhatsApp Us</h3><p>Quick responses via chat</p><a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="ctc-link">Start Chat →</a>
+            </div>
+            <div class="ct-card">
+                <span class="ctc-icon teal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span>
+                <h3>Email</h3><p><a href="mailto:{{ site_email }}">{{ site_email }}</a></p><span class="ctc-meta">Usually replies in 24h</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ BOOKING HUB ============ -->
+<section class="section" id="booking-hub">
+    <div class="container">
+        <div class="booking-hub">
+            <div class="bh-panel">
+                <div>
+                    <h2>Let's Understand Your Child Together</h2>
+                    <p>Our specialists take a holistic view of every child's development. Share a few details to help us prepare for your visit.</p>
+                    <ul class="bh-checks">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Confidential expert review</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Personalized session roadmap</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Certified clinical specialists</li>
+                    </ul>
+                </div>
+                <div class="bh-quote">"The first step is often the most important. We are here to support you at every stage of your child's growth."<span>— Clinical Director, OT Cloud</span></div>
+            </div>
+            <div class="bh-form-wrap">
+                {% if submitted %}
+                <div class="asm-success" style="display:block">
+                    <div class="s-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                    <h4>Request Sent Successfully</h4>
+                    <p>Thank you. A clinical coordinator will reach out shortly to help you take the next step.</p>
+                </div>
+                {% else %}
+                {% if form.errors %}<div class="form-error-note">Please provide the parent name, child name, and a contact number.</div>{% endif %}
+                <form method="post" action="{% url 'contact' %}#booking-hub">
+                    {% csrf_token %}
+                    <div class="asm-field-row">
+                        <div class="asm-field"><label>Parent Name</label><input type="text" name="parent_name" placeholder="Your full name" value="{{ form.parent_name.value|default:'' }}"></div>
+                        <div class="asm-field"><label>Child Name</label><input type="text" name="child_name" placeholder="Child's name" value="{{ form.child_name.value|default:'' }}"></div>
+                    </div>
+                    <div class="asm-field-row">
+                        <div class="asm-field"><label>Child Age</label><input type="text" name="child_age" placeholder="e.g. 4 years" value="{{ form.child_age.value|default:'' }}"></div>
+                        <div class="asm-field"><label>Mobile Number</label><input type="tel" name="phone" placeholder="10-digit number" value="{{ form.phone.value|default:'' }}"></div>
+                    </div>
+                    <div class="asm-field"><label>Primary Area of Concern</label>
+                        <select name="area_of_concern">
+                            <option value="">Select a concern…</option>
+                            <option value="speech">Speech &amp; Language</option>
+                            <option value="ot">Occupational Therapy (Sensory/Motor)</option>
+                            <option value="behavior">Behavioral Concerns</option>
+                            <option value="autism">Autism Spectrum / Neurodiversity</option>
+                            <option value="attention">Attention &amp; Focus (ADHD)</option>
+                            <option value="general">General Developmental Milestone Check</option>
+                        </select>
+                    </div>
+                    <div class="asm-field-row">
+                        <div class="asm-field"><label>Preferred Contact Method</label>
+                            <div class="bh-radios">
+                                <label class="bh-radio"><input type="radio" name="contact_method" value="phone"> Phone</label>
+                                <label class="bh-radio"><input type="radio" name="contact_method" value="whatsapp"> WhatsApp</label>
+                            </div>
+                        </div>
+                        <div class="asm-field"><label>Preferred Time for Call</label>
+                            <select name="preferred_time">
+                                <option value="morning">Morning (9am – 12pm)</option>
+                                <option value="afternoon">Afternoon (12pm – 4pm)</option>
+                                <option value="evening">Evening (4pm – 7pm)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="asm-field"><label>Additional Context (Optional)</label><textarea name="message" rows="3" placeholder="Tell us more about your child…">{{ form.message.value|default:'' }}</textarea></div>
+                    <button type="submit" class="btn btn-primary btn-block">Request an Appointment</button>
+                    <p class="bh-fineprint">By submitting, you agree to our privacy policy and clinical governance standards.</p>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ WHAT HAPPENS NEXT ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">What Happens Next?</h2>
+            <p class="section-sub">Transparent and structured, our intake process ensures your child receives the right support from day one.</p>
+        </div>
+        <div class="process-track">
+            <div class="process-step"><span class="process-num">1</span><h4>Enquiry Received</h4><p>Our care team logs your details and concerns immediately.</p></div>
+            <div class="process-step"><span class="process-num">2</span><h4>Coordinator Contact</h4><p>A dedicated clinical coordinator calls you for a brief chat.</p></div>
+            <div class="process-step"><span class="process-num">3</span><h4>Assessment Selection</h4><p>We suggest the specific specialist evaluation needed.</p></div>
+            <div class="process-step"><span class="process-num">4</span><h4>Schedule Fixed</h4><p>Pick a convenient slot for your in-person visit.</p></div>
+            <div class="process-step"><span class="process-num">5</span><h4>Visit OT Cloud</h4><p>Begin the journey with a comprehensive evaluation.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PREPARATION ============ -->
+<section class="section">
+    <div class="container prep-grid">
+        <div class="prep-col">
+            <h3><span class="pc-i"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span> Please Bring</h3>
+            <div class="prep-item"><span class="pi-ic teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><div><h4>Previous Reports</h4><p>Any medical or school reports from the last 12 months.</p></div></div>
+            <div class="prep-item"><span class="pi-ic teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><path d="M21 12a9 9 0 1 1-18 0"/></svg></span><div><h4>Assistive Devices</h4><p>Glasses, hearing aids, or splints your child uses daily.</p></div></div>
+            <div class="prep-item"><span class="pi-ic teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span><div><h4>Home Videos</h4><p>Short clips of specific behaviors or movements that concern you.</p></div></div>
+        </div>
+        <div class="prep-col alt">
+            <h3><span class="pc-i blue"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span> Please Don't Worry If…</h3>
+            <div class="prep-item"><span class="pi-ic blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/></svg></span><div><h4>No Diagnosis Yet</h4><p>You don't need a label or a referral to start seeing us.</p></div></div>
+            <div class="prep-item"><span class="pi-ic blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v5h5"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"/><path d="M12 7v5l4 2"/></svg></span><div><h4>No Previous Records</h4><p>If this is your first time seeking help, we'll start fresh together.</p></div></div>
+            <div class="prep-item"><span class="pi-ic blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5"/><path d="M5 21v-1a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1"/></svg></span><div><h4>Behavioral Outbursts</h4><p>Our therapists are experts in managing varied moods and behaviors.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head"><h2 class="section-title">Common Questions</h2><p class="section-sub">Everything you need to know about starting your journey with OT Cloud.</p></div>
+        <div class="asm-faq" id="ct-faq">
+            <div class="faq-list">
+                <details class="faq-item" open><summary><span class="q">Do I need a doctor's referral?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">No, you don't need a formal referral. Parents are often the first to notice developmental needs, and you can contact us directly for an intake assessment.</div></details>
+                <details class="faq-item"><summary><span class="q">How long does the initial assessment take?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">A standard comprehensive assessment typically takes 60 to 90 minutes, including direct interaction with your child and a feedback discussion with you.</div></details>
+                <details class="faq-item"><summary><span class="q">Can both parents attend the session?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">We strongly encourage both parents to attend if possible. A shared understanding of the findings and goals helps create a consistent environment for the child at home.</div></details>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SHOWCASE + HOURS ============ -->
+<section class="section">
+    <div class="container showcase-grid">
+        <div>
+            <h2 class="section-title" style="text-align:left; margin-bottom:20px;">Visit Our Gurugram Centre</h2>
+            <div class="showcase-imgs">
+                <img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAFyBXQpxGqNwIE_OkuwEMy8xeCj4Tuhaok6FTDQJ_sekIl-xvZaZsS8uLxjP9HXsUTNJK2nCGqJZOyue47L_ZiFWeFo9JuyqZZQlEKGKrRVR0Hpnj0DNGffidNB-u9MibU7m8VVsOYUWcjiIr-v1F_cOGMIh6hVw3Yazmf4OvnHa3q5CxVxF5wdK5V2Mj0QbTQm5j4fbQgbgvz1Yh_vxi54y-Q80Lr5g2py51Jb0niORJk1fyuOPA" alt="OT therapy room.">
+                <img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvmPu2GX-ZvE3eSAK30YefXaeRVbnnEQdMtK050iJ5t2X8pWtZ5RuxyV4EV1lyq57DKhix9VWSiAlVM22x3veOSMzdL2_Gobx_2aCZqpyO8n_hHkBiVFbOcpfTPTJJq9lKPaK55oCFEguz0DcJTQiEWNEEKpMAcCFo2rzzeOTLAtGuxgyRTWFlx6JiKaGYx73wHW31qQR68KWho5c-kFhVDcke4KiRf9_pi6TmYYx7ePV2gIbmvazc" alt="Consultation room.">
+            </div>
+            <div class="ct-map" id="map">
+                <iframe title="OT Cloud location map" src="https://www.google.com/maps?q=Sector+14,+Gurugram,+Haryana&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p class="map-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Landmark: Near Main Market, Opposite HUDA Office, Sector 14.</p>
+        </div>
+        <div class="hours-card">
+            <h3>Clinical Hours</h3>
+            <table class="hours-table">
+                <thead><tr><th>Day</th><th>Timing</th><th>Status</th></tr></thead>
+                <tbody>
+                    <tr><td>Monday – Friday</td><td>9:00 AM – 7:00 PM</td><td><span class="badge-open">Open</span></td></tr>
+                    <tr><td>Saturday</td><td>9:00 AM – 6:00 PM</td><td><span class="badge-open">Open</span></td></tr>
+                    <tr><td>Sunday</td><td>Closed</td><td><span class="badge-closed">Closed</span></td></tr>
+                </tbody>
+            </table>
+            <div class="pro-enquiry">
+                <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a4 4 0 0 1-8 0V9a3 3 0 0 1 6 0"/><path d="M13 7a4 4 0 0 1 8 0v8a3 3 0 0 1-6 0"/><path d="M9 12h6"/></svg> Professional Enquiries</h4>
+                <p>Are you a pediatrician, school administrator, or therapist looking to collaborate with OT Cloud?</p>
+                <a href="mailto:{{ site_email }}" class="link-arrow">Partner with us →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ VALUES (dark) ============ -->
+<section class="values-dark">
+    <div class="container" style="text-align:center;">
+        <h2 class="section-title" style="color:#fff; margin-bottom:44px;">We're Here to Listen Before We Recommend</h2>
+        <div class="values-dark-grid">
+            <div><span class="vd-num">01</span><h4>Quality</h4><p>Evidence-based clinical protocols that meet international standards.</p></div>
+            <div><span class="vd-num">02</span><h4>Transparency</h4><p>Honest evaluations with clear progress tracking for every child.</p></div>
+            <div><span class="vd-num">03</span><h4>Progress</h4><p>Dedicated to meaningful outcomes that impact daily life.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section">
+    <div class="container">
+        <div class="con2-cta">
+            <h2>Ready to Take the First Step?</h2>
+            <p>Book your initial assessment today and discover how we can support your child's journey.</p>
+            <div class="con2-cta-actions">
+                <a href="#booking-hub" class="btn btn-on-teal">Book Assessment</a>
+                <a href="tel:{{ site_tel }}" class="btn btn-outline-light">Call {{ site_phone_display }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="trust-bar-section">
+    <div class="container trust-bar">
+        <div class="tb-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> Experienced Team</div>
+        <div class="tb-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg> Individualised Assessments</div>
+        <div class="tb-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Goal-Based Intervention</div>
+        <div class="tb-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg> Clinical Excellence</div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('#ct-faq .faq-item').forEach(function (el) {
+        el.addEventListener('toggle', function () {
+            if (!el.open) return;
+            document.querySelectorAll('#ct-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
+        });
+    });
+</script>
+
+{% endblock %}

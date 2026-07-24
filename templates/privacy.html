@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="section legal-hero">
+    <div class="container">
+        <nav class="legal-breadcrumb" aria-label="Breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span>Privacy Policy</span>
+        </nav>
+        <h1>Privacy Policy</h1>
+        <p class="hero-lead">Last updated: 19 July 2026. When you trust us with your child's care, you also trust us
+            with sensitive personal information. This page explains how {{ site_name }} collects, uses, and
+            protects that information, in line with India's Digital Personal Data Protection Act, 2023 (DPDP Act).</p>
+    </div>
+</section>
+
+<!-- ============ CONTENT ============ -->
+<section class="section legal-body">
+    <div class="container legal-layout">
+
+        <!-- Sticky section nav -->
+        <aside class="legal-sidebar">
+            <h4>On this page</h4>
+            <ul class="legal-nav">
+                <li><a href="#collection" class="active">Information We Collect</a></li>
+                <li><a href="#storage">Appointment &amp; Clinical Records</a></li>
+                <li><a href="#whatsapp">WhatsApp &amp; Communication</a></li>
+                <li><a href="#cookies">Cookies &amp; Analytics</a></li>
+                <li><a href="#rights">Your Rights as a Parent</a></li>
+                <li><a href="#security">Security &amp; Data Storage</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </aside>
+
+        <!-- Document -->
+        <article class="legal-content">
+            <section id="intro">
+                <p>At {{ site_name }}, we recognise that your child's developmental information is deeply personal.
+                    We are committed to handling every piece of data you share with us responsibly, lawfully, and
+                    only for the purpose of providing quality pediatric therapy and care.</p>
+            </section>
+
+            <section id="collection">
+                <h2>1. Information We Collect</h2>
+                <p>To provide our services and stay in touch with you, we may collect:</p>
+                <ul>
+                    <li><strong>Personal details</strong> — names, date of birth, and contact information for the
+                        child and parent or guardian.</li>
+                    <li><strong>Clinical information</strong> — your reasons for reaching out, areas of concern,
+                        assessment notes, and any reports you choose to share.</li>
+                    <li><strong>Booking details</strong> — preferred appointment times, preferred contact method,
+                        and messages you send through our forms, call, or WhatsApp.</li>
+                    <li><strong>Basic technical data</strong> — such as your browser type and general usage
+                        information, collected to keep our website working well.</li>
+                </ul>
+            </section>
+
+            <section id="storage">
+                <h2>2. Appointment &amp; Clinical Records</h2>
+                <p>Enquiries submitted through our website are stored so our team can respond to you and arrange
+                    your child's assessment. Access is limited to our therapists and clinical administrators who
+                    need it to support your family.</p>
+                <p>We keep records only for as long as they are needed to care for your child or to meet applicable
+                    legal and healthcare requirements, after which they are securely removed.</p>
+            </section>
+
+            <section id="whatsapp">
+                <h2>3. WhatsApp &amp; Communication</h2>
+                <p>We offer WhatsApp and phone as convenient ways to reach us for scheduling and general questions.
+                    Please note:</p>
+                <ul>
+                    <li>Detailed clinical results and diagnoses are shared during sessions or through appropriate
+                        channels — not through routine WhatsApp messages.</li>
+                    <li>We contact you only about your enquiry and your child's care, and you can ask us to stop at
+                        any time.</li>
+                    <li>WhatsApp provides its own end-to-end encryption; messages you send are also subject to
+                        WhatsApp's own privacy terms.</li>
+                </ul>
+            </section>
+
+            <section id="cookies">
+                <h2>4. Cookies &amp; Analytics</h2>
+                <p>Our website may use cookies to help it function and to understand, in aggregate, how visitors
+                    use our pages so we can improve them. We do not sell your personal information to advertisers.</p>
+                <p>You can manage or disable cookies through your browser settings, though some parts of the site
+                    may work less smoothly if you do.</p>
+            </section>
+
+            <section id="rights">
+                <h2>5. Your Rights as a Parent</h2>
+                <p>Under the DPDP Act, 2023, you have meaningful control over your family's data, including:</p>
+                <ul>
+                    <li><strong>Access</strong> — ask what information we hold about you and your child.</li>
+                    <li><strong>Correction</strong> — have inaccurate or outdated details corrected.</li>
+                    <li><strong>Erasure</strong> — request deletion of data we no longer need to keep.</li>
+                    <li><strong>Withdraw consent</strong> — change your communication preferences at any time.</li>
+                </ul>
+                <p>To exercise any of these rights, simply contact us using the details below.</p>
+            </section>
+
+            <div class="legal-callout">
+                <h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    How we protect your information
+                </h3>
+                <p>We use reasonable technical and organisational safeguards to keep your data secure — including
+                    restricted access, secure connections for information sent through our website, and careful
+                    handling of records. We review our practices regularly to keep your family's information safe.</p>
+            </div>
+
+            <section id="security">
+                <h2>6. Security &amp; Data Storage</h2>
+                <p>Your information is stored using trusted service providers and protected with access controls
+                    appropriate to its sensitivity. Where any information is processed by a third party on our
+                    behalf, we take care to ensure it is handled securely and only for the purposes we permit.</p>
+            </section>
+
+            <section id="contact" class="legal-contact">
+                <h4>Questions about your privacy?</h4>
+                <p>If you have any questions about this policy or would like to exercise your rights, please get in
+                    touch:</p>
+                <div class="legal-contact-rows">
+                    <a href="mailto:{{ site_email }}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                        {{ site_email }}
+                    </a>
+                    <a href="tel:{{ site_tel }}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        {{ site_phone_display }}
+                    </a>
+                </div>
+                <p class="legal-address">{{ site_address }}</p>
+            </section>
+        </article>
+    </div>
+</section>
+
+<script>
+    // Scroll-spy: highlight the sidebar link for the section in view
+    (function () {
+        var links = document.querySelectorAll('.legal-nav a');
+        var map = {};
+        links.forEach(function (a) {
+            var id = a.getAttribute('href').slice(1);
+            var target = document.getElementById(id);
+            if (target) map[id] = a;
+        });
+        var ids = Object.keys(map);
+        function onScroll() {
+            var current = ids[0];
+            for (var i = 0; i < ids.length; i++) {
+                var el = document.getElementById(ids[i]);
+                if (el && el.getBoundingClientRect().top <= 140) current = ids[i];
+            }
+            links.forEach(function (a) { a.classList.remove('active'); });
+            if (map[current]) map[current].classList.add('active');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    })();
+</script>
+
+{% endblock %}

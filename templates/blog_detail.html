@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ post.title|escapejs }}",
+  "description": "{{ meta_description|escapejs }}",
+  {% if post.cover_image %}"image": "{{ request.scheme }}://{{ request.get_host }}{{ post.cover_image.url }}",{% endif %}
+  "datePublished": "{{ post.published_at|date:'c' }}",
+  "dateModified": "{{ post.updated_at|date:'c' }}",
+  "author": { "@type": "Person", "name": "{{ post.author|escapejs }}" },
+  "publisher": { "@type": "Organization", "name": "{{ site_name }}" },
+  "mainEntityOfPage": "{{ canonical_url }}"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <article class="article">
+            <a href="{% url 'blog_list' %}" class="article-back">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                All articles
+            </a>
+
+            <div class="article-meta">{{ post.published_at|date:"F j, Y" }}</div>
+            <h1>{{ post.title }}</h1>
+            <p class="article-byline">By {{ post.author }}</p>
+
+            {% if post.cover_image %}
+            <div class="article-cover">
+                <img src="{{ post.cover_image.url }}" alt="{{ post.title }}">
+            </div>
+            {% endif %}
+
+            <div class="article-body">
+                {{ post.body|linebreaks }}
+            </div>
+        </article>
+    </div>
+</section>
+
+{% if recent %}
+<section class="section" style="background: var(--surface-container-lowest);">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">More articles</h2>
+        </div>
+        <div class="blog-grid">
+            {% for p in recent %}
+            <article class="blog-card">
+                <a href="{{ p.get_absolute_url }}" class="thumb">
+                    {% if p.cover_image %}
+                    <img src="{{ p.cover_image.url }}" alt="{{ p.title }}" loading="lazy" decoding="async">
+                    {% else %}
+                    <span class="ph">OT Cloud</span>
+                    {% endif %}
+                </a>
+                <div class="body">
+                    <div class="meta">{{ p.published_at|date:"M j, Y" }}</div>
+                    <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
+                    {% if p.excerpt %}<p>{{ p.excerpt }}</p>{% endif %}
+                    <a href="{{ p.get_absolute_url }}" class="read-more">Read article →</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

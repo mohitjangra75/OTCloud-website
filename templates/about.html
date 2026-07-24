@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="asm-hero">
+    <div class="container asm-hero-grid">
+        <div>
+            <span class="badge"><span class="dot"></span> Meet the OT Cloud Team</span>
+            <h1>Dedicated Professionals. One Shared Purpose — Helping Every Child Reach Their Potential.</h1>
+            <p class="hero-lead">Behind every therapy session is a team of professionals working together with one common goal: helping children participate more confidently in everyday life.</p>
+            <div class="asm-hero-actions">
+                <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book an Assessment</a>
+            </div>
+        </div>
+        <div class="asm-hero-visual">
+            <div class="asm-hero-img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj9ML5OjyDlr4sI1acHe0dSi2E2GEtiUiceyKcn4Nq-cAS81Wnr34_H14r8Y0IjfSvafJI9wOTu4ZLbyy6OeCAbJgqvK1SpRvD65JqR1sMmi9Ga0cug9dyPHBqGtmIqIlxhI3QZdtboUyZzFLK9mizDoPOaEkTPS5wBgTgdbhYjJ5idb2XBRSVDLMJICc4173lmrf9iaI7nF-Tx_wJw8K0NI4UF5DaqsN9GPH1vEc6LepLEDf9grjZ" alt="A warm group portrait of the pediatric therapy team.">
+            </div>
+            <div class="asm-badge-float asm-glass">
+                <p class="bf-title">25+ Specialists</p>
+                <p>A multidisciplinary team working for your child.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="section tint asm-phil">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Children Don't Need One Therapist. They Need One Team.</h2>
+            <p class="section-sub">Child development is interconnected. A challenge in sensory processing often manifests in communication, while postural stability directly impacts handwriting and focus.</p>
+        </div>
+        <div class="asm-phil-cards">
+            <div class="asm-phil-card">
+                <div class="asm-phil-icon teal"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg></div>
+                <h3>Sensory &amp; Speech</h3>
+                <p>We bridge sensory regulation and communication, ensuring the brain is calm enough to process and produce language.</p>
+            </div>
+            <div class="asm-phil-card">
+                <div class="asm-phil-icon blue"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/><path d="M12 10v4"/></svg></div>
+                <h3>Motor &amp; Mastery</h3>
+                <p>Linking core strength with fine motor skills. Posture isn't just about sitting; it's the foundation for handwriting and daily tasks.</p>
+            </div>
+            <div class="asm-phil-card">
+                <div class="asm-phil-icon green"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                <h3>Behavior &amp; Social</h3>
+                <p>Social-emotional learning combined with psychological support to help children navigate the complex world of peers and school.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOUNDER ============ -->
+<section class="section">
+    <div class="container about-founder-grid">
+        <div>
+            <span class="eyebrow">The Visionary Behind OT Cloud</span>
+            <h2 class="section-title" style="text-align:left; margin:8px 0 18px;">Dr. Dheeraj Suthar</h2>
+            <p class="msg">Master of Occupational Therapy (Neurosciences) with over 10 years of clinical experience. Dr. Dheeraj founded OT Cloud to redefine how pediatric therapy is delivered — moving away from siloed treatments toward a truly integrated clinical model.</p>
+            <blockquote class="founder-quote">"Every child deserves the opportunity to be understood before they are expected to change. Our team's job is to decode the 'why' behind the 'what'."</blockquote>
+            <h4 class="fq-label">Clinical Expertise</h4>
+            <div class="cond-chips" style="justify-content:flex-start;">{% for c in chips %}<span>{{ c }}</span>{% endfor %}</div>
+        </div>
+        <div class="af-portrait"><div class="ph">Dr. Dheeraj Suthar</div></div>
+    </div>
+</section>
+
+<!-- ============ MULTIDISCIPLINARY TEAM (dark) ============ -->
+<section class="assess-dark">
+    <div class="container">
+        <div class="section-head" style="text-align:left; margin-bottom:36px;">
+            <h2 class="section-title" style="text-align:left; color:#fff;">Working Together for Better Outcomes</h2>
+            <p style="color:rgba(255,255,255,0.7); margin-top:8px; max-width:600px;">A specialized team covering every facet of child development, collaborating daily on shared clinical goals.</p>
+        </div>
+        <div class="team-roles-grid">
+            <div class="role-card"><span class="rc-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><h3>Occupational Therapist</h3><p>Focuses on functional independence, sensory processing, and fine motor precision for school and home success.</p></div>
+            <div class="role-card"><span class="rc-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><h3>Speech &amp; Language Therapist</h3><p>Develops expressive language, receptive skills, and social pragmatics to help children find their voice.</p></div>
+            <div class="role-card"><span class="rc-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/><path d="M12 10v4"/></svg></span><h3>Child Physiotherapist</h3><p>Enhances gross motor skills, postural control, and physical endurance for active participation.</p></div>
+            <div class="role-card"><span class="rc-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><h3>Special Educator</h3><p>Tailors learning strategies to cognitive profiles, supporting academic transitions and literacy.</p></div>
+            <div class="role-card"><span class="rc-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.5 1-1a5.5 5.5 0 0 0 0-7.9z"/></svg></span><h3>Child Psychologist</h3><p>Supports emotional regulation, family dynamics, and behavioral health with evidence-based play therapy.</p></div>
+            <div class="role-card"><span class="rc-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a4 4 0 0 1-8 0V9a3 3 0 0 1 6 0"/><path d="M13 7a4 4 0 0 1 8 0v8a3 3 0 0 1-6 0"/><path d="M9 12h6"/></svg></span><h3>Therapy Assistants</h3><p>Provides consistent repetition and support, extending the clinical reach of senior therapists.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ COLLABORATIVE WORKFLOW ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head"><h2 class="section-title">How Our Team Works Together</h2></div>
+        <div class="workflow-scroll">
+            <div class="workflow-track">
+                {% for w in workflow %}
+                <div class="wf-step"><span class="wf-num">{{ forloop.counter }}</span><h4>{{ w.0 }}</h4><p>{{ w.1 }}</p></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ WHAT PARENTS EXPECT ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head"><h2 class="section-title">What Parents Can Expect From Our Team</h2></div>
+        <div class="expect-grid">
+            {% for e in expect %}
+            <div class="expect-item"><span class="exp-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><h4>{{ e.0 }}</h4><p>{{ e.1 }}</p></div></div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head"><h2 class="section-title">Inside Our Centre</h2></div>
+        <div class="about-gallery">
+            <div class="ag-tile big"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKDELP3Fhm0JxOI_5SB0ZVvr2zHIeMSGS5dUv9lwFzREUoro5Heeip-kPMogautlrhlTsdC_zdGITXmCrPQ5kqO4sQpsy-IhQsKEO3_eLRDsATr80fP3VkkKOPpOl7RDvyQdCqmmz9wuksCO3Qgx_WKL-X2DOHjuzlZHbHyROhET_6bpLxQQcZ1X49vcXd8A-1w21DqfGRr-rI2HcDFL77rXn6g7bKVEi-KuFFo1esiwatPMdq0dYe" alt="Sensory gym."></div>
+            <div class="ag-tile"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_5E8QRWvbvhpuO8XwpwgRPxdNjO0Cv_STficHi0x_wLo5PbDly9p063YnMfHjWZ32MaeH8xzEcGvrnOyfaoQeDw8h1Hh6HVKXvmm0iosX_Fb0_8Nz6SwtPxOI4a55XDe3YTm5epYm7d_PqAQh5s715w9Kojcwpf5KO8OvOnAyKLMdcHaDdtY38reagkBiEjajncndM9SvjBVx3IOMLWwXKua79JxyxbP6R6HCpHNgkQ4JL9Qbjle_" alt="Fine motor activity."></div>
+            <div class="ag-tile"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQuhImXoxH1a0cx-ulCw6AGRRIuhLb6oncuEnQ-1L6cq5hajhcM1IdthIOqIguS7D8VN3pQAmvWo7pZUwAh_vjQwj5Z-r17num4if3aRW38gMibrKK_ToEeB6Xg_86czdhgjKHAxtoAELNIWsSyJ1UzV-KY-zzbfcoezxl-nG8pZ5S4NSjGLB2RQqrOn7Ppxf761lsqgWhaWmJZsfvwDpqE-e-2pJysTxl077xBd8NdsK9HIWwLWX5" alt="Team meeting room."></div>
+            <div class="ag-tile wide"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9iYaPgBiq2Fhpy4g7LvlX37z6Pza3mOsOAORdRxKOZSMiXUh5KBFTsJ26GYWYHTC6gWhkcXZNec1kgA40uvObUx5-uPGR2GsKbL2luxWoN2HYLxl0aOoig3pbWUHOaKiChIVlQHALvA_iMotAJ-YV4tB_JuMJOMZDgAAasjxhD2gGN0lL8OksU6xi8RI1_lCH-Qb8gmwokh-tgBopPLfKvawgo82rBXUnh8ee4uPBDIlDXf-9PZJV" alt="Reception area."></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="asm-faq" id="about-faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <details class="faq-item" open>
+                    <summary><span class="q">How are therapists assigned to my child?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">Following the initial assessment, our clinical lead assigns therapists based on your child's specific profile and the therapist's area of special interest and expertise.</div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="q">Will I always see the same therapist?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">Consistency is key for therapeutic rapport. We aim for full consistency, though assistants may occasionally support sessions under senior supervision for intensive programs.</div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="q">How does the team share information about my child?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body">We use a centralized secure digital system and hold weekly multidisciplinary clinical rounds where every child's progress is discussed across departments.</div>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section">
+    <div class="container">
+        <div class="con2-cta">
+            <h2>Behind Every Child's Progress Is a Team That Cares</h2>
+            <p>When families choose OT Cloud, they aren't choosing a single therapist. They are choosing a collective expertise dedicated to your child's future.</p>
+            <div class="con2-cta-actions">
+                <a href="{% url 'assessment' %}#booking" class="btn btn-on-teal">Book an Assessment</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light">Contact Us</a>
+                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('#about-faq .faq-item').forEach(function (el) {
+        el.addEventListener('toggle', function () {
+            if (!el.open) return;
+            document.querySelectorAll('#about-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
+        });
+    });
+</script>
+
+{% endblock %}
