@@ -177,3 +177,12 @@ SITE_CONTACT = {
 
 # Brand name used in SEO titles / structured data
 SITE_NAME = 'OT Cloud Therapy Center'
+
+# Top announcement / workshop bar. Edit the text/link here (or set enabled=False to hide).
+# TODO: replace with real upcoming event details.
+SITE_ANNOUNCEMENT = {
+    'enabled': True,
+    'text': 'Free Parent Workshop: Managing ADHD at Home — this Saturday at our Sector 14 Centre.',
+    'link_text': 'Reserve a seat',
+    'link_url': '/contact/',
+}

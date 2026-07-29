@@ -12,6 +12,7 @@ def site_contact(request):
     )
     return {
         'site_name': settings.SITE_NAME,
+        'announcement': getattr(settings, 'SITE_ANNOUNCEMENT', None),
         'site_phone_display': c['phone_display'],
         'site_tel': c['tel'],
         'site_email': c['email'],

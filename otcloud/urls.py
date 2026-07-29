@@ -31,6 +31,7 @@ urlpatterns = [
     path('blog/', views.blog_list, name='blog_list'),
     path('blog/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('contact/', views.contact, name='contact'),
+    path('milestone-check/', views.milestone_check, name='milestone_check'),
     path('privacy/', views.privacy, name='privacy'),
     path('terms/', views.terms, name='terms'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),

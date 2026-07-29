@@ -7,9 +7,9 @@
 <section class="hp-hero">
     <div class="container hp-hero-grid">
         <div class="hp-hero-copy">
-            <span class="hero-pill">Child Development &amp; Neuro Rehabilitation Centre</span>
+            <span class="hero-pill">Sector 14, Gurugram · Pediatric OT &amp; Neuro Rehabilitation</span>
             <h1>Helping Children Grow with <span class="text-teal">Clarity</span>, <span class="text-teal">Confidence</span> and the Right Support</h1>
-            <p class="hero-lead">We provide evidence-based pediatric therapy that bridges the gap between home and clinical care, ensuring every child finds their unique path to progress.</p>
+            <p class="hero-lead">Gurugram's trusted pediatric occupational &amp; speech therapy centre — bridging clinical care and home progress for children with ASD, ADHD, and speech &amp; sensory needs.</p>
             <div class="hp-hero-actions">
                 <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book a Professional Assessment
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -150,12 +150,70 @@
         <div class="section-head">
             <h2 class="section-title">Your Journey to Progress</h2>
         </div>
-        <div class="process-track">
-            <div class="process-step"><span class="process-num">1</span><h4>Initial Consultation</h4><p>Understanding your child's history and current concerns.</p></div>
-            <div class="process-step"><span class="process-num">2</span><h4>Assessment</h4><p>Standardized clinical evaluation of developmental milestones.</p></div>
-            <div class="process-step"><span class="process-num">3</span><h4>Findings</h4><p>Detailed reporting and transparent discussion of results.</p></div>
-            <div class="process-step"><span class="process-num">4</span><h4>Intervention Plan</h4><p>Creating a goal-oriented roadmap for therapy sessions.</p></div>
-            <div class="process-step"><span class="process-num">5</span><h4>Reviews</h4><p>Continuous progress monitoring and plan adjustments.</p></div>
+        <div class="journey-timeline" id="journeyTimeline">
+            <!-- Clickable stepper -->
+            <div class="jt-track" role="tablist" aria-label="Your journey to progress">
+                <div class="jt-line"><span class="jt-line-fill" id="jtFill"></span></div>
+                <button class="jt-node active" data-step="1" role="tab" aria-selected="true"><span class="jt-dot">1</span><em>Consultation</em></button>
+                <button class="jt-node" data-step="2" role="tab" aria-selected="false"><span class="jt-dot">2</span><em>Assessment</em></button>
+                <button class="jt-node" data-step="3" role="tab" aria-selected="false"><span class="jt-dot">3</span><em>Findings</em></button>
+                <button class="jt-node" data-step="4" role="tab" aria-selected="false"><span class="jt-dot">4</span><em>Plan</em></button>
+                <button class="jt-node" data-step="5" role="tab" aria-selected="false"><span class="jt-dot">5</span><em>Reviews</em></button>
+            </div>
+
+            <!-- Step panels (each has a media slot ready for a 5-sec clip/GIF) -->
+            <div class="jt-panels">
+                <div class="jt-panel active" data-step="1">
+                    <div class="jt-media" data-media="Parent &amp; clinical coordinator consultation clip">
+                        <span class="jt-media-ph"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Short clip coming soon</span>
+                    </div>
+                    <div class="jt-body">
+                        <span class="jt-step-label">Step 1</span>
+                        <h3>Initial Consultation</h3>
+                        <p>A warm, no-pressure conversation to understand your child's history, your concerns, and what you hope to achieve.</p>
+                    </div>
+                </div>
+                <div class="jt-panel" data-step="2">
+                    <div class="jt-media" data-media="Standardized milestone evaluation tools in action">
+                        <span class="jt-media-ph"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Short clip coming soon</span>
+                    </div>
+                    <div class="jt-body">
+                        <span class="jt-step-label">Step 2</span>
+                        <h3>Assessment</h3>
+                        <p>A standardized clinical evaluation of developmental milestones — motor, sensory, speech, cognition, and daily-life skills.</p>
+                    </div>
+                </div>
+                <div class="jt-panel" data-step="3">
+                    <div class="jt-media" data-media="Colour-coded developmental milestone progress report">
+                        <span class="jt-media-ph"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Sample report coming soon</span>
+                    </div>
+                    <div class="jt-body">
+                        <span class="jt-step-label">Step 3</span>
+                        <h3>Findings</h3>
+                        <p>Detailed, transparent reporting — we walk you through exactly what we found, in plain language, with no jargon.</p>
+                    </div>
+                </div>
+                <div class="jt-panel" data-step="4">
+                    <div class="jt-media" data-media="Therapist building a customized weekly activity roadmap">
+                        <span class="jt-media-ph"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Short clip coming soon</span>
+                    </div>
+                    <div class="jt-body">
+                        <span class="jt-step-label">Step 4</span>
+                        <h3>Intervention Plan</h3>
+                        <p>A goal-oriented roadmap tailored to your child — clear weekly targets for the clinic and simple activities for home.</p>
+                    </div>
+                </div>
+                <div class="jt-panel" data-step="5">
+                    <div class="jt-media" data-media="Animated progress graph over 3–6 months">
+                        <span class="jt-media-ph"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Progress story coming soon</span>
+                    </div>
+                    <div class="jt-body">
+                        <span class="jt-step-label">Step 5</span>
+                        <h3>Reviews</h3>
+                        <p>Continuous progress monitoring with regular reviews, so the plan keeps pace with your child's real, measurable growth.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -177,6 +235,7 @@
             <div class="prog-card">
                 <h3>Foundation</h3>
                 <p class="prog-sub">Weekly support for consistent skill building.</p>
+                <p class="prog-bestfor"><span>Best for</span> mild or single-area delays (e.g. early speech or fine-motor), and maintaining gains after intensive therapy.</p>
                 <ul class="prog-list">
                     <li>1 Session per week</li>
                     <li>Basic Home Programme</li>
@@ -188,6 +247,7 @@
                 <span class="prog-badge">Recommended</span>
                 <h3>Growth</h3>
                 <p class="prog-sub">Balanced support for steady developmental progress.</p>
+                <p class="prog-bestfor"><span>Best for</span> active sensory-integration needs and children working across two or more areas (e.g. speech + attention).</p>
                 <ul class="prog-list">
                     <li>2–3 Sessions per week</li>
                     <li>Detailed Intervention Plan</li>
@@ -199,6 +259,7 @@
             <div class="prog-card">
                 <h3>Intensive</h3>
                 <p class="prog-sub">High-frequency therapy for accelerated results.</p>
+                <p class="prog-bestfor"><span>Best for</span> significant or multiple developmental challenges (e.g. ASD, global delay) needing rapid, closely-coordinated progress.</p>
                 <ul class="prog-list">
                     <li>4+ Sessions per week</li>
                     <li>Holistic Case Management</li>
@@ -244,7 +305,14 @@
 <!-- ============ FOUNDER ============ -->
 <section class="section">
     <div class="container hp-founder-grid">
-        <div class="hp-founder-img"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9_fG1BjQmLIEikzf_7qOQ-QZXcIX31dZ0NVPypxaGcOh0UOvlRu-767Dbg5Pw-ehozvMJnNoFISiY2zSkzZRZh2AIxJM3pEaPPARI3HiQhLkAMjQSIO-sPZ6LuoWW120i5Xq8m86PqtcX7_1qOc8aTxKrJ3o5hrEFUYjIAlfmSHq3GeLGCZd5OppTT1bOSJOMpXV6hjY7W-NVHEOuVANBwCOGIxMRCnmCCHNjnrdwczCYjBkuM-Kb" alt="Portrait of Dr. Dheeraj Suthar, Founder."></div>
+        <div class="hp-founder-img">
+            <img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9_fG1BjQmLIEikzf_7qOQ-QZXcIX31dZ0NVPypxaGcOh0UOvlRu-767Dbg5Pw-ehozvMJnNoFISiY2zSkzZRZh2AIxJM3pEaPPARI3HiQhLkAMjQSIO-sPZ6LuoWW120i5Xq8m86PqtcX7_1qOc8aTxKrJ3o5hrEFUYjIAlfmSHq3GeLGCZd5OppTT1bOSJOMpXV6hjY7W-NVHEOuVANBwCOGIxMRCnmCCHNjnrdwczCYjBkuM-Kb" alt="Portrait of Dr. Dheeraj Suthar, Founder.">
+            {# Set data-video to the founder's message video URL (YouTube / Vimeo / .mp4) to go live #}
+            <button type="button" class="video-play js-video" data-video="" aria-label="Play the founder's message">
+                <span class="vp-ring"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="vp-label">Watch message</span>
+            </button>
+        </div>
         <div class="hp-founder-copy">
             <span class="eyebrow">Message from the Founder</span>
             <h3>Dr. Dheeraj Suthar</h3>
@@ -261,26 +329,43 @@
         <div class="section-head">
             <h2 class="section-title">The Parent Journey</h2>
         </div>
-        <div class="journey-grid">
-            <div class="journey-card"><span class="j-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span><h4>We Listen</h4><p>Your observations are our most valuable data point.</p></div>
-            <div class="journey-card"><span class="j-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><h4>We Assess</h4><p>Clinical precision to identify specific developmental needs.</p></div>
-            <div class="journey-card"><span class="j-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span><h4>We Plan</h4><p>Tailored roadmaps that fit your child's personality.</p></div>
-            <div class="journey-card"><span class="j-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span><h4>We Review</h4><p>Constant adjustments to keep progress moving forward.</p></div>
+        <div class="journey-grid jc-anim">
+            <div class="journey-card jc-listen"><span class="j-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span><h4>We Listen</h4><p>Your observations are our most valuable data point.</p></div>
+            <div class="journey-card jc-assess"><span class="j-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path class="jc-line" d="M7 14l4-4 3 3 5-6"/></svg></span><h4>We Assess</h4><p>Clinical precision to identify specific developmental needs.</p></div>
+            <div class="journey-card jc-plan"><span class="j-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span><h4>We Plan</h4><p>Tailored roadmaps that fit your child's personality.</p></div>
+            <div class="journey-card jc-review"><span class="j-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span><h4>We Review</h4><p>Constant adjustments to keep progress moving forward.</p></div>
         </div>
     </div>
 </section>
 
-<!-- ============ CENTRE EXPERIENCE (bento) ============ -->
+<!-- ============ CENTRE EXPERIENCE (real photos) ============ -->
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Real Centre Experience</h2>
+            <h2 class="section-title">Inside Our Sector 14 Centre</h2>
+            <p class="section-sub">Real photos of the space where your child's progress happens — no stock imagery.</p>
         </div>
-        <div class="bento">
-            <div class="bento-tile b-8"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWYtf4VfASl7j0mTzllLMvuw9cZGq1gPyPhuj2fmzOGrAE6mBBbxSDWpK7seIi5kKWbkdlUBy7v16IQ-KNxkQ9sDk048TBIhsUTqg1CiOKvk0bS1VJjwYuaZLNon1V9kT1rL9moNf4whgV-PawTFfEDd1gc6mOsj7cTjPM_moCUIHBqHML22ULH1HeWcau7S_K9EaQFZrTiPAjk3TcjeOgR540bbh967h46FrlDQaPS5Dob75niIVr" alt="Sensory gym at the centre."></div>
-            <div class="bento-tile b-4"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_4K1JwpnxNRhB_OQ3Njy3vJwHojE1dKOWS71k7JB9ShPjdq6ABaPpxRfth6FOnZff8UeenxHKjEGsPhbDX9Jx4ayIjmlP3ixaII3ChbKcJmF1QFtiadm4lEHCshmzkilHV3wT6ucJgOVCwFmac_nWK3J7JArXCnoACX-AnUQlhahhB0yDiq_MXPJZdSwuDZgTDHW_yphkeFuhTdpbuIBy1Bkvo7Pq2yyc-Ahihmrl8fKYCSdIuBch" alt="Therapist reviewing progress charts."></div>
-            <div class="bento-tile b-4"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOUgCUI0WGogNpLcuPtvIBkVnaAJ-0FQleiaa3CcMfa-ddXs2Kxxp9rYcm_DLBZEtWSa7-atA3btMXScf196ILLAaQptazA9XrNCo1yxFo9NLtv7rX-yFtfYpbzZt4BgLGxdut894tTUde58i_KK0hSG2j-P3BDlMlZyNO__K5GXM6CnuDBO_DcAAvSyBGWqJjFEtsZVkdSCS083khndFIDYYHXX4g_Rd-IdQ1IUeSO_rSgESPkI8j" alt="Therapeutic tools on a table."></div>
-            <div class="bento-tile b-8"><img loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC10EjL9ISwrHDOeJRYmlw47p1G_xqNJMeYkMie5SUvtUgrqWnRnbONyNWOO3ODOt-kLfj1QG1t6o-6xn3Z2NseZR1_RHGwWApqPRoMJDs0mvVqNUmMMNesDIjMGwaDVkgGRJUTcVyQmgWkzNoG2XvHG9L68GiouWm0LobTc4z1cUyvohVZH50JTa4-qBbPdioSqZh0eWNtgDKON8Kcoz_-IB5skIDr_3OTH0gSiL0NxTSM6_itUOw3" alt="Child and therapist on a play mat."></div>
+        <div class="centre-gallery">
+            <figure class="cg-item cg-a">
+                <img loading="lazy" src="{% static 'images/center-sensory-gym.webp' %}" alt="OT Cloud sensory gym in Sector 14, Gurugram with therapy swings, soft play mats, climbing frame and therapy balls.">
+                <figcaption>Sensory Gym</figcaption>
+            </figure>
+            <figure class="cg-item cg-b">
+                <img loading="lazy" src="{% static 'images/center-assessment-room.webp' %}" alt="Assessment and learning room with a child-height activity table, soft flooring and learning charts.">
+                <figcaption>Assessment &amp; Learning Room</figcaption>
+            </figure>
+            <figure class="cg-item cg-c">
+                <img loading="lazy" src="{% static 'images/center-parent-lounge.webp' %}" alt="Comfortable parent lounge and waiting area at OT Cloud Therapy Center.">
+                <figcaption>Parent Lounge</figcaption>
+            </figure>
+            <figure class="cg-item cg-d">
+                <img loading="lazy" src="{% static 'images/center-reception.webp' %}" alt="OT Cloud reception desk with the clinic's Quality, Transparency, Progress branding.">
+                <figcaption>Reception</figcaption>
+            </figure>
+            <figure class="cg-item cg-e">
+                <img loading="lazy" src="{% static 'images/center-consultation.webp' %}" alt="Consultation room with the founder's desk, clinical certificates and awards.">
+                <figcaption>Consultation Room</figcaption>
+            </figure>
         </div>
     </div>
 </section>
@@ -329,6 +414,49 @@
         </div>
     </div>
 </section>
+
+<script>
+    // Interactive "Your Journey to Progress" timeline
+    (function () {
+        var tl = document.getElementById('journeyTimeline');
+        if (!tl) return;
+        var nodes = Array.prototype.slice.call(tl.querySelectorAll('.jt-node'));
+        var panels = tl.querySelectorAll('.jt-panel');
+        var fill = document.getElementById('jtFill');
+        var total = nodes.length;
+
+        function go(step) {
+            nodes.forEach(function (n) {
+                var s = parseInt(n.dataset.step, 10);
+                n.classList.toggle('active', s === step);
+                n.classList.toggle('done', s < step);
+                n.setAttribute('aria-selected', s === step ? 'true' : 'false');
+            });
+            panels.forEach(function (p) {
+                p.classList.toggle('active', parseInt(p.dataset.step, 10) === step);
+            });
+            if (fill) fill.style.width = (total > 1 ? ((step - 1) / (total - 1)) * 100 : 0) + '%';
+        }
+        nodes.forEach(function (n) {
+            n.addEventListener('click', function () { go(parseInt(n.dataset.step, 10)); });
+        });
+        go(1);
+    })();
+</script>
+
+<script>
+    // Parent Journey: play the micro-animation cues once when the row scrolls into view (mobile has no hover)
+    (function () {
+        var grid = document.querySelector('.journey-grid.jc-anim');
+        if (!grid || !('IntersectionObserver' in window)) return;
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+                if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); }
+            });
+        }, { threshold: 0.4 });
+        io.observe(grid);
+    })();
+</script>
 
 <script>
     // Therapy-programme carousel: mobile peek + prev/next arrows, opens on Recommended

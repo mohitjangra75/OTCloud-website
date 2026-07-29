@@ -70,6 +70,22 @@
     {% block structured_data %}{% endblock %}
 </head>
 <body>
+    {% if announcement.enabled %}
+    <div class="announce-bar" id="announceBar" data-key="ann-2026-07-20" hidden>
+        <div class="container announce-inner">
+            <p>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                <span>{{ announcement.text }}</span>
+                {% if announcement.link_url and announcement.link_text %}
+                <a href="{{ announcement.link_url }}" class="announce-link">{{ announcement.link_text }} →</a>
+                {% endif %}
+            </p>
+            <button type="button" class="announce-close" id="announceClose" aria-label="Dismiss announcement">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+    {% endif %}
     <header class="site-header">
         <div class="container nav">
             <a href="{% url 'home' %}" class="logo">
@@ -179,6 +195,7 @@
                     <ul>
                         <li><a href="{% url 'about' %}">About Us</a></li>
                         <li><a href="{% url 'assessment' %}#experts">Our Team</a></li>
+                        <li><a href="{% url 'milestone_check' %}">Free Milestone Check</a></li>
                         <li><a href="{% url 'contact' %}">Contact Us</a></li>
                         <li><a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener">WhatsApp</a></li>
                     </ul>
@@ -200,6 +217,67 @@
         </div>
     </footer>
 
+    <!-- Reusable video lightbox: any element with class "js-video" and a data-video URL opens here -->
+    <div class="vmodal" id="videoModal" hidden role="dialog" aria-modal="true" aria-label="Video player">
+        <div class="vmodal-backdrop" data-vclose></div>
+        <div class="vmodal-box">
+            <button type="button" class="vmodal-close" data-vclose aria-label="Close video">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="vmodal-frame" id="videoModalFrame"></div>
+        </div>
+    </div>
+
+    <script>
+        // Reusable video modal — supports YouTube, Vimeo and direct .mp4; empty data-video shows a "coming soon" state
+        (function () {
+            var modal = document.getElementById('videoModal');
+            if (!modal) return;
+            var frame = document.getElementById('videoModalFrame');
+
+            function embed(url) {
+                var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+                if (yt) return '<iframe src="https://www.youtube-nocookie.com/embed/' + yt[1] + '?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+                var vm = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+                if (vm) return '<iframe src="https://player.vimeo.com/video/' + vm[1] + '?autoplay=1" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+                return '<video src="' + url + '" controls autoplay playsinline></video>';
+            }
+            function open(url) {
+                frame.innerHTML = url
+                    ? embed(url)
+                    : '<div class="vmodal-ph"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><p>This video is coming soon.</p></div>';
+                modal.hidden = false;
+                document.body.style.overflow = 'hidden';
+            }
+            function close() {
+                modal.hidden = true;
+                frame.innerHTML = '';           // stop playback
+                document.body.style.overflow = '';
+            }
+            document.addEventListener('click', function (e) {
+                var trigger = e.target.closest('.js-video');
+                if (trigger) { e.preventDefault(); open(trigger.getAttribute('data-video') || ''); return; }
+                if (e.target.closest('[data-vclose]')) close();
+            });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
+        })();
+    </script>
+
+    <script>
+        // Announcement bar: show unless dismissed (remembered per message key)
+        (function () {
+            var bar = document.getElementById('announceBar');
+            if (!bar) return;
+            var key = 'otc_' + (bar.dataset.key || 'announce');
+            try { if (localStorage.getItem(key) === '1') return; } catch (e) {}
+            bar.hidden = false;
+            var close = document.getElementById('announceClose');
+            if (close) close.addEventListener('click', function () {
+                bar.hidden = true;
+                try { localStorage.setItem(key, '1'); } catch (e) {}
+            });
+        })();
+    </script>
     <script>
         (function () {
             var toggle = document.getElementById('navToggle');

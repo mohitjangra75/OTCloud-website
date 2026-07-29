@@ -452,6 +452,15 @@ def contact(request):
     })
 
 
+def milestone_check(request):
+    return render(request, 'milestone_check.html', {
+        'active_page': 'milestone',
+        'meta_title': 'Free Milestone Checker | Is My Child on Track? | OT Cloud Gurugram',
+        'meta_description': 'A quick, private 2-minute developmental milestone check for parents in Gurugram. '
+                            'See if your child is meeting age-appropriate motor, speech, and social milestones.',
+    })
+
+
 def privacy(request):
     return render(request, 'privacy.html', {
         'active_page': 'privacy',

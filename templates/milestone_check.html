@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="section con2-hero">
+    <div class="container">
+        <span class="badge"><span class="dot"></span> Free · Private · 2 minutes</span>
+        <h1>Is My Child on Track?</h1>
+        <p class="hero-lead">Answer a few quick questions about your child's development and get instant, gentle
+            guidance. Nothing is saved or shared — this is just for you.</p>
+    </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="section" style="padding-top:0;">
+    <div class="container">
+        <div class="mq" id="mq">
+
+            <!-- Screen 1: choose age -->
+            <div class="mq-screen" data-screen="age">
+                <h2 class="mq-h">First, how old is your child?</h2>
+                <p class="mq-sub">We'll show the milestones most children reach by this age.</p>
+                <div class="mq-ages">
+                    <button type="button" class="mq-age" data-age="12m">By 12 months</button>
+                    <button type="button" class="mq-age" data-age="2y">By 2 years</button>
+                    <button type="button" class="mq-age" data-age="3y">By 3 years</button>
+                    <button type="button" class="mq-age" data-age="4y">By 4 years</button>
+                    <button type="button" class="mq-age" data-age="5y">By 5 years</button>
+                    <button type="button" class="mq-age" data-age="6y">5+ years (school age)</button>
+                </div>
+            </div>
+
+            <!-- Screen 2: checklist -->
+            <div class="mq-screen" data-screen="quiz" hidden>
+                <div class="mq-progress"><span class="mq-progress-fill" id="mqFill"></span></div>
+                <h2 class="mq-h">Tick everything your child <em>can already</em> do</h2>
+                <p class="mq-sub">Leave a box unticked if it's "not yet." There are no right or wrong answers.</p>
+
+                <div class="mq-band" data-age="12m" hidden>
+                    <ul class="mq-items">
+                        <li><label><input type="checkbox"><span>Sits without support</span></label></li>
+                        <li><label><input type="checkbox"><span>Babbles or says "mama/dada"</span></label></li>
+                        <li><label><input type="checkbox"><span>Responds to their own name</span></label></li>
+                        <li><label><input type="checkbox"><span>Picks up small objects with thumb and finger</span></label></li>
+                        <li><label><input type="checkbox"><span>Pulls to stand or cruises along furniture</span></label></li>
+                        <li><label><input type="checkbox"><span>Looks for a dropped or hidden object</span></label></li>
+                    </ul>
+                </div>
+                <div class="mq-band" data-age="2y" hidden>
+                    <ul class="mq-items">
+                        <li><label><input type="checkbox"><span>Walks well and starts to run</span></label></li>
+                        <li><label><input type="checkbox"><span>Says at least 10–20 words</span></label></li>
+                        <li><label><input type="checkbox"><span>Points to show you something interesting</span></label></li>
+                        <li><label><input type="checkbox"><span>Follows a simple one-step instruction</span></label></li>
+                        <li><label><input type="checkbox"><span>Stacks 2–4 blocks</span></label></li>
+                        <li><label><input type="checkbox"><span>Feeds themselves with a spoon</span></label></li>
+                    </ul>
+                </div>
+                <div class="mq-band" data-age="3y" hidden>
+                    <ul class="mq-items">
+                        <li><label><input type="checkbox"><span>Speaks in 2–3 word phrases</span></label></li>
+                        <li><label><input type="checkbox"><span>Runs and climbs with ease</span></label></li>
+                        <li><label><input type="checkbox"><span>Plays alongside other children</span></label></li>
+                        <li><label><input type="checkbox"><span>Copies a circle or a straight line</span></label></li>
+                        <li><label><input type="checkbox"><span>Is understood by familiar adults most of the time</span></label></li>
+                        <li><label><input type="checkbox"><span>Uses the toilet with some help</span></label></li>
+                    </ul>
+                </div>
+                <div class="mq-band" data-age="4y" hidden>
+                    <ul class="mq-items">
+                        <li><label><input type="checkbox"><span>Speaks in full sentences (4+ words)</span></label></li>
+                        <li><label><input type="checkbox"><span>Hops on one foot or pedals a tricycle</span></label></li>
+                        <li><label><input type="checkbox"><span>Plays cooperatively and takes turns</span></label></li>
+                        <li><label><input type="checkbox"><span>Draws a person with 2–3 body parts</span></label></li>
+                        <li><label><input type="checkbox"><span>Is understood by strangers most of the time</span></label></li>
+                        <li><label><input type="checkbox"><span>Dresses with little help</span></label></li>
+                    </ul>
+                </div>
+                <div class="mq-band" data-age="5y" hidden>
+                    <ul class="mq-items">
+                        <li><label><input type="checkbox"><span>Tells a simple story or speaks in long sentences</span></label></li>
+                        <li><label><input type="checkbox"><span>Catches a bounced ball</span></label></li>
+                        <li><label><input type="checkbox"><span>Holds a pencil correctly and copies shapes</span></label></li>
+                        <li><label><input type="checkbox"><span>Follows 2–3 step instructions</span></label></li>
+                        <li><label><input type="checkbox"><span>Names some letters and numbers</span></label></li>
+                        <li><label><input type="checkbox"><span>Manages toileting and handwashing on their own</span></label></li>
+                    </ul>
+                </div>
+                <div class="mq-band" data-age="6y" hidden>
+                    <ul class="mq-items">
+                        <li><label><input type="checkbox"><span>Speaks clearly and is easily understood</span></label></li>
+                        <li><label><input type="checkbox"><span>Reads and writes at a grade-appropriate level</span></label></li>
+                        <li><label><input type="checkbox"><span>Sits and focuses on a task for 10–15 minutes</span></label></li>
+                        <li><label><input type="checkbox"><span>Manages emotions and transitions with support</span></label></li>
+                        <li><label><input type="checkbox"><span>Makes and keeps friends</span></label></li>
+                        <li><label><input type="checkbox"><span>Handles self-care (dressing, eating, hygiene) independently</span></label></li>
+                    </ul>
+                </div>
+
+                <div class="mq-actions">
+                    <button type="button" class="btn btn-ghost mq-back">← Change age</button>
+                    <button type="button" class="btn btn-primary mq-see">See my results</button>
+                </div>
+            </div>
+
+            <!-- Screen 3: result -->
+            <div class="mq-screen" data-screen="result" hidden>
+                <div class="mq-result" id="mqResult">
+                    <span class="mq-result-icon" id="mqIcon"></span>
+                    <h2 id="mqTitle"></h2>
+                    <p id="mqMessage"></p>
+                    <div class="mq-result-cta">
+                        <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book a Professional Assessment</a>
+                        <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-ghost">Ask a Therapist on WhatsApp</a>
+                    </div>
+                    <button type="button" class="mq-restart">↻ Check another age</button>
+                </div>
+            </div>
+
+            <p class="mq-disclaimer">
+                <strong>Please note:</strong> This is a general awareness tool, not a diagnosis. Every child develops
+                at their own pace and milestones are approximate. If anything here — or your own instinct — gives you
+                pause, a professional assessment is the surest way to get clarity.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        var mq = document.getElementById('mq');
+        if (!mq) return;
+        var screens = {};
+        mq.querySelectorAll('.mq-screen').forEach(function (s) { screens[s.dataset.screen] = s; });
+        var bands = mq.querySelectorAll('.mq-band');
+        var fill = document.getElementById('mqFill');
+        var current = null;
+
+        function show(name) {
+            Object.keys(screens).forEach(function (k) { screens[k].hidden = (k !== name); });
+            window.scrollTo({ top: mq.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
+        }
+        function openBand(age) {
+            current = age;
+            bands.forEach(function (b) { b.hidden = (b.dataset.age !== age); });
+            show('quiz');
+        }
+        // progress fill as boxes get ticked
+        mq.addEventListener('change', function (e) {
+            if (!e.target.matches('.mq-band input') || !current) return;
+            var band = mq.querySelector('.mq-band[data-age="' + current + '"]');
+            var total = band.querySelectorAll('input').length;
+            var done = band.querySelectorAll('input:checked').length;
+            if (fill) fill.style.width = (done / total * 100) + '%';
+        });
+
+        mq.querySelectorAll('.mq-age').forEach(function (b) {
+            b.addEventListener('click', function () { openBand(b.dataset.age); });
+        });
+        mq.querySelector('.mq-back').addEventListener('click', function () { show('age'); });
+        mq.querySelector('.mq-restart').addEventListener('click', function () {
+            if (current) mq.querySelectorAll('.mq-band[data-age="' + current + '"] input').forEach(function (i) { i.checked = false; });
+            if (fill) fill.style.width = '0%';
+            show('age');
+        });
+
+        var ICON_OK = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+        var ICON_WATCH = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+        mq.querySelector('.mq-see').addEventListener('click', function () {
+            var band = mq.querySelector('.mq-band[data-age="' + current + '"]');
+            var total = band.querySelectorAll('input').length;
+            var done = band.querySelectorAll('input:checked').length;
+            var notYet = total - done;
+            var res = document.getElementById('mqResult');
+            var icon = document.getElementById('mqIcon');
+            var title = document.getElementById('mqTitle');
+            var msg = document.getElementById('mqMessage');
+            res.classList.remove('ok', 'watch', 'flag');
+
+            if (notYet === 0) {
+                res.classList.add('ok'); icon.innerHTML = ICON_OK;
+                title.textContent = "Your child looks right on track 🌱";
+                msg.textContent = "You've ticked every milestone for this age — wonderful. Keep encouraging play and communication, and revisit this check as your child grows.";
+            } else if (notYet <= 2) {
+                res.classList.add('watch'); icon.innerHTML = ICON_WATCH;
+                title.textContent = "Mostly on track — a couple worth watching";
+                msg.textContent = "Your child is meeting most milestones, with " + notYet + " marked ‘not yet.’ This is often completely normal, but a short chat with a therapist can give you peace of mind and simple activities to help.";
+            } else {
+                res.classList.add('flag'); icon.innerHTML = ICON_WATCH;
+                title.textContent = "A few areas worth a professional look";
+                msg.textContent = notYet + " milestones are marked ‘not yet.’ That doesn't mean something is wrong — but the earlier we understand a child's profile, the more we can help. A professional assessment is the clearest next step.";
+            }
+            show('result');
+        });
+    })();
+</script>
+
+{% endblock %}
