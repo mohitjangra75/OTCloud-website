@@ -19,25 +19,35 @@
     <meta property="og:description" content="{{ page_desc }}">
     <meta property="og:url" content="{{ canonical_url }}">
     {% if meta_image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ meta_image }}">
-    {% else %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/OTCloud_logo.png' %}">{% endif %}
+    {% else %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'assets/OTCloud_logo.png' %}">{% endif %}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page_title }}">
     <meta name="twitter:description" content="{{ page_desc }}">
     {% if meta_image %}<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ meta_image }}">
-    {% else %}<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/OTCloud_logo.png' %}">{% endif %}
+    {% else %}<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'assets/OTCloud_logo.png' %}">{% endif %}
     {% endwith %}
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
-    <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'assets/favicon.png' %}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>
+        // Enable scroll-reveal only on larger screens with motion allowed (set before paint to avoid flashes)
+        (function () {
+            try {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                if (window.innerWidth < 768) return;
+                document.documentElement.className += ' reveal-ready';
+            } catch (e) {}
+        })();
+    </script>
 
     <!-- Site-wide structured data: medical clinic -->
     <script type="application/ld+json">
@@ -71,27 +81,31 @@
 </head>
 <body>
     {% if announcement.enabled %}
-    <div class="announce-bar" id="announceBar" data-key="ann-2026-07-20" hidden>
-        <div class="container announce-inner">
-            <p>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-                <span>{{ announcement.text }}</span>
-                {% if announcement.link_url and announcement.link_text %}
-                <a href="{{ announcement.link_url }}" class="announce-link">{{ announcement.link_text }} →</a>
-                {% endif %}
-            </p>
-            <button type="button" class="announce-close" id="announceClose" aria-label="Dismiss announcement">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
+    <div class="announce-bar" role="status" aria-label="Announcement">
+        <span class="announce-live"><span class="al-dot"></span> LIVE</span>
+        <div class="announce-marquee">
+            <div class="announce-track">
+                {% for i in "12345678"|make_list %}
+                <span class="announce-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                    {{ announcement.text }}{% if announcement.link_url and announcement.link_text %} — {{ announcement.link_text }}{% endif %}
+                    <span class="announce-sep">✦</span>
+                </span>
+                {% endfor %}
+            </div>
         </div>
+        {% if announcement.link_url and announcement.link_text %}
+        <a href="{{ announcement.link_url }}" class="announce-cta">{{ announcement.link_text }} →</a>
+        {% endif %}
     </div>
     {% endif %}
     <header class="site-header">
         <div class="container nav">
             <a href="{% url 'home' %}" class="logo">
-                <img src="{% static 'images/OTCloud_logo.png' %}" alt="OT Cloud Therapy Center" class="logo-img">
+                <img src="{% static 'assets/OTCloud_logo.png' %}" alt="OT Cloud Therapy Center" class="logo-img">
             </a>
             <nav class="nav-links">
+                <a href="{% url 'home' %}" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
                 <a href="{% url 'concerns' %}" class="{% if active_page == 'concerns' %}active{% endif %}">Concerns</a>
                 <div class="nav-item">
                     <a href="{% url 'services' %}" class="nav-drop-toggle {% if active_page == 'services' or active_page == 'service_ot' or active_page == 'service_speech' or active_page == 'service_early' or active_page == 'service_se' or active_page == 'service_psychology' %}active{% endif %}">Services
@@ -120,6 +134,7 @@
         </div>
         <div class="mobile-menu" id="mobileMenu">
             {% with in_services=active_page|slice:":7" %}
+            <a href="{% url 'home' %}" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
             <a href="{% url 'concerns' %}" class="{% if active_page == 'concerns' %}active{% endif %}">Concerns</a>
             <div class="mm-group {% if active_page == 'services' or in_services == 'service' %}open{% endif %}">
                 <button type="button" class="mm-group-toggle {% if active_page == 'services' or in_services == 'service' %}active{% endif %}" aria-expanded="{% if active_page == 'services' or in_services == 'service' %}true{% else %}false{% endif %}">
@@ -208,7 +223,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>&copy; {% now "Y" %} OT Cloud Child Development Therapy Centre. All rights reserved.</span>
+                <span>&copy; {% now "Y" %} OT Cloud Child Development Therapy center. All rights reserved.</span>
                 <span>
                     <a href="{% url 'privacy' %}">Privacy Policy</a>
                     <a href="{% url 'terms' %}">Terms of Service</a>
@@ -264,21 +279,6 @@
     </script>
 
     <script>
-        // Announcement bar: show unless dismissed (remembered per message key)
-        (function () {
-            var bar = document.getElementById('announceBar');
-            if (!bar) return;
-            var key = 'otc_' + (bar.dataset.key || 'announce');
-            try { if (localStorage.getItem(key) === '1') return; } catch (e) {}
-            bar.hidden = false;
-            var close = document.getElementById('announceClose');
-            if (close) close.addEventListener('click', function () {
-                bar.hidden = true;
-                try { localStorage.setItem(key, '1'); } catch (e) {}
-            });
-        })();
-    </script>
-    <script>
         (function () {
             var toggle = document.getElementById('navToggle');
             var menu = document.getElementById('mobileMenu');
@@ -297,6 +297,42 @@
             });
             menu.querySelectorAll('a').forEach(function (link) {
                 link.addEventListener('click', function () { menu.classList.remove('open'); });
+            });
+        })();
+    </script>
+
+    <script>
+        // Scroll-reveal: blocks fade/slide up as they enter the viewport (desktop + motion-ok only)
+        (function () {
+            if (!document.documentElement.classList.contains('reveal-ready')) return;
+            if (!('IntersectionObserver' in window)) return;
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+            function tag(el, i) {
+                el.classList.add('reveal');
+                if (i) el.style.transitionDelay = (Math.min(i, 6) * 70) + 'ms';
+                // Already in view on load → show immediately (no hide-flash, no anim); otherwise animate on scroll
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('in');
+                else io.observe(el);
+            }
+
+            document.querySelectorAll('.section-head').forEach(function (el) { tag(el, 0); });
+
+            // Grids that are static columns on desktop — stagger-reveal their children
+            var groups = ['.cards-3', '.cards-4', '.cond-groups', '.asm-phil-cards', '.team-roles-grid',
+                '.myth-list', '.evaluate-grid', '.topic-bento', '.obs-features', '.workshop-grid',
+                '.prep-grid', '.svc-index-grid', '.why-grid', '.approaches-grid', '.success-grid',
+                '.teach-grid', '.roles-grid', '.stlc-grid', '.signs8-grid', '.blog-grid', '.area-grid',
+                '.decision-grid', '.showcase-grid', '.expect-grid', '.transparency-grid', '.logistics-grid',
+                '.power-grid', '.dark-grid', '.otc-grid'];
+            groups.forEach(function (sel) {
+                document.querySelectorAll(sel).forEach(function (grid) {
+                    Array.prototype.forEach.call(grid.children, function (child, i) { tag(child, i); });
+                });
             });
         })();
     </script>

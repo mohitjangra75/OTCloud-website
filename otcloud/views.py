@@ -84,7 +84,7 @@ def about(request):
         'chips': ABOUT_CHIPS,
         'workflow': ABOUT_WORKFLOW,
         'expect': ABOUT_EXPECT,
-        'meta_title': 'Meet Our Team | About OT Cloud Child Development & Therapy Centre',
+        'meta_title': 'Meet Our Team | About OT Cloud Child Development & Therapy center',
         'meta_description': 'Behind every therapy session is a multidisciplinary team of specialists working '
                             'together to help every child reach their potential. Meet the OT Cloud team.',
     })
@@ -390,7 +390,7 @@ def resources(request):
     return render(request, 'resources.html', {
         'active_page': 'resources',
         'featured': BlogPost.objects.filter(status='published')[:3],
-        'meta_title': 'Learning Centre | Child Development Resources | OT Cloud',
+        'meta_title': 'Learning center | Child Development Resources | OT Cloud',
         'meta_description': 'Therapist-led resources, articles, and workshops to help parents understand child '
                             'development with confidence — evidence-based and jargon-free.',
     })
@@ -464,7 +464,7 @@ def milestone_check(request):
 def privacy(request):
     return render(request, 'privacy.html', {
         'active_page': 'privacy',
-        'meta_title': 'Privacy Policy | OT Cloud Child Development & Therapy Centre',
+        'meta_title': 'Privacy Policy | OT Cloud Child Development & Therapy center',
         'meta_description': 'How OT Cloud collects, protects, and manages your family\'s personal and clinical '
                             'information, in line with India\'s Digital Personal Data Protection Act, 2023.',
     })
@@ -473,7 +473,7 @@ def privacy(request):
 def terms(request):
     return render(request, 'terms.html', {
         'active_page': 'terms',
-        'meta_title': 'Terms of Service | OT Cloud Child Development & Therapy Centre',
+        'meta_title': 'Terms of Service | OT Cloud Child Development & Therapy center',
         'meta_description': 'The terms that govern the use of OT Cloud\'s website and services, our appointment '
                             'and cancellation approach, intellectual property, and cookie use.',
     })
