@@ -1,36 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block structured_data %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "What if my child is very shy?", "acceptedAnswer": { "@type": "Answer", "text": "Our therapists are trained to build rapport at the child's pace. We use play-based warming-up periods to ensure your child feels safe and comfortable before we begin any formal tasks." } },
-    { "@type": "Question", "name": "Can you review my child's current school report?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. School reports are a critical part of understanding how your child functions in an academic and social environment. We incorporate these insights into our final clinical summary." } },
-    { "@type": "Question", "name": "How should I explain the visit to my child?", "acceptedAnswer": { "@type": "Answer", "text": "We recommend telling them they are going to meet a new friend to play some games. Avoid words like test or doctor if your child has medical anxiety." } },
-    { "@type": "Question", "name": "What happens if my child has a meltdown during the session?", "acceptedAnswer": { "@type": "Answer", "text": "Meltdowns are a form of communication. Our therapists manage these moments with empathy and can often gain valuable clinical insight into your child's sensory processing and regulation." } },
-    { "@type": "Question", "name": "How much does an assessment cost?", "acceptedAnswer": { "@type": "Answer", "text": "Assessment fees depend on the type and depth of evaluation your child needs. For the current fee and exactly what is included, please call or WhatsApp us — we will give you a clear, no-obligation answer before you book anything." } },
-    { "@type": "Question", "name": "How long does the assessment take and when will we see progress?", "acceptedAnswer": { "@type": "Answer", "text": "The initial assessment usually takes 60 to 90 minutes, and you receive a detailed written report within about 10 working days. Therapy timelines vary from child to child; many families notice early changes within the first few months, and we review goals regularly so progress stays measurable." } },
-    { "@type": "Question", "name": "Do you provide school consultation and support?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We can review school reports, share practical classroom strategies with teachers, and provide written recommendations to support your child's learning and inclusion at school." } }
-  ]
-}
-</script>
-{% endblock %}
-
 {% block content %}
 
-<!-- ============ HERO ============ -->
+<!-- ============ 1. HERO ============ -->
 <section class="asm-hero">
     <div class="container asm-hero-grid">
         <div>
             <span class="badge"><span class="dot"></span> The Assessment</span>
-            <h1>Every Meaningful Therapy Journey Begins with <span class="text-teal">Understanding</span> the Child</h1>
-            <p class="hero-lead">We move beyond generic labels. Our assessment process is designed to uncover the 'why' behind behaviours, building a bridge between clinical insight and your child's daily reality.</p>
+            <h1>Understand Your Child's Strengths, Needs and the Right Way Forward</h1>
+            <p class="hero-lead">When concerns involve communication, behaviour, attention, sensory responses, learning, movement or everyday independence, it can be difficult to know what they mean or what to do next.</p>
+            <p class="hero-lead">A professional developmental assessment brings together parent observations, developmental history, clinical observation and appropriate assessment tools to develop a clearer understanding of your child's abilities and current support needs.</p>
+            <p class="con-reassure">Assessment is not about finding a label. It is about understanding the individual child and identifying the most appropriate next step.</p>
             <div class="asm-hero-actions">
                 <a href="#booking" class="btn btn-primary">Book an Assessment</a>
-                <a href="#process" class="btn btn-surface">How it works</a>
+                <a href="#process" class="btn btn-surface">Understand the Process</a>
             </div>
         </div>
         <div class="asm-hero-visual">
@@ -38,276 +22,496 @@
                 <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
             </div>
             <div class="asm-badge-float asm-glass">
-                <p class="bf-title">1,200+</p>
-                <p>Assessments completed for families across Gurugram.</p>
+                <p class="bf-title">Child-Centred Assessment</p>
+                <p>Quality • Transparency • Progress</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============ WHY ASSESSMENT MATTERS ============ -->
-<section class="section asm-phil">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="section-title">Why Assessment Matters</h2>
-        </div>
-        <div class="asm-phil-cards">
-            <div class="asm-phil-card">
-                <div class="asm-phil-icon teal"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                <h3>Clarifying Priorities</h3>
-                <p>Identify the root causes of challenges rather than treating symptoms, ensuring every hour of therapy is impactful.</p>
-            </div>
-            <div class="asm-phil-card">
-                <div class="asm-phil-icon blue"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-                <h3>Setting Realistic Goals</h3>
-                <p>Create a roadmap based on objective data and standardized metrics that celebrate every small victory toward long-term success.</p>
-            </div>
-            <div class="asm-phil-card">
-                <div class="asm-phil-icon green"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3 8 8l-5 1.5L8 11l1.5 5L11 11l5-1.5L11 8z"/><path d="M18 14l-1 3-3 1 3 1 1 3 1-3 3-1-3-1z"/></svg></div>
-                <h3>Avoiding Guesswork</h3>
-                <p>Our evidence-based tools provide clinical certainty, giving parents the confidence they are pursuing the right path for their child.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ PHILOSOPHY ============ -->
-<section class="section">
-    <div class="container obs-grid">
-        <div class="obs-img"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:14px;">Every Child Is More Than a Diagnosis</h2>
-            <p class="msg" style="margin-bottom:24px;">Labels are only a starting point. Our philosophy centers on evaluating real-life participation — how your child interacts with their world, playmates, and home environment.</p>
-            <div class="obs-features">
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><div><h4>Functional Focus</h4><p>We measure what actually matters in daily life — feeding, dressing, and playing.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.5 5.5 21 7.5 13.5 2 9 9 9 12 2"/></svg></span><div><h4>Strength-Based</h4><p>Identifying what your child <em>can</em> do is just as important as identifying their challenges.</p></div></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ 6-STEP PROCESS (dark) ============ -->
-<section class="assess-process" id="process">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="section-title" style="color:#fff;">Our 6-Step Assessment Process</h2>
-            <p class="section-sub" style="color:rgba(255,255,255,0.75);">A structured path to total clarity.</p>
-        </div>
-        <div class="assess-process-grid">
-            <div class="astep-card"><span class="astep-label">01 — Consultation</span><h3>Parent Consultation</h3><p>We start by listening to you. Your insights as a parent are the most valuable data we have.</p></div>
-            <div class="astep-card"><span class="astep-label">02 — Observation</span><h3>Child Observation</h3><p>Natural play-based observation lets us see how your child interacts without pressure.</p></div>
-            <div class="astep-card"><span class="astep-label">03 — Clinical Tools</span><h3>Clinical Assessment</h3><p>We use globally recognized, standardized tools to measure specific developmental milestones.</p></div>
-            <div class="astep-card"><span class="astep-label">04 — Interpretation</span><h3>Understanding Findings</h3><p>No clinical jargon. We sit down to explain exactly what the results mean for your family.</p></div>
-            <div class="astep-card"><span class="astep-label">05 — Goals</span><h3>Goal Planning</h3><p>Together, we define functional goals that make the biggest impact on your child's independence.</p></div>
-            <div class="astep-card"><span class="astep-label">06 — Roadmap</span><h3>Personalised Plan</h3><p>A comprehensive, step-by-step therapy roadmap designed specifically for your child's needs.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ WHAT WE EVALUATE ============ -->
-<section class="section">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="section-title">What We Evaluate</h2>
-            <p class="section-sub">Our assessments are comprehensive, covering every facet of a child's development.</p>
-        </div>
-        <div class="evaluate-grid">
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg><span>Fine Motor</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/><path d="M12 10v4"/></svg><span>Gross Motor</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Speech</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7"/><path d="M2 12s3 7 10 7 10-7 10-7"/><circle cx="12" cy="12" r="2"/></svg><span>Sensory</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg><span>Cognitive</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Social Skills</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h1v11h2V2M11 2v20h2V15c1.66 0 3-1.34 3-3V6c0-2.21-1.79-4-4-4"/></svg><span>Feeding</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg><span>Self-Care</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Handwriting</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Attention</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M12 2a10 10 0 0 1 0 20M12 2a10 10 0 0 0 0 20"/></svg><span>Balance</span></div>
-            <div class="eval-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><span>Emotional Reg.</span></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ LOGISTICS ============ -->
+<!-- ============ 2. SCREENING, ASSESSMENT & DIAGNOSIS ============ -->
 <section class="section tint">
-    <div class="container logistics-grid">
-        <div class="logi-box">
-            <h3><span class="lb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span> What Should Parents Bring?</h3>
-            <ul class="logi-checks">
-                <li><span class="lc-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Previous school reports or teacher observations.</li>
-                <li><span class="lc-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Medical history records and any prior diagnosis papers.</li>
-                <li><span class="lc-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Comfort items (toys or snacks) to help your child feel at ease.</li>
-            </ul>
-        </div>
-        <div class="logi-box dark">
-            <h3>How Long Does it Take?</h3>
-            <p>A standard comprehensive assessment typically requires <strong>2 to 3 hours</strong> of direct clinical time — often split into two sessions to prevent child fatigue and see their best effort.</p>
-            <div class="logi-timeline">
-                <span class="lt-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-                <div><p class="lt-title">Results Timeline</p><p class="lt-sub">Full report delivered within 10 business days.</p></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ CLINICAL TRANSPARENCY ============ -->
-<section class="section">
-    <div class="container" style="text-align:center;">
-        <div class="section-head">
-            <span class="eyebrow">Our Commitment</span>
-            <h2 class="section-title" style="margin-top:8px;">Clinical Transparency</h2>
-        </div>
-        <div class="transparency-grid">
-            <div class="trans-item"><h4>Do all children need every assessment?</h4><p>No. We tailor our screening to the specific concerns raised. We never over-assess; we only perform tests that provide meaningful value to your child's care plan.</p></div>
-            <div class="trans-item"><h4>Will my child receive a diagnosis?</h4><p>Our clinical reports provide objective findings. While we identify developmental markers, we work alongside pediatricians for formal medical diagnoses when required.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ EXPERTS ============ -->
-<section class="section tint asm-team" id="experts">
     <div class="container">
-        <div class="asm-team-head">
-            <div>
-                <h2>Experts in Every Field</h2>
-                <p>Your child's assessment is reviewed by a board of specialists to ensure no detail is overlooked.</p>
-            </div>
-            <a href="{% url 'about' %}" class="link-arrow-anim">See All Specialists
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+        <div class="section-head">
+            <h2 class="section-title">Screening, Assessment and Diagnosis Are Not the Same</h2>
+            <p class="section-sub">These terms are often used interchangeably, but they serve different purposes. Understanding the difference helps families choose the right service and interpret the findings correctly.</p>
         </div>
-        <div class="asm-team-grid">
-            <div class="asm-member">
-                <div class="photo"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <h4>Dr. Sarah Jenkins</h4>
-                <p class="m-role">Head of Occupational Therapy</p>
-                <p class="m-bio">Specializing in sensory processing and neuromuscular development with 15+ years experience.</p>
+        <div class="concern-grid cols-2">
+            <article class="concern-card">
+                <h3>Developmental Monitoring</h3>
+                <p class="cc-desc">Observing how a child's abilities develop over time across areas such as communication, play, learning, movement, behaviour and daily participation.</p>
+                <p class="cc-label">It may involve</p>
+                <ul class="notice-list">
+                    <li>Parent and teacher observations</li>
+                    <li>Age-wise milestone checklists</li>
+                    <li>Monitoring emerging or changing skills</li>
+                    <li>Recording concerns across different environments</li>
+                </ul>
+                <p class="cc-foot">Developmental monitoring does not provide a diagnosis or formal risk classification.</p>
+            </article>
+            <article class="concern-card">
+                <h3>Developmental Screening</h3>
+                <p class="cc-desc">A brief, structured process used to identify whether a child may be at risk of a developmental difficulty and could benefit from further evaluation.</p>
+                <p class="cc-label">It may involve</p>
+                <ul class="notice-list">
+                    <li>A validated screening questionnaire or tool</li>
+                    <li>Parent-reported information</li>
+                    <li>Brief observation</li>
+                    <li>Review of developmental milestones</li>
+                </ul>
+                <p class="cc-foot">A screening result does not confirm or rule out a diagnosis.</p>
+            </article>
+            <article class="concern-card">
+                <h3>Clinical Assessment</h3>
+                <p class="cc-desc">A more detailed evaluation of specific developmental or functional areas.</p>
+                <p class="cc-label">It may include</p>
+                <ul class="notice-list">
+                    <li>Developmental and medical history</li>
+                    <li>Parent and teacher information</li>
+                    <li>Clinical observation</li>
+                    <li>Structured activities</li>
+                    <li>Standardised or criterion-referenced tools, when appropriate</li>
+                    <li>Professional interpretation of the findings</li>
+                </ul>
+                <p class="cc-foot">Helps identify strengths, difficulties and their effect on everyday participation.</p>
+            </article>
+            <article class="concern-card">
+                <h3>Diagnostic Evaluation</h3>
+                <p class="cc-desc">Determines whether a child meets recognised criteria for a particular medical, developmental or psychological condition.</p>
+                <p class="cc-desc">The professional required depends on the diagnosis being considered — this may involve a paediatrician, developmental paediatrician, clinical psychologist, neurologist or another appropriately qualified professional.</p>
+                <p class="cc-foot">OTCloud will explain when a diagnostic referral may be appropriate.</p>
+            </article>
+        </div>
+        <p class="con-reassure" style="max-width:760px; margin:28px auto 0; text-align:center;">A child does not need a confirmed diagnosis before seeking developmental guidance or support.</p>
+    </div>
+</section>
+
+<!-- ============ 3. WHY ASSESSMENT MATTERS ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Why a Professional Assessment Matters</h2>
+            <p class="section-sub">The same observable behaviour may have different underlying contributors in different children. Assessment helps professionals understand the broader developmental and functional picture before making recommendations.</p>
+        </div>
+        <div class="concern-grid cols-2">
+            <article class="concern-card">
+                <h3>Understanding the Complete Picture</h3>
+                <p class="cc-desc">Assessment considers how the child communicates, learns, moves, regulates, interacts and participates across everyday environments — connecting parent concerns with the child's developmental profile rather than examining one behaviour in isolation.</p>
+            </article>
+            <article class="concern-card">
+                <h3>Identifying Meaningful Priorities</h3>
+                <p class="cc-desc">Not every difficulty requires the same level or type of intervention. Assessment helps identify which concerns currently have the greatest effect on the child's communication, learning, relationships, emotional wellbeing, physical participation and everyday independence.</p>
+            </article>
+            <article class="concern-card">
+                <h3>Reducing Guesswork</h3>
+                <p class="cc-desc">Clinical observation and appropriate assessment tools provide structured information that can reduce reliance on assumptions. The findings may clarify whether the child requires:</p>
+                <ul class="notice-list">
+                    <li>Developmental monitoring</li>
+                    <li>Parent guidance</li>
+                    <li>School strategies</li>
+                    <li>Therapy</li>
+                    <li>Further assessment</li>
+                    <li>Medical or specialist referral</li>
+                </ul>
+            </article>
+            <article class="concern-card">
+                <h3>Guiding Realistic Recommendations</h3>
+                <p class="cc-desc">Recommendations are based on the child's current abilities, participation needs and family priorities. The purpose is to identify an appropriate next step — not to place every child into a standard therapy programme.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 4. TYPES OF ASSESSMENT ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Which Type of Assessment May Be Appropriate?</h2>
+            <p class="section-sub">Every child does not need a comprehensive multidisciplinary assessment. The type and depth of evaluation should match the concern, age, history and purpose of referral.</p>
+        </div>
+        <div class="concern-grid cols-2">
+            <article class="concern-card">
+                <h3>Initial Developmental Consultation</h3>
+                <p class="cc-desc">A structured conversation with a professional to understand:</p>
+                <ul class="notice-list">
+                    <li>The parent's primary concerns</li>
+                    <li>Developmental and medical history</li>
+                    <li>Current abilities</li>
+                    <li>Home and school participation</li>
+                    <li>Previous assessments or intervention</li>
+                    <li>The most appropriate next step</li>
+                </ul>
+            </article>
+            <article class="concern-card">
+                <h3>Single-Discipline Assessment</h3>
+                <p class="cc-desc">A focused evaluation conducted by one professional when the concern primarily involves one area.</p>
+                <ul class="notice-list">
+                    <li>Occupational Therapy assessment</li>
+                    <li>Speech and Language assessment</li>
+                    <li>Child Physiotherapy assessment</li>
+                    <li>Psychology assessment</li>
+                    <li>Special Education or learning assessment</li>
+                </ul>
+            </article>
+            <article class="concern-card">
+                <h3>Multidisciplinary Assessment</h3>
+                <p class="cc-desc">A coordinated assessment involving more than one professional when concerns affect several developmental areas — Occupational Therapy, Speech and Language, Child Physiotherapy, Psychology or Special Education, depending on the child's needs.</p>
+            </article>
+            <article class="concern-card">
+                <h3>Progress Reassessment</h3>
+                <p class="cc-desc">A structured reassessment completed after an appropriate period of intervention to examine:</p>
+                <ul class="notice-list">
+                    <li>Changes in functional performance</li>
+                    <li>Progress towards agreed goals</li>
+                    <li>Emerging concerns</li>
+                    <li>Current support needs</li>
+                    <li>Whether recommendations or goals should change</li>
+                </ul>
+            </article>
+        </div>
+        <div class="concern-cta">
+            <a href="#booking" class="btn btn-primary">Discuss the Appropriate Assessment</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 5. ASSESSMENT PHILOSOPHY ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">We Assess the Child, Not Just the Concern</h2>
+            <p class="section-sub">A diagnosis may provide useful clinical information, but it does not describe the whole child. Our assessment considers abilities, participation, environment, family priorities and the activities that matter in the child's everyday life.</p>
+        </div>
+        <div class="diff-grid">
+            <div class="diff-card"><span class="diff-ic num">01</span><h4>Child-Centred</h4><p>The child's age, communication style, regulation needs, interests and comfort are considered throughout the process.</p></div>
+            <div class="diff-card"><span class="diff-ic num">02</span><h4>Function-Focused</h4><p>We examine how developmental differences affect real-life participation in communication, play, learning, movement, relationships and independence.</p></div>
+            <div class="diff-card"><span class="diff-ic num">03</span><h4>Strength-Based</h4><p>Abilities, interests and emerging skills are identified alongside areas requiring support.</p></div>
+            <div class="diff-card"><span class="diff-ic num">04</span><h4>Family-Informed</h4><p>Parent observations are an essential part of the assessment and provide information that may not be visible during a single clinic appointment.</p></div>
+            <div class="diff-card"><span class="diff-ic num">05</span><h4>Evidence-Informed</h4><p>Clinical reasoning is supported by developmental history, direct observation and appropriate assessment tools. No single test score is interpreted without considering the child's wider context.</p></div>
+            <div class="diff-card"><span class="diff-ic num">06</span><h4>Multidisciplinary When Needed</h4><p>Additional professionals are involved only when their contribution is relevant. Every child is not automatically assessed by every discipline.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 6. SIX-STEP PROCESS ============ -->
+<section class="section tint" id="process">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Our Six-Step Assessment Process</h2>
+            <p class="section-sub">A structured process designed to provide better understanding while respecting the child's individual pace and participation.</p>
+        </div>
+        <div class="acc-list aproc-acc">
+            <details class="acc-item" open name="aproc"><summary><span class="acc-sum-left"><span class="aproc-badge">1</span>Initial Consultation — Understanding Your Concerns</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p>We begin by discussing what you have noticed, how long it has been present and how it affects your child at home, school or in the community. We may ask about:</p>
+                    <ul class="notice-list two-col">
+                        <li>Pregnancy and birth history</li>
+                        <li>Medical and developmental history</li>
+                        <li>Communication and play</li>
+                        <li>Movement and sensory responses</li>
+                        <li>Behaviour and emotional regulation</li>
+                        <li>Learning and school participation</li>
+                        <li>Daily living skills</li>
+                        <li>Previous assessments or intervention</li>
+                        <li>Parent and teacher priorities</li>
+                    </ul></div></details>
+            <details class="acc-item" name="aproc"><summary><span class="acc-sum-left"><span class="aproc-badge">2</span>Assessment Planning — Selecting the Relevant Areas</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p>The professional reviews the available information and determines which areas require evaluation. The plan may include:</p>
+                    <ul class="notice-list two-col">
+                        <li>Parent or teacher questionnaires</li>
+                        <li>Clinical observation</li>
+                        <li>Play-based activities</li>
+                        <li>Structured tasks</li>
+                        <li>Standardised tools, when appropriate</li>
+                        <li>Functional assessment</li>
+                        <li>Review of schoolwork, reports or videos</li>
+                        <li>Referral to another discipline when required</li>
+                    </ul>
+                    <p class="cc-foot">Every child does not complete every test.</p></div></details>
+            <details class="acc-item" name="aproc"><summary><span class="acc-sum-left"><span class="aproc-badge">3</span>Child Observation and Assessment — Understanding the Child Through Participation</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p>Your child participates in age-appropriate activities selected according to the assessment purpose. Depending on the concern, the professional may observe:</p>
+                    <ul class="notice-list two-col">
+                        <li>How the child communicates and understands</li>
+                        <li>How the child plays and interacts</li>
+                        <li>Attention and response to instructions</li>
+                        <li>Sensory and emotional regulation</li>
+                        <li>Posture, movement and coordination</li>
+                        <li>Hand function and tool use</li>
+                        <li>Learning and problem-solving</li>
+                        <li>Daily living abilities</li>
+                        <li>Response to support, demonstration or environmental changes</li>
+                    </ul>
+                    <p class="cc-foot">The pace may be adjusted to support comfort and participation.</p></div></details>
+            <details class="acc-item" name="aproc"><summary><span class="acc-sum-left"><span class="aproc-badge">4</span>Scoring and Clinical Interpretation — Bringing the Information Together</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p>Assessment results are not interpreted as isolated scores. The professional considers:</p>
+                    <ul class="notice-list two-col">
+                        <li>Parent and teacher information</li>
+                        <li>Developmental and medical history</li>
+                        <li>Direct clinical observation</li>
+                        <li>Structured-task performance</li>
+                        <li>Assessment scores, when applicable</li>
+                        <li>Functional effect on everyday activities</li>
+                        <li>Environmental supports and barriers</li>
+                        <li>The child's behaviour and participation during assessment</li>
+                    </ul>
+                    <p class="cc-foot">This information is synthesised to identify patterns of strengths, difficulties and support needs.</p></div></details>
+            <details class="acc-item" name="aproc"><summary><span class="acc-sum-left"><span class="aproc-badge">5</span>Findings and Parent Consultation — Explaining What the Findings Mean</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p>A feedback consultation is conducted to explain:</p>
+                    <ul class="notice-list two-col">
+                        <li>The child's identified strengths</li>
+                        <li>Areas requiring support</li>
+                        <li>How the findings relate to parent concerns</li>
+                        <li>Functional implications at home or school</li>
+                        <li>What the assessment can and cannot conclude</li>
+                        <li>Whether further evaluation is recommended</li>
+                        <li>Possible next steps</li>
+                    </ul>
+                    <p class="cc-foot">Parents are encouraged to ask questions and clarify anything they do not understand.</p></div></details>
+            <details class="acc-item" name="aproc"><summary><span class="acc-sum-left"><span class="aproc-badge">6</span>Recommendations and Next Steps — Planning the Most Appropriate Way Forward</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p>Recommendations are individualised and may include:</p>
+                    <ul class="notice-list two-col">
+                        <li>Developmental monitoring</li>
+                        <li>Parent guidance</li>
+                        <li>Home-based strategies</li>
+                        <li>School recommendations</li>
+                        <li>Single-discipline therapy</li>
+                        <li>Multidisciplinary intervention</li>
+                        <li>Further assessment</li>
+                        <li>Medical or diagnostic consultation</li>
+                        <li>Referral to another qualified professional</li>
+                    </ul>
+                    <p class="cc-foot">Assessment does not automatically mean that therapy will be recommended.</p></div></details>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 7. AREAS THAT MAY BE EVALUATED ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">What May Be Evaluated?</h2>
+            <p class="section-sub">Assessment areas are selected according to the child's age, concerns, referral question and professional scope. Every child is not evaluated in every area.</p>
+        </div>
+        <div class="acc-list">
+            <details class="acc-item" name="asm-eval"><summary><span>Speech, Language and Communication</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include</p><ul class="notice-list"><li>Understanding spoken language</li><li>Expressing needs and ideas</li><li>Vocabulary and sentence development</li><li>Speech-sound production and clarity</li><li>Functional use of gestures</li><li>Social communication</li><li>Conversation and narrative skills</li><li>Fluency and voice, when relevant</li></ul></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Social Communication and Play</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include</p><ul class="notice-list"><li>Shared attention</li><li>Social engagement</li><li>Imitation</li><li>Reciprocal interaction</li><li>Functional and pretend play</li><li>Cooperative play</li><li>Understanding social cues</li><li>Peer participation</li></ul></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Sensory Processing and Regulation</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include responses to</p><ul class="notice-list"><li>Touch</li><li>Sound</li><li>Movement</li><li>Visual information</li><li>Taste and smell</li><li>Body-position information</li><li>Internal body signals</li><li>Busy or unpredictable environments</li></ul><p class="cc-foot">Also considers how sensory responses affect daily participation.</p></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Fine-Motor and Visual-Motor Skills</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include</p><ul class="notice-list"><li>Grasp and release</li><li>Hand strength and dexterity</li><li>Bilateral hand coordination</li><li>Manipulation of small objects</li><li>Eye-hand coordination</li><li>Drawing and copying</li><li>Scissor use</li><li>Pencil control</li><li>Visual-motor integration</li></ul></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Gross-Motor Development</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include</p><ul class="notice-list"><li>Posture</li><li>Muscle strength</li><li>Balance</li><li>Walking and running</li><li>Jumping and climbing</li><li>Ball skills</li><li>Bilateral coordination</li><li>Motor planning</li><li>Endurance and functional mobility</li></ul></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Attention and Executive Functioning</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include</p><ul class="notice-list"><li>Task engagement</li><li>Sustained attention</li><li>Shifting attention</li><li>Impulse control</li><li>Working memory</li><li>Planning</li><li>Organisation</li><li>Flexibility</li><li>Task initiation and completion</li></ul></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Learning and School Participation</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include</p><ul class="notice-list"><li>Early learning concepts</li><li>Reading and written-language skills</li><li>Spelling and mathematics</li><li>Classroom participation</li><li>Following instructions</li><li>Work pace</li><li>Academic confidence</li><li>School routines and use of classroom tools</li></ul></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Behaviour and Emotional Regulation</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include</p><ul class="notice-list"><li>Response to frustration</li><li>Emotional identification</li><li>Coping abilities</li><li>Transitions</li><li>Flexibility</li><li>Recovery after dysregulation</li><li>Possible functions of behaviour</li><li>Effect of communication, sensory and environmental factors</li></ul></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Feeding and Mealtime Participation</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">When within scope, may consider</p><ul class="notice-list"><li>Food acceptance</li><li>Texture preferences</li><li>Mealtime behaviour</li><li>Use of utensils</li><li>Seating and posture</li><li>Oral-motor abilities</li><li>Chewing and swallowing concerns</li><li>Sensory responses to food</li></ul><p class="cc-foot">Medical, nutritional or swallowing concerns may require referral to an appropriate professional.</p></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Daily Living Skills</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">May include</p><ul class="notice-list"><li>Dressing</li><li>Feeding</li><li>Toileting</li><li>Bathing and grooming</li><li>Sleep-related routines</li><li>Organisation of belongings</li><li>Following everyday routines</li><li>Age-appropriate independence</li></ul></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Cognitive and Psychological Functioning</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-label">When assessed by a qualified professional</p><ul class="notice-list"><li>Cognitive abilities</li><li>Memory</li><li>Processing speed</li><li>Problem-solving</li><li>Behavioural profile</li><li>Emotional functioning</li><li>Attention-related concerns</li><li>Adaptive functioning</li></ul><p class="cc-foot">Formal psychological testing is conducted and interpreted only by appropriately qualified professionals.</p></div></details>
+            <details class="acc-item" name="asm-eval"><summary><span>Participation Across Environments</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">The assessment may also examine how the child functions across:</p><ul class="notice-list"><li>Home</li><li>School</li><li>Therapy environments</li><li>Playgrounds</li><li>Community settings</li><li>Social and family routines</li></ul><p class="cc-foot">Difficulties may be present in one environment and not another.</p></div></details>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 8. WHAT PARENTS RECEIVE ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">What Will You Receive After the Assessment?</h2>
+            <p class="section-sub">The exact deliverables depend on the type and scope of assessment. They will be explained before the assessment is scheduled.</p>
+        </div>
+        <div class="receive-list">
+            <div class="receive-item">
+                <span class="ri-num">1</span>
+                <div class="ri-body">
+                    <h3>Parent Feedback Consultation</h3>
+                    <p>A clear discussion of your child's strengths, areas requiring support, relevant assessment findings, functional implications and recommended next steps.</p>
+                </div>
             </div>
-            <div class="asm-member">
-                <div class="photo"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <h4>Marcus Thorne</h4>
-                <p class="m-role">Senior Speech Pathologist</p>
-                <p class="m-bio">Expert in early-childhood communication and social-pragmatic language disorders.</p>
+            <div class="receive-item">
+                <span class="ri-num">2</span>
+                <div class="ri-body">
+                    <h3>Written Assessment Report</h3>
+                    <p>When included in the selected package, the report may contain the reason for referral, relevant developmental history, assessment methods, clinical observations, findings, functional interpretation, and recommendations or suggested referrals where applicable.</p>
+                </div>
             </div>
-            <div class="asm-member">
-                <div class="photo"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <h4>Dr. Elena Rodriguez</h4>
-                <p class="m-role">Developmental Pediatrician</p>
-                <p class="m-bio">Board-certified pediatrician focusing on neurodevelopmental milestones and clinical diagnosis.</p>
+            <div class="receive-item">
+                <span class="ri-num">3</span>
+                <div class="ri-body">
+                    <h3>Prioritised Recommendations</h3>
+                    <p>Recommendations are organised according to the child's current needs rather than presented as a long, generic list.</p>
+                </div>
             </div>
-            <div class="asm-member">
-                <div class="photo"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <h4>Julian Vance</h4>
-                <p class="m-role">Educational Psychologist</p>
-                <p class="m-bio">Focusing on cognitive profiling and learning adaptation strategies for school-aged children.</p>
+            <div class="receive-item">
+                <span class="ri-num">4</span>
+                <div class="ri-body">
+                    <h3>Initial Home and School Guidance</h3>
+                    <p>Practical initial strategies may be provided to support everyday participation while families consider the next step.</p>
+                </div>
+            </div>
+            <div class="receive-item">
+                <span class="ri-num">5</span>
+                <div class="ri-body">
+                    <h3>Referral Guidance</h3>
+                    <p>If additional medical, developmental, psychological, hearing, vision, feeding or educational evaluation is recommended, the reason for referral will be explained.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============ BOOKING FORM ============ -->
+<!-- ============ 9. WHAT TO EXPECT ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">What Should Parents Expect?</h2>
+            <p class="section-sub">Children may respond differently in a new setting. The assessment process is adapted where clinically appropriate to support comfort, regulation and meaningful participation.</p>
+        </div>
+        <div class="concern-grid cols-2">
+            <article class="concern-card"><h3>Child-Friendly Environment</h3><p class="cc-desc">We use age-appropriate interaction, play, structured activities and movement breaks according to the child's needs and assessment purpose.</p></article>
+            <article class="concern-card"><h3>Parent Involvement</h3><p class="cc-desc">Parents may be asked to:</p><ul class="notice-list"><li>Remain present for part or all of the session</li><li>Complete questionnaires</li><li>Describe home and school concerns</li><li>Provide examples of challenging situations</li><li>Share previous reports or work samples</li></ul><p class="cc-foot">Whether a parent remains in the room depends on the child's age, comfort and assessment requirements.</p></article>
+            <article class="concern-card"><h3>Observing Natural Abilities</h3><p class="cc-desc">The professional may allow time for the child to become familiar with the environment before introducing structured activities.</p></article>
+            <article class="concern-card"><h3>When a Child Cannot Complete a Task</h3><p class="cc-desc">Difficulty completing a task is not treated as failure. The professional may:</p><ul class="notice-list"><li>Modify the presentation</li><li>Provide demonstration or support</li><li>Offer a break</li><li>Gather information through observation</li><li>Reschedule part of the assessment</li><li>Document why a task could not be completed</li></ul><p class="cc-foot">The aim is to obtain meaningful information, not to force performance.</p></article>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 10 & 11. BRING + DURATION ============ -->
+<section class="section tint">
+    <div class="container prep-grid">
+        <div class="prep-col">
+            <h3><span class="pc-i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span> What Should Parents Bring?</h3>
+            <ul class="notice-list">
+                <li>Previous developmental, medical, therapy or psychological reports</li>
+                <li>School reports, teacher observations or relevant work samples</li>
+                <li>Details of current medication and relevant medical history</li>
+                <li>Hearing, vision, neurological or genetic reports, when applicable</li>
+                <li>A list of the parent's primary concerns</li>
+                <li>Details of previous intervention</li>
+                <li>Glasses, hearing devices, mobility aids or communication supports used by the child</li>
+                <li>Familiar items or snacks when advised by the professional</li>
+            </ul>
+            <p class="cc-foot">You do not need to collect every document before contacting us. Our team will explain what is relevant for your child's scheduled assessment.</p>
+        </div>
+        <div class="prep-col alt">
+            <h3><span class="pc-i blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> How Long Does the Assessment Take?</h3>
+            <p class="cc-desc">Assessment duration varies according to the child's age, primary concerns, number of areas evaluated, type of assessment, number of professionals involved, the child's comfort and participation, and the need for additional information from school or other professionals.</p>
+            <p class="cc-desc">An initial consultation or focused observation may be completed in approximately <strong>45–60 minutes</strong>. A detailed single-discipline or multidisciplinary assessment may require a longer appointment or more than one session. Sessions may be divided to reduce fatigue and obtain a more representative picture.</p>
+            <h4 class="fq-label" style="margin-top:18px;">When Will We Receive the Findings?</h4>
+            <p class="cc-desc">Preliminary observations may be discussed during or shortly after the appointment when appropriate. The timeline for a written report depends on the complexity of assessment, number of disciplines involved and whether additional information is required. The expected report and feedback timeline will be confirmed before or immediately after completion of the required assessment components.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 12. CLINICAL TRANSPARENCY ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Clinical Transparency</h2>
+            <p class="section-sub">Clear communication helps families make informed decisions.</p>
+        </div>
+        <div class="asm-faq" id="asm-transparency">
+            <div class="faq-list">
+                <details class="faq-item" open><summary><span class="q">Does every child need every assessment?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">No. Assessment components are selected according to the child's concerns, history and clinical need. We do not recommend unrelated assessments or multiple disciplines simply because they are available.</div></details>
+                <details class="faq-item"><summary><span class="q">Will my child receive a diagnosis?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Not every assessment is designed to provide a diagnosis. OTCloud professionals assess areas within their respective qualification and scope of practice. When a formal medical, developmental or psychological diagnosis is required, families may be advised to consult an appropriately qualified professional.</div></details>
+                <details class="faq-item"><summary><span class="q">Does assessment automatically mean therapy?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">No. Recommendations may include monitoring, parent guidance, school strategies, therapy, further assessment or referral. Therapy is recommended only when the findings indicate that intervention may be beneficial.</div></details>
+                <details class="faq-item"><summary><span class="q">Will we be told about the cost beforehand?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Yes. The assessment type, expected components, professional involvement, fee and available report format will be explained before confirmation. Additional services will not be added without discussing them with the parent or guardian.</div></details>
+                <details class="faq-item"><summary><span class="q">What if the findings are inconclusive?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Some children require additional observation, information from another environment or evaluation by another professional. When the available information is insufficient to reach a clear conclusion, this will be communicated honestly and the next appropriate step will be explained.</div></details>
+            </div>
+        </div>
+        <p class="con-reassure" style="max-width:760px; margin:24px auto 0; text-align:center;">You will be informed about what is being assessed, why it is relevant, what the findings indicate and what limitations should be considered.</p>
+    </div>
+</section>
+
+<!-- ============ 13. ASSESSMENT TEAM ============ -->
+<section class="section tint" id="experts">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Assessment by the Appropriate Professional</h2>
+            <p class="section-sub">Depending on the concern, your child may be assessed by one professional or a coordinated multidisciplinary team. Each professional evaluates areas within their qualification and scope of practice.</p>
+        </div>
+
+        <div class="lead-card">
+            <div class="lead-photo"><img loading="lazy" src="{% static 'assets/Founder.webp' %}" alt="Dr. Dheeraj Suthar, Founder-Director and Senior Occupational Therapist."></div>
+            <div>
+                <span class="cc-label">Clinical Lead</span>
+                <h3>Dr. Dheeraj Suthar</h3>
+                <p class="lead-role">Founder-Director and Senior Occupational Therapist<br>Master of Occupational Therapy — Neurosciences<br>10+ Years of Clinical Experience</p>
+            </div>
+        </div>
+        <div class="concern-cta">
+            <a href="{% url 'about' %}" class="btn btn-ghost">Meet the OTCloud Team</a>
+        </div>
+        {# Team note: only genuine OTCloud team members, verified qualifications and actual photographs should be displayed in final profiles. #}
+    </div>
+</section>
+
+<!-- ============ 14. INITIAL CONSULTATION FORM ============ -->
 <section class="section asm-booking" id="booking">
     <div class="container asm-booking-grid">
         <div class="asm-booking-intro">
-            <h2>Book Your Initial Consultation</h2>
-            <p>Take the first step toward clarity. Fill out our secure intake form to request a clinical assessment window.</p>
+            <h2>Request an Initial Assessment Consultation</h2>
+            <p>Complete this form to help our team understand your primary concern. We will contact you to discuss the most appropriate assessment or referral.</p>
+            <p class="asm-note-small">Submitting this form does not itself constitute an assessment or diagnosis.</p>
             <div class="asm-trust-item">
                 <span class="ti-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg></span>
-                <p>Secure &amp; Confidential Data Storage</p>
-            </div>
-            <div class="asm-trust-item">
-                <span class="ti-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9z"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
-                <p>24-Hour Response Guarantee</p>
+                <p>Secure &amp; confidential — handled per our <a href="{% url 'privacy' %}">Privacy Policy</a></p>
             </div>
         </div>
         <div>
             <div class="asm-form-card">
                 {% if submitted %}
                 <div class="asm-success" style="display:block">
-                    <div class="s-icon">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <h4>Request Received</h4>
-                    <p>Thank you. Our clinical scheduling team will reach out within 24 business hours to confirm your assessment window.</p>
+                    <div class="s-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                    <h4>Thank You for Contacting OTCloud</h4>
+                    <p>Our team will review the information and contact you to understand your concern and discuss the most appropriate next step.</p>
                 </div>
                 {% else %}
                 <div class="asm-stepper">
-                    <div class="asm-step">
-                        <div class="asm-step-node active" id="asm-node-1">1</div>
-                        <span class="asm-step-label">Details</span>
-                    </div>
+                    <div class="asm-step"><div class="asm-step-node active" id="asm-node-1">1</div><span class="asm-step-label">Parent</span></div>
                     <div class="asm-step-line"></div>
-                    <div class="asm-step">
-                        <div class="asm-step-node" id="asm-node-2">2</div>
-                        <span class="asm-step-label">Clinical</span>
-                    </div>
+                    <div class="asm-step"><div class="asm-step-node" id="asm-node-2">2</div><span class="asm-step-label">Child</span></div>
                     <div class="asm-step-line"></div>
-                    <div class="asm-step">
-                        <div class="asm-step-node" id="asm-node-3">3</div>
-                        <span class="asm-step-label">Submit</span>
-                    </div>
+                    <div class="asm-step"><div class="asm-step-node" id="asm-node-3">3</div><span class="asm-step-label">Concern</span></div>
                 </div>
 
                 {% if form.errors %}
-                <div class="form-error-note">Please provide the child's name, parent/guardian name, and a valid email to continue.</div>
+                <div class="form-error-note">Please provide the parent/guardian name, child's name and a valid email to continue.</div>
                 {% endif %}
 
                 <form method="post" action="{% url 'assessment' %}#booking" id="assessment-form" novalidate>
                     {% csrf_token %}
                     <div class="asm-form-step active" id="asm-step-1">
+                        <div class="asm-field"><label>Parent / Guardian Name</label><input type="text" name="parent_name" placeholder="Full name" value="{{ form.parent_name.value|default:'' }}"></div>
                         <div class="asm-field-row">
-                            <div class="asm-field">
-                                <label>Child's Name</label>
-                                <input type="text" name="child_name" placeholder="Full Name" value="{{ form.child_name.value|default:'' }}">
-                            </div>
-                            <div class="asm-field">
-                                <label>Child's DOB</label>
-                                <input type="date" name="child_dob" value="{{ form.child_dob.value|default:'' }}">
-                            </div>
+                            <div class="asm-field"><label>Mobile Number</label><input type="tel" name="phone" placeholder="10-digit number" value="{{ form.phone.value|default:'' }}"></div>
+                            <div class="asm-field"><label>Email Address</label><input type="email" name="email" placeholder="email@example.com" value="{{ form.email.value|default:'' }}"></div>
                         </div>
-                        <div class="asm-field">
-                            <label>Parent/Guardian Name</label>
-                            <input type="text" name="parent_name" placeholder="Full Name" value="{{ form.parent_name.value|default:'' }}">
-                        </div>
-                        <div class="asm-field">
-                            <label>Contact Email</label>
-                            <input type="email" name="email" placeholder="email@example.com" value="{{ form.email.value|default:'' }}">
-                        </div>
-                        <button type="button" class="btn btn-primary btn-block" onclick="asmGoStep(2)">Continue to Clinical Questions</button>
+                        <button type="button" class="btn btn-primary btn-block" onclick="asmGoStep(2)">Continue</button>
                     </div>
 
                     <div class="asm-form-step" id="asm-step-2">
-                        <div class="asm-field">
-                            <label>Primary Area of Concern</label>
-                            <select name="area_of_concern">
-                                <option value="speech">Speech &amp; Language</option>
-                                <option value="sensory">Sensory Processing</option>
-                                <option value="motor">Motor Skills</option>
-                                <option value="social">Social Development</option>
-                                <option value="academic">Academic Performance</option>
-                            </select>
-                        </div>
-                        <div class="asm-field">
-                            <label>Brief description of child's strengths and challenges</label>
-                            <textarea name="message" rows="4" placeholder="Tell us about your child...">{{ form.message.value|default:'' }}</textarea>
+                        <div class="asm-field-row">
+                            <div class="asm-field"><label>Child's First Name</label><input type="text" name="child_name" placeholder="First name" value="{{ form.child_name.value|default:'' }}"></div>
+                            <div class="asm-field"><label>Date of Birth</label><input type="date" name="child_dob" value="{{ form.child_dob.value|default:'' }}"></div>
                         </div>
                         <div class="asm-form-actions">
                             <button type="button" class="btn btn-surface btn-block" onclick="asmGoStep(1)">Back</button>
-                            <button type="button" class="btn btn-primary btn-block" onclick="asmGoStep(3)">Review Summary</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="asmGoStep(3)">Continue</button>
                         </div>
                     </div>
 
                     <div class="asm-form-step" id="asm-step-3">
-                        <div class="asm-success-preview" style="padding: 24px; background: rgba(0,104,94,0.05); border: 1px solid rgba(0,104,94,0.2); border-radius: var(--r-card); text-align: center; margin-bottom: 24px;">
-                            <span style="display:inline-flex; color: var(--primary); margin-bottom: 12px;">
-                                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                            </span>
-                            <h4 style="font-size:20px; font-weight:600; margin-bottom:8px;">Ready to Submit</h4>
-                            <p style="font-size:14px; color: var(--on-surface-variant); line-height:1.6;">By clicking submit, you agree to our privacy policy and clinical intake terms. A member of our clinical scheduling team will contact you within 24 business hours.</p>
+                        <div class="asm-field">
+                            <label>Primary Concern</label>
+                            <select name="area_of_concern">
+                                <option value="speech">Speech and communication</option>
+                                <option value="social">Social interaction and play</option>
+                                <option value="sensory">Sensory processing</option>
+                                <option value="attention">Attention and regulation</option>
+                                <option value="behaviour">Behaviour or emotional regulation</option>
+                                <option value="academic">Learning or school participation</option>
+                                <option value="motor">Movement and coordination</option>
+                                <option value="feeding">Feeding or mealtime participation</option>
+                                <option value="daily">Daily living skills</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
+                        <div class="asm-field"><label>Briefly Describe Your Main Concern</label><textarea name="message" rows="4" placeholder="School, existing diagnosis or previous therapy, and what you have noticed…">{{ form.message.value|default:'' }}</textarea></div>
+                        <label class="asm-consent"><input type="checkbox" required> I consent to OTCloud contacting me regarding this enquiry. I understand that submitting this form does not constitute an assessment, diagnosis or therapeutic relationship.</label>
+                        <p class="asm-privacy">The information submitted will be used to respond to your enquiry and handled according to our <a href="{% url 'privacy' %}">Privacy Policy</a>.</p>
                         <div class="asm-form-actions">
                             <button type="button" class="btn btn-surface btn-block" onclick="asmGoStep(2)">Back</button>
-                            <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+                            <button type="submit" class="btn btn-primary btn-block">Request a Consultation Call</button>
                         </div>
                     </div>
                 </form>
@@ -317,56 +521,50 @@
     </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- ============ 15. FAQ ============ -->
 <section class="section tint">
     <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Assessment FAQs</h2>
+        </div>
         <div class="asm-faq" id="asm-faq">
-            <h2>Assessment FAQ</h2>
             <div class="faq-list">
-                <details class="faq-item" open>
-                    <summary><span class="q">What if my child is very shy?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Our therapists are trained to build rapport at the child's pace. We use play-based warming-up periods to ensure your child feels safe and comfortable before we begin any formal tasks.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">Can you review my child's current school report?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Absolutely. School reports are a critical part of understanding how your child functions in an academic and social environment. We incorporate these insights into our final clinical summary.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">How should I explain the visit to my child?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">We recommend telling them they are going to "meet a new friend to play some games and show them all the cool things they can do." Avoid words like "test" or "doctor" if your child has medical anxiety.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">What happens if my child has a meltdown during the session?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Meltdowns are a form of communication. Our therapists are equipped to manage these moments with empathy and can often gain valuable clinical insight into your child's sensory processing and regulation from how they respond to stress.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">How much does an assessment cost?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Assessment fees depend on the type and depth of evaluation your child needs. For the current fee and exactly what's included, please <a href="tel:{{ site_tel }}">call</a> or <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener">WhatsApp</a> us — we'll give you a clear, no-obligation answer before you book anything.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">How long does the assessment take, and when will we see progress?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">The initial assessment usually takes 60–90 minutes, and you'll receive a detailed written report within about 10 working days. Therapy timelines vary from child to child — many families notice early changes within the first few months, and we review goals regularly so progress stays measurable.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">Do you provide school consultation and support?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Yes. We can review school reports, share practical classroom strategies with teachers, and provide written recommendations to support your child's learning and inclusion at school.</div>
-                </details>
+                <details class="faq-item" open><summary><span class="q">What if my child is shy or does not interact with the professional?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Children may require time to feel comfortable in a new environment. The professional may begin with familiar, play-based or low-demand activities before introducing structured tasks. If the child's participation is limited, this is documented as part of the assessment, and another observation or appointment may be suggested when required.</div></details>
+                <details class="faq-item"><summary><span class="q">Can parents remain in the assessment room?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">In many assessments, parents may remain present for some or all of the session. In other situations, observing the child with reduced parent involvement may provide useful information. The decision is based on the child's age, comfort, assessment purpose and professional judgement, and will be discussed with the parent.</div></details>
+                <details class="faq-item"><summary><span class="q">Can you review my child's school report or previous assessments?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Yes. Previous assessment reports, school observations and work samples can provide valuable contextual information. They support the current assessment but do not replace direct professional evaluation when a new assessment is required.</div></details>
+                <details class="faq-item"><summary><span class="q">How should I explain the visit to my child?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Use simple, neutral language appropriate to the child's age — for example: "We are visiting a centre where you will meet someone, play, talk and try a few activities. They want to understand what feels easy for you and what may need support." Avoid presenting the assessment as an examination that the child must pass.</div></details>
+                <details class="faq-item"><summary><span class="q">What happens if my child becomes overwhelmed or has a meltdown?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">The professional will prioritise safety and regulation. Demands may be reduced, the environment may be adjusted and the child may be offered time or space to recover. The session may be paused or rescheduled if continuing would not provide meaningful information.</div></details>
+                <details class="faq-item"><summary><span class="q">What if my child cannot complete all the activities?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Children are not expected to perform perfectly. Incomplete tasks, avoidance, fatigue, difficulty understanding or need for support may themselves provide clinically relevant information. Additional observation may be recommended when necessary.</div></details>
+                <details class="faq-item"><summary><span class="q">Does every child need a multidisciplinary assessment?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">No. Many children require assessment by only one discipline. A multidisciplinary assessment may be recommended when concerns affect several developmental areas or when coordinated interpretation would provide meaningful additional information.</div></details>
+                <details class="faq-item"><summary><span class="q">Does the assessment confirm a diagnosis?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Not necessarily. The purpose depends on the assessment type and professional involved. Some assessments describe developmental or functional abilities without providing a formal diagnosis. If diagnostic evaluation is required, the appropriate referral will be discussed.</div></details>
+                <details class="faq-item"><summary><span class="q">Will therapy be recommended after every assessment?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">No. Recommendations are based on the findings. A child may require monitoring, parent guidance, school strategies, therapy, another assessment or medical consultation. Some families may receive reassurance that immediate intervention is not necessary.</div></details>
+                <details class="faq-item"><summary><span class="q">How much does an assessment cost?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">The fee depends on the assessment type, number of disciplines involved, tools required and whether a written report is included. The applicable fee and assessment components will be explained before booking.</div></details>
+                <details class="faq-item"><summary><span class="q">How long does the assessment take?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">A focused consultation or observation may take approximately 45–60 minutes. Detailed or multidisciplinary assessments may require longer or multiple appointments. The expected duration will be discussed after reviewing the primary concern.</div></details>
+                <details class="faq-item"><summary><span class="q">When will we receive the report?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">The timeline depends on the scope and complexity of assessment. The expected report and feedback date will be communicated after the required assessment components are completed.</div></details>
+                <details class="faq-item"><summary><span class="q">Can OTCloud communicate with my child's school or doctor?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Yes, when collaboration is clinically relevant and the parent or legal guardian provides appropriate consent. The purpose, information to be shared and any applicable service charges will be explained in advance.</div></details>
+                <details class="faq-item"><summary><span class="q">How will progress be reviewed if therapy is recommended?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">If intervention begins, functional goals are established according to assessment findings and family priorities. Progress may be reviewed through clinical observations, goal achievement, parent and teacher feedback, daily documentation and reassessment when appropriate.</div></details>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
+<!-- ============ 16. FINAL CTA ============ -->
 <section class="section">
     <div class="container">
-        <div class="con-final-cta">
+        <div class="con2-cta">
             <h2>Understanding Comes Before Intervention</h2>
-            <p>Stop guessing and start knowing. Our assessment provides the clarity you need to make informed decisions for your child's future.</p>
-            <div class="cta-actions">
-                <a href="#booking" class="btn btn-primary">Book an Assessment</a>
-                <a href="tel:{{ site_tel }}" class="btn btn-ghost">Call Our Team</a>
-                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp Us</a>
+            <p>Move from uncertainty towards a clearer understanding of your child's strengths, current needs and the most appropriate next step. Assessment does not commit your family to therapy — it provides information to support informed decision-making.</p>
+            <div class="con2-cta-actions">
+                <a href="#booking" class="btn btn-on-teal">Book an Assessment</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light">Talk to Our Team</a>
             </div>
+            <p class="con-cta-contact">Call or WhatsApp <a href="tel:{{ site_tel }}">{{ site_phone_display }}</a>.</p>
+        </div>
+        <div class="trust-points">
+            <div class="tp-item"><h4>Understand Strengths and Needs</h4><p>A whole-child perspective based on relevant developmental and functional information.</p></div>
+            <div class="tp-item"><h4>Receive Clear Findings</h4><p>Results explained in understandable, parent-friendly language.</p></div>
+            <div class="tp-item"><h4>Identify Appropriate Next Steps</h4><p>Recommendations based on findings rather than a standard therapy package.</p></div>
+            <div class="tp-item"><h4>Participate in Decision-Making</h4><p>Parents remain informed and involved throughout the process.</p></div>
         </div>
     </div>
 </section>
@@ -387,11 +585,12 @@
             });
             document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
         };
-        document.querySelectorAll('#asm-faq .faq-item').forEach(function (el) {
-            el.addEventListener('toggle', function () {
-                if (!el.open) return;
-                document.querySelectorAll('#asm-faq .faq-item').forEach(function (other) {
-                    if (other !== el) other.removeAttribute('open');
+        // FAQ + transparency accordions — one open at a time within each group
+        ['#asm-faq', '#asm-transparency'].forEach(function (sel) {
+            document.querySelectorAll(sel + ' .faq-item').forEach(function (el) {
+                el.addEventListener('toggle', function () {
+                    if (!el.open) return;
+                    document.querySelectorAll(sel + ' .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
                 });
             });
         });

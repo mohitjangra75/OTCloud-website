@@ -120,13 +120,13 @@
                         <a href="{% url 'service_psychology' %}">Child Psychology</a>
                     </div>
                 </div>
-                <a href="{% url 'assessment' %}" class="{% if active_page == 'assessment' %}active{% endif %}">The Assessment</a>
+                <a href="{% url 'assessment' %}" class="{% if active_page == 'assessment' %}active{% endif %}">Assessment</a>
                 <a href="{% url 'about' %}" class="{% if active_page == 'about' %}active{% endif %}">About</a>
                 <a href="{% url 'resources' %}" class="{% if active_page == 'resources' or active_page == 'blog' %}active{% endif %}">Resources</a>
                 <a href="{% url 'contact' %}" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a>
             </nav>
             <div class="nav-cta">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-primary nav-book">Book Assessment</a>
+                <a href="{% url 'assessment' %}#booking" class="btn btn-primary nav-book">Book an Assessment</a>
                 <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                 </button>
@@ -150,11 +150,11 @@
                     <a href="{% url 'service_psychology' %}" class="{% if active_page == 'service_psychology' %}active{% endif %}">Child Psychology</a>
                 </div>
             </div>
-            <a href="{% url 'assessment' %}" class="{% if active_page == 'assessment' %}active{% endif %}">The Assessment</a>
+            <a href="{% url 'assessment' %}" class="{% if active_page == 'assessment' %}active{% endif %}">Assessment</a>
             <a href="{% url 'about' %}" class="{% if active_page == 'about' %}active{% endif %}">About</a>
             <a href="{% url 'resources' %}" class="{% if active_page == 'resources' or active_page == 'blog' %}active{% endif %}">Resources &amp; Blog</a>
             <a href="{% url 'contact' %}" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a>
-            <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book Assessment</a>
+            <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book an Assessment</a>
             {% endwith %}
         </div>
     </header>
@@ -182,8 +182,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="{% url 'home' %}" class="logo">OT Cloud</a>
-                    <p>Precise pediatric child development through evidence-based clinical therapy and parental empowerment.</p>
+                    <a href="{% url 'home' %}" class="logo">OTCloud</a>
+                    <p class="footer-fullname">Child Development &amp; Therapy Centre</p>
+                    <p>Professional assessment and multidisciplinary therapy for children with developmental, communication, sensory, behavioural, learning and movement-related needs.</p>
                     <div class="footer-social">
                         <a href="{{ site_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
@@ -200,33 +201,38 @@
                     <h5>Services</h5>
                     <ul>
                         <li><a href="{% url 'service_ot' %}">Occupational Therapy</a></li>
-                        <li><a href="{% url 'service_speech' %}">Speech &amp; Language Therapy</a></li>
+                        <li><a href="{% url 'service_speech' %}">Speech and Language Therapy</a></li>
                         <li><a href="{% url 'service_early' %}">Early Intervention</a></li>
                         <li><a href="{% url 'service_se' %}">Special Education</a></li>
+                        <li><a href="{% url 'contact' %}">Child Physiotherapy</a></li>
+                        <li><a href="{% url 'service_psychology' %}">Psychology and Behaviour Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h5>Company</h5>
+                    <h5>Quick Links</h5>
                     <ul>
-                        <li><a href="{% url 'about' %}">About Us</a></li>
-                        <li><a href="{% url 'assessment' %}#experts">Our Team</a></li>
-                        <li><a href="{% url 'milestone_check' %}">Free Milestone Check</a></li>
+                        <li><a href="{% url 'about' %}">About OTCloud</a></li>
+                        <li><a href="{% url 'concerns' %}">Developmental Concerns</a></li>
+                        <li><a href="{% url 'assessment' %}">Assessment Process</a></li>
+                        <li><a href="{% url 'resources' %}">Resources</a></li>
+                        <li><a href="{% url 'about' %}#centre">Centre Gallery</a></li>
                         <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                        <li><a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener">WhatsApp</a></li>
                     </ul>
                 </div>
                 <div class="footer-col footer-contact">
                     <h5>Contact</h5>
-                    <p>{{ site_address }}</p>
+                    <p>{{ site_address|linebreaksbr }}</p>
                     <p><a href="tel:{{ site_tel }}">{{ site_phone_display }}</a></p>
                     <p><a href="mailto:{{ site_email }}">{{ site_email }}</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>&copy; {% now "Y" %} OT Cloud Child Development Therapy center. All rights reserved.</span>
+                <span>&copy; {% now "Y" %} OTCloud Child Development &amp; Therapy Centre. All rights reserved.</span>
                 <span>
                     <a href="{% url 'privacy' %}">Privacy Policy</a>
-                    <a href="{% url 'terms' %}">Terms of Service</a>
+                    <a href="{% url 'terms' %}">Terms and Conditions</a>
+                    <a href="#">Website Disclaimer</a>
+                    <a href="#">Accessibility Statement</a>
                 </span>
             </div>
         </div>

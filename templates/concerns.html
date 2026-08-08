@@ -1,277 +1,692 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block structured_data %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "My 2-year-old is not talking yet. Is this normal?", "acceptedAnswer": { "@type": "Answer", "text": "While every child develops at their own pace, by age 2 most children have a vocabulary of at least 50 words and are starting to combine two words. If your child is not yet using words or gestures to communicate, an evaluation by a speech-language pathologist can help determine if support is needed." } },
-    { "@type": "Question", "name": "Why does my child walk on their toes?", "acceptedAnswer": { "@type": "Answer", "text": "Toe walking can be common in toddlers learning to walk. However, if it persists beyond age 2, it may be related to sensory processing, muscle tightness, or motor planning. An Occupational Therapist can assess whether it is a sensory preference or a physical requirement." } },
-    { "@type": "Question", "name": "How can I tell the difference between a tantrum and a meltdown?", "acceptedAnswer": { "@type": "Answer", "text": "A tantrum is usually goal-oriented and stops once the child gets what they want or realizes it will not work. A meltdown is a sensory or emotional overload where the child loses control and cannot stop easily even if the trigger is removed." } },
-    { "@type": "Question", "name": "What should I do if my child avoids eye contact?", "acceptedAnswer": { "@type": "Answer", "text": "Avoiding eye contact can be a sign of social-communication challenges or sensory overstimulation. It is best observed alongside other behaviors, like how they share interest or respond to their name. A professional assessment can provide clarity." } },
-    { "@type": "Question", "name": "Will my child grow out of these behaviors?", "acceptedAnswer": { "@type": "Answer", "text": "Some behaviors are transitional, but wait-and-see can lead to missed opportunities for early intervention. If a behavior is impacting daily life, learning, or social play, it is always safer and more beneficial to seek professional advice." } }
-  ]
-}
-</script>
-{% endblock %}
-
 {% block content %}
 
-<!-- ============ HERO ============ -->
-<section class="con2-hero">
+<!-- ============ 1. HERO ============ -->
+<section class="section con2-hero">
     <div class="container">
-        <span class="badge"><span class="dot"></span> Understanding Your Child</span>
-        <h1>Every Child Develops Differently. Some Children Need Extra Support Along the Way.</h1>
-        <p class="hero-lead">As a parent, you know your child best. If you've noticed subtle differences in how they play, communicate, or interact, it's natural to have questions. We're here to provide the clarity, professional insight, and compassionate support your family deserves.</p>
-        <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book a Professional Assessment
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-    </div>
-</section>
-
-<!-- ============ WHY EARLY OBSERVATION ============ -->
-<section class="section tint">
-    <div class="container obs-grid">
-        <div class="obs-img"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:24px;">Why Early Observation Matters</h2>
-            <div class="obs-features">
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg></span><div><h4>Empowering Clarity</h4><p>Replacing uncertainty with professional insight lets you create a concrete roadmap for your child's success.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg></span><div><h4>Targeted Skill Building</h4><p>Early identification lets us leverage periods of high brain plasticity to build foundational neural pathways.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><h4>Social Participation</h4><p>Supporting developmental gaps early ensures children feel confident and capable in social and school settings.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.5 1-1a5.5 5.5 0 0 0 0-7.9z"/></svg></span><div><h4>Family Wellbeing</h4><p>Understanding the 'why' behind behaviors reduces stress and strengthens the parent-child bond.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><div><h4>Long-term Independence</h4><p>Proactive support creates the best possible trajectory for future academic and life achievements.</p></div></div>
-            </div>
+        <h1>Understand Your Child's Development with Greater Clarity</h1>
+        <p class="hero-lead">Every child develops at their own pace. However, persistent differences in communication, social interaction, attention, sensory responses, behaviour, learning, movement or everyday activities may indicate that additional guidance could be helpful.</p>
+        <p class="hero-lead">At OTCloud, we help families understand their child's individual strengths, identify areas requiring support and determine the most appropriate next step through professional observation and assessment.</p>
+        <p class="con-reassure">Not every developmental difference indicates a diagnosis. The right guidance begins with understanding the individual child.</p>
+        <div class="con2-cta-actions" style="justify-content:center;">
+            <a href="{% url 'contact' %}" class="btn btn-primary">Discuss Your Concern</a>
+            <a href="{% url 'assessment' %}#booking" class="btn btn-ghost">Book an Assessment</a>
         </div>
     </div>
 </section>
 
-<!-- ============ DEVELOPMENTAL AREAS ============ -->
-<section class="section">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="section-title">Developmental Areas We Assess</h2>
-            <p class="section-sub">We look at the whole child across multiple domains to understand their unique profile of strengths and needs.</p>
-        </div>
-        <div class="area-grid">
-            {% for a in areas %}
-            <div class="area-card">
-                <span class="area-icon">{{ a.icon|safe }}</span>
-                <h3>{{ a.title }}</h3>
-                <ul class="area-list">{% for p in a.points %}<li>{{ p }}</li>{% endfor %}</ul>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- ============ COMMON CONDITIONS ============ -->
+<!-- ============ 2. DEVELOPMENTAL CONCERN AREAS ============ -->
 <section class="section tint">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Common Developmental Conditions</h2>
-            <p class="section-sub">Understanding the diagnosis is the first step toward specialized care and meaningful progress.</p>
+            <h2 class="section-title">Developmental Differences Can Appear in Many Ways</h2>
         </div>
-        <div class="cond2-grid">
-            {% for c in conditions %}
-            <a href="{% url 'contact' %}" class="cond2-card"><h3>{{ c }}</h3><span class="c2-link">Learn More →</span></a>
-            {% endfor %}
+        <div class="concern-intro-text">
+            <p class="msg">Development is not limited to speech or academic learning. It includes how a child communicates, plays, moves, responds to sensory information, manages emotions, learns new skills and participates in everyday activities.</p>
+            <p class="msg">Explore the areas below to understand commonly observed concerns. These examples are not diagnostic criteria and may have different causes in different children.</p>
         </div>
+
+        <div class="acc-list">
+            <details class="acc-item" name="con-acc-1"><summary><span>Speech and Communication</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Children develop communication through sounds, gestures, words, sentences and their ability to understand others.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Limited use of sounds, gestures or spoken words</li>
+                    <li>Difficulty expressing needs, choices or feelings</li>
+                    <li>Difficulty understanding questions or instructions</li>
+                    <li>Repeating words or phrases without using them meaningfully</li>
+                    <li>Speech that is difficult for familiar or unfamiliar people to understand</li>
+                    <li>Limited back-and-forth conversation</li>
+                    <li>Loss of words or communication skills previously used</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Explore Speech and Communication Concerns →</a></div></details>
+            <details class="acc-item" name="con-acc-1"><summary><span>Social Interaction</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Social development includes noticing other people, sharing attention, participating in play and responding during social interaction.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Inconsistent response to name</li>
+                    <li>Limited sharing of interests, enjoyment or attention with others</li>
+                    <li>Difficulty initiating or maintaining interaction</li>
+                    <li>Limited use or understanding of facial expressions and gestures</li>
+                    <li>Preference for solitary play most of the time</li>
+                    <li>Difficulty joining peer play or understanding social boundaries</li>
+                    <li>Limited pretend, cooperative or imaginative play</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Explore Social Interaction Concerns →</a></div></details>
+            <details class="acc-item" name="con-acc-1"><summary><span>Sensory Processing</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Sensory processing refers to how the nervous system notices, organises and responds to information from touch, sound, movement, vision, smell, taste and the body.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Strong reactions to sounds, touch, textures, lights, smells or crowds</li>
+                    <li>Avoidance of grooming, haircuts, nail cutting or certain clothing</li>
+                    <li>Extreme food preferences related to texture, smell or temperature</li>
+                    <li>Frequent movement-seeking, spinning, jumping or crashing</li>
+                    <li>Fear or avoidance of swings, stairs, playground equipment or movement</li>
+                    <li>Unusual response to pain, temperature or physical contact</li>
+                    <li>Difficulty remaining regulated in busy environments</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Explore Sensory Processing Concerns →</a></div></details>
+            <details class="acc-item" name="con-acc-1"><summary><span>Attention and Regulation</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Attention and self-regulation help a child remain engaged, shift between activities and manage their level of alertness.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Difficulty remaining engaged in age-appropriate activities</li>
+                    <li>Frequently leaving tasks before completion</li>
+                    <li>Difficulty following routines or multi-step instructions</li>
+                    <li>Constant movement that interferes with participation</li>
+                    <li>Becoming overwhelmed easily in busy environments</li>
+                    <li>Difficulty waiting, taking turns or controlling impulses</li>
+                    <li>Significant difficulty shifting from one activity to another</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Explore Attention and Regulation Concerns →</a></div></details>
+            <details class="acc-item" name="con-acc-1"><summary><span>Behaviour and Emotional Regulation</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Behaviour is a form of communication. Persistent behavioural difficulties may reflect challenges with communication, sensory regulation, flexibility, emotional regulation or environmental demands.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Frequent or intense meltdowns</li>
+                    <li>Aggression towards self, other people or objects</li>
+                    <li>Significant distress during changes or transitions</li>
+                    <li>Very rigid routines or repetitive patterns of behaviour</li>
+                    <li>Difficulty recovering after frustration</li>
+                    <li>Extreme fears, worry or avoidance that affects participation</li>
+                    <li>Behaviour that interferes with home, school or community routines</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Explore Behaviour and Emotional Concerns →</a></div></details>
+            <details class="acc-item" name="con-acc-1"><summary><span>Learning and School Participation</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Learning involves attention, memory, problem-solving, language, visual processing and the ability to participate in classroom routines.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Difficulty understanding early concepts</li>
+                    <li>Difficulty remembering or following instructions</li>
+                    <li>Challenges with reading, writing, spelling or mathematics</li>
+                    <li>Poor handwriting readiness, pencil control or written output</li>
+                    <li>Difficulty completing classroom or homework tasks</li>
+                    <li>Avoidance of academic activities</li>
+                    <li>A noticeable difference between the child's effort and performance</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Explore Learning and School Concerns →</a></div></details>
+            <details class="acc-item" name="con-acc-1"><summary><span>Movement and Coordination</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Movement development includes posture, balance, strength, coordination, mobility and hand function.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Delayed sitting, standing, walking or other movement skills</li>
+                    <li>Frequent falling, clumsiness or poor balance</li>
+                    <li>Difficulty running, jumping, climbing or using stairs</li>
+                    <li>Poor posture or reduced endurance during sitting and play</li>
+                    <li>Difficulty using both sides of the body together</li>
+                    <li>Challenges with pencil control, scissors, buttons or small objects</li>
+                    <li>Avoidance of sports, playground or movement-based activities</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Explore Movement and Coordination Concerns →</a></div></details>
+            <details class="acc-item" name="con-acc-1"><summary><span>Daily Living Skills</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Daily living skills help children participate independently in their home, school and community routines.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Difficulty eating independently or using utensils</li>
+                    <li>Restricted food choices or difficulty managing food textures</li>
+                    <li>Difficulty dressing, fastening buttons or managing footwear</li>
+                    <li>Delayed toileting or difficulty recognising body signals</li>
+                    <li>Resistance to bathing, brushing teeth, grooming or hair care</li>
+                    <li>Difficulty organising belongings or following daily routines</li>
+                    <li>Dependence beyond what would usually be expected for the child's developmental level</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Explore Daily Living Concerns →</a></div></details>
+        </div>
+
+        <p class="con-disclaimer">The examples above are general observations and do not confirm a developmental disorder. Similar behaviours may arise from different developmental, medical, sensory, emotional, environmental or learning-related factors. A professional evaluation considers the complete developmental profile of the child.</p>
     </div>
 </section>
 
-<!-- ============ AGE-WISE GUIDE ============ -->
+<!-- ============ 3. AGE-WISE DEVELOPMENT GUIDE ============ -->
 <section class="section">
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Age-Wise Development Guide</h2>
-            <p class="section-sub">Track your child's progress through key developmental windows and know when to seek a professional opinion.</p>
+            <p class="section-sub">Developmental milestones are skills that many children acquire within a general age range. They provide useful reference points, but they should not be used as a test or diagnosis. Select your child's age to review skills that may be developing and signs that may be worth discussing with a professional.</p>
         </div>
-        <div class="age-tabs" id="ageTabs">
-            <button class="age-tab active" data-age="0-6m">0–6 Months</button>
-            <button class="age-tab" data-age="6-12m">6–12 Months</button>
-            <button class="age-tab" data-age="1-2y">1–2 Years</button>
-            <button class="age-tab" data-age="2-3y">2–3 Years</button>
-            <button class="age-tab" data-age="3-5y">3–5 Years</button>
-            <button class="age-tab" data-age="5-7y">5–7 Years</button>
-        </div>
-        <div class="age-panels">
-            <div class="age-col milestones">
-                <h4><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg> Expected Milestones</h4>
-                <ul id="ageMilestones"></ul>
-            </div>
-            <div class="age-col consult">
-                <h4><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> When to Consult</h4>
-                <ul id="ageConcerns"></ul>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- ============ DECISION GUIDE ============ -->
-<section class="section">
-    <div class="container">
-        <div class="decision">
-            <div class="decision-grid">
-                <div>
-                    <h2>When Should Parents Seek Professional Guidance?</h2>
-                    <p class="d-lead">Trust your parental instinct. If you notice any of these consistent patterns, a professional screening can offer valuable insights.</p>
-                    <div class="decision-checks">
-                        <div class="dc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Significant loss of previously acquired skills</div>
-                        <div class="dc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Difficulty being understood by unfamiliar people</div>
-                        <div class="dc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Intense reactions to sensory input (sounds, lights)</div>
-                        <div class="dc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Frequent, extreme emotional meltdowns</div>
+        <div class="age-tabs" id="ageTabs">
+            <div class="age-tablist" role="tablist" aria-label="Age ranges">
+                <button class="age-tab active" data-age="a1" role="tab" aria-selected="true">0–6 Months</button>
+                <button class="age-tab" data-age="a2" role="tab" aria-selected="false">6–12 Months</button>
+                <button class="age-tab" data-age="a3" role="tab" aria-selected="false">1–2 Years</button>
+                <button class="age-tab" data-age="a4" role="tab" aria-selected="false">2–3 Years</button>
+                <button class="age-tab" data-age="a5" role="tab" aria-selected="false">3–5 Years</button>
+                <button class="age-tab" data-age="a6" role="tab" aria-selected="false">5–7 Years</button>
+                <button class="age-tab" data-age="a7" role="tab" aria-selected="false">7+ Years</button>
+            </div>
+
+            <div class="age-panel active" data-age="a1">
+                <h3>Development During the First Six Months</h3>
+                <div class="age-cols">
+                    <div class="age-col ok">
+                        <h4>Skills Many Babies Develop</h4>
+                        <ul>
+                            <li>Looks towards familiar faces and begins recognising caregivers</li>
+                            <li>Smiles or responds during social interaction</li>
+                            <li>Reacts to voices and environmental sounds</li>
+                            <li>Makes cooing, squealing or other sounds besides crying</li>
+                            <li>Takes turns making sounds with a caregiver</li>
+                            <li>Tracks nearby people or objects with their eyes</li>
+                            <li>Brings hands towards the mouth and reaches for objects</li>
+                            <li>Develops improving head control</li>
+                            <li>Pushes up through the arms during tummy time</li>
+                            <li>Begins rolling or shifting body position</li>
+                        </ul>
+                    </div>
+                    <div class="age-col watch">
+                        <h4>Consider Seeking Guidance If Your Baby</h4>
+                        <ul>
+                            <li>Does not react to loud or familiar sounds</li>
+                            <li>Rarely looks towards faces or moving objects</li>
+                            <li>Does not smile or respond socially by approximately four months</li>
+                            <li>Appears unusually stiff, floppy or consistently uses one side differently</li>
+                            <li>Has persistent difficulty holding the head steady</li>
+                            <li>Does not reach for or attempt to hold objects</li>
+                            <li>Has persistent feeding, swallowing or weight-gain concerns</li>
+                            <li>Loses a skill that was previously demonstrated</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="checklist-card">
-                    <h3>Quick Checklist</h3>
-                    <p class="cc-sub">Ask yourself if your child consistently struggles with:</p>
-                    <label><input type="checkbox"> Responding to their name</label>
-                    <label><input type="checkbox"> Pointing to show interest</label>
-                    <label><input type="checkbox"> Using words to express needs</label>
-                    <label><input type="checkbox"> Engaging in pretend play</label>
-                    <a href="{% url 'contact' %}" class="btn btn-block" style="background:var(--primary-fixed-dim); color:var(--on-primary-fixed); margin-top:20px;">Request the Full Guide</a>
+                <p class="age-note"><strong>Clinical note:</strong> Concerns involving feeding, swallowing, hearing, vision, growth, unusual movements or loss of skills should also be discussed promptly with your child's paediatrician.</p>
+            </div>
+
+            <div class="age-panel" data-age="a2">
+                <h3>Development Between Six and Twelve Months</h3>
+                <div class="age-cols">
+                    <div class="age-col ok">
+                        <h4>Skills Many Babies Develop</h4>
+                        <ul>
+                            <li>Responds to familiar people and increasingly responds to their name</li>
+                            <li>Uses different sounds and repeated babbling</li>
+                            <li>Uses gestures such as reaching, showing or waving</li>
+                            <li>Enjoys interactive games such as peek-a-boo</li>
+                            <li>Looks for an object that has been hidden</li>
+                            <li>Transfers objects between hands</li>
+                            <li>Sits with increasing stability</li>
+                            <li>Moves across the floor by rolling, crawling, scooting or another pattern</li>
+                            <li>Pulls towards standing or stands with support</li>
+                            <li>Uses fingers to pick up small pieces of food or objects</li>
+                        </ul>
+                    </div>
+                    <div class="age-col watch">
+                        <h4>Consider Seeking Guidance If Your Baby</h4>
+                        <ul>
+                            <li>Rarely responds to sounds, voices or their name</li>
+                            <li>Uses very few sounds, facial expressions or gestures</li>
+                            <li>Shows limited interest in interacting with familiar people</li>
+                            <li>Does not reach for, hold or explore objects</li>
+                            <li>Has difficulty sitting with support by the later part of this period</li>
+                            <li>Does not bear weight through the legs when supported</li>
+                            <li>Shows a persistent difference between the two sides of the body</li>
+                            <li>Loses social, communication or movement skills</li>
+                        </ul>
+                    </div>
                 </div>
+                <p class="age-note"><strong>Clinical note:</strong> Children do not all crawl in the same way, and some may skip conventional crawling. The overall quality and progression of movement are more informative than one isolated milestone.</p>
+            </div>
+
+            <div class="age-panel" data-age="a3">
+                <h3>Development Between One and Two Years</h3>
+                <div class="age-cols">
+                    <div class="age-col ok">
+                        <h4>Skills Many Children Develop</h4>
+                        <ul>
+                            <li>Uses gestures such as pointing, waving and showing objects</li>
+                            <li>Understands familiar words and simple instructions</li>
+                            <li>Uses an increasing number of meaningful words</li>
+                            <li>Begins combining two words towards the later part of this period</li>
+                            <li>Points to familiar objects or body parts when asked</li>
+                            <li>Imitates actions performed by adults or other children</li>
+                            <li>Uses objects functionally and begins simple pretend play</li>
+                            <li>Walks independently and begins attempting to run</li>
+                            <li>Uses both hands during play and daily activities</li>
+                            <li>Begins using a spoon, cup or other everyday objects with assistance</li>
+                        </ul>
+                    </div>
+                    <div class="age-col watch">
+                        <h4>Consider Seeking Guidance If Your Child</h4>
+                        <ul>
+                            <li>Rarely uses gestures to request, show or share interest</li>
+                            <li>Does not use meaningful words or communication consistently</li>
+                            <li>Has difficulty understanding familiar instructions</li>
+                            <li>Shows limited response to name or social interaction</li>
+                            <li>Does not imitate actions or engage in simple functional play</li>
+                            <li>Is not walking independently by approximately 18 months</li>
+                            <li>Has persistent difficulty chewing, swallowing or accepting food textures</li>
+                            <li>Uses one side of the body considerably more than the other</li>
+                            <li>Loses previously used words, gestures, play or movement skills</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="age-note"><strong>Clinical note:</strong> Loss of previously acquired language, social or movement skills should not be managed through a wait-and-see approach. Discuss regression promptly with a paediatrician or developmental professional.</p>
+            </div>
+
+            <div class="age-panel" data-age="a4">
+                <h3>Development Between Two and Three Years</h3>
+                <div class="age-cols">
+                    <div class="age-col ok">
+                        <h4>Skills Many Children Develop</h4>
+                        <ul>
+                            <li>Combines words and gradually uses short sentences</li>
+                            <li>Uses language, gestures or other communication to express needs</li>
+                            <li>Understands familiar questions and follows simple instructions</li>
+                            <li>Identifies familiar objects, pictures and body parts</li>
+                            <li>Engages in simple pretend play</li>
+                            <li>Plays beside other children and begins joining them</li>
+                            <li>Runs, kicks a ball and manages steps with increasing control</li>
+                            <li>Uses crayons, blocks, puzzles and simple tools</li>
+                            <li>Begins participating in dressing, feeding and toileting routines</li>
+                            <li>Follows familiar routines with adult support</li>
+                        </ul>
+                    </div>
+                    <div class="age-col watch">
+                        <h4>Consider Seeking Guidance If Your Child</h4>
+                        <ul>
+                            <li>Is not using words, gestures or another effective means to communicate</li>
+                            <li>Is not beginning to combine words by around two years</li>
+                            <li>Has substantial difficulty understanding simple language</li>
+                            <li>Rarely shares attention, shows objects or seeks interaction</li>
+                            <li>Shows very limited functional or pretend play</li>
+                            <li>Frequently falls or has significant difficulty walking and running</li>
+                            <li>Has marked sensory reactions that interfere with daily routines</li>
+                            <li>Has severe or frequent dysregulation that limits participation</li>
+                            <li>Loses any previously acquired skill</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="age-note"><strong>Clinical note:</strong> At two years, communication involves more than the total number of words. Professionals also consider gesture use, understanding, social communication, imitation, play and whether the child is beginning to combine words meaningfully.</p>
+            </div>
+
+            <div class="age-panel" data-age="a5">
+                <h3>Development Between Three and Five Years</h3>
+                <div class="age-cols">
+                    <div class="age-col ok">
+                        <h4>Skills Many Children Develop</h4>
+                        <ul>
+                            <li>Communicates using increasingly detailed sentences</li>
+                            <li>Participates in back-and-forth conversation</li>
+                            <li>Understands and answers familiar questions</li>
+                            <li>Tells simple events or stories in sequence</li>
+                            <li>Engages in imaginative and cooperative play</li>
+                            <li>Notices other children and joins group activities</li>
+                            <li>Follows familiar rules and routines with support</li>
+                            <li>Runs, jumps, climbs and catches or throws a ball with improving control</li>
+                            <li>Uses crayons, scissors and simple construction materials</li>
+                            <li>Participates more independently in dressing, eating and toileting</li>
+                            <li>Develops early concepts such as colours, shapes, counting and matching</li>
+                            <li>Attends to short adult-led learning activities</li>
+                        </ul>
+                    </div>
+                    <div class="age-col watch">
+                        <h4>Consider Seeking Guidance If Your Child</h4>
+                        <ul>
+                            <li>Is difficult to understand most of the time</li>
+                            <li>Has difficulty forming sentences or participating in conversation</li>
+                            <li>Has substantial difficulty understanding age-appropriate instructions</li>
+                            <li>Shows very limited pretend, interactive or peer play</li>
+                            <li>Has extreme difficulty separating, adapting to routines or managing emotions</li>
+                            <li>Cannot participate safely in common movement activities</li>
+                            <li>Has significant difficulty using crayons, utensils or everyday tools</li>
+                            <li>Remains highly dependent in age-appropriate self-care routines</li>
+                            <li>Shows persistent repetitive or sensory behaviours that restrict participation</li>
+                            <li>Loses skills or becomes increasingly socially withdrawn</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="age-note"><strong>Clinical note:</strong> Speech clarity, social participation, attention and independence develop gradually. Concern becomes more significant when a difficulty is persistent, occurs across environments or interferes with the child's everyday participation.</p>
+            </div>
+
+            <div class="age-panel" data-age="a6">
+                <h3>Development Between Five and Seven Years</h3>
+                <div class="age-cols">
+                    <div class="age-col ok">
+                        <h4>Functional Skills Many Children Develop</h4>
+                        <ul>
+                            <li>Communicates ideas, experiences and needs in organised sentences</li>
+                            <li>Follows classroom instructions and familiar multi-step routines</li>
+                            <li>Participates in conversations and cooperative group activities</li>
+                            <li>Develops foundational reading, spelling, writing and number skills</li>
+                            <li>Sustains attention during age-appropriate learning activities</li>
+                            <li>Copies from a board or book with increasing accuracy</li>
+                            <li>Uses pencils, scissors and classroom tools more efficiently</li>
+                            <li>Runs, jumps, balances and participates in playground activities</li>
+                            <li>Dresses, eats, toilets and manages basic belongings with growing independence</li>
+                            <li>Understands basic rules, turn-taking and expected social boundaries</li>
+                            <li>Manages minor changes and frustration with decreasing adult assistance</li>
+                        </ul>
+                    </div>
+                    <div class="age-col watch">
+                        <h4>Consider Seeking Guidance If Your Child</h4>
+                        <ul>
+                            <li>Has persistent difficulty understanding or expressing ideas</li>
+                            <li>Struggles significantly with early reading, writing or number concepts</li>
+                            <li>Cannot maintain attention sufficiently to participate in classroom tasks</li>
+                            <li>Has marked handwriting, fine-motor or visual-motor difficulties</li>
+                            <li>Frequently avoids physical activity because of balance or coordination challenges</li>
+                            <li>Has difficulty making or maintaining peer relationships</li>
+                            <li>Experiences frequent emotional or behavioural dysregulation</li>
+                            <li>Remains substantially dependent in everyday self-care</li>
+                            <li>Shows a significant difference between ability and school performance</li>
+                            <li>Experiences challenges across home, school and community environments</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="age-note"><strong>Clinical note:</strong> School-age concerns should be understood in relation to classroom expectations, teaching opportunities, language exposure, emotional wellbeing, sensory needs and the child's overall developmental profile.</p>
+            </div>
+
+            <div class="age-panel" data-age="a7">
+                <h3>Development During the School Years</h3>
+                <div class="age-cols">
+                    <div class="age-col ok">
+                        <h4>Functional Skills Commonly Expected to Progress</h4>
+                        <ul>
+                            <li>Organising and completing increasingly complex schoolwork</li>
+                            <li>Maintaining attention and shifting between different tasks</li>
+                            <li>Understanding abstract language, humour and social expectations</li>
+                            <li>Planning, problem-solving and monitoring work</li>
+                            <li>Developing fluent reading, written expression and mathematical reasoning</li>
+                            <li>Managing friendships, group work and social conflict</li>
+                            <li>Coordinating the body for sports and recreational activities</li>
+                            <li>Developing efficient handwriting and keyboard use</li>
+                            <li>Managing personal care, belongings, schedules and responsibilities</li>
+                            <li>Regulating emotions and asking for assistance appropriately</li>
+                        </ul>
+                    </div>
+                    <div class="age-col watch">
+                        <h4>Consider Seeking Guidance If Your Child</h4>
+                        <ul>
+                            <li>Consistently performs below their apparent ability despite appropriate teaching</li>
+                            <li>Requires excessive support to begin, organise or complete routine work</li>
+                            <li>Has persistent reading, writing, spelling or mathematics difficulties</li>
+                            <li>Avoids handwriting, sports, social situations or daily activities</li>
+                            <li>Has significant difficulty understanding social cues or maintaining friendships</li>
+                            <li>Experiences anxiety, frustration or emotional dysregulation that affects participation</li>
+                            <li>Has sensory sensitivities that interfere with school or community life</li>
+                            <li>Is frequently described as careless, unmotivated or disruptive despite genuine effort</li>
+                            <li>Has difficulty managing age-appropriate independence</li>
+                            <li>Shows a new or progressive loss of function</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="age-note"><strong>Clinical note:</strong> For older children, concerns are often best understood through information from the child, parents, teachers and relevant professionals rather than through a milestone checklist alone.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============ PATHWAY (walkthrough) ============ -->
+<!-- ============ 4. WHEN TO SEEK GUIDANCE ============ -->
 <section class="section tint">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">The Pathway to Support</h2>
-            <p class="section-sub">A structured, clinical, yet warm process designed to make families feel heard and children feel safe.</p>
+            <h2 class="section-title">When Should Parents Seek Professional Guidance?</h2>
         </div>
-        <div class="process-track">
-            <div class="process-step"><span class="process-num">1</span><h4>Initial Discussion</h4><p>A detailed talk about your child's history and your specific concerns.</p></div>
-            <div class="process-step"><span class="process-num">2</span><h4>Clinical Observation</h4><p>Watching how your child plays, moves, and interacts in a natural environment.</p></div>
-            <div class="process-step"><span class="process-num">3</span><h4>Standard Assessment</h4><p>Using evidence-based tools to measure developmental levels accurately.</p></div>
-            <div class="process-step"><span class="process-num">4</span><h4>Detailed Findings</h4><p>A thorough report explaining our findings and your child's unique profile.</p></div>
-            <div class="process-step"><span class="process-num">5</span><h4>Personal Roadmap</h4><p>Actionable recommendations and therapeutic goals for the future.</p></div>
+        <div class="concern-intro-text">
+            <p class="msg">A single isolated behaviour does not necessarily indicate a developmental concern. Consider seeking professional guidance when a difference is persistent, appears in more than one environment or begins to interfere with the child's learning, relationships, independence or everyday participation.</p>
+            <p class="msg">Parents know their child best. If you remain concerned, it is appropriate to ask for professional guidance even when other people suggest waiting.</p>
+        </div>
+
+        <div class="seek-panel">
+            <h4 class="cc-label">Professional guidance may be helpful when</h4>
+            <ul class="notice-list two-col">
+                <li>A previously acquired skill has been lost</li>
+                <li>Communication is limited or difficult to understand</li>
+                <li>The child does not consistently respond or engage socially</li>
+                <li>Learning or classroom participation is significantly affected</li>
+                <li>Sensory responses regularly interfere with daily life</li>
+                <li>Movement, balance or hand skills restrict participation</li>
+                <li>Behavioural or emotional dysregulation is frequent or intense</li>
+                <li>Feeding, dressing, toileting or grooming remain significantly difficult</li>
+                <li>The child's teacher, doctor or another professional has expressed concern</li>
+                <li>The child appears frustrated by tasks that peers manage more easily</li>
+                <li>The same concern is consistently observed at home and school</li>
+                <li>Development does not appear to be progressing as expected</li>
+            </ul>
+        </div>
+
+        <div class="medical-box">
+            <span class="mb-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+            <div>
+                <h3>Some Concerns Also Require Medical Evaluation</h3>
+                <p>Contact your child's paediatrician when concerns involve hearing, vision, feeding, swallowing, growth, sleep, pain, seizures, unusual movements, persistent weakness or a loss of previously acquired skills.</p>
+                <p><strong>Seek urgent medical assistance</strong> for sudden loss of movement or awareness, breathing difficulty, choking, severe injury, prolonged seizure activity or any condition in which the child appears acutely unwell.</p>
+            </div>
+        </div>
+
+        <div class="guidance-card">
+            <h3>Not Sure Whether an Assessment Is Needed?</h3>
+            <p>Speak with our team about what you have noticed, how long it has been present and whether it is affecting your child's participation at home, school or in the community. A preliminary conversation can help determine whether your child may benefit from an assessment, another professional referral or continued developmental monitoring.</p>
+            <div class="con2-cta-actions">
+                <a href="{% url 'contact' %}" class="btn btn-on-teal">Discuss Your Concern</a>
+                <a href="{% url 'assessment' %}#booking" class="btn btn-outline-light">Book an Assessment</a>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- ============ 5. CONCERNS AND CONDITIONS ============ -->
 <section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Concerns and Conditions Supported at OTCloud</h2>
+        </div>
+        <div class="concern-intro-text">
+            <p class="msg">Children may come to OTCloud with an existing diagnosis, a professional referral or developmental concerns that have not yet been formally identified.</p>
+            <p class="msg">A diagnostic label alone does not determine the intervention plan. Recommendations are based on the child's functional abilities, developmental profile, participation needs and family priorities.</p>
+        </div>
+
+        <div class="acc-list">
+            <details class="acc-item" name="con-acc-2"><summary><span>Autism Spectrum Disorder</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">A neurodevelopmental condition associated with differences in social communication, interaction and patterns of behaviour, interests or sensory responses.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Functional communication</li>
+                    <li>Joint attention and social participation</li>
+                    <li>Play and learning readiness</li>
+                    <li>Sensory and emotional regulation</li>
+                    <li>Daily living skills</li>
+                    <li>Parent guidance and environmental support</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Autism Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Attention-Deficit / Hyperactivity Disorder</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">A neurodevelopmental condition involving persistent patterns of inattention, hyperactivity and/or impulsivity that interfere with functioning across relevant environments.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Attention and task engagement</li>
+                    <li>Impulse control and self-regulation</li>
+                    <li>Executive functioning</li>
+                    <li>Classroom participation</li>
+                    <li>Organisation and routine management</li>
+                    <li>Parent and school strategies</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About ADHD Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Speech and Language Delay</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Difficulties that may affect speech sound production, understanding, expression, social communication, fluency or the effective use of language.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Receptive language</li>
+                    <li>Expressive language</li>
+                    <li>Speech clarity</li>
+                    <li>Functional communication</li>
+                    <li>Social communication</li>
+                    <li>Parent-mediated communication strategies</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Speech and Language Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Global Developmental Delay</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Significant delay in two or more developmental areas in a young child, such as communication, cognition, movement, social participation or daily living skills.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Early communication</li>
+                    <li>Play and cognitive skills</li>
+                    <li>Motor development</li>
+                    <li>Sensory regulation</li>
+                    <li>Self-care participation</li>
+                    <li>Coordinated multidisciplinary intervention</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Developmental Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Cerebral Palsy</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">A group of conditions affecting movement and posture due to a non-progressive disturbance in the developing brain. Functional presentation differs considerably between children.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Postural control and mobility</li>
+                    <li>Upper-limb and hand function</li>
+                    <li>Positioning and equipment needs</li>
+                    <li>Feeding and daily activities</li>
+                    <li>Communication and school access</li>
+                    <li>Independence and participation</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Cerebral Palsy Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Down Syndrome</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">A genetic condition that may influence muscle tone, movement, communication, learning and daily functioning.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Early motor development</li>
+                    <li>Communication and language</li>
+                    <li>Fine-motor and visual-motor skills</li>
+                    <li>Learning readiness</li>
+                    <li>Self-care independence</li>
+                    <li>Social and community participation</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Down Syndrome Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Developmental Coordination Difficulties</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Children with developmental coordination difficulties may find movement-based tasks harder to learn and perform than expected for their age.</p>
+                <p class="cc-label">Parents may notice</p>
+                <ul class="notice-list">
+                    <li>Frequent clumsiness or falling</li>
+                    <li>Difficulty learning new movements</li>
+                    <li>Poor handwriting or tool use</li>
+                    <li>Avoidance of sports and playground activities</li>
+                    <li>Slow dressing or self-care</li>
+                    <li>Difficulty organising multistep motor tasks</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Coordination Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Learning Difficulties</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Difficulties that may affect reading, spelling, written expression, mathematics, memory, processing speed or classroom participation.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Foundational academic skills</li>
+                    <li>Individual learning strategies</li>
+                    <li>Visual-perceptual and visual-motor abilities</li>
+                    <li>Attention and working memory</li>
+                    <li>Classroom participation</li>
+                    <li>Confidence and task persistence</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Learning Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Sensory Processing Difficulties</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Difficulties that may affect how a child notices, organises and responds to sensory information. They can occur independently or alongside other developmental conditions.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Understanding sensory patterns</li>
+                    <li>Improving participation in daily routines</li>
+                    <li>Environmental adaptations</li>
+                    <li>Regulation strategies</li>
+                    <li>Body awareness and motor planning</li>
+                    <li>Parent and school guidance</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Sensory Support →</a></div></details>
+            <details class="acc-item" name="con-acc-2"><summary><span>Emotional and Behavioural Concerns</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">May involve anxiety, inflexibility, aggression, withdrawal, frequent dysregulation or difficulty coping with everyday demands. Support begins by understanding the possible function of the behaviour and its contributing factors.</p>
+                <p class="cc-label">Support may focus on</p>
+                <ul class="notice-list">
+                    <li>Emotional identification and regulation</li>
+                    <li>Functional communication</li>
+                    <li>Predictable routines and transitions</li>
+                    <li>Positive behaviour support</li>
+                    <li>Coping and problem-solving skills</li>
+                    <li>Parent and school consultation</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="link-arrow">Learn About Behaviour Support →</a></div></details>
+        </div>
+
+        <p class="con-disclaimer">The information above describes broad areas of support and should not be used for self-diagnosis. Diagnostic evaluation must be completed by appropriately qualified professionals using clinical history, direct assessment and recognised diagnostic criteria.</p>
+    </div>
+</section>
+
+<!-- ============ 6. FAQ ============ -->
+<section class="section tint">
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-sub">Common questions from parents about developmental behaviors.</p>
         </div>
         <div class="asm-faq" id="con-faq">
             <div class="faq-list">
-                <details class="faq-item" open>
-                    <summary><span class="q">My 2-year-old is not talking yet. Is this normal?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">While every child develops at their own pace, by age 2 most children have a vocabulary of at least 50 words and are starting to combine two words. If your child is not yet using words or gestures to communicate, an evaluation by a speech-language pathologist can help determine if support is needed.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">Why does my child walk on their toes?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Toe walking can be common in toddlers learning to walk. However, if it persists beyond age 2, it may be related to sensory processing, muscle tightness, or motor planning. An Occupational Therapist can assess whether it's a sensory preference or a physical requirement.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">How can I tell the difference between a tantrum and a meltdown?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">A tantrum is usually goal-oriented (wanting a toy) and stops once the child gets what they want or realizes it won't work. A meltdown is a sensory or emotional overload — the child loses control and cannot stop easily even if the "trigger" is removed.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">What should I do if my child avoids eye contact?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Avoiding eye contact can be a sign of social-communication challenges or sensory overstimulation. It's best to observe this alongside other behaviors, like how they share interest or respond to their name. A professional assessment can provide clarity.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">Will my child "grow out" of these behaviors?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Some behaviors are transitional, but "wait and see" can often lead to missed opportunities for early intervention. If a behavior is impacting daily life, learning, or social play, it's always safer and more beneficial to seek professional advice.</div>
-                </details>
+                <details class="faq-item" open><summary><span class="q">My two-year-old is not talking yet. Is this normal?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body"><p>Language development varies between children. By around two years, many children use meaningful words, gestures and are beginning to combine two words. Professionals also consider how well the child understands language, uses gestures, shares attention, imitates actions and communicates needs.</p><p>Consider seeking guidance if your child is not using words, gestures or another consistent means of communication; has difficulty understanding familiar language; or has lost words that were previously used. A speech and language assessment may include receptive language, expressive language, speech production, social communication, play and oral-motor or feeding abilities when relevant. Hearing should also be considered when speech and language development is delayed.</p></div></details>
+                <details class="faq-item"><summary><span class="q">Why does my child walk on their toes?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body"><p>Occasional toe walking can occur while young children are learning to walk. Persistent toe walking may be associated with habit, tightness in the calf muscles, reduced ankle movement, sensory preferences, motor-control differences or certain neurological and developmental conditions.</p><p>Evaluation may be helpful when toe walking is frequent, continues beyond the early walking period, occurs mainly on one side, causes pain or falling, limits activity or is accompanied by stiffness, weakness or loss of skills. Depending on the presentation, guidance may be required from a paediatrician, paediatric physiotherapist, occupational therapist, orthopaedic specialist or neurologist.</p></div></details>
+                <details class="faq-item"><summary><span class="q">How can I tell the difference between a tantrum and a meltdown?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body"><p>A tantrum is commonly related to frustration, wanting something or difficulty accepting a limit. The child may remain aware of the response of people around them.</p><p>A meltdown is generally an involuntary state of emotional or sensory overload in which the child temporarily loses the ability to regulate effectively. Reasoning, punishment or lengthy explanations are usually not helpful during peak dysregulation. The distinction is not always simple — professionals consider what happened before the episode, the child's communication abilities, sensory environment, demands, duration, recovery and whether the pattern occurs across different settings.</p></div></details>
+                <details class="faq-item"><summary><span class="q">What should I do if my child avoids eye contact?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body"><p>Eye contact varies between individuals and cultures and should not be considered in isolation. Some children listen or communicate more effectively without maintaining direct eye contact.</p><p>Observe the child's broader social communication, including response to name, use of gestures, shared enjoyment, joint attention, imitation, play and ability to engage with familiar people. Avoid repeatedly forcing the child to look directly at you. Seek professional guidance when reduced eye contact occurs alongside other persistent communication, interaction, play or developmental concerns.</p></div></details>
+                <details class="faq-item"><summary><span class="q">Will my child grow out of these behaviours?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body"><p>Some behaviours reduce naturally as communication, regulation and coping skills develop. Others may continue when the underlying developmental, sensory, communication, learning or emotional need remains unaddressed.</p><p>Rather than waiting only for the behaviour to disappear, observe its frequency, intensity, triggers and effect on daily participation. Persistent concerns are better understood through professional assessment than through assumptions about whether the child will outgrow them.</p></div></details>
+                <details class="faq-item"><summary><span class="q">Does an assessment automatically mean my child has a diagnosis?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body"><p>No. An assessment helps professionals understand the child's strengths, current abilities and areas requiring support. It does not automatically result in a diagnosis or a recommendation for therapy.</p><p>Depending on the findings, recommendations may include developmental monitoring, parent guidance, school strategies, therapy, medical evaluation or referral to another qualified professional.</p></div></details>
+                <details class="faq-item"><summary><span class="q">Which professional should assess my child?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body"><p>The appropriate professional depends on the concern:</p><ul class="notice-list"><li><strong>Occupational Therapist:</strong> sensory processing, fine-motor abilities, visual-motor integration, play, regulation and daily living skills</li><li><strong>Speech and Language Professional:</strong> speech, language, social communication and feeding-related communication concerns</li><li><strong>Child Physiotherapist:</strong> posture, mobility, balance, strength and gross-motor development</li><li><strong>Psychologist:</strong> cognition, behaviour, emotional functioning, attention and formal psychological assessment</li><li><strong>Special Educator:</strong> learning profile, academic skills and school participation</li><li><strong>Developmental Paediatrician:</strong> medical and developmental evaluation, diagnosis and coordination of medical referrals</li></ul><p>Some children benefit from a multidisciplinary assessment when concerns involve several developmental areas.</p></div></details>
+                <details class="faq-item"><summary><span class="q">Should I wait if my child's school or relatives say everything is normal?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body"><p>Information from teachers and relatives can be helpful, but parents do not need to ignore a persistent concern. Developmental differences may be more visible in one environment than another.</p><p>Record specific examples, note how often they occur and discuss them with a qualified professional. An evaluation may provide reassurance, recommendations for monitoring or early support when required.</p></div></details>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============ PARENT RESOURCES ============ -->
-<section class="section tint">
+<!-- ============ 7. PARENT RESOURCES ============ -->
+<section class="section">
     <div class="container">
-        <div class="services-head">
-            <div>
-                <h2 class="section-title" style="text-align:left;">Parent Resources</h2>
-                <p style="color:var(--on-surface-variant); margin-top:8px;">Educational articles and tools to support your journey.</p>
-            </div>
-            <a href="{% url 'blog_list' %}" class="link-arrow">Explore All →</a>
+        <div class="section-head">
+            <h2 class="section-title">Parent Resources</h2>
+            <p class="section-sub">Reliable information can help families observe development more clearly, support everyday participation and make informed decisions without relying on fear or misinformation.</p>
         </div>
-        <div class="resources-grid">
-            <a href="{% url 'blog_list' %}" class="resource-card">
-                <div class="rc-thumb"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <span class="rc-tag">Sensory Support</span>
-                <h3>The Parent's Guide to Sensory Processing at Home</h3>
-                <p>Practical strategies to help your child navigate sensory triggers in their daily environment.</p>
-            </a>
-            <a href="{% url 'blog_list' %}" class="resource-card">
-                <div class="rc-thumb"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <span class="rc-tag">School Readiness</span>
-                <h3>Is Your Child Ready for Primary School?</h3>
-                <p>A checklist of the cognitive, social, and motor skills needed for a smooth transition.</p>
-            </a>
-            <a href="{% url 'blog_list' %}" class="resource-card">
-                <div class="rc-thumb"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <span class="rc-tag">Social Skills</span>
-                <h3>Building Social Confidence in Early Childhood</h3>
-                <p>How to help your child navigate playground dynamics and develop meaningful friendships.</p>
-            </a>
+        <div class="blog-grid">
+            <article class="blog-card">
+                <a href="{% url 'blog_list' %}" class="thumb"><span class="ph">OTCloud</span></a>
+                <div class="body">
+                    <div class="meta">Sensory Support</div>
+                    <h3><a href="{% url 'blog_list' %}">Understanding Sensory Processing at Home</a></h3>
+                    <p>Learn how sensory responses may influence dressing, feeding, grooming, play, attention and behaviour — and how to observe patterns in everyday routines.</p>
+                    <a href="{% url 'blog_list' %}" class="read-more">Read Article →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <a href="{% url 'blog_list' %}" class="thumb"><span class="ph">OTCloud</span></a>
+                <div class="body">
+                    <div class="meta">School Readiness</div>
+                    <h3><a href="{% url 'blog_list' %}">Is Your Child Ready for Primary School?</a></h3>
+                    <p>A practical guide to communication, attention, motor skills, independence, social participation and learning readiness before school entry.</p>
+                    <a href="{% url 'blog_list' %}" class="read-more">Read Article →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <a href="{% url 'blog_list' %}" class="thumb"><span class="ph">OTCloud</span></a>
+                <div class="body">
+                    <div class="meta">Social Communication</div>
+                    <h3><a href="{% url 'blog_list' %}">Building Social Confidence Through Everyday Play</a></h3>
+                    <p>Understand how shared attention, turn-taking, imitation, communication and flexible play develop through everyday interaction.</p>
+                    <a href="{% url 'blog_list' %}" class="read-more">Read Article →</a>
+                </div>
+            </article>
+        </div>
+        <div class="concern-cta">
+            <a href="{% url 'resources' %}" class="btn btn-ghost">View All Parent Resources</a>
         </div>
     </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
+<!-- ============ 8. FINAL CTA ============ -->
 <section class="section">
     <div class="container">
         <div class="con2-cta">
-            <h2>Concerned About Your Child?</h2>
-            <p>Don't navigate this alone. Speak with a professional clinical coordinator today to discuss your concerns and book a tailored assessment.</p>
+            <h2>Concerned About Your Child's Development?</h2>
+            <p>You do not have to understand everything before asking for help. Speak with our team about what you have noticed, how long it has been present and whether it is affecting your child's communication, learning, relationships or everyday independence.</p>
             <div class="con2-cta-actions">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-on-teal">Book Assessment</a>
-                <a href="tel:{{ site_tel }}" class="btn btn-navy"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
-                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a>
+                <a href="{% url 'assessment' %}#booking" class="btn btn-on-teal">Book an Assessment</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light">Talk to Our Team</a>
             </div>
+            <p class="con-cta-contact">Prefer to speak directly? Call or WhatsApp <a href="tel:{{ site_tel }}">{{ site_phone_display }}</a>.</p>
+            <p class="con-cta-note">Our team will understand your concern and help you identify the most appropriate next step.</p>
         </div>
     </div>
 </section>
 
 <script>
+    // Age-wise development guide — tabs
     (function () {
-        var AGE = {
-            '0-6m': { m: ['Makes eye contact and smiles at parents.','Makes cooing sounds (ooh, aah).','Brings hands to mouth and pushes up during tummy time.','Follows moving objects with eyes.'], c: ['Does not respond to loud sounds.',"Doesn't watch things as they move.",'Persistent difficulty with feeding or weight gain.',"Doesn't smile at people by 4 months."] },
-            '6-12m': { m: ['Sits without support.','Responds to own name.','Babbles (mama, dada).','Picks up small objects using a pincer grasp.'], c: ['Does not crawl or drags one side.','Cannot stand with support.','Does not say single words like "mama" or "dada".','Does not use gestures like waving.'] },
-            '1-2y': { m: ['Walks alone.','Points to show things to others.','Says several individual words.','Follows simple 1-step commands.'], c: ['Does not walk by 18 months.','Does not point to show things.','Vocabulary of fewer than 15 words.','Loses skills they once had.'] },
-            '2-3y': { m: ['Combines 2–3 words in a sentence.','Engages in simple pretend play.','Runs and kicks a ball.','Climbs furniture without help.'], c: ['Frequent falling or difficulty with stairs.','Extremely unclear speech.','Does not use two-word phrases.','Does not understand simple instructions.'] },
-            '3-5y': { m: ['Plays cooperatively with other children.','Can tell a simple story.','Dresses and undresses mostly independently.','Shows a wide range of emotions.'], c: ['Extreme difficulty separating from parents.','Not interested in interactive games.','Cannot jump or hop.','Speech still hard for strangers to understand.'] },
-            '5-7y': { m: ['Follows rules and takes turns in games.','Writes several letters and numbers.','Stands on one foot for 10+ seconds.','Understands concepts like time and sequence.'], c: ['Significant trouble making friends.','Cannot follow a 3-step instruction.','Difficulty holding a pencil or using scissors.','Persistent bedwetting or behavioral outbursts.'] }
-        };
-        var mUl = document.getElementById('ageMilestones');
-        var cUl = document.getElementById('ageConcerns');
-        function render(age) {
-            var d = AGE[age];
-            mUl.innerHTML = d.m.map(function (x) { return '<li class="ok">' + x + '</li>'; }).join('');
-            cUl.innerHTML = d.c.map(function (x) { return '<li class="flag">' + x + '</li>'; }).join('');
-        }
-        document.querySelectorAll('#ageTabs .age-tab').forEach(function (t) {
-            t.addEventListener('click', function () {
-                document.querySelectorAll('#ageTabs .age-tab').forEach(function (o) { o.classList.remove('active'); });
-                t.classList.add('active');
-                render(t.getAttribute('data-age'));
-            });
-        });
-        render('0-6m');
-
-        // FAQ single-open
-        document.querySelectorAll('#con-faq .faq-item').forEach(function (el) {
-            el.addEventListener('toggle', function () {
-                if (!el.open) return;
-                document.querySelectorAll('#con-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
+        var wrap = document.getElementById('ageTabs');
+        if (!wrap) return;
+        var tabs = wrap.querySelectorAll('.age-tab');
+        var panels = wrap.querySelectorAll('.age-panel');
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                var age = tab.dataset.age;
+                tabs.forEach(function (t) { t.classList.toggle('active', t === tab); t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+                panels.forEach(function (p) { p.classList.toggle('active', p.dataset.age === age); });
             });
         });
     })();
+    // FAQ — one open at a time
+    document.querySelectorAll('#con-faq .faq-item').forEach(function (el) {
+        el.addEventListener('toggle', function () {
+            if (!el.open) return;
+            document.querySelectorAll('#con-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
+        });
+    });
 </script>
 
 {% endblock %}

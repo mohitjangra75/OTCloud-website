@@ -163,9 +163,9 @@ SITE_CONTACT = {
     'whatsapp_number': '919667083440',
     'whatsapp_message': "Hello, I'd like to know more about OT Cloud Therapy Center's services and book an assessment.",
     'email': 'otcloudcenter@gmail.com',
-    'address': 'P Basement, 815, Sector 14 Rd, DLF Colony, Sector 14, Gurugram, Haryana 122001',
+    'address': 'OT Cloud Therapy Center\nSector 14, DLF Colony, Gurugram\n(Near Main Market)',
     # Structured address parts (used for LocalBusiness JSON-LD / SEO)
-    'street': 'P Basement, 815, Sector 14 Rd, DLF Colony, Sector 14',
+    'street': 'Sector 14, DLF Colony (Near Main Market)',
     'locality': 'Gurugram',
     'region': 'Haryana',
     'postal_code': '122001',

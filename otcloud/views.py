@@ -22,21 +22,21 @@ def _notify(subject, body, reply_to=None):
 
 
 SIGNS = [
-    ('Speech Delay', 'Difficulty forming words or understanding instructions compared to peers.',
-     '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>'),
-    ('Social Interaction', 'Challenges with eye contact, sharing, or playing with other children.',
+    ('Speech and Communication', 'Difficulty using words, expressing needs or understanding instructions.',
+     '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'),
+    ('Social Interaction', 'Limited eye contact, shared play, response to name or interaction with others.',
      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>'),
-    ('Sensory Issues', 'Over-sensitivity to noise, textures, or bright lights.',
+    ('Sensory Processing', 'Strong or unusual reactions to sounds, touch, movement, textures or crowded environments.',
      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7"/><path d="M2 12s3 7 10 7 10-7 10-7"/><circle cx="12" cy="12" r="2"/></svg>'),
-    ('Attention Span', 'Difficulty staying focused on tasks or following multi-step instructions.',
+    ('Attention and Regulation', 'Difficulty staying focused, sitting for activities, following instructions or regulating activity levels.',
      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg>'),
-    ('Behavioural Challenges', 'Frequent meltdowns or rigid adherence to specific routines.',
+    ('Behaviour and Emotions', 'Frequent meltdowns, rigid routines, difficulty managing frustration or challenges with transitions.',
      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>'),
-    ('Learning Readiness', 'Struggles with basic concepts like shapes, colours, or pre-writing skills.',
+    ('Learning and School Readiness', 'Difficulty with early concepts, writing readiness, classroom participation or following routines.',
      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>'),
-    ('Movement & Balance', 'Clumsiness, difficulty with stairs, or fine motor skills like holding a pen.',
+    ('Movement and Coordination', 'Challenges with balance, posture, walking, running, hand skills or coordinated movement.',
      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/><path d="M12 10v4"/></svg>'),
-    ('Daily Independence', 'Difficulty with dressing, feeding, or managing personal hygiene.',
+    ('Daily Independence', 'Difficulty with dressing, feeding, toileting, grooming or other age-appropriate daily activities.',
      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'),
 ]
 
@@ -69,9 +69,8 @@ ABOUT_EXPECT = [
     ('Professional Behavior', 'Punctuality and respect in every interaction.'),
     ('Honest Communication', 'Transparent updates on progress and challenges.'),
     ('Ethical Recommendations', 'Only recommending what is clinically necessary.'),
-    ('Safety-First Environment', 'Certified sanitization and secure equipment.'),
+    ('Safe, Child-Friendly Spaces', 'Clean, secure rooms thoughtfully set up for children to explore and learn.'),
     ('Evidence-Based Practice', 'Therapies grounded in the latest clinical research.'),
-    ('Empathy at the Core', "Truly listening to your family's story."),
     ('Cultural Sensitivity', 'Respecting diverse family backgrounds and beliefs.'),
     ('Continuous Education', 'Staff undergo regular training sessions.'),
     ('Collaborative Spirit', "Willingness to talk to your child's school."),
@@ -84,7 +83,7 @@ def about(request):
         'chips': ABOUT_CHIPS,
         'workflow': ABOUT_WORKFLOW,
         'expect': ABOUT_EXPECT,
-        'meta_title': 'Meet Our Team | About OT Cloud Child Development & Therapy center',
+        'meta_title': 'Meet Our Team | About OT Cloud Child Development & Therapy Centre',
         'meta_description': 'Behind every therapy session is a multidisciplinary team of specialists working '
                             'together to help every child reach their potential. Meet the OT Cloud team.',
     })
@@ -124,20 +123,24 @@ OT_ASSESS = ['Fine Motor', 'Hand Function', 'Muscle Tone', 'Visual Perception', 
 
 SERVICES_INDEX = [
     ('Occupational Therapy', 'service_ot', 'Sensory processing, fine motor skills, and independence in daily life.',
-     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>'),
+     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>', 'Explore Service →'),
     ('Speech & Language Therapy', 'service_speech', 'Communication, language development, and social interaction.',
-     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'),
+     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>', 'Explore Service →'),
     ('Early Intervention', 'service_early', 'Personalized support that harnesses the earliest years of brain development.',
-     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5"/><path d="M9.5 9.5h.01M14.5 9.5h.01M9.5 12s1 1 2.5 1 2.5-1 2.5-1"/><path d="M5 21v-1a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1"/></svg>'),
+     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5"/><path d="M9.5 9.5h.01M14.5 9.5h.01M9.5 12s1 1 2.5 1 2.5-1 2.5-1"/><path d="M5 21v-1a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1"/></svg>', 'Explore Service →'),
     ('Special Education', 'service_se', 'Building the cognitive architecture for lifelong, confident learning.',
-     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>'),
+     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>', 'Explore Service →'),
     ('Child Psychology', 'service_psychology', 'Emotional regulation and behavioural support — decoding the why behind behaviour.',
-     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg>'),
+     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg>', 'Explore Service →'),
+    ('Behavioural Modification', 'contact', 'Structured, positive strategies to reduce challenging behaviours and build helpful routines and self-regulation.',
+     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>', 'Enquire →'),
+    ('Parent Counselling', 'contact', 'Guidance and emotional support for parents — practical strategies and a listening ear for the whole family.',
+     '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', 'Enquire →'),
 ]
 
 
 def services(request):
-    services_list = [{'title': t, 'url_name': u, 'desc': d, 'icon': i} for (t, u, d, i) in SERVICES_INDEX]
+    services_list = [{'title': t, 'url_name': u, 'desc': d, 'icon': i, 'link': l} for (t, u, d, i, l) in SERVICES_INDEX]
     return render(request, 'services_index.html', {
         'active_page': 'services',
         'services': services_list,
@@ -372,7 +375,7 @@ def assessment(request):
             _notify(
                 f'New assessment request: {obj.child_name}',
                 f'Parent: {obj.parent_name}\nEmail: {obj.email}\n'
-                f'Concern: {obj.get_area_of_concern_display() or "—"}\n\n{obj.message}',
+                f'Concern: {obj.area_of_concern or "—"}\n\n{obj.message}',
                 reply_to=obj.email,
             )
             return redirect(f"{reverse('assessment')}?submitted=1#booking")
@@ -437,7 +440,7 @@ def contact(request):
             _notify(
                 f'New appointment enquiry: {obj.child_name}',
                 f'Parent: {obj.parent_name}\nChild: {obj.child_name} (age {obj.child_age or "—"})\n'
-                f'Phone: {obj.phone}\nConcern: {obj.get_area_of_concern_display() or "—"}\n'
+                f'Phone: {obj.phone}\nConcern: {obj.area_of_concern or "—"}\n'
                 f'Prefers: {obj.get_contact_method_display() or "—"} · {obj.get_preferred_time_display() or "—"}\n\n'
                 f'{obj.message}',
             )
