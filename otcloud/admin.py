@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (AppointmentEnquiry, AssessmentRequest, BlogPost,
-                     ContactMessage)
+                     ContactMessage, MilestoneEnquiry)
 
 
 @admin.register(AppointmentEnquiry)
@@ -42,3 +42,16 @@ class ContactMessageAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'message')
     list_editable = ('handled',)
     readonly_fields = ('created_at',)
+
+
+@admin.register(MilestoneEnquiry)
+class MilestoneEnquiryAdmin(admin.ModelAdmin):
+    list_display = ('parent_name', 'phone', 'email', 'child_age', 'score', 'status', 'created_at')
+    list_filter = ('status', 'child_age', 'created_at')
+    search_fields = ('parent_name', 'phone', 'email')
+    list_editable = ('status',)
+    readonly_fields = ('created_at',)
+
+    @admin.display(description='Milestones ticked')
+    def score(self, obj):
+        return f'{obj.milestones_done}/{obj.milestones_total}'

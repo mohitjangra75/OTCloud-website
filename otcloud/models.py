@@ -124,3 +124,29 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f'{self.name} ({self.created_at:%d %b %Y})'
+
+
+class MilestoneEnquiry(models.Model):
+    """Contact details captured after a parent completes the home-page milestone check."""
+    STATUS_CHOICES = [('new', 'New'), ('contacted', 'Contacted'), ('closed', 'Closed')]
+
+    parent_name = models.CharField(max_length=120)
+    phone = models.CharField(max_length=30, blank=True)
+    email = models.EmailField(blank=True)
+    child_age = models.CharField(max_length=60, blank=True,
+                                 help_text='Age band the parent selected in the milestone check.')
+    milestones_done = models.PositiveSmallIntegerField(default=0)
+    milestones_total = models.PositiveSmallIntegerField(default=0)
+    status = models.CharField(max_length=12, choices=STATUS_CHOICES, default='new')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name_plural = 'Milestone enquiries'
+
+    def __str__(self):
+        return f'{self.parent_name} — {self.child_age or "age not set"} ({self.created_at:%d %b %Y})'
+
+    @property
+    def not_yet(self):
+        return max(self.milestones_total - self.milestones_done, 0)

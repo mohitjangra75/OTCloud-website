@@ -6,7 +6,8 @@ from django.urls import reverse
 from django.utils.text import Truncator
 
 
-from .forms import AppointmentEnquiryForm, AssessmentRequestForm, ContactForm
+from .forms import (AppointmentEnquiryForm, AssessmentRequestForm, ContactForm,
+                    MilestoneEnquiryForm)
 from .models import BlogPost
 
 
@@ -41,14 +42,120 @@ SIGNS = [
 ]
 
 
+# Distinct, condition-specific icons so parents recognise their concern at a glance.
+def _icon(body, sw='2'):
+    return ('<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            f'stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round">{body}</svg>')
+
+
+# Conditions listed directly on the home page.
+HOME_CONDITIONS = [
+    # Neurodiversity infinity loop
+    ('Autism (ASD)', 'Support for social communication, interaction, play and repetitive behaviour patterns.',
+     _icon('<path d="M12 12c1.8-2.1 3.5-4.3 6-4.3a4.3 4.3 0 1 1 0 8.6c-2.5 0-4.2-2.2-6-4.3-1.8-2.1-3.5-4.3-6-4.3a4.3 4.3 0 1 0 0 8.6c2.5 0 4.2-2.2 6-4.3z"/>')),
+    # Restless energy: a bolt inside the head
+    ('ADHD', 'Support for attention, impulse control, hyperactivity and everyday self-regulation.',
+     _icon('<circle cx="12" cy="12" r="9.2"/><path d="M13.7 5.6 8.6 13.1h3.6l-1.9 5.5 5.1-7.5h-3.6z"/>')),
+    # Heart with a sparkle: care and individuality
+    ('Down Syndrome', 'Developmental support for speech, motor skills, learning and daily independence.',
+     _icon('<path d="M12 20.6S3.9 15.4 3.9 10.1a4.1 4.1 0 0 1 8.1-1.1 4.1 4.1 0 0 1 8.1 1.1c0 5.3-8.1 10.5-8.1 10.5z"/><path d="m19.2 1.8.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9z"/>')),
+    # Walking figure with a support cane
+    ('Cerebral Palsy', 'Therapy for posture, movement, coordination, hand function and mobility.',
+     _icon('<circle cx="9.6" cy="4.3" r="1.9"/><path d="M9.6 8.1v4.4l-2.7 3.2L5.4 21"/><path d="M9.6 12.5l2.9 2.3.7 6.2"/><path d="M10.1 9.4l3.3 1.5 2.6-.9"/><path d="M18.6 6.4V21"/>')),
+    # Emotional storms
+    ('Behavioural and Emotional Disorders', 'Help with meltdowns, anxiety, rigid routines and emotional regulation.',
+     _icon('<path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"/><polyline points="13 11 9.4 16.4 14.6 16.4 11 22"/>')),
+    # Open book: reading and learning
+    ('Learning Disabilities', 'Support for reading, writing, numeracy, attention and classroom participation.',
+     _icon('<path d="M2.4 4.6h5.8A3.4 3.4 0 0 1 12 7.7v12a2.8 2.8 0 0 0-2.8-2.6H2.4z"/><path d="M21.6 4.6h-5.8A3.4 3.4 0 0 0 12 7.7v12a2.8 2.8 0 0 1 2.8-2.6h6.8z"/>')),
+    # Speech bubble mid-conversation
+    ('Speech and Language Disorders', 'Therapy for delayed speech, unclear speech, understanding and expression.',
+     _icon('<path d="M21.2 11.4a8.6 8.6 0 0 1-9.2 8.6 9.3 9.3 0 0 1-3.9-.9L2.8 21.2l1.9-5.3a8.6 8.6 0 0 1-.9-4.5A8.6 8.6 0 0 1 12.4 2.8h.5a8.6 8.6 0 0 1 8.3 8.6z"/><path d="M8.6 11.4h.01M12.4 11.4h.01M16.2 11.4h.01" stroke-width="2.8"/>')),
+    # Sensory input radiating in
+    ('Sensory Processing Disorder', 'Support for strong or unusual responses to sound, touch, movement and textures.',
+     _icon('<circle cx="12" cy="12" r="2.4"/><path d="M7.6 7.6a6.2 6.2 0 0 0 0 8.8"/><path d="M4.7 4.7a10.3 10.3 0 0 0 0 14.6"/><path d="M16.4 7.6a6.2 6.2 0 0 1 0 8.8"/><path d="M19.3 4.7a10.3 10.3 0 0 1 0 14.6"/>')),
+]
+
+# Google reviews shown on the home page. `photo` is an optional static path
+# (e.g. 'assets/review-siddharth.webp'); when it is empty the coloured initial is used.
+HOME_REVIEWS = [
+    {'name': 'Siddharth Nobell', 'initial': 'S', 'colour': '#00685e', 'when': 'a month ago', 'photo': '',
+     'text': "We want to express our deepest gratitude to the team at OT Cloud Therapy Center. Our daughter "
+             "attended occupational therapy here for two to three years, and the journey has been truly "
+             "transformative. The sessions were well structured, and we have seen meaningful, lasting changes "
+             "in her behaviour, focus and independence. If you are looking for a supportive and effective "
+             "pediatric therapy team, this center is highly recommended."},
+    {'name': 'Shruti Bhargava', 'initial': 'S', 'colour': '#1e3a8a', 'when': '2 months ago', 'photo': '',
+     'text': "We joined OT Cloud Therapy two years ago, when my daughter had a speech delay and was not able to "
+             "speak fluently. Today she speaks and communicates with everyone easily. We are very happy with her "
+             "progress and have seen a clear improvement in her speech clarity. Thank you to all the therapists "
+             "and staff for their support and encouragement through their creative sessions and hard work."},
+    {'name': 'Priyanka Agrawal', 'initial': 'P', 'colour': '#0b6fb8', 'when': '11 months ago', 'photo': '',
+     'text': "We have had a wonderful experience at OT Cloud Therapy Centre. The team is extremely professional, "
+             "caring and patient with our four-year-old son, and we have seen noticeable improvement in his speech "
+             "and motor skills. They share regular updates and guide us as parents too. Highly recommended for "
+             "anyone seeking quality occupational and speech therapy."},
+    {'name': 'Priyanka Sharma', 'initial': 'P', 'colour': '#00873b', 'when': 'a year ago', 'photo': '',
+     'text': "I am so grateful for the progress my daughter has made since she started occupational therapy at "
+             "OT Cloud. Her physical abilities have improved, from climbing and jumping to her overall motor "
+             "skills, and her interest in handwriting has grown remarkably — she is now excited to write and "
+             "colour every day. The therapists are incredibly supportive and create a positive, encouraging "
+             "environment for children to thrive."},
+    {'name': 'Purnima Upadhyay', 'initial': 'P', 'colour': '#7c3aed', 'when': 'a year ago', 'photo': '',
+     'text': "We are so grateful for the incredible team at OT Cloud. My child has made remarkable progress in "
+             "both speech and occupational therapy, thanks to the dedication and expertise of Dheeraj Sir, Vashu "
+             "Ma'am and Radhika Ma'am. Their personalised approach and constant encouragement have boosted my "
+             "child's confidence, communication skills and motor abilities. We could not be happier with the care "
+             "and support we have received."},
+    {'name': 'Preeti Iyer', 'initial': 'P', 'colour': '#b45309', 'when': '3 years ago', 'photo': '',
+     'text': "OT Cloud Therapy Centre is extremely good at understanding specially-abled children, helping them "
+             "work on their weaknesses and build on their strengths. The therapists take special care to "
+             "understand the parents' concerns and give personal attention to each child in every way possible. "
+             "Thankful to Dr. Dheeraj Sir and the team for supporting us as parents and making a significant "
+             "difference in our child's life."},
+    {'name': 'Tinku Kumawat', 'initial': 'T', 'colour': '#be123c', 'when': '3 years ago', 'photo': '',
+     'text': "Very satisfied with the occupational therapy at OT Cloud Therapy Center, especially with "
+             "Dr. Dheeraj Suthar. He builds a genuine emotional connection with the child, which helps in getting "
+             "results quickly. Thank you so much, Sir, for all your efforts."},
+    {'name': 'Tanu Bansal', 'initial': 'T', 'colour': '#c2410c', 'when': 'a year ago', 'photo': '',
+     'text': "A definite yes to the OT Cloud team — they are highly professional and provide excellent care. "
+             "Before coming here, my son could speak only two-letter words; the speech and occupational therapy "
+             "they provide really works. They build a special bond with the child, which helps so much with "
+             "children who have special needs. Dheeraj Sir is like a pillar, and Ajay Sir, Khushboo Ma'am, "
+             "Radhika Ma'am and Vasu Ma'am are all a wonderful team. Thank you for making our child blossom."},
+]
+
+
 def home(request):
-    signs = [{'title': t, 'desc': d, 'icon': i} for (t, d, i) in SIGNS]
-    return render(request, 'home.html', {
+    meta = {
         'active_page': 'home',
-        'signs': signs,
+        'conditions': [{'title': t, 'desc': d, 'icon': i} for (t, d, i) in HOME_CONDITIONS],
+        'reviews': HOME_REVIEWS,
         'meta_title': 'OT Cloud Therapy Center | Pediatric Occupational Therapy & Speech Pathology, Gurugram',
         'meta_description': "Evidence-based pediatric therapy in Gurugram — Occupational Therapy, Speech "
                             "Pathology, and Early Intervention. Helping children grow with clarity and confidence.",
+    }
+    # The home-page milestone check posts the parent's contact details back to this view.
+    if request.method == 'POST':
+        ms_form = MilestoneEnquiryForm(request.POST)
+        if ms_form.is_valid():
+            obj = ms_form.save()
+            _notify(
+                f'New milestone check enquiry: {obj.parent_name}',
+                f'Parent: {obj.parent_name}\nPhone: {obj.phone or "—"}\nEmail: {obj.email or "—"}\n'
+                f'Child age band: {obj.child_age or "—"}\n'
+                f'Milestones ticked: {obj.milestones_done}/{obj.milestones_total} '
+                f'({obj.not_yet} marked "not yet")',
+                reply_to=obj.email or None,
+            )
+            return redirect(f"{reverse('home')}?ms=1#milestone-check")
+    else:
+        ms_form = MilestoneEnquiryForm()
+
+    return render(request, 'home.html', {
+        **meta,
+        'ms_form': ms_form,
+        'ms_submitted': request.GET.get('ms') == '1',
     })
 
 
@@ -83,7 +190,7 @@ def about(request):
         'chips': ABOUT_CHIPS,
         'workflow': ABOUT_WORKFLOW,
         'expect': ABOUT_EXPECT,
-        'meta_title': 'Meet Our Team | About OT Cloud Child Development & Therapy Centre',
+        'meta_title': 'Meet Our Team | About OT Cloud Child Development & Therapy Center',
         'meta_description': 'Behind every therapy session is a multidisciplinary team of specialists working '
                             'together to help every child reach their potential. Meet the OT Cloud team.',
     })

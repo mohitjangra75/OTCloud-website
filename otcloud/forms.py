@@ -1,6 +1,7 @@
 from django import forms
 
-from .models import AppointmentEnquiry, AssessmentRequest, ContactMessage
+from .models import (AppointmentEnquiry, AssessmentRequest, ContactMessage,
+                     MilestoneEnquiry)
 
 
 class AppointmentEnquiryForm(forms.ModelForm):
@@ -36,3 +37,34 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
         fields = ['name', 'email', 'phone', 'message']
+
+
+class MilestoneEnquiryForm(forms.ModelForm):
+    """Captures the parent's details after the milestone check. Either a phone
+    number or an email address is required — not necessarily both."""
+
+    class Meta:
+        model = MilestoneEnquiry
+        fields = ['parent_name', 'phone', 'email', 'child_age',
+                  'milestones_done', 'milestones_total']
+        widgets = {
+            'child_age': forms.HiddenInput(),
+            'milestones_done': forms.HiddenInput(),
+            'milestones_total': forms.HiddenInput(),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['parent_name'].label = 'Your name'
+        self.fields['phone'].label = 'Mobile number'
+        self.fields['email'].label = 'Email address'
+        for name in ('child_age', 'milestones_done', 'milestones_total'):
+            self.fields[name].required = False
+
+    def clean(self):
+        cleaned = super().clean()
+        if not cleaned.get('phone') and not cleaned.get('email'):
+            raise forms.ValidationError(
+                'Please share either a mobile number or an email address so our team can reach you.'
+            )
+        return cleaned
