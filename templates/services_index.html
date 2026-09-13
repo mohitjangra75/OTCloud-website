@@ -4,17 +4,7 @@
 {% block content %}
 
 <!-- ============ HERO ============ -->
-<section class="con2-hero">
-    <div class="container">
-        <span class="badge"><span class="dot"></span> Our Services</span>
-        <h1>Comprehensive Pediatric Therapy — Tailored to Every Child</h1>
-        <p class="hero-lead">A multidisciplinary team under one roof. Explore our specialized programmes, each built on precise clinical assessment and delivered with compassionate, evidence-based care.</p>
-        <div class="con2-cta-actions" style="justify-content:center;">
-            <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book an Assessment</a>
-            <a href="{% url 'contact' %}" class="btn btn-ghost">Speak to Our Team</a>
-        </div>
-    </div>
-</section>
+{% include 'partials/page_hero.html' with image='assets/play-therapy-1.webp' focus='center 50%' alt='Therapy in progress at OT Cloud Therapy Center, Sector 14 Gurugram.' badge='Our Services' title='Comprehensive Pediatric Therapy — Tailored to Every Child' lead='A multidisciplinary team under one roof. Explore our specialized programmes, each built on precise clinical assessment and delivered with compassionate, evidence-based care.' cta1_label='Book an Assessment' cta1_url='/assessment/#booking' cta2_label='Speak to Our Team' cta2_url='/contact/' %}
 
 <!-- ============ SERVICES GRID ============ -->
 <section class="section tint">
@@ -22,8 +12,10 @@
         <div class="svc-index-grid">
             {% for s in services %}
             <a href="{% url s.url_name %}" class="svc-index-card">
-                <span class="sic-icon">{{ s.icon|safe }}</span>
-                <h3>{{ s.title }}</h3>
+                <span class="sic-head">
+                    <span class="sic-icon">{{ s.icon|safe }}</span>
+                    <h3>{{ s.title }}</h3>
+                </span>
                 <p>{{ s.desc }}</p>
                 <span class="sic-link">{{ s.link }}</span>
             </a>

@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for g in faq_groups %}{% for f in g.items %}{ "@type": "Question", "name": "{{ f.q|escapejs }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a|escapejs }}" } }{% if not forloop.last or not forloop.parentloop.last %},{% endif %}
+    {% endfor %}{% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ============ 01. HERO ============ -->
+{% include 'partials/page_hero.html' with image='assets/play-therapy-3.webp' focus='center 25%' alt='Children moving and running with an OT Cloud physiotherapist.' badge='Child Physiotherapy' title='Child Physiotherapy for Growing Strength & Movement' sub='Helping children build strength, balance, coordination and confidence in movement.' lead='Child physiotherapy supports children in developing and improving their movement, strength, balance, coordination, posture and physical participation.' lead2="At OTCloud Therapy Center, our physiotherapy approach is individualized to the child's developmental level, physical abilities, functional needs and everyday goals." cta1_label='Book an Assessment' cta1_url='/assessment/#booking' cta2_label='Discuss Your Concern' cta2_url='/contact/' tags=hero_tags %}
+
+<!-- ============ 02. WHAT IS CHILD PHYSIOTHERAPY? ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">What Is Child Physiotherapy?</h2>
+        </div>
+        <div class="concern-intro-text">
+            <p class="msg">Child physiotherapy focuses on helping children develop the <strong>physical skills
+                needed to move, play, participate and become more independent in everyday activities</strong>.</p>
+            <p class="msg">A pediatric physiotherapist looks at how a child moves and identifies areas where support
+                may improve <strong>strength, balance, coordination, posture, mobility and functional
+                participation</strong>.</p>
+        </div>
+        <div class="stack-grid">
+            <div class="stack-media">
+                <img src="{% static 'assets/special-ed-2.webp' %}" alt="A physiotherapy balance session at OT Cloud Therapy Center." loading="lazy">
+            </div>
+            <div class="stack-cards">
+                <p class="skill-grid-label left">For a child, this may include:</p>
+                {% for p in pillars %}
+                <div class="stack-card">
+                    <span class="blk-head">
+                        <span class="skill-icon">{{ p.icon|safe }}</span>
+                    <div>
+                        <h3>{{ p.title }}</h3>
+                        <p>{{ p.desc }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 03. WHO CAN BENEFIT? ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Who Can Benefit From Child Physiotherapy?</h2>
+            <p class="section-sub">A child may benefit from physiotherapy when physical or movement difficulties
+                affect play, mobility, participation, school activities or everyday independence.</p>
+        </div>
+        <div class="notice-quad">
+            {% for n in notice %}
+            <div class="notice-card">
+                <span class="blk-head">
+                    <span class="nq-icon">{{ n.icon|safe }}</span>
+                    <h3>{{ n.title }}</h3>
+                </span>
+                    </span>
+                <ul class="notice-list">
+                    {% for point in n.points %}<li>{{ point }}</li>{% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+        <p class="ot-highlight wide">The goal is not simply to improve movement — it is to help children use their
+            physical abilities more effectively in everyday life.</p>
+    </div>
+</section>
+
+<!-- ============ 05. CONDITIONS WE SUPPORT ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Conditions We Support</h2>
+            <p class="section-sub">Child physiotherapy may support children with a range of developmental,
+                neurological, musculoskeletal and movement-related needs.</p>
+        </div>
+        <div class="cond-card-grid">
+            {% for c in conditions %}
+            <div class="cond-card">
+                <span class="cond-dot"></span>
+                <h3>{{ c.title }}</h3>
+                <p>{{ c.desc }}</p>
+                <a href="{% url 'concerns' %}{% if c.anchor %}#{{ c.anchor }}{% endif %}" class="link-arrow">Learn More →</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ 06. THERAPY GOALS ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">What Can Child Physiotherapy Help With?</h2>
+            <p class="section-sub">Our therapy goals are based on the child's individual abilities and everyday needs.</p>
+        </div>
+        <div class="goal-grid">
+            {% for g in goals %}
+            <div class="goal-card">
+                <span class="goal-tick"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <div>
+                    <h3>{{ g.title }}</h3>
+                    <p>{{ g.desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <ol class="journey-strip">
+            {% for j in journey %}
+            <li class="journey-step">
+                <span class="js-icon">{{ j.icon|safe }}</span>
+                <span class="js-title">{{ j.title }}</span>
+                <span class="js-desc">{{ j.desc }}</span>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>
+
+<!-- ============ 07. GALLERY ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Gallery of Child Physiotherapy</h2>
+            <p class="section-sub">See how movement skills are developed through purposeful, engaging therapy activities.</p>
+        </div>
+        <div class="slt-gallery gal-phy">
+            {% for g in gallery %}
+            <figure class="otg-item {{ g.slot }}{% if not g.image %} no-photo{% endif %}">
+                {% if g.image %}
+                <img src="{% static g.image %}" alt="{{ g.title }} — child physiotherapy at OT Cloud." loading="lazy">
+                {% else %}
+                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo coming soon</span></div>
+                {% endif %}
+                <figcaption>
+                    <span class="otg-title">{{ g.title }}</span>
+                    <span class="otg-desc">{{ g.desc }}</span>
+                </figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ 08. FREQUENTLY ASKED QUESTIONS ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="asm-faq faq-plus" id="phy-faq">
+            {% for group in faq_groups %}
+            <p class="faq-group-label">{{ group.title }}</p>
+            <div class="faq-list">
+                {% for f in group.items %}
+                <details class="faq-item" {% if forloop.parentloop.first and forloop.first %}open{% endif %}>
+                    <summary>
+                        <span class="q">{{ f.q }}</span>
+                        <span class="faq-pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line class="pm-v" x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </summary>
+                    <div class="faq-body"><p>{{ f.a }}</p></div>
+                </details>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ 09. FINAL CTA ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="hp-cta">
+            <h2>Concerned About Your Child's Movement?</h2>
+            <p>Understanding your child's physical abilities can help identify the right support and next steps.</p>
+            <div class="hp-cta-actions">
+                <a href="{% url 'contact' %}" class="btn btn-on-teal">Discuss Your Concern</a>
+                <a href="{% url 'assessment' %}#booking" class="btn btn-outline-light">Book an Assessment</a>
+            </div>
+            <p class="hp-cta-note">Strength &middot; Balance &middot; Coordination &middot; Mobility &middot; Motor Development</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

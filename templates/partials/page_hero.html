@@ -1,0 +1,26 @@
+{% load static %}
+{% comment %}Shared page hero: one real photograph with the copy centred over it.
+Vars: image, alt, badge, title, sub, lead, lead2, tags, cta1_label/cta1_url, cta2_label/cta2_url,
+focus (object-position for the photo, e.g. "center 30%" — aim the crop at the subject){% endcomment %}
+<section class="page-hero">
+    <img class="page-hero-img" src="{% static image %}" alt="{{ alt }}" loading="eager"{% if focus %} style="object-position: {{ focus }};"{% endif %}>
+    <div class="page-hero-veil"></div>
+    <div class="container page-hero-inner">
+        {% if badge %}<span class="badge light"><span class="dot"></span> {{ badge }}</span>{% endif %}
+        <h1>{{ title }}</h1>
+        {% if sub %}<p class="page-hero-sub">{{ sub }}</p>{% endif %}
+        {% if lead %}<p class="page-hero-lead">{{ lead }}</p>{% endif %}
+        {% if lead2 %}<p class="page-hero-lead">{{ lead2 }}</p>{% endif %}
+        {% if cta1_url %}
+        <div class="page-hero-actions">
+            <a href="{{ cta1_url }}" class="btn btn-primary">{{ cta1_label }}</a>
+            {% if cta2_url %}<a href="{{ cta2_url }}" class="btn btn-outline-light">{{ cta2_label }}</a>{% endif %}
+        </div>
+        {% endif %}
+        {% if tags %}
+        <div class="page-hero-tags">
+            {% for tag in tags %}<span class="page-hero-tag">{{ tag }}</span>{% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>

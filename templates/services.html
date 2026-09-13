@@ -7,9 +7,8 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How long does a typical OT session last?", "acceptedAnswer": { "@type": "Answer", "text": "Most clinical sessions are 45-60 minutes long, depending on the child's age, tolerance, and specific goals defined in the assessment." } },
-    { "@type": "Question", "name": "Can OT help with my child's handwriting?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. OTs look at the root cause of handwriting difficulties, including fine motor strength, visual-motor integration, and core stability." } },
-    { "@type": "Question", "name": "Does my child need a diagnosis to start OT?", "acceptedAnswer": { "@type": "Answer", "text": "No. We work with many children who have functional delays or sensory differences but may not meet the full criteria for a clinical diagnosis." } }
+    {% for f in faqs %}{ "@type": "Question", "name": "{{ f.q|escapejs }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a|escapejs }}" } }{% if not forloop.last %},{% endif %}
+    {% endfor %}
   ]
 }
 </script>
@@ -17,229 +16,147 @@
 
 {% block content %}
 
-<!-- ============ HERO ============ -->
-<section class="svc-hero">
-    <div class="container svc-hero-grid">
-        <div>
-            <span class="badge"><span class="dot"></span> Occupational Therapy for Children</span>
-            <h1>Helping Children Participate More Confidently in Everyday Life</h1>
-            <p class="hero-lead">Occupational therapy helps children build the skills they need for the 'job' of being a child — from schoolwork and play to self-care and social interaction — using evidence-based strategies tailored to your child's unique strengths.</p>
-            <div class="svc-hero-actions">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book an OT Assessment</a>
-                <a href="#process" class="btn btn-ghost">Our Process</a>
-            </div>
-        </div>
-        <div class="svc-hero-visual">
-            <div class="svc-hero-img">
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-            </div>
-            <div class="svc2-float">
-                <span class="svc2-float-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M2 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><circle cx="17" cy="9" r="2"/></svg></span>
-                <div><p class="f-title">Child-Centered</p><p class="f-sub">Evidence-based care</p></div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- ============ 01. HERO ============ -->
+{% include 'partials/page_hero.html' with image='assets/play-therapy-2.webp' focus='center 20%' alt='Children taking part in a play-based occupational therapy session at OT Cloud.' badge='Pediatric Occupational Therapy' title='Helping children build the skills they need for everyday life' lead='Occupational therapy helps children develop the skills needed for playing, learning, writing, moving, getting dressed, eating and participating independently at home and school.' lead2="At OTCloud Therapy Center, we use individualized, play-based occupational therapy to support each child's fine motor skills, sensory processing, coordination, attention, self-regulation and everyday independence." cta1_label='Book an OT Assessment' cta1_url='/assessment/#booking' cta2_label='Discuss Your Concern' cta2_url='/contact/' tags=hero_tags %}
 
-<!-- ============ WHAT IS OT ============ -->
+<!-- ============ 02. WHAT IS OCCUPATIONAL THERAPY? ============ -->
 <section class="section tint">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">What is Occupational Therapy?</h2>
-            <p class="section-sub">In pediatric care, an 'occupation' is everything a child needs and wants to do daily. When a child struggles with these tasks, an OT helps bridge the gap between their current abilities and their full potential.</p>
+            <h2 class="section-title">What Is Occupational Therapy?</h2>
         </div>
-        <div class="journey-grid">
-            {% for d in domains %}
-            <div class="journey-card"><span class="j-icon">{{ d.icon|safe }}</span><h4>{{ d.label }}</h4></div>
+        <div class="ot-what-grid">
+            <div class="ot-what-media">
+                <img src="{% static 'assets/rope-ladder.webp' %}" alt="A child climbing a rope ladder with an OT Cloud occupational therapist." loading="lazy">
+            </div>
+            <div class="ot-what-copy">
+                <p class="msg lead"><strong>Occupational therapy helps children become more independent in the
+                    activities they do every day.</strong></p>
+                <p class="msg">For children, these everyday activities include playing, learning, writing, drawing,
+                    eating, dressing, grooming, following routines and participating in school.</p>
+                <p class="msg">An occupational therapist looks at the skills behind these activities — such as hand
+                    skills, coordination, sensory processing, motor planning, attention, visual-motor skills and
+                    self-regulation — and works on them through meaningful, age-appropriate activities.</p>
+                <p class="msg">The goal is simple: helping children participate more comfortably, confidently and
+                    independently in everyday life.</p>
+            </div>
+        </div>
+        <div class="skill-grid">
+            {% for p in pillars %}
+            <div class="skill-card">
+                <span class="blk-head">
+                    <span class="skill-icon">{{ p.icon|safe }}</span>
+                    <h3>{{ p.title }}</h3>
+                </span>
+                <p>{{ p.desc }}</p>
+            </div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ WHAT DOES AN OT DO ============ -->
+<!-- ============ 03. WHO CAN BENEFIT? ============ -->
 <section class="section">
-    <div class="container obs-grid">
-        <div class="obs-img"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:12px;">What Does an OT Actually Do?</h2>
-            <p class="msg" style="margin-bottom:24px;">Our therapists analyze the complex interaction between the child, their environment, and the task at hand. We evaluate three primary factors:</p>
-            <div class="obs-features">
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7"/><path d="M2 12s3 7 10 7 10-7 10-7"/><circle cx="12" cy="12" r="2"/></svg></span><div><h4>Sensory Systems</h4><p>How the brain processes touch, sound, movement, and visual information.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><div><h4>Motor Performance</h4><p>Fine motor precision, hand strength, and gross motor coordination.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg></span><div><h4>Self-Regulation</h4><p>The ability to maintain an appropriate state of alertness for the task.</p></div></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ WHO CAN BENEFIT ============ -->
-<section class="section tint">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Who Can Benefit?</h2>
-            <p class="section-sub">We support children across a wide spectrum of developmental needs and challenges.</p>
+            <h2 class="section-title">Who Can Benefit From Occupational Therapy?</h2>
+            <p class="section-sub">Occupational therapy may be helpful when everyday activities feel difficult for a child.</p>
         </div>
+        <p class="ot-highlight">Sometimes, the signs are small — but they can make everyday activities much harder.</p>
         <div class="signs8-grid">
             {% for b in benefits %}
-            <div class="sign8-card"><span class="s8-icon">{{ b.icon|safe }}</span><h3>{{ b.title }}</h3><p>{{ b.desc }}</p></div>
+            <div class="sign8-card">
+                <span class="blk-head">
+                    <span class="s8-icon">{{ b.icon|safe }}</span>
+                    <h3>{{ b.title }}</h3>
+                </span>
+                <p>{{ b.desc }}</p>
+            </div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ CONDITIONS WE SUPPORT ============ -->
+<!-- ============ 04. CONDITIONS WE SUPPORT ============ -->
 <section class="section">
     <div class="container">
-        <div class="cond-box">
-            <h2>Conditions We Support</h2>
-            <p class="cb-lead">While we treat the whole child based on functional needs rather than labels, we frequently work with families navigating:</p>
-            <div class="cond-box-chips">
-                <span>Autism Spectrum Disorder</span><span>ADHD</span><span>Dyspraxia</span><span>Down Syndrome</span><span>Cerebral Palsy</span><span>Developmental Delay</span><span>SPD</span>
+        <div class="section-head">
+            <h2 class="section-title">Conditions We Support</h2>
+            <p class="section-sub">Occupational therapy can support children with a wide range of developmental,
+                neurological, sensory and functional needs.</p>
+        </div>
+        <div class="cond-card-grid">
+            {% for c in conditions %}
+            <div class="cond-card">
+                <span class="cond-dot"></span>
+                <h3>{{ c.title }}</h3>
+                <p>{{ c.desc }}</p>
             </div>
-            <p class="cond-box-note">Therapy is always based on the individual child's functional participation needs. A formal diagnosis is not always required to start your journey with us.</p>
+            {% endfor %}
         </div>
+        <p class="fineprint">Therapy is planned around the child's functional participation needs. A formal diagnosis
+            is not always required to begin.</p>
     </div>
 </section>
 
-<!-- ============ AREAS WE ASSESS ============ -->
+<!-- ============ 05. GALLERY ============ -->
 <section class="section tint">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Areas We Assess</h2>
-            <p class="section-sub">A comprehensive clinical picture across every domain of function.</p>
+            <h2 class="section-title">Gallery of Occupational Therapy</h2>
+            <p class="section-sub">A closer look at occupational therapy in action — rather than explaining
+                everything through text, see what a session can look like.</p>
         </div>
-        <div class="assess-pills">
-            {% for a in assess %}<span>{{ a }}</span>{% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- ============ ASSESSMENT PROCESS ============ -->
-<section class="section" id="process">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="section-title">Our Assessment Process</h2>
-        </div>
-        <div class="process-track six">
-            <div class="process-step"><span class="process-num">1</span><h4>Consultation</h4><p>Initial discussion of concerns.</p></div>
-            <div class="process-step"><span class="process-num">2</span><h4>History</h4><p>Review of milestones &amp; goals.</p></div>
-            <div class="process-step"><span class="process-num">3</span><h4>Evaluation</h4><p>Standardized clinical testing.</p></div>
-            <div class="process-step"><span class="process-num">4</span><h4>Analysis</h4><p>Detailed data interpretation.</p></div>
-            <div class="process-step"><span class="process-num">5</span><h4>Reporting</h4><p>Comprehensive results session.</p></div>
-            <div class="process-step"><span class="process-num">6</span><h4>Intervention</h4><p>Tailored therapy plan launch.</p></div>
+        <div class="ot-gallery gal-ot">
+            {% for g in gallery %}
+            <figure class="otg-item {{ g.size }}{% if not g.image %} no-photo{% endif %}">
+                {% if g.image %}
+                <img src="{% static g.image %}" alt="{{ g.title }} — occupational therapy at OT Cloud." loading="lazy">
+                {% else %}
+                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo coming soon</span></div>
+                {% endif %}
+                <figcaption>
+                    <span class="otg-title">{{ g.title }}</span>
+                    <span class="otg-desc">{{ g.desc }}</span>
+                </figcaption>
+            </figure>
+            {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ SCIENCE BEHIND THE PLAY ============ -->
-<section class="section tint">
-    <div class="container why-otc-grid">
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:16px;">The Science Behind the Play</h2>
-            <p class="msg" style="margin-bottom:20px;">To a child, it looks like fun. To our OTs, every activity is a carefully designed clinical intervention. Whether it's swinging, drawing in shaving cream, or navigating an obstacle course, we are targeting specific neurological and motor goals.</p>
-            <div class="science-box"><p class="sb-title">Task Analysis</p><p>Breaking down complex skills into achievable steps.</p></div>
-            <div class="science-box"><p class="sb-title">The "Just Right" Challenge</p><p>Finding the perfect balance between frustration and success.</p></div>
-        </div>
-        <div class="why-otc-img"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-    </div>
-</section>
-
-<!-- ============ TREATMENT APPROACHES ============ -->
-<section class="approaches">
-    <div class="container">
-        <div class="section-head"><h2 class="section-title" style="color:#fff;">Our Treatment Approaches</h2></div>
-        <div class="approaches-grid">
-            <div class="approach-item"><h4>Sensory Integration</h4><p>Ayres Sensory Integration (ASI) informed practices to help children process information from their bodies and environment more effectively.</p></div>
-            <div class="approach-item"><h4>ADL Training</h4><p>Specific skill-building for Activities of Daily Living such as independent dressing, hygiene, and organizational routines.</p></div>
-            <div class="approach-item"><h4>Parent Coaching</h4><p>Empowering caregivers with the tools and understanding to support their child's development at home and in the community.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ PARTNERS IN PROGRESS ============ -->
+<!-- ============ 06. FREQUENTLY ASKED QUESTIONS ============ -->
 <section class="section">
-    <div class="container partners">
-        <span class="partners-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11V7a2 2 0 0 1 2-2 2 2 0 0 1 2 2M12 11V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2v5M16 11V8a2 2 0 0 1 4 0v6a7 7 0 0 1-7 7h-1.5a5 5 0 0 1-3.6-1.5L4 15s-1-1 .5-2 2.5.5 2.5.5L8 15V7a2 2 0 0 1 4 0"/></svg></span>
-        <h2 class="section-title">Partners in Progress</h2>
-        <p class="section-sub" style="max-width:700px;">We believe therapy is most effective as a partnership. You are the expert on your child; we are the experts on developmental strategy. Together, we create a roadmap for success that extends far beyond the clinic walls.</p>
-        <div class="partners-cols">
-            <div><h5>Home Programs</h5><p>Simple, integrated activities for daily life.</p></div>
-            <div><h5>School Liaising</h5><p>Collaborating with teachers for classroom success.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section class="section tint">
     <div class="container">
-        <div class="section-head"><h2 class="section-title">Frequently Asked Questions</h2></div>
-        <div class="asm-faq" id="svc-faq">
+        <div class="section-head">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="asm-faq" id="ot-faq">
             <div class="faq-list">
-                <details class="faq-item" open>
-                    <summary><span class="q">How long does a typical OT session last?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Most clinical sessions are 45–60 minutes long, depending on the child's age, tolerance, and the specific goals defined in the assessment.</div>
+                {% for f in faqs %}
+                <details class="faq-item" {% if forloop.first %}open{% endif %}>
+                    <summary><span class="q">{{ f.q }}</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                    <div class="faq-body"><p>{{ f.a }}</p></div>
                 </details>
-                <details class="faq-item">
-                    <summary><span class="q">Can OT help with my child's handwriting?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Yes. OTs look at the root cause of handwriting difficulties, including fine motor strength, visual-motor integration, and core stability.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">Does my child need a diagnosis to start OT?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">No. We work with many children who have "functional delays" or sensory differences but may not meet the full criteria for a clinical diagnosis.</div>
-                </details>
+                {% endfor %}
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ SUCCESS MEASURES ============ -->
-<section class="section">
-    <div class="container">
-        <div class="section-head"><h2 class="section-title">What Does Success Look Like?</h2></div>
-        <div class="success-grid">
-            <div class="success-card"><div class="s-num">92%</div><p class="s-title">Increased Independence</p><p class="s-desc">Children showing improved self-care skills within 6 months.</p></div>
-            <div class="success-card"><div class="s-num">Confidence</div><p class="s-title">Meaningful Participation</p><p class="s-desc">Success is measured by how much more the child can participate in play and school.</p></div>
-            <div class="success-card"><div class="s-num">Harmony</div><p class="s-title">Family Resilience</p><p class="s-desc">Lowered stress levels for parents through better understanding of their child's needs.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ RELATED RESOURCES ============ -->
-<section class="section tint" style="padding-top:36px; padding-bottom:36px;">
-    <div class="container">
-        <p class="res-title">Explore More Resources</p>
-        <div class="res-links">
-            <a href="{% url 'blog_list' %}">Sensory Processing Guide</a>
-            <a href="{% url 'blog_list' %}">Fine Motor Home Activities</a>
-            <a href="{% url 'blog_list' %}">Handwriting Readiness</a>
-            <a href="{% url 'blog_list' %}">The Role of Play in Therapy</a>
-            <a href="{% url 'concerns' %}">Understanding Dyspraxia</a>
         </div>
     </div>
 </section>
 
 <!-- ============ FINAL CTA ============ -->
-<section class="section">
+<section class="section tint">
     <div class="container">
-        <div class="con-final-cta">
-            <h2>Ready to see your child thrive?</h2>
-            <p>Take the first step toward understanding your child's developmental profile and unlocking their full potential.</p>
-            <div class="cta-actions">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book OT Assessment</a>
-                <a href="{% url 'contact' %}" class="btn btn-ghost">Speak to our Team</a>
-                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp Us</a>
+        <div class="hp-cta">
+            <h2>Wondering Whether OT Could Help Your Child?</h2>
+            <p>Tell us what you have noticed. An assessment gives you a clear picture of your child's strengths,
+                the areas that need support and the most appropriate next step.</p>
+            <div class="hp-cta-actions">
+                <a href="{% url 'assessment' %}#booking" class="btn btn-on-teal">Book an Assessment</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light">Discuss Your Concern</a>
             </div>
         </div>
     </div>
 </section>
-
-<script>
-    document.querySelectorAll('#svc-faq .faq-item').forEach(function (el) {
-        el.addEventListener('toggle', function () {
-            if (!el.open) return;
-            document.querySelectorAll('#svc-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
-        });
-    });
-</script>
 
 {% endblock %}

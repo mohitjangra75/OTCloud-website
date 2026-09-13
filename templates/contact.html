@@ -1,45 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block main_class %}contact-page{% endblock %}
+
 {% block content %}
 
 <!-- ============ HERO ============ -->
-<section class="section ct-hero">
-    <div class="container ct-hero-grid">
-        <div>
-            <span class="badge"><span class="dot"></span> Expert Pediatric Guidance</span>
-            <h1>Every Journey Begins with a Conversation</h1>
-            <p class="hero-lead">Whether you've noticed changes in communication, behavior, movement, or attention, our team is here to listen and guide you.</p>
-            <div class="ct-hero-actions">
-                <a href="#booking-hub" class="btn btn-primary">Book an Assessment</a>
-                <a href="tel:{{ site_tel }}" class="btn btn-ghost"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
-                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a>
-            </div>
-        </div>
-        <div class="ct-hero-img"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-    </div>
-</section>
+{% include 'partials/page_hero.html' with image='assets/play-therapy-3.webp' focus='center 29%' alt='A therapist and child during a session at OT Cloud Therapy Center.' badge='Expert Pediatric Guidance' title='Every Journey Begins with a Conversation' lead="Whether you've noticed changes in communication, behaviour, movement or attention, our team is here to listen and guide you." cta1_label='Request an Appointment' cta1_url='#booking-hub' %}
 
-<!-- ============ CONNECTION CARDS ============ -->
-<section class="section" style="padding-top:0;">
+<!-- ============ WAYS TO REACH US ============ -->
+<section class="section reach-section">
     <div class="container">
-        <div class="ct-cards">
-            <div class="ct-card">
-                <span class="ctc-icon teal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-                <h3>Visit Our Center</h3><p class="ctc-addr"><strong>OT Cloud Therapy Center</strong><br>Sector 14, DLF Colony, Gurugram<br><span class="ctc-landmark">(Near Main Market)</span></p><a href="#map" class="ctc-link">Get Directions →</a>
-            </div>
-            <div class="ct-card">
-                <span class="ctc-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-                <h3>Call Us</h3><p><a href="tel:{{ site_tel }}">{{ site_phone_display }}</a></p><span class="ctc-meta">Mon–Sat, 9am–7pm</span>
-            </div>
-            <div class="ct-card">
-                <span class="ctc-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-                <h3>WhatsApp Us</h3><p>Quick responses via chat</p><a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="ctc-link">Start Chat →</a>
-            </div>
-            <div class="ct-card">
-                <span class="ctc-icon teal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span>
-                <h3>Email</h3><p><a href="mailto:{{ site_email }}">{{ site_email }}</a></p><span class="ctc-meta">Usually replies in 24h</span>
-            </div>
+        <div class="reach-panel">
+            <a class="reach-item" href="https://www.google.com/maps/search/?api=1&amp;query=Sector+14+DLF+Colony+Gurugram" target="_blank" rel="noopener">
+                <span class="reach-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                <span class="reach-label">Visit our center</span>
+                <span class="reach-value">Sector 14, DLF Colony<br>Gurugram</span>
+                <span class="reach-go">Get directions <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </a>
+            <a class="reach-item" href="tel:{{ site_tel }}">
+                <span class="reach-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                <span class="reach-label">Call us</span>
+                <span class="reach-value">{{ site_phone_display }}</span>
+                <span class="reach-meta">Mon–Fri 9am–7:30pm &middot; Sat 9am–3pm</span>
+            </a>
+            <a class="reach-item" href="{{ site_whatsapp_url }}" target="_blank" rel="noopener">
+                <span class="reach-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></span>
+                <span class="reach-label">WhatsApp</span>
+                <span class="reach-value">Message our team</span>
+                <span class="reach-go">Start chat <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </a>
+            <a class="reach-item" href="mailto:{{ site_email }}">
+                <span class="reach-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span>
+                <span class="reach-label">Email</span>
+                <span class="reach-value">{{ site_email }}</span>
+                <span class="reach-meta">Usually answered within 24 hours</span>
+            </a>
         </div>
     </div>
 </section>
@@ -49,16 +45,20 @@
     <div class="container">
         <div class="booking-hub">
             <div class="bh-panel">
-                <div>
-                    <h2>Let's Understand Your Child Together</h2>
-                    <p>Our specialists take a holistic view of every child's development. Share a few details to help us prepare for your visit.</p>
-                    <ul class="bh-checks">
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Confidential expert review</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Personalized session roadmap</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Certified clinical specialists</li>
-                    </ul>
+                <img class="bh-panel-img" src="{% static 'assets/ball-pit-play.webp' %}" alt="A therapist and child playing together at OT Cloud Therapy Center." loading="lazy">
+                <div class="bh-panel-veil"></div>
+                <div class="bh-panel-body">
+                    <div>
+                        <h2>Let's Understand Your Child Together</h2>
+                        <p>Our specialists take a holistic view of every child's development. Share a few details to help us prepare for your visit.</p>
+                        <ul class="bh-checks">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Confidential expert review</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Personalized session roadmap</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Certified clinical specialists</li>
+                        </ul>
+                    </div>
+                    <div class="bh-quote">"The first step is often the most important. We are here to support you at every stage of your child's growth."<span>— Dr. Dheeraj Suthar, OT Cloud</span></div>
                 </div>
-                <div class="bh-quote">"The first step is often the most important. We are here to support you at every stage of your child's growth."<span>— Dr. Dheeraj Suthar, OT Cloud</span></div>
             </div>
             <div class="bh-form-wrap">
                 {% if submitted %}
@@ -150,68 +150,52 @@
     </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="section tint">
+<!-- ============ VISIT THE CENTRE ============ -->
+<section class="section" id="visit" style="scroll-margin-top:90px;">
     <div class="container">
-        <div class="section-head"><h2 class="section-title">Common Questions</h2><p class="section-sub">Everything you need to know about starting your journey with OT Cloud.</p></div>
-        <div class="asm-faq" id="ct-faq">
-            <div class="faq-list">
-                <details class="faq-item" open><summary><span class="q">Do I need a doctor's referral?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">No referral needed. You can contact us directly to schedule an intake assessment for your child.</div></details>
-                <details class="faq-item"><summary><span class="q">How long does the initial assessment take?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">It takes 45 to 60 minutes, including child observation and a brief discussion with parents.</div></details>
-                <details class="faq-item"><summary><span class="q">Can both parents attend the session?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Yes, absolutely. We encourage both parents to join for a better understanding of routines.</div></details>
-                <details class="faq-item"><summary><span class="q">What age groups do you cater to?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">We support children from early infancy up to 14 years of age.</div></details>
-                <details class="faq-item"><summary><span class="q">What types of therapy do you provide?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">We offer Occupational, Speech, Behavioral, and Sensory Integration therapies.</div></details>
-                <details class="faq-item"><summary><span class="q">How soon will we see progress in our child?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Most parents notice positive developmental changes within 6 to 8 weeks of regular sessions.</div></details>
-                <details class="faq-item"><summary><span class="q">What happens after the initial assessment?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">We share a detailed evaluation report and a personalized therapy roadmap for your child.</div></details>
-                <details class="faq-item"><summary><span class="q">Can we get home strategies or activities to practice?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="faq-body">Yes, we provide custom home activity plans to support progress between sessions.</div></details>
-            </div>
+        <div class="section-head">
+            <h2 class="section-title">Visit Our Sector 14 Center</h2>
+            <p class="section-sub">Purpose-built therapy spaces in DLF Colony, Gurugram — a short walk from the Main Market.</p>
         </div>
-    </div>
-</section>
-
-<!-- ============ SHOWCASE + HOURS ============ -->
-<section class="section">
-    <div class="container showcase-grid">
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:20px;">Visit Our Gurugram center</h2>
-            <div class="showcase-imgs">
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-            </div>
+        <div class="visit-grid">
             <div class="ct-map" id="map">
-                <iframe title="OT Cloud location map" src="https://www.google.com/maps?q=Sector+14,+Gurugram,+Haryana&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe title="OT Cloud location map" src="https://www.google.com/maps?q=Sector+14,+Gurugram,+Haryana&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <p class="map-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Landmark: Near Main Market, Opposite HUDA Office, Sector 14.</p>
-        </div>
-        <div class="hours-card">
-            <h3>Clinical Hours</h3>
-            <table class="hours-table">
-                <thead><tr><th>Day</th><th>Timing</th><th>Status</th></tr></thead>
-                <tbody>
-                    <tr><td>Monday – Friday</td><td>9:00 AM – 7:00 PM</td><td><span class="badge-open">Open</span></td></tr>
-                    <tr><td>Saturday</td><td>9:00 AM – 6:00 PM</td><td><span class="badge-open">Open</span></td></tr>
-                    <tr><td>Sunday</td><td>Closed</td><td><span class="badge-closed">Closed</span></td></tr>
-                </tbody>
-            </table>
-            <div class="pro-enquiry">
-                <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a4 4 0 0 1-8 0V9a3 3 0 0 1 6 0"/><path d="M13 7a4 4 0 0 1 8 0v8a3 3 0 0 1-6 0"/><path d="M9 12h6"/></svg> Professional Enquiries</h4>
-                <p>Are you a pediatrician, school administrator, or therapist looking to collaborate with OT Cloud?</p>
-                <a href="mailto:{{ site_email }}" class="link-arrow">Partner with us →</a>
-            </div>
+            <aside class="visit-info">
+                <div class="visit-block">
+                    <span class="visit-label">Address</span>
+                    <p class="visit-addr"><strong>OT Cloud Therapy Center</strong><br>Sector 14, DLF Colony, Gurugram<br>Haryana 122001</p>
+                    <p class="visit-landmark">Near Main Market, opposite HUDA Office</p>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Sector+14+DLF+Colony+Gurugram" target="_blank" rel="noopener" class="btn btn-primary">Get Directions</a>
+                </div>
+                <div class="visit-block">
+                    <span class="visit-label">Clinical Hours</span>
+                    <ul class="visit-hours">
+                        <li><span>Monday – Friday</span><span>9:00 AM – 7:30 PM</span></li>
+                        <li><span>Saturday</span><span>9:00 AM – 3:00 PM</span></li>
+                        <li class="closed"><span>Sunday</span><span>Closed</span></li>
+                    </ul>
+                </div>
+            </aside>
         </div>
     </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
-<section class="section">
-    <div class="container">
-        <div class="con2-cta">
-            <h2>Ready to Take the First Step?</h2>
-            <p>Book your initial assessment today and discover how we can support your child's journey.</p>
-            <div class="con2-cta-actions">
-                <a href="#booking-hub" class="btn btn-on-teal">Book Assessment</a>
-                <a href="tel:{{ site_tel }}" class="btn btn-outline-light">Call {{ site_phone_display }}</a>
-            </div>
+<!-- ============ PROFESSIONAL ENQUIRIES ============ -->
+<section class="pro-band">
+    <div class="container pro-band-inner">
+        <div class="pro-band-copy">
+            <span class="pro-band-eyebrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-3V5.5A2.5 2.5 0 0 0 14.5 3h-5A2.5 2.5 0 0 0 7 5.5V7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 7V5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5V7"/><path d="M2 12.5h20"/></svg>
+                Professional Enquiries
+            </span>
+            <h2>Are you a pediatrician, school administrator or therapist?</h2>
+            <p>We work alongside doctors, schools and fellow clinicians — from shared assessments and referrals to
+                teacher workshops and in-school developmental support.</p>
+        </div>
+        <div class="pro-band-actions">
+            <a href="mailto:{{ site_email }}?subject=Professional%20collaboration%20enquiry" class="btn btn-on-teal">Partner with us →</a>
+            <a href="tel:{{ site_tel }}" class="pro-band-link">Or speak to our clinical team</a>
         </div>
     </div>
 </section>

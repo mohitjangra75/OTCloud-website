@@ -180,7 +180,7 @@ SITE_NAME = 'OT Cloud Therapy Center'
 
 # Top announcement / workshop bar. Edit the text/link here (or set enabled=False to hide).
 SITE_ANNOUNCEMENT = {
-    'enabled': True,
+    'enabled': False,
     'text': 'Free Parent Workshop: Managing ADHD at Home — this Saturday at our Sector 14 center.',
     'link_text': 'Reserve a seat',
     'link_url': '/contact/',

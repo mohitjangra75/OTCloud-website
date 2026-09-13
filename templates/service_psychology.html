@@ -7,7 +7,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {% for q, a in faqs %}{ "@type": "Question", "name": "{{ q|escapejs }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ a|escapejs }}" } }{% if not forloop.last %},{% endif %}
+    {% for f in faqs %}{ "@type": "Question", "name": "{{ f.q|escapejs }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a|escapejs }}" } }{% if not forloop.last %},{% endif %}
     {% endfor %}
   ]
 }
@@ -16,161 +16,182 @@
 
 {% block content %}
 
-<!-- ============ HERO ============ -->
-<section class="svc-hero">
-    <div class="container svc-hero-grid">
-        <div>
-            <span class="badge"><span class="dot"></span> Child Psychology &amp; Behavioural Support</span>
-            <h1>Understanding Behaviour, Supporting Emotions and Helping Children Thrive</h1>
-            <p class="hero-lead">Every child experiences emotions differently. Behaviour is often a child's way of expressing something they cannot yet explain with words.</p>
-            <div class="svc-hero-actions">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book a Psychology Assessment</a>
-                <a href="{% url 'contact' %}" class="btn btn-ghost">Speak to Our Team</a>
-            </div>
-        </div>
-        <div class="svc-hero-visual">
-            <div class="svc-hero-img">
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- ============ 01. HERO ============ -->
+{% include 'partials/page_hero.html' with image='assets/play-therapy-1.webp' focus='center 12%' alt='A small-group session supporting social and emotional skills at OT Cloud.' badge='Child Psychology' title='Child Psychology' sub="Understanding your child's emotions, behaviour and everyday experiences." lead='Child Psychology focuses on understanding how children think, feel, behave and respond to everyday situations. At OTCloud Therapy Center, psychological support is tailored to the child’s age, developmental needs and individual concerns.' cta1_label='Discuss Your Concern' cta1_url='/contact/' cta2_label='Book a Consultation' cta2_url='/assessment/#booking' tags=hero_tags %}
 
-<!-- ============ DEFINITION ============ -->
+<!-- ============ 02. WHAT IS CHILD PSYCHOLOGY? ============ -->
 <section class="section tint">
-    <div class="container psy-def-grid">
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:14px;">What is Child Psychology &amp; Behavioural Support?</h2>
-            <p class="msg">We provide a professional, evidence-based service designed to help children navigate their internal emotional world. Our clinicians work collaboratively with families to decode complex behaviours and develop sustainable coping strategies that foster long-term emotional resilience.</p>
-        </div>
-        <div class="psy-chips">
-            <div class="psy-chip"><span class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg></span> Emotional Regulation</div>
-            <div class="psy-chip"><span class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></span> Behaviour Understanding</div>
-            <div class="psy-chip"><span class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Social Skills</div>
-            <div class="psy-chip"><span class="pc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/><path d="M12 10v4"/></svg></span> Coping Strategies</div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ CORE PHILOSOPHY ============ -->
-<section class="section">
-    <div class="container">
-        <div class="philosophy-band">
-            <h2>Behaviour Is Communication</h2>
-            <p>When a child struggles, they often lack the linguistic tools to express anxiety, sensory overload, or the stress of transitions. Instead, these feelings manifest as behaviour. Our primary mission is to answer one fundamental question:</p>
-            <p class="philosophy-quote">"What is this behaviour trying to communicate?"</p>
-        </div>
-    </div>
-</section>
-
-<!-- ============ WHO CAN BENEFIT ============ -->
-<section class="section">
-    <div class="container">
-        <div class="section-head"><h2 class="section-title">Who Can Benefit?</h2></div>
-        <div class="signs8-grid">
-            <div class="sign8-card"><span class="s8-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span><h3>Emotional Regulation Difficulties</h3><p>Intense emotional outbursts or difficulty calming down after a disappointment.</p></div>
-            <div class="sign8-card"><span class="s8-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><h3>Behavioural Challenges</h3><p>Persistent defiance, aggression, or difficulty following routines at home or school.</p></div>
-            <div class="sign8-card"><span class="s8-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.97 0 9-4.03 9-9-4.97 0-9 4.03-9 9zM12 22c0-4.97-4.03-9-9-9 0 4.97 4.03 9 9 9z"/><path d="M12 22V8"/></svg></span><h3>Anxiety</h3><p>Excessive worrying, school refusal, or separation anxiety that impacts daily life.</p></div>
-            <div class="sign8-card"><span class="s8-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3>Social Difficulties</h3><p>Struggling to make friends, understanding social cues, or managing peer conflicts.</p></div>
-            <div class="sign8-card"><span class="s8-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><h3>Attention &amp; Self-Control</h3><p>Impulsivity, difficulty concentrating, or struggling to wait their turn.</p></div>
-            <div class="sign8-card"><span class="s8-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.5 5.5 21 7.5 13.5 2 9 9 9 12 2"/></svg></span><h3>Self-Esteem</h3><p>Negative self-talk, lack of confidence, or fear of trying new things.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ CONDITIONS ============ -->
-<section class="section tint">
-    <div class="container" style="text-align:center;">
-        <div class="section-head">
-            <h2 class="section-title">Specialised Clinical Support</h2>
-            <p class="section-sub">While we support children with various neurodevelopmental profiles, our focus remains on the individual emotional needs rather than just the diagnosis.</p>
-        </div>
-        <div class="cond-chips">{% for c in conditions %}<span>{{ c }}</span>{% endfor %}</div>
-    </div>
-</section>
-
-<!-- ============ AREAS WE ASSESS ============ -->
-<section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Comprehensive Assessment Areas</h2>
-            <p class="section-sub">A holistic view of your child's developmental profile.</p>
+            <h2 class="section-title">What Does Child Psychology Help With?</h2>
         </div>
-        <div class="assess-pills">{% for a in assess %}<span>{{ a }}</span>{% endfor %}</div>
-    </div>
-</section>
-
-<!-- ============ CLINICAL JOURNEY (dark) ============ -->
-<section class="psy-journey">
-    <div class="container">
-        <div class="section-head"><h2 class="section-title" style="color:#fff;">Our 6-Step Clinical Journey</h2></div>
-        <div class="psy-journey-grid">
-            <div class="psy-step"><span class="psy-step-num">1</span><div><h4>Parent Consultation</h4><p>A deep dive into developmental history and current concerns.</p></div></div>
-            <div class="psy-step"><span class="psy-step-num">2</span><div><h4>Child Observation</h4><p>Naturalistic observation in a structured play or social environment.</p></div></div>
-            <div class="psy-step"><span class="psy-step-num">3</span><div><h4>Psychological Assessment</h4><p>Standardised tools to measure cognitive and emotional profiles.</p></div></div>
-            <div class="psy-step"><span class="psy-step-num">4</span><div><h4>Feedback Discussion</h4><p>Transparently sharing findings and decoding the 'why' behind behaviours.</p></div></div>
-            <div class="psy-step"><span class="psy-step-num">5</span><div><h4>Collaborative Goal Setting</h4><p>Setting realistic, meaningful milestones for the child and family.</p></div></div>
-            <div class="psy-step"><span class="psy-step-num">6</span><div><h4>Intervention Programme</h4><p>Ongoing therapy and strategies to support clinical growth.</p></div></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ THERAPEUTIC METHODS ============ -->
-<section class="section">
-    <div class="container ei-power-grid">
-        <div class="ei-images">
-            <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-            <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-        </div>
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:20px;">Our Therapeutic Methods</h2>
-            <div class="obs-features">
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg></span><div><h4>Play-based Counselling</h4><p>Using the child's natural language — play — to explore complex emotions safely.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span><div><h4>Emotional Identification</h4><p>Developing the vocabulary and physiological awareness to name what they feel.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><h4>Parent Coaching</h4><p>Empowering parents with clinical tools to manage difficult moments at home.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><h4>Cognitive Behavioural Therapy (CBT)</h4><p>Adapted for children to help reframe negative thought patterns and fears.</p></div></div>
+        <div class="ot-what-grid">
+            <div class="ot-what-copy">
+                <p class="msg">Child Psychology looks at a child's <strong>emotional, behavioural, social and cognitive
+                    development</strong> and how these areas may affect home, school and relationships.</p>
+                <p class="msg">Support can help children understand their emotions, develop appropriate ways to respond
+                    to situations and build skills for managing everyday challenges.</p>
+            </div>
+            <div class="ot-what-media">
+                <img src="{% static 'assets/feeding-activity.webp' %}" alt="Two children interacting during a session at OT Cloud Therapy Center." loading="lazy">
             </div>
         </div>
-    </div>
-</section>
-
-<!-- ============ PARENT PARTNERSHIP ============ -->
-<section class="section tint">
-    <div class="container">
-        <div class="psy-partner">
-            <h2 class="section-title" style="text-align:left; margin-bottom:12px;">Empowering You as a Parent</h2>
-            <p class="msg" style="margin-bottom:24px;">We don't just work with your child; we partner with you. Our goal is to shift the family dynamic from frustration to connection.</p>
-            <div class="psy-partner-grid">
-                {% for p in partner %}
-                <div class="psy-partner-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> {{ p }}</div>
-                {% endfor %}
+        <div class="skill-grid">
+            {% for p in pillars %}
+            <div class="skill-card">
+                <span class="blk-head">
+                    <span class="skill-icon">{{ p.icon|safe }}</span>
+                    <h3>{{ p.title }}</h3>
+                </span>
+                <p>{{ p.desc }}</p>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ SIGNS OF PROGRESS ============ -->
-<section class="section">
-    <div class="container">
-        <div class="section-head"><h2 class="section-title">Measuring Success: Signs of Progress</h2></div>
-        <div class="success-grid">
-            {% for p in progress %}
-            <div class="success-card"><div class="s-num">{{ forloop.counter|stringformat:"02d" }}</div><p class="s-title">{{ p.title }}</p><p class="s-desc">{{ p.desc }}</p></div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- ============ 03. WHEN SHOULD PARENTS CONSIDER SUPPORT? ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">When Your Child's Behaviour or Emotions Need Extra Support</h2>
+            <p class="section-sub">Parents may consider a child psychology consultation when they notice:</p>
+        </div>
+        <div class="signs8-grid">
+            {% for s in signs %}
+            <div class="sign8-card">
+                <span class="blk-head">
+                    <span class="s8-icon">{{ s.icon|safe }}</span>
+                    <h3>{{ s.title }}</h3>
+                </span>
+                <p>{{ s.desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ 05. CONCERNS WE CAN SUPPORT ============ -->
 <section class="section tint">
     <div class="container">
-        <div class="section-head"><h2 class="section-title">Frequently Asked Questions</h2></div>
-        <div class="asm-faq" id="psy-faq">
+        <div class="section-head">
+            <h2 class="section-title">Child Psychology for Different Emotional &amp; Behavioural Needs</h2>
+            <p class="section-sub">Support may be considered for children experiencing:</p>
+        </div>
+        <div class="chip-grid">
+            {% for c in chips %}
+            <span class="chip-tile">
+                <span class="chip-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                {{ c }}
+            </span>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ 06. OUR PSYCHOLOGICAL SUPPORT PROCESS ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">A Thoughtful Approach to Understanding Your Child</h2>
+            <p class="section-sub">Each stage builds on the one before it, so any support we suggest is based
+                on what we actually understand about your child.</p>
+        </div>
+        <ol class="proc-steps">
+            {% for step in process %}
+            <li class="proc-step">
+                <span class="blk-head">
+                    <span class="proc-num">{{ forloop.counter }}</span>
+                    <h3>{{ step.title }}</h3>
+                </span>
+                <p>{{ step.desc }}</p>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>
+
+<!-- ============ 07. CHILD-CENTRED PSYCHOLOGICAL SUPPORT ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Support That Fits the Child</h2>
+        </div>
+        <div class="concern-intro-text">
+            <p class="msg">Children may respond differently to psychological support depending on their age,
+                communication abilities and developmental level.</p>
+            <p class="msg">Our sessions can use <strong>age-appropriate conversations, play-based activities,
+                visual tools, structured tasks and practical strategies</strong> where appropriate.</p>
+        </div>
+        <div class="method-tiles">
+            {% for m in methods %}
+            <div class="method-tile">
+                <span class="blk-head">
+                    <span class="mt-icon">{{ m.icon|safe }}</span>
+                    <span class="mt-title">{{ m.title }}</span>
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ 08. PARENT & FAMILY INVOLVEMENT ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Supporting the Child Beyond the Session</h2>
+        </div>
+        <div class="ot-what-grid single">
+            <div class="ot-what-copy">
+                <p class="msg lead"><strong>A child's emotional and behavioural development is influenced by their
+                    everyday environment.</strong></p>
+                <p class="msg">Parents may receive practical guidance related to:</p>
+                <div class="guide-tiles">
+                    {% for g in guidance %}<span class="guide-tile">{{ g }}</span>{% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 09. GALLERY ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Child Psychology at OTCloud</h2>
+            <p class="section-sub">A look at how sessions and parent guidance take place at our Sector 14 centre.</p>
+        </div>
+        <div class="ot-gallery gal-psy">
+            {% for g in gallery %}
+            <figure class="otg-item {{ g.size }}{% if not g.image %} no-photo{% endif %}">
+                {% if g.image %}
+                <img src="{% static g.image %}" alt="{{ g.title }} at OT Cloud Therapy Center." loading="lazy">
+                {% else %}
+                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo coming soon</span></div>
+                {% endif %}
+                <figcaption><span class="otg-title">{{ g.title }}</span></figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ 10. FREQUENTLY ASKED QUESTIONS ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="asm-faq faq-plus" id="psy-faq">
             <div class="faq-list">
-                {% for q, a in faqs %}
-                <details class="faq-item"{% if forloop.first %} open{% endif %}>
-                    <summary><span class="q">{{ q }}</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">{{ a }}</div>
+                {% for f in faqs %}
+                <details class="faq-item" {% if forloop.first %}open{% endif %}>
+                    <summary>
+                        <span class="q">{{ f.q }}</span>
+                        <span class="faq-pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line class="pm-v" x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </summary>
+                    <div class="faq-body"><p>{{ f.a }}</p></div>
                 </details>
                 {% endfor %}
             </div>
@@ -178,55 +199,19 @@
     </div>
 </section>
 
-<!-- ============ RESOURCES ============ -->
-<section class="section">
-    <div class="container">
-        <div class="services-head">
-            <div>
-                <h2 class="section-title" style="text-align:left;">Clinical Insights for Parents</h2>
-                <p style="color:var(--on-surface-variant); margin-top:8px;">Evidence-based articles to support your journey at home.</p>
-            </div>
-            <a href="{% url 'blog_list' %}" class="link-arrow">View All Resources →</a>
-        </div>
-        <div class="resources-grid">
-            <a href="{% url 'blog_list' %}" class="resource-card">
-                <div class="rc-thumb"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <span class="rc-tag">Behaviour</span><h3>Tantrums vs Meltdowns: How to Tell the Difference</h3><p>Learn the biological differences between goal-oriented tantrums and sensory-driven meltdowns.</p>
-            </a>
-            <a href="{% url 'blog_list' %}" class="resource-card">
-                <div class="rc-thumb"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <span class="rc-tag">At Home</span><h3>Building Emotional Regulation at Home</h3><p>Simple daily activities and environmental tweaks to help your child find their 'green zone'.</p>
-            </a>
-            <a href="{% url 'blog_list' %}" class="resource-card">
-                <div class="rc-thumb"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <span class="rc-tag">Strategy</span><h3>The Power of Positive Reinforcement</h3><p>Why praising the effort, not just the outcome, is the key to lasting behavioural change.</p>
-            </a>
-        </div>
-    </div>
-</section>
-
 <!-- ============ FINAL CTA ============ -->
-<section class="section">
+<section class="section tint">
     <div class="container">
-        <div class="con2-cta">
-            <h2>Every Child Deserves to Feel Understood, Safe and Confident</h2>
-            <p>Take the first step toward a more peaceful and supportive environment for your child today.</p>
-            <div class="con2-cta-actions">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-on-teal">Book a Psychology Assessment</a>
-                <a href="{% url 'contact' %}" class="btn btn-outline-light">Speak to Our Team</a>
-                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp Us</a>
+        <div class="hp-cta">
+            <h2>Concerned About Your Child's Emotions or Behaviour?</h2>
+            <p>Tell us what you have noticed at home or school. A consultation helps clarify what is happening
+                and which support, if any, would help.</p>
+            <div class="hp-cta-actions">
+                <a href="{% url 'contact' %}" class="btn btn-on-teal">Discuss Your Concern</a>
+                <a href="{% url 'assessment' %}#booking" class="btn btn-outline-light">Book a Consultation</a>
             </div>
         </div>
     </div>
 </section>
-
-<script>
-    document.querySelectorAll('#psy-faq .faq-item').forEach(function (el) {
-        el.addEventListener('toggle', function () {
-            if (!el.open) return;
-            document.querySelectorAll('#psy-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
-        });
-    });
-</script>
 
 {% endblock %}

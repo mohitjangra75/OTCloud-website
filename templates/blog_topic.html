@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="section blog-topic-hero">
+    <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+            <a href="{% url 'home' %}">Home</a> <span>→</span>
+            <a href="{% url 'resources' %}">Learning Center</a> <span>→</span>
+            <a href="{% url 'blog_list' %}">Blog</a> <span>→</span>
+            <span class="crumb-current">{{ topic_title }}</span>
+        </nav>
+        <h1>{{ topic_title }}</h1>
+        <p class="hero-lead">{{ topic_desc }}</p>
+        <nav class="blog-cat-nav" aria-label="Blog topics">
+            <a href="{% url 'blog_list' %}">All</a>
+            {% for t in topics %}
+            <a href="{% url 'blog_topic' t.slug %}" {% if t.slug == topic %}class="active" aria-current="page"{% endif %}>{{ t.title }}</a>
+            {% endfor %}
+        </nav>
+    </div>
+</section>
+
+<section class="section tint">
+    <div class="container">
+        {% if posts %}
+        <div class="blog-grid">
+            {% for post in posts %}
+            <article class="blog-card">
+                <a href="{{ post.get_absolute_url }}" class="thumb">
+                    {% if post.cover_image %}<img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy" decoding="async">
+                    {% else %}<span class="ph">OT Cloud</span>{% endif %}
+                </a>
+                <div class="body">
+                    <div class="meta">{% if post.is_guide %}Guide{% else %}{{ post.get_category_display }}{% endif %}</div>
+                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
+                    <div class="blog-card-foot">
+                        <span class="read-time">{{ post.read_minutes }} min read</span>
+                        <a href="{{ post.get_absolute_url }}" class="read-more">{% if post.is_guide %}Read Guide →{% else %}Read Article →{% endif %}</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="blog-empty">Nothing published under this topic yet. Explore the
+            <a href="{% url 'blog_list' %}">full blog</a> in the meantime.</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

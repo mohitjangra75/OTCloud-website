@@ -11,7 +11,7 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         return ['home', 'about', 'services', 'service_ot', 'service_speech', 'service_early',
-                'service_se', 'service_psychology', 'concerns', 'assessment', 'resources',
+                'service_se', 'service_psychology', 'service_physio', 'concerns', 'assessment', 'resources',
                 'blog_list', 'contact', 'milestone_check', 'privacy', 'terms']
 
     def location(self, item):
@@ -31,3 +31,16 @@ class BlogSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.updated_at
+
+
+class BlogTopicSitemap(Sitemap):
+    """One entry per blog topic listing, e.g. /blog/topic/sensory-processing/."""
+    changefreq = 'weekly'
+    priority = 0.5
+    protocol = 'https'
+
+    def items(self):
+        return [key for key, _label in BlogPost.CATEGORY_CHOICES]
+
+    def location(self, topic):
+        return reverse('blog_topic', args=[topic])

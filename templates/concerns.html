@@ -4,18 +4,7 @@
 {% block content %}
 
 <!-- ============ 1. HERO ============ -->
-<section class="section con2-hero">
-    <div class="container">
-        <h1>Understand Your Child's Development with Greater Clarity</h1>
-        <p class="hero-lead">Every child develops at their own pace. However, persistent differences in communication, social interaction, attention, sensory responses, behaviour, learning, movement or everyday activities may indicate that additional guidance could be helpful.</p>
-        <p class="hero-lead">At OTCloud, we help families understand their child's individual strengths, identify areas requiring support and determine the most appropriate next step through professional observation and assessment.</p>
-        <p class="con-reassure">Not every developmental difference indicates a diagnosis. The right guidance begins with understanding the individual child.</p>
-        <div class="con2-cta-actions" style="justify-content:center;">
-            <a href="{% url 'contact' %}" class="btn btn-primary">Discuss Your Concern</a>
-            <a href="{% url 'assessment' %}#booking" class="btn btn-ghost">Book an Assessment</a>
-        </div>
-    </div>
-</section>
+{% include 'partials/page_hero.html' with image='assets/play-therapy-2.webp' focus='center 37%' alt='A therapist working through a play-based activity with a child at OT Cloud.' badge='Developmental Concerns' title="Understand Your Child's Development with Greater Clarity" lead='Every child develops at their own pace. However, persistent differences in communication, social interaction, attention, sensory responses, behaviour, learning, movement or everyday activities may indicate that additional guidance could be helpful.' lead2="At OTCloud, we help families understand their child's individual strengths, identify areas requiring support and determine the most appropriate next step through professional observation and assessment." cta1_label='Discuss Your Concern' cta1_url='/contact/' cta2_label='Book an Assessment' cta2_url='/assessment/#booking' %}
 
 <!-- ============ 2. DEVELOPMENTAL CONCERN AREAS ============ -->
 <section class="section tint">
@@ -438,17 +427,38 @@
             </ul>
         </div>
 
-        <div class="medical-box">
-            <span class="mb-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
-            <div>
-                <h3>Some Concerns Also Require Medical Evaluation</h3>
-                <p>Contact your child's paediatrician when concerns involve hearing, vision, feeding, swallowing, growth, sleep, pain, seizures, unusual movements, persistent weakness or a loss of previously acquired skills.</p>
-                <p><strong>Seek urgent medical assistance</strong> for sudden loss of movement or awareness, breathing difficulty, choking, severe injury, prolonged seizure activity or any condition in which the child appears acutely unwell.</p>
+    </div>
+</section>
+
+<!-- ============ 5. MEDICAL EVALUATION ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Some Concerns Also Require Medical Evaluation</h2>
+            <p class="section-sub">Some developmental concerns benefit from input from both therapy professionals and medical professionals.</p>
+        </div>
+        <div class="med-panel">
+            <p class="med-lead">Contact your child's paediatrician when concerns involve:</p>
+            <div class="med-flags">
+                {% for flag in medical_flags %}<span class="med-flag">{{ flag }}</span>{% endfor %}
+            </div>
+            <div class="med-urgent">
+                <span class="mb-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.6 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+                <div>
+                    <h3>Seek urgent medical assistance</h3>
+                    <p>Seek urgent medical help for sudden loss of movement or awareness, breathing difficulty, choking, severe injury, prolonged seizure activity or any situation in which the child appears acutely unwell.</p>
+                </div>
             </div>
         </div>
+    </div>
+</section>
 
+<!-- ============ 6. NOT SURE WHETHER AN ASSESSMENT IS NEEDED ============ -->
+<section class="section tint">
+    <div class="container">
         <div class="guidance-card">
             <h3>Not Sure Whether an Assessment Is Needed?</h3>
+            <p><strong>You do not need to have a diagnosis before asking for guidance.</strong></p>
             <p>Speak with our team about what you have noticed, how long it has been present and whether it is affecting your child's participation at home, school or in the community. A preliminary conversation can help determine whether your child may benefit from an assessment, another professional referral or continued developmental monitoring.</p>
             <div class="con2-cta-actions">
                 <a href="{% url 'contact' %}" class="btn btn-on-teal">Discuss Your Concern</a>
@@ -458,11 +468,12 @@
     </div>
 </section>
 
-<!-- ============ 5. CONCERNS AND CONDITIONS ============ -->
+<!-- ============ 7. CONDITIONS AND CONCERNS SUPPORTED ============ -->
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Concerns and Conditions Supported at OTCloud</h2>
+            <h2 class="section-title">Conditions &amp; Concerns Supported at OTCloud</h2>
+            <p class="section-sub">Understanding conditions beyond the diagnosis.</p>
         </div>
         <div class="concern-intro-text">
             <p class="msg">Children may come to OTCloud with an existing diagnosis, a professional referral or developmental concerns that have not yet been formally identified.</p>
@@ -470,123 +481,32 @@
         </div>
 
         <div class="acc-list">
-            <details class="acc-item" name="con-acc-2"><summary><span>Autism Spectrum Disorder</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">A neurodevelopmental condition associated with differences in social communication, interaction and patterns of behaviour, interests or sensory responses.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Functional communication</li>
-                    <li>Joint attention and social participation</li>
-                    <li>Play and learning readiness</li>
-                    <li>Sensory and emotional regulation</li>
-                    <li>Daily living skills</li>
-                    <li>Parent guidance and environmental support</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Autism Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Attention-Deficit / Hyperactivity Disorder</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">A neurodevelopmental condition involving persistent patterns of inattention, hyperactivity and/or impulsivity that interfere with functioning across relevant environments.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Attention and task engagement</li>
-                    <li>Impulse control and self-regulation</li>
-                    <li>Executive functioning</li>
-                    <li>Classroom participation</li>
-                    <li>Organisation and routine management</li>
-                    <li>Parent and school strategies</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About ADHD Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Speech and Language Delay</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Difficulties that may affect speech sound production, understanding, expression, social communication, fluency or the effective use of language.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Receptive language</li>
-                    <li>Expressive language</li>
-                    <li>Speech clarity</li>
-                    <li>Functional communication</li>
-                    <li>Social communication</li>
-                    <li>Parent-mediated communication strategies</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Speech and Language Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Global Developmental Delay</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Significant delay in two or more developmental areas in a young child, such as communication, cognition, movement, social participation or daily living skills.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Early communication</li>
-                    <li>Play and cognitive skills</li>
-                    <li>Motor development</li>
-                    <li>Sensory regulation</li>
-                    <li>Self-care participation</li>
-                    <li>Coordinated multidisciplinary intervention</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Developmental Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Cerebral Palsy</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">A group of conditions affecting movement and posture due to a non-progressive disturbance in the developing brain. Functional presentation differs considerably between children.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Postural control and mobility</li>
-                    <li>Upper-limb and hand function</li>
-                    <li>Positioning and equipment needs</li>
-                    <li>Feeding and daily activities</li>
-                    <li>Communication and school access</li>
-                    <li>Independence and participation</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Cerebral Palsy Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Down Syndrome</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">A genetic condition that may influence muscle tone, movement, communication, learning and daily functioning.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Early motor development</li>
-                    <li>Communication and language</li>
-                    <li>Fine-motor and visual-motor skills</li>
-                    <li>Learning readiness</li>
-                    <li>Self-care independence</li>
-                    <li>Social and community participation</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Down Syndrome Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Developmental Coordination Difficulties</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Children with developmental coordination difficulties may find movement-based tasks harder to learn and perform than expected for their age.</p>
-                <p class="cc-label">Parents may notice</p>
-                <ul class="notice-list">
-                    <li>Frequent clumsiness or falling</li>
-                    <li>Difficulty learning new movements</li>
-                    <li>Poor handwriting or tool use</li>
-                    <li>Avoidance of sports and playground activities</li>
-                    <li>Slow dressing or self-care</li>
-                    <li>Difficulty organising multistep motor tasks</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Coordination Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Learning Difficulties</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Difficulties that may affect reading, spelling, written expression, mathematics, memory, processing speed or classroom participation.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Foundational academic skills</li>
-                    <li>Individual learning strategies</li>
-                    <li>Visual-perceptual and visual-motor abilities</li>
-                    <li>Attention and working memory</li>
-                    <li>Classroom participation</li>
-                    <li>Confidence and task persistence</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Learning Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Sensory Processing Difficulties</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">Difficulties that may affect how a child notices, organises and responds to sensory information. They can occur independently or alongside other developmental conditions.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Understanding sensory patterns</li>
-                    <li>Improving participation in daily routines</li>
-                    <li>Environmental adaptations</li>
-                    <li>Regulation strategies</li>
-                    <li>Body awareness and motor planning</li>
-                    <li>Parent and school guidance</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Sensory Support →</a></div></details>
-            <details class="acc-item" name="con-acc-2"><summary><span>Emotional and Behavioural Concerns</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary><div class="acc-body"><p class="cc-desc">May involve anxiety, inflexibility, aggression, withdrawal, frequent dysregulation or difficulty coping with everyday demands. Support begins by understanding the possible function of the behaviour and its contributing factors.</p>
-                <p class="cc-label">Support may focus on</p>
-                <ul class="notice-list">
-                    <li>Emotional identification and regulation</li>
-                    <li>Functional communication</li>
-                    <li>Predictable routines and transitions</li>
-                    <li>Positive behaviour support</li>
-                    <li>Coping and problem-solving skills</li>
-                    <li>Parent and school consultation</li>
-                </ul>
-                <a href="{% url 'contact' %}" class="link-arrow">Learn About Behaviour Support →</a></div></details>
+            {% for c in conditions %}
+            <details class="acc-item" name="con-acc-2" id="{{ c.anchor }}" style="scroll-margin-top:100px" {% if forloop.first %}open{% endif %}>
+                <summary><span>{{ c.title }}</span><span class="acc-chevron"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+                <div class="acc-body">
+                    <p class="cc-desc">{{ c.desc }}</p>
+                    <p class="cc-label">{{ c.notice_label }}</p>
+                    <ul class="notice-list">
+                        {% for point in c.notice %}<li>{{ point }}</li>{% endfor %}
+                    </ul>
+                    <p class="cc-label">How OTCloud may support</p>
+                    <p class="cc-support">{{ c.support }}</p>
+                    <div class="cc-services">
+                        <span class="ccs-label">Related Services</span>
+                        {% for s in c.services %}<a href="{% url s.url %}" class="ccs-chip">{{ s.label }}</a>{% endfor %}
+                    </div>
+                    <a href="{% url 'blog_topic' c.topic %}" class="link-arrow">{{ c.learn_label }} →</a>
+                </div>
+            </details>
+            {% endfor %}
         </div>
 
         <p class="con-disclaimer">The information above describes broad areas of support and should not be used for self-diagnosis. Diagnostic evaluation must be completed by appropriately qualified professionals using clinical history, direct assessment and recognised diagnostic criteria.</p>
     </div>
 </section>
 
-<!-- ============ 6. FAQ ============ -->
+<!-- ============ 8. FAQ ============ -->
 <section class="section tint">
     <div class="container">
         <div class="section-head">
@@ -607,7 +527,7 @@
     </div>
 </section>
 
-<!-- ============ 7. PARENT RESOURCES ============ -->
+<!-- ============ 9. PARENT RESOURCES ============ -->
 <section class="section">
     <div class="container">
         <div class="section-head">
@@ -649,7 +569,7 @@
     </div>
 </section>
 
-<!-- ============ 8. FINAL CTA ============ -->
+<!-- ============ 10. FINAL CTA ============ -->
 <section class="section tint">
     <div class="container">
         <div class="con2-cta">
@@ -687,6 +607,22 @@
             document.querySelectorAll('#con-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
         });
     });
+</script>
+
+<script>
+    // Service pages link straight to a condition (e.g. /concerns/#autism) — open it on arrival.
+    (function () {
+        function openFromHash() {
+            var hash = window.location.hash.slice(1);
+            if (!hash) return;
+            var el = document.getElementById(hash);
+            if (!el || el.tagName !== 'DETAILS') return;
+            el.open = true;
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        openFromHash();
+        window.addEventListener('hashchange', openFromHash);
+    })();
 </script>
 
 {% endblock %}

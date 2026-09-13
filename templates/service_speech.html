@@ -7,9 +7,8 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "My child isn't talking yet. Should I wait?", "acceptedAnswer": { "@type": "Answer", "text": "Early intervention is key. Waiting and seeing can often delay progress. If you have concerns about milestones, a professional screening is the best first step." } },
-    { "@type": "Question", "name": "Does a speech delay mean my child has Autism?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. While communication challenges are a trait of Autism, speech delays occur for many reasons. An assessment helps differentiate between language production and social communication needs." } },
-    { "@type": "Question", "name": "We speak two languages at home. Is this causing the delay?", "acceptedAnswer": { "@type": "Answer", "text": "Research shows bilingualism does not cause speech delays. However, bilingual children may distribute their vocabulary across both languages." } }
+    {% for f in faqs %}{ "@type": "Question", "name": "{{ f.q|escapejs }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a|escapejs }}" } }{% if not forloop.last %},{% endif %}
+    {% endfor %}
   ]
 }
 </script>
@@ -17,169 +16,154 @@
 
 {% block content %}
 
-<!-- ============ HERO ============ -->
-<section class="svc-hero">
-    <div class="container svc-hero-grid">
-        <div>
-            <span class="badge"><span class="dot"></span> Speech &amp; Language Therapy for Children</span>
-            <h1>Helping Children Communicate with <span class="text-teal">Confidence</span>, <span class="text-teal">Understanding</span> and <span class="text-teal">Connection</span>.</h1>
-            <p class="hero-lead">Communication is the foundation of every relationship and the gateway to learning. Our specialized speech-language therapy addresses every facet of communication to unlock your child's full potential.</p>
-            <div class="svc-hero-actions">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book a Speech &amp; Language Assessment</a>
-                <a href="tel:{{ site_tel }}" class="btn btn-ghost">Call Our Team</a>
-            </div>
-        </div>
-        <div class="svc-hero-visual">
-            <div class="svc-hero-img">
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- ============ 01. HERO ============ -->
+{% include 'partials/page_hero.html' with image='assets/therapist-child-interaction.webp' focus='center 45%' alt='A group communication session at OT Cloud Therapy Center.' badge='Speech & Language Therapy' title='Helping children communicate, understand and connect with confidence' lead='Speech and language therapy helps children develop the skills they need to understand language, express themselves, speak clearly, communicate their needs and participate in everyday interactions.' lead2="At OTCloud Therapy Center, our speech and language therapy is individualized to each child's communication needs, developmental level, strengths and everyday goals." cta1_label='Book a Speech Assessment' cta1_url='/assessment/#booking' cta2_label='Discuss Your Concern' cta2_url='/contact/' tags=hero_tags %}
 
-<!-- ============ WHAT IS SPEECH THERAPY ============ -->
+<!-- ============ 02. WHAT IS SPEECH & LANGUAGE THERAPY? ============ -->
 <section class="section tint">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">What is Speech &amp; Language Therapy?</h2>
-            <p class="section-sub">It's common to think it's just about 'not talking'. In reality, it covers the entire spectrum of human communication.</p>
+            <h2 class="section-title">What Is Speech &amp; Language Therapy?</h2>
         </div>
-        <div class="cards-2">
-            <div class="sign8-card">
-                <span class="s8-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg></span>
-                <h3>Understanding</h3>
-                <p>Processing instructions, learning vocabulary, and making sense of the world.</p>
+        <div class="ot-what-grid reverse">
+            <div class="ot-what-copy">
+                <p class="msg lead"><strong>Speech and language therapy helps children develop the skills needed
+                    to communicate and interact with others.</strong></p>
+                <p class="msg">Communication is more than speaking. It can include understanding what others say,
+                    using words and sentences, answering questions, expressing needs, having conversations, using
+                    gestures and participating socially.</p>
+                <p class="msg">A speech-language therapist looks at the different parts of communication and
+                    identifies the skills that can be supported through individualized therapy.</p>
             </div>
-            <div class="sign8-card">
-                <span class="s8-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-                <h3>Social Interaction</h3>
-                <p>Understanding non-verbal cues, maintaining eye contact, and turn-taking.</p>
+            <div class="ot-what-media">
+                <img src="{% static 'assets/self-care-1.webp' %}" alt="A child practising drinking independently — feeding and oral skills are part of speech and language therapy." loading="lazy" style="object-position: center 30%;">
             </div>
+        </div>
+        <p class="skill-grid-label">For a child, this may include:</p>
+        <div class="skill-grid">
+            {% for p in pillars %}
+            <div class="skill-card">
+                <span class="skill-num">0{{ forloop.counter }}</span>
+                <span class="blk-head">
+                    <span class="skill-icon">{{ p.icon|safe }}</span>
+                    <h3>{{ p.title }}</h3>
+                </span>
+                <p>{{ p.desc }}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ SPEECH vs LANGUAGE vs COMMUNICATION ============ -->
+<!-- ============ 03. WHO CAN BENEFIT? ============ -->
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Speech vs Language vs Communication</h2>
-            <p class="section-sub">Understanding the distinct areas we address during intervention.</p>
+            <h2 class="section-title">Who Can Benefit From Speech &amp; Language Therapy?</h2>
+            <p class="section-sub">A child may benefit from speech and language therapy when communication
+                difficulties are affecting everyday interactions at home, school or in social situations.</p>
         </div>
-        <div class="stlc-grid">
-            <div class="stlc-card teal">
-                <span class="stlc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></span>
-                <h3>Speech</h3>
-                <p>The physical production of sound — articulation, clarity, fluency (stuttering), and pronunciation patterns.</p>
+        <p class="cc-label notice-heading">Parents may notice</p>
+        <div class="notice-quad">
+            {% for n in notice %}
+            <div class="notice-card">
+                <span class="blk-head">
+                    <span class="nq-icon">{{ n.icon|safe }}</span>
+                    <h3>{{ n.title }}</h3>
+                </span>
+                <ul class="notice-list">
+                    {% for point in n.points %}<li>{{ point }}</li>{% endfor %}
+                </ul>
             </div>
-            <div class="stlc-card blue">
-                <span class="stlc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg></span>
-                <h3>Language</h3>
-                <p>The meaning behind words — expressive use of vocabulary/grammar and receptive understanding of spoken information.</p>
-            </div>
-            <div class="stlc-card green">
-                <span class="stlc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-                <h3>Communication</h3>
-                <p>The social context of interaction — gestures, eye contact, joint attention, and understanding social expectations.</p>
-            </div>
+            {% endfor %}
         </div>
+        <p class="ot-highlight wide">Every child communicates differently. The important question is whether they
+            can understand, express and participate in everyday communication.</p>
     </div>
 </section>
 
-<!-- ============ WHO CAN BENEFIT ============ -->
+<!-- ============ 05. CONDITIONS WE SUPPORT ============ -->
 <section class="section tint">
     <div class="container">
-        <div class="section-head"><h2 class="section-title">Who Can Benefit from Therapy?</h2></div>
-        <div class="why-grid">
-            <div class="why-card"><h3>Speech &amp; Language Delay</h3><p>For children who are behind their peers in reaching developmental communication milestones.</p></div>
-            <div class="why-card"><h3>Stuttering</h3><p>Support for fluency and confidence in verbal expression.</p></div>
-            <div class="why-card"><h3>Articulation</h3><p>Correcting specific sound errors like 'lisping' or swapping sounds.</p></div>
-            <div class="why-card"><h3>Voice</h3><p>Addressing hoarseness or breathy speech patterns.</p></div>
-            <div class="why-card"><h3>Oral-Motor</h3><p>Building strength and coordination for clear speech.</p></div>
-            <div class="why-card"><h3>Social Communication</h3><p>Navigating peer interactions, conversation skills, and pragmatic language.</p></div>
+        <div class="section-head">
+            <h2 class="section-title">Conditions We Support</h2>
+            <p class="section-sub">Speech and language therapy may support children with a range of developmental,
+                communication and neurological needs.</p>
+        </div>
+        <div class="cond-card-grid">
+            {% for c in conditions %}
+            <div class="cond-card">
+                <span class="cond-dot"></span>
+                <h3>{{ c.title }}</h3>
+                <p>{{ c.desc }}</p>
+                <a href="{% url 'concerns' %}#{{ c.anchor }}" class="link-arrow">Learn More →</a>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ AREAS WE ASSESS (dark) ============ -->
-<section class="assess-dark">
-    <div class="container">
-        <div class="section-head"><h2 class="section-title" style="color:#fff;">Comprehensive Areas of Assessment</h2></div>
-        <div class="assess-dark-grid">
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg><span>Articulation</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Vocabulary</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg><span>Play Skills</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Joint Attention</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><span>Receptive Language</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Expressive Language</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg><span>Phonology</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><path d="M21 12a9 9 0 1 1-18 0"/><path d="M8 15h8"/></svg><span>Pragmatics</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Narrative Skills</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><span>Fluency</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span>Non-Verbal Cues</span></div>
-            <div class="ad-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 2 7 4 4 0 0 0 8 0 4 4 0 0 0 2-7 4 4 0 0 0-2-7 4 4 0 0 0-4-4z"/></svg><span>Executive Function</span></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ ASSESSMENT PROCESS (6 steps) ============ -->
+<!-- ============ 06. GALLERY ============ -->
 <section class="section">
     <div class="container">
-        <div class="section-head"><h2 class="section-title">Our 6-Step Assessment Journey</h2></div>
-        <div class="process-track six">
-            <div class="process-step"><span class="process-num">1</span><h4>Initial Intake</h4><p>Gathering history and concerns via parent interview.</p></div>
-            <div class="process-step"><span class="process-num">2</span><h4>Observation</h4><p>Observing natural play and interaction styles.</p></div>
-            <div class="process-step"><span class="process-num">3</span><h4>Clinical Testing</h4><p>Standardized tools to measure specific skills.</p></div>
-            <div class="process-step"><span class="process-num">4</span><h4>Analysis</h4><p>Expert review of scores and qualitative data.</p></div>
-            <div class="process-step"><span class="process-num">5</span><h4>Feedback</h4><p>Detailed meeting to discuss findings and goals.</p></div>
-            <div class="process-step"><span class="process-num">6</span><h4>Plan</h4><p>Customizing the intervention roadmap.</p></div>
+        <div class="section-head">
+            <h2 class="section-title">Gallery of Speech &amp; Language Therapy</h2>
+            <p class="section-sub">See how communication skills are developed through meaningful, engaging activities.</p>
+        </div>
+        <div class="slt-gallery gal-slt">
+            {% for g in gallery %}
+            <figure class="otg-item {{ g.slot }}{% if not g.image %} no-photo{% endif %}">
+                {% if g.image %}
+                <img src="{% static g.image %}" alt="{{ g.title }} — speech and language therapy at OT Cloud." loading="lazy">
+                {% else %}
+                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo coming soon</span></div>
+                {% endif %}
+                <figcaption>
+                    <span class="otg-title">{{ g.title }}</span>
+                    <span class="otg-desc">{{ g.desc }}</span>
+                </figcaption>
+            </figure>
+            {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- ============ 07. FREQUENTLY ASKED QUESTIONS ============ -->
 <section class="section tint">
     <div class="container">
-        <div class="section-head"><h2 class="section-title">Frequently Asked Questions</h2></div>
-        <div class="asm-faq" id="sp-faq">
+        <div class="section-head">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="asm-faq faq-plus" id="slt-faq">
             <div class="faq-list">
-                <details class="faq-item" open>
-                    <summary><span class="q">My child isn't talking yet. Should I wait?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Early intervention is key. Waiting and seeing can often delay progress. If you have concerns about milestones, a professional screening is the best first step.</div>
+                {% for f in faqs %}
+                <details class="faq-item" {% if forloop.first %}open{% endif %}>
+                    <summary>
+                        <span class="q">{{ f.q }}</span>
+                        <span class="faq-pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line class="pm-v" x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </summary>
+                    <div class="faq-body"><p>{{ f.a }}</p></div>
                 </details>
-                <details class="faq-item">
-                    <summary><span class="q">Does a speech delay mean my child has Autism?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Not necessarily. While communication challenges are a trait of Autism, speech delays occur for many reasons. An assessment helps differentiate between language production and social communication needs.</div>
-                </details>
-                <details class="faq-item">
-                    <summary><span class="q">We speak two languages at home. Is this causing the delay?</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">Research shows bilingualism does NOT cause speech delays. However, bilingual children may distribute their vocabulary across both languages.</div>
-                </details>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
+<!-- ============ 08. FINAL CTA ============ -->
 <section class="section">
-    <div class="container" style="text-align:center; max-width:760px;">
-        <h2 class="section-title" style="margin-bottom:24px;">Every Child Deserves the Opportunity to Be <span class="text-teal">Heard</span> and <span class="text-teal">Understood</span></h2>
-        <a href="{% url 'assessment' %}#booking" class="btn btn-primary" style="font-size:16px;">Book a Speech &amp; Language Assessment</a>
-        <div class="speech-cta-links">
-            <a href="tel:{{ site_tel }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Us</a>
-            <span class="sep">|</span>
-            <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a>
+    <div class="container">
+        <div class="hp-cta">
+            <h2>Concerned About Your Child's Communication?</h2>
+            <p>Understanding your child's communication profile can help identify the right support and
+                    next steps.</p>
+            <div class="hp-cta-actions">
+                <a href="{% url 'contact' %}" class="btn btn-on-teal">Discuss Your Concern</a>
+                <a href="{% url 'assessment' %}#booking" class="btn btn-outline-light">Book an Assessment</a>
+            </div>
+            <p class="hp-cta-note">Speech &middot; Language &middot; Communication &middot; Understanding</p>
         </div>
     </div>
 </section>
-
-<script>
-    document.querySelectorAll('#sp-faq .faq-item').forEach(function (el) {
-        el.addEventListener('toggle', function () {
-            if (!el.open) return;
-            document.querySelectorAll('#sp-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
-        });
-    });
-</script>
 
 {% endblock %}

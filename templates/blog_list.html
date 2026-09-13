@@ -1,41 +1,140 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Blog | OT Cloud Child Development{% endblock %}
-{% block description %}Insights, guidance, and clinical perspectives on child development from the OT Cloud team.{% endblock %}
-
 {% block content %}
 
+<!-- ============ 1. HERO ============ -->
+<section class="section blog-hero">
+    <div class="container blog-hero-grid">
+        <div class="blog-hero-copy">
+            <span class="badge"><span class="dot"></span> OTCloud Blog</span>
+            <h1>Practical Information for Understanding Your Child</h1>
+            <p class="hero-lead">Parenting a child comes with many questions. Our blog brings together clear,
+                evidence-informed information about child development, therapy, learning, communication,
+                sensory processing, behaviour and everyday skills.</p>
+            <p class="hero-lead">Explore articles designed to help you understand what you may be noticing,
+                what it may mean and when professional guidance may be helpful.</p>
+            <div class="blog-hero-actions">
+                <a href="#latest-articles" class="btn btn-primary">Explore Articles</a>
+                <a href="{% url 'concerns' %}" class="btn btn-ghost">Explore Concerns</a>
+            </div>
+        </div>
+        <div class="blog-hero-media">
+            <img src="{% static 'assets/speech-therapy-poster.webp' %}" alt="An OT Cloud therapist working with a child during a session." loading="eager">
+        </div>
+    </div>
+
+    <!-- category navigation -->
+    <div class="container">
+        <nav class="blog-cat-nav" aria-label="Blog topics">
+            {% for t in topics %}
+            <a href="{% url 'blog_topic' t.slug %}">{{ t.title }}</a>
+            {% endfor %}
+        </nav>
+    </div>
+</section>
+
+<!-- ============ 2. START HERE ============ -->
+{% if start_here %}
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Start Here</h2>
+            <p class="section-sub">New to OTCloud or exploring a concern? Begin with these practical articles
+                that answer some of the most common questions parents have.</p>
+        </div>
+        <div class="blog-grid">
+            {% for post in start_here %}
+            <article class="blog-card">
+                <a href="{{ post.get_absolute_url }}" class="thumb">
+                    {% if post.cover_image %}<img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy" decoding="async">
+                    {% else %}<span class="ph">OT Cloud</span>{% endif %}
+                </a>
+                <div class="body">
+                    <div class="meta">{{ post.get_category_display }}</div>
+                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
+                    <a href="{{ post.get_absolute_url }}" class="read-more">Read Article →</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="blog-more"><a href="#latest-articles" class="btn btn-ghost">Browse everything →</a></div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ============ 3. EXPLORE BY TOPIC ============ -->
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h1 class="section-title">OT Cloud Blog</h1>
-            <p class="section-sub">Insights, guidance, and clinical perspectives on your child's developmental journey.</p>
+            <h2 class="section-title">Explore by Topic</h2>
+            <p class="section-sub">Browse the library by the area you are trying to understand.</p>
         </div>
+        <div class="topic-grid">
+            {% for t in topics %}
+            <a href="{% url 'blog_topic' t.slug %}" class="topic-tile">
+                <span class="tt-icon">{{ t.icon|safe }}</span>
+                <h3>{{ t.title }}</h3>
+                <p>{{ t.desc }}</p>
+                <span class="tt-foot">
+                    <span class="tt-count">{{ t.count }} post{{ t.count|pluralize }}</span>
+                    <span class="link-arrow">Explore →</span>
+                </span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
-        {% if posts %}
+<!-- ============ 4. EVERYTHING WE PUBLISH ============ -->
+<section class="section tint" id="latest-articles" style="scroll-margin-top:90px;">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Latest Articles &amp; Guides</h2>
+            <p class="section-sub">Short reads on a single question, and longer parent guides that cover a whole
+                topic — newest first.</p>
+        </div>
+        {% if feed %}
         <div class="blog-grid">
-            {% for post in posts %}
+            {% for post in feed %}
             <article class="blog-card">
                 <a href="{{ post.get_absolute_url }}" class="thumb">
-                    {% if post.cover_image %}
-                    <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy" decoding="async">
-                    {% else %}
-                    <span class="ph">OT Cloud</span>
-                    {% endif %}
+                    {% if post.cover_image %}<img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy" decoding="async">
+                    {% else %}<span class="ph">OT Cloud</span>{% endif %}
+                    {% if post.is_guide %}<span class="card-flag guide">Parent Guide</span>
+                    {% elif post.from_therapy_team %}<span class="card-flag team">From the Therapy Team</span>{% endif %}
                 </a>
                 <div class="body">
-                    <div class="meta">{{ post.published_at|date:"M j, Y" }}</div>
+                    <div class="meta">{{ post.get_category_display }}</div>
                     <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                     {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
-                    <a href="{{ post.get_absolute_url }}" class="read-more">Read article →</a>
+                    <div class="blog-card-foot">
+                        <span class="read-time">{{ post.read_minutes }} min read</span>
+                        <a href="{{ post.get_absolute_url }}" class="read-more">{% if post.is_guide %}Read Guide →{% else %}Read Article →{% endif %}</a>
+                    </div>
                 </div>
             </article>
             {% endfor %}
         </div>
         {% else %}
-        <p class="blog-empty">No articles published yet. Check back soon.</p>
+        <p class="blog-empty">Nothing published yet. Check back soon.</p>
         {% endif %}
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="hp-cta">
+            <h2>Have Questions About Your Child?</h2>
+            <p>If something you have read sounds familiar, professional guidance can help you understand your
+                child's individual needs and determine an appropriate next step.</p>
+            <div class="hp-cta-actions">
+                <a href="{% url 'contact' %}" class="btn btn-on-teal">Discuss Your Concern</a>
+                <a href="{% url 'assessment' %}#booking" class="btn btn-outline-light">Book an Assessment</a>
+            </div>
+        </div>
     </div>
 </section>
 

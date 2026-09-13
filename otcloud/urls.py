@@ -8,11 +8,12 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 
 from . import views
-from .sitemaps import BlogSitemap, StaticViewSitemap
+from .sitemaps import BlogSitemap, BlogTopicSitemap, StaticViewSitemap
 
 sitemaps = {
     'static': StaticViewSitemap,
     'blog': BlogSitemap,
+    'blog_topics': BlogTopicSitemap,
 }
 
 urlpatterns = [
@@ -25,10 +26,12 @@ urlpatterns = [
     path('services/early-intervention/', views.service_early, name='service_early'),
     path('services/special-education/', views.service_se, name='service_se'),
     path('services/child-psychology/', views.service_psychology, name='service_psychology'),
+    path('services/child-physiotherapy/', views.service_physio, name='service_physio'),
     path('concerns/', views.concerns, name='concerns'),
     path('assessment/', views.assessment, name='assessment'),
     path('resources/', views.resources, name='resources'),
     path('blog/', views.blog_list, name='blog_list'),
+    path('blog/topic/<slug:topic>/', views.blog_topic, name='blog_topic'),
     path('blog/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('contact/', views.contact, name='contact'),
     path('milestone-check/', views.milestone_check, name='milestone_check'),

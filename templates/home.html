@@ -28,8 +28,7 @@
 <!-- ============ HERO BANNER (full-width, 3 sliding images + text overlay) ============ -->
 <section class="hero-banner">
     <div class="hb-slider" id="heroSlider">
-        {# Swap each slide's inline style for a real photo: style="background-image:url({% static 'assets/hero-1.webp' %})" (and remove .hb-ph) #}
-        <div class="hb-slide active">
+        <div class="hb-slide active" style="background-image:url({% static 'assets/therapist-child-interaction.webp' %})">
             <div class="hb-overlay"></div>
             <div class="container hb-content">
                 <h1>Welcome to OTCloud Therapy Center</h1>
@@ -39,9 +38,8 @@
                     <a href="{% url 'contact' %}" class="btn btn-outline-light">Talk to Our Team</a>
                 </div>
             </div>
-            <span class="hb-ph">Image 1 coming soon</span>
         </div>
-        <div class="hb-slide">
+        <div class="hb-slide" style="background-image:url({% static 'assets/play-therapy-1.webp' %})">
             <div class="hb-overlay"></div>
             <div class="container hb-content">
                 <span class="hero-pill">Child Development Centre • Sector 14, Gurugram</span>
@@ -52,9 +50,8 @@
                     <a href="{% url 'contact' %}" class="btn btn-outline-light">Talk to Our Team</a>
                 </div>
             </div>
-            <span class="hb-ph">Image 2 coming soon</span>
         </div>
-        <div class="hb-slide">
+        <div class="hb-slide" style="background-image:url({% static 'assets/feeding-activity.webp' %}); background-position: center 20%;">
             <div class="hb-overlay"></div>
             <div class="container hb-content">
                 <span class="hero-pill">Child Development Centre • Sector 14, Gurugram</span>
@@ -65,7 +62,6 @@
                     <a href="{% url 'contact' %}" class="btn btn-outline-light">Talk to Our Team</a>
                 </div>
             </div>
-            <span class="hb-ph">Image 3 coming soon</span>
         </div>
     </div>
     <div class="play-layer" aria-hidden="true">
@@ -86,9 +82,9 @@
 <!-- ============ TRUST STRIP ============ -->
 <section class="trust-strip">
     <div class="container trust-strip-grid">
-        <div class="trust-stat"><strong>10+ Years</strong><span>Founder's Clinical Experience</span></div>
-        <div class="trust-stat"><strong>1200+ Families</strong><span>Supported by OTCloud</span></div>
-        <div class="trust-stat"><strong>35,000+</strong><span>Therapy Sessions Conducted</span></div>
+        <div class="trust-stat"><strong><span data-count="10" data-suffix="+"></span> Years</strong><span>Founder's Clinical Experience</span></div>
+        <div class="trust-stat"><strong><span data-count="1200" data-suffix="+"></span> Families</strong><span>Supported by OTCloud</span></div>
+        <div class="trust-stat"><strong><span data-count="35000" data-suffix="+"></span></strong><span>Therapy Sessions Conducted</span></div>
     </div>
 </section>
 
@@ -101,8 +97,10 @@
         <div class="signs8-grid">
             {% for c in conditions %}
             <div class="sign8-card">
-                <span class="s8-icon">{{ c.icon|safe }}</span>
-                <h3>{{ c.title }}</h3>
+                <span class="blk-head">
+                    <span class="s8-icon">{{ c.icon|safe }}</span>
+                    <h3>{{ c.title }}</h3>
+                </span>
                 <p>{{ c.desc }}</p>
             </div>
             {% endfor %}
@@ -311,7 +309,7 @@
                 </article>
                 <article class="svcv-card">
                     <div class="svcv-media">
-                        <span class="svcv-ph"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Video coming soon</span>
+                        <video class="svcv-vid" src="{% static 'assets/early-intervention.mp4' %}" poster="{% static 'assets/early-intervention-poster.webp' %}" preload="none" playsinline controls></video>
                     </div>
                     <div class="svcv-body">
                         <h3>Early Intervention</h3>
@@ -516,23 +514,31 @@
         </div>
         <div class="diff-grid values-grid">
             <div class="diff-card">
-                <span class="diff-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-                <h4>Multidisciplinary Team</h4>
+                <span class="blk-head">
+                    <span class="diff-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                    <h4>Multidisciplinary Team</h4>
+                </span>
                 <p>Occupational therapists, speech therapists, special educators and psychologists work together on one shared plan for your child.</p>
             </div>
             <div class="diff-card">
-                <span class="diff-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.4S4.4 15.2 4.4 10.2A3.9 3.9 0 0 1 12 9a3.9 3.9 0 0 1 7.6 1.2c0 5-7.6 10.2-7.6 10.2z"/></svg></span>
-                <h4>Individualized Care</h4>
+                <span class="blk-head">
+                    <span class="diff-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.4S4.4 15.2 4.4 10.2A3.9 3.9 0 0 1 12 9a3.9 3.9 0 0 1 7.6 1.2c0 5-7.6 10.2-7.6 10.2z"/></svg></span>
+                    <h4>Individualized Care</h4>
+                </span>
                 <p>Every goal and therapy plan is built around your child's own strengths, needs and pace — never a fixed template.</p>
             </div>
             <div class="diff-card">
-                <span class="diff-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 21v-1.8a4.2 4.2 0 0 0-4.2-4.2H6.2A4.2 4.2 0 0 0 2 19.2V21"/><circle cx="7.8" cy="7.2" r="3.9"/><path d="M21.3 5.6a2.2 2.2 0 0 0-3.1-.1l-.3.3-.3-.3a2.2 2.2 0 0 0-3.1 3.1l3.4 3.5 3.4-3.5a2.2 2.2 0 0 0 0-3z"/></svg></span>
-                <h4>Parent Partnership</h4>
+                <span class="blk-head">
+                    <span class="diff-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 21v-1.8a4.2 4.2 0 0 0-4.2-4.2H6.2A4.2 4.2 0 0 0 2 19.2V21"/><circle cx="7.8" cy="7.2" r="3.9"/><path d="M21.3 5.6a2.2 2.2 0 0 0-3.1-.1l-.3.3-.3-.3a2.2 2.2 0 0 0-3.1 3.1l3.4 3.5 3.4-3.5a2.2 2.2 0 0 0 0-3z"/></svg></span>
+                    <h4>Parent Partnership</h4>
+                </span>
                 <p>Parents are guided at every step, with clear explanations and simple strategies that carry progress into home routines.</p>
             </div>
             <div class="diff-card">
-                <span class="diff-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h18"/><path d="M4 16.5l5-5 3.5 3L20 6"/><polyline points="15.5 6 20 6 20 10.5"/></svg></span>
-                <h4>Progress Tracking</h4>
+                <span class="blk-head">
+                    <span class="diff-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h18"/><path d="M4 16.5l5-5 3.5 3L20 6"/><polyline points="15.5 6 20 6 20 10.5"/></svg></span>
+                    <h4>Progress Tracking</h4>
+                </span>
                 <p>Progress is measured and reviewed at set intervals, and goals are updated so you always know what has changed.</p>
             </div>
         </div>
@@ -575,38 +581,8 @@
                 <figcaption class="ic-cap"><span class="ic-dot"></span> Assessment and Learning Room</figcaption>
             </figure>
             <figure class="ic-card">
-                <div class="ic-media"><img loading="lazy" src="{% static 'assets/center-consultation.webp' %}" alt="Parent consultation area with the clinician's desk and seating."></div>
-                <figcaption class="ic-cap"><span class="ic-dot"></span> Parent Consultation Area</figcaption>
-            </figure>
-            <figure class="ic-card">
-                <div class="ic-media"><img loading="lazy" src="{% static 'assets/center-reception.webp' %}" alt="Reception and waiting area at OT Cloud Therapy Center."></div>
-                <figcaption class="ic-cap"><span class="ic-dot"></span> Reception and Waiting Area</figcaption>
-            </figure>
-        </div>
-        <div class="center-more">
-            <button type="button" class="btn btn-ghost" id="galleryOpen">View Center Gallery</button>
-        </div>
-    </div>
-</section>
-
-<!-- Center gallery — opens on this page -->
-<div class="gal-modal" id="galModal" hidden role="dialog" aria-modal="true" aria-labelledby="galModalTitle">
-    <div class="gal-modal-backdrop" data-gal-close></div>
-    <div class="gal-modal-card">
-        <div class="gal-modal-head">
-            <h3 id="galModalTitle">Inside Our Sector 14 Center</h3>
-            <button type="button" class="gal-modal-close" data-gal-close aria-label="Close gallery">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-        </div>
-        <div class="gal-grid">
-            <figure class="ic-card">
-                <div class="ic-media"><img loading="lazy" src="{% static 'assets/center-sensory-gym.webp' %}" alt="Sensory gym with therapy swings, soft play mats, climbing frame and therapy balls."></div>
-                <figcaption class="ic-cap"><span class="ic-dot"></span> Sensory Gym</figcaption>
-            </figure>
-            <figure class="ic-card">
-                <div class="ic-media"><img loading="lazy" src="{% static 'assets/center-assessment-room.webp' %}" alt="Assessment and learning room with a child-height activity table and learning charts."></div>
-                <figcaption class="ic-cap"><span class="ic-dot"></span> Assessment and Learning Room</figcaption>
+                <div class="ic-media"><img loading="lazy" src="{% static 'assets/center-consultation.webp' %}" alt="Parent consultation room with the clinician's desk, certificates and awards."></div>
+                <figcaption class="ic-cap"><span class="ic-dot"></span> Parent Consultation Room</figcaption>
             </figure>
             <figure class="ic-card">
                 <div class="ic-media"><img loading="lazy" src="{% static 'assets/center-parent-lounge.webp' %}" alt="Comfortable parent lounge and waiting area at OT Cloud Therapy Center."></div>
@@ -614,15 +590,11 @@
             </figure>
             <figure class="ic-card">
                 <div class="ic-media"><img loading="lazy" src="{% static 'assets/center-reception.webp' %}" alt="Reception and waiting area at OT Cloud Therapy Center."></div>
-                <figcaption class="ic-cap"><span class="ic-dot"></span> Reception</figcaption>
-            </figure>
-            <figure class="ic-card">
-                <div class="ic-media"><img loading="lazy" src="{% static 'assets/center-consultation.webp' %}" alt="Parent consultation room with the clinician's desk, certificates and awards."></div>
-                <figcaption class="ic-cap"><span class="ic-dot"></span> Consultation Room</figcaption>
+                <figcaption class="ic-cap"><span class="ic-dot"></span> Reception and Waiting Area</figcaption>
             </figure>
         </div>
     </div>
-</div>
+</section>
 
 <!-- ============ TESTIMONIALS ============ -->
 <section class="section" id="testimonials">
@@ -717,34 +689,6 @@
     })();
 </script>
 
-<script>
-    // Interactive "Your Journey to Progress" timeline
-    (function () {
-        var tl = document.getElementById('journeyTimeline');
-        if (!tl) return;
-        var nodes = Array.prototype.slice.call(tl.querySelectorAll('.jt-node'));
-        var panels = tl.querySelectorAll('.jt-panel');
-        var fill = document.getElementById('jtFill');
-        var total = nodes.length;
-
-        function go(step) {
-            nodes.forEach(function (n) {
-                var s = parseInt(n.dataset.step, 10);
-                n.classList.toggle('active', s === step);
-                n.classList.toggle('done', s < step);
-                n.setAttribute('aria-selected', s === step ? 'true' : 'false');
-            });
-            panels.forEach(function (p) {
-                p.classList.toggle('active', parseInt(p.dataset.step, 10) === step);
-            });
-            if (fill) fill.style.width = (total > 1 ? ((step - 1) / (total - 1)) * 100 : 0) + '%';
-        }
-        nodes.forEach(function (n) {
-            n.addEventListener('click', function () { go(parseInt(n.dataset.step, 10)); });
-        });
-        go(1);
-    })();
-</script>
 
 <script>
     // Services carousel — prev/next arrows + disabled states
@@ -919,24 +863,6 @@
             }
             openModal();
         });
-    })();
-</script>
-
-<script>
-    // Center gallery modal — stays on the home page
-    (function () {
-        var modal = document.getElementById('galModal');
-        var openBtn = document.getElementById('galleryOpen');
-        if (!modal || !openBtn) return;
-        function close() { modal.hidden = true; document.body.classList.remove('no-scroll'); }
-        openBtn.addEventListener('click', function () {
-            modal.hidden = false;
-            document.body.classList.add('no-scroll');
-            var c = modal.querySelector('.gal-modal-close');
-            if (c) c.focus();
-        });
-        modal.querySelectorAll('[data-gal-close]').forEach(function (el) { el.addEventListener('click', close); });
-        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
     })();
 </script>
 

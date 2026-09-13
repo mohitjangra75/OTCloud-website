@@ -4,14 +4,34 @@
 {% block content %}
 
 <!-- ============ HERO ============ -->
-<section class="con2-hero">
+{% include 'partials/page_hero.html' with image='assets/early-learning.webp' focus='center 13%' alt='A therapist working through early learning activities with a child.' badge='OT Cloud Learning Center' title='Helping Parents Understand Child Development with Confidence' lead='Access reliable, therapist-led resources designed to provide families with practical insights, developmental clarity, and the peace of mind that comes with evidence-based knowledge.' cta1_label='Free Milestone Check' cta1_url='/milestone-check/' cta2_label='Explore Articles' cta2_url='/blog/' %}
+
+<!-- ============ THE TWO SECTIONS OF THE LEARNING CENTER ============ -->
+<section class="section">
     <div class="container">
-        <span class="badge"><span class="dot"></span> OT Cloud Learning center</span>
-        <h1>Helping Parents Understand Child Development with Confidence</h1>
-        <p class="hero-lead">Access reliable, therapist-led resources designed to provide families with practical insights, developmental clarity, and the peace of mind that comes with evidence-based knowledge.</p>
-        <div class="con2-cta-actions" style="justify-content:center;">
-            <a href="{% url 'milestone_check' %}" class="btn btn-primary">Free Milestone Check</a>
-            <a href="{% url 'blog_list' %}" class="btn btn-ghost">Explore Articles</a>
+        <div class="section-head">
+            <h2 class="section-title">Two Ways to Explore</h2>
+            <p class="section-sub">The Learning Center brings together everything we publish for parents.</p>
+        </div>
+        <div class="lc-split">
+            <a href="{% url 'concerns' %}" class="lc-card">
+                <span class="blk-head">
+                    <span class="lc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></span>
+                    <h3>Concerns</h3>
+                </span>
+                <p>Understand what you may be noticing — developmental areas, an age-wise guide, when to seek
+                    guidance and the conditions we support.</p>
+                <span class="link-arrow">Explore Concerns →</span>
+            </a>
+            <a href="{% url 'blog_list' %}" class="lc-card">
+                <span class="blk-head">
+                    <span class="lc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.4 4.6h5.8A3.4 3.4 0 0 1 12 7.7v12a2.8 2.8 0 0 0-2.8-2.6H2.4z"/><path d="M21.6 4.6h-5.8A3.4 3.4 0 0 0 12 7.7v12a2.8 2.8 0 0 1 2.8-2.6h6.8z"/></svg></span>
+                    <h3>Blogs &amp; Articles</h3>
+                </span>
+                <p>Practical, evidence-informed reading — short articles, longer parent guides and insights from
+                    the therapy team, filed by topic.</p>
+                <span class="link-arrow">Explore Blogs &amp; Articles →</span>
+            </a>
         </div>
     </div>
 </section>
@@ -20,11 +40,11 @@
 <section class="section tint">
     <div class="container obs-grid">
         <div class="obs-img" style="position:relative;">
-            <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
+            <img src="{% static 'assets/play-therapy-1.webp' %}" alt="A small-group session at OT Cloud Therapy Center." loading="lazy">
             <div class="res-quote">"Transparency is the foundation of effective pediatric care."</div>
         </div>
         <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:14px;">Why We Created the Learning center</h2>
+            <h2 class="section-title" style="text-align:left; margin-bottom:14px;">Why We Created the Learning Center</h2>
             <p class="msg" style="margin-bottom:24px;">The journey of child development shouldn't be navigated in the dark. We built this hub to offer absolute transparency, helping parents recognize developmental patterns without the anxiety of self-diagnosis.</p>
             <div class="obs-features">
                 <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h4>Clarity Over Confusion</h4><p>We strip away clinical jargon to provide clear markers of growth and support.</p></div></div>
@@ -43,24 +63,34 @@
         </div>
         <div class="topic-bento">
             <a href="{% url 'concerns' %}" class="topic-card teal wide">
-                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5"/><path d="M9.5 9.5h.01M14.5 9.5h.01M9.5 12s1 1 2.5 1 2.5-1 2.5-1"/><path d="M5 21v-1a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1"/></svg></span>
-                <h3>Child Development</h3><p>From neonatal milestones to adolescent growth transitions.</p><span class="tc-link">View Resources →</span>
+                <span class="blk-head">
+                    <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5"/><path d="M9.5 9.5h.01M14.5 9.5h.01M9.5 12s1 1 2.5 1 2.5-1 2.5-1"/><path d="M5 21v-1a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1"/></svg></span>
+                    <h3>Child Development</h3>
+                </span><p>From neonatal milestones to adolescent growth transitions.</p><span class="tc-link">View Resources →</span>
             </a>
             <a href="{% url 'service_speech' %}" class="topic-card blue">
-                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-                <h3>Speech &amp; Communication</h3><p>Language acquisition, articulation, and social speech.</p><span class="tc-link">View Resources →</span>
+                <span class="blk-head">
+                    <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                    <h3>Speech &amp; Communication</h3>
+                </span><p>Language acquisition, articulation, and social speech.</p><span class="tc-link">View Resources →</span>
             </a>
             <a href="{% url 'service_ot' %}" class="topic-card green">
-                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/></svg></span>
-                <h3>Occupational Therapy</h3><p>Fine motor skills, sensory regulation, and daily living.</p>
+                <span class="blk-head">
+                    <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/></svg></span>
+                    <h3>Occupational Therapy</h3>
+                </span><p>Fine motor skills, sensory regulation, and daily living.</p>
             </a>
             <a href="{% url 'service_se' %}" class="topic-card outline">
-                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
-                <h3>Learning &amp; School</h3><p>Classroom readiness and academic skill building.</p>
+                <span class="blk-head">
+                    <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+                    <h3>Learning &amp; School</h3>
+                </span><p>Classroom readiness and academic skill building.</p>
             </a>
             <a href="{% url 'services' %}" class="topic-card teal">
-                <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/><path d="M12 10v4"/></svg></span>
-                <h3>Movement &amp; Physical</h3><p>Gross motor coordination and core stability.</p>
+                <span class="blk-head">
+                    <span class="tc-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20l3-6 3 6"/><path d="M6 8l6 2 6-2"/><path d="M12 10v4"/></svg></span>
+                    <h3>Movement &amp; Physical</h3>
+                </span><p>Gross motor coordination and core stability.</p>
             </a>
         </div>
     </div>
@@ -203,7 +233,7 @@
             <span class="auth-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg></span>
             <div>
                 <h3>Understanding Before Intervention</h3>
-                <p>While the resources in our Learning center are designed to inform and empower, please remember that <strong>online information does not replace individual clinical assessment.</strong> Every child is unique, and professional observation is the only way to create a tailored therapy plan that works.</p>
+                <p>While the resources in our Learning Center are designed to inform and empower, please remember that <strong>online information does not replace individual clinical assessment.</strong> Every child is unique, and professional observation is the only way to create a tailored therapy plan that works.</p>
             </div>
         </div>
     </div>
@@ -221,15 +251,15 @@
         </div>
         <div class="workshop-grid">
             <div class="workshop-card">
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
+                <img src="{% static 'assets/parent-consultation.webp' %}" alt="A therapist talking a parent through their child's progress." loading="lazy">
                 <div class="wc-overlay"><h4>Parent Awareness Workshops</h4><p>In-person sessions focusing on practical home strategies.</p></div>
             </div>
             <div class="workshop-card">
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
+                <img src="{% static 'assets/special-ed-3.webp' %}" alt="An educator working through written material with a student." loading="lazy">
                 <div class="wc-overlay"><h4>Teacher Seminars</h4><p>Supporting educators in identifying and managing classroom challenges.</p></div>
             </div>
             <div class="workshop-card">
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
+                <img src="{% static 'assets/center-consultation.webp' %}" alt="The consultation room at OT Cloud Therapy Center." loading="lazy">
                 <div class="wc-overlay"><h4>Digital Webinars</h4><p>Expert-led online sessions accessible from anywhere.</p></div>
             </div>
         </div>

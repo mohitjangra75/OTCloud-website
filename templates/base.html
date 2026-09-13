@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=dev1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=r32">
     <script>
         // Enable scroll-reveal only on larger screens with motion allowed (set before paint to avoid flashes)
         (function () {
@@ -107,20 +107,19 @@
                 </a>
                 <div class="nav-contacts">
                     <a href="tel:{{ site_tel }}" class="nav-contact" aria-label="Call us">
-                        <span class="nc-ic"><svg width="1" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                        <span class="nc-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
                         <span class="nc-txt">{{ site_phone_display }}</span>
                     </a>
                     <a href="mailto:{{ site_email }}" class="nav-contact" aria-label="Email us">
-                        <span class="nc-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="1" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span>
+                        <span class="nc-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span>
                         <span class="nc-txt">{{ site_email }}</span>
                     </a>
                 </div>
             </div>
             <nav class="nav-links">
                 <a href="{% url 'home' %}" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
-                <a href="{% url 'concerns' %}" class="{% if active_page == 'concerns' %}active{% endif %}">Concerns</a>
                 <div class="nav-item">
-                    <a href="{% url 'services' %}" class="nav-drop-toggle {% if active_page == 'services' or active_page == 'service_ot' or active_page == 'service_speech' or active_page == 'service_early' or active_page == 'service_se' or active_page == 'service_psychology' %}active{% endif %}">Services
+                    <a href="{% url 'services' %}" class="nav-drop-toggle {% if active_page == 'services' or active_page == 'service_ot' or active_page == 'service_speech' or active_page == 'service_early' or active_page == 'service_se' or active_page == 'service_psychology' or active_page == 'service_physio' %}active{% endif %}">Services
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </a>
                     <div class="dropdown">
@@ -130,12 +129,21 @@
                         <a href="{% url 'service_early' %}">Early Intervention</a>
                         <a href="{% url 'service_se' %}">Special Education</a>
                         <a href="{% url 'service_psychology' %}">Child Psychology</a>
+                        <a href="{% url 'service_physio' %}">Child Physiotherapy</a>
                     </div>
                 </div>
                 <a href="{% url 'assessment' %}" class="{% if active_page == 'assessment' %}active{% endif %}">Assessment</a>
                 <a href="{% url 'about' %}" class="{% if active_page == 'about' %}active{% endif %}">About</a>
-                <a href="{% url 'resources' %}" class="{% if active_page == 'resources' or active_page == 'blog' %}active{% endif %}">Resources</a>
                 <a href="{% url 'contact' %}" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a>
+                <div class="nav-item">
+                    <a href="{% url 'resources' %}" class="nav-drop-toggle {% if active_page == 'resources' or active_page == 'concerns' or active_page == 'blog' or active_page == 'milestone' %}active{% endif %}">Learning Center
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="{% url 'concerns' %}">Concerns</a>
+                        <a href="{% url 'blog_list' %}">Blogs &amp; Articles</a>
+                    </div>
+                </div>
             </nav>
             <div class="nav-cta">
                 <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -146,7 +154,6 @@
         <div class="mobile-menu" id="mobileMenu">
             {% with in_services=active_page|slice:":7" %}
             <a href="{% url 'home' %}" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
-            <a href="{% url 'concerns' %}" class="{% if active_page == 'concerns' %}active{% endif %}">Concerns</a>
             <div class="mm-group {% if active_page == 'services' or in_services == 'service' %}open{% endif %}">
                 <button type="button" class="mm-group-toggle {% if active_page == 'services' or in_services == 'service' %}active{% endif %}" aria-expanded="{% if active_page == 'services' or in_services == 'service' %}true{% else %}false{% endif %}">
                     Services
@@ -159,12 +166,23 @@
                     <a href="{% url 'service_early' %}" class="{% if active_page == 'service_early' %}active{% endif %}">Early Intervention</a>
                     <a href="{% url 'service_se' %}" class="{% if active_page == 'service_se' %}active{% endif %}">Special Education</a>
                     <a href="{% url 'service_psychology' %}" class="{% if active_page == 'service_psychology' %}active{% endif %}">Child Psychology</a>
+                    <a href="{% url 'service_physio' %}" class="{% if active_page == 'service_physio' %}active{% endif %}">Child Physiotherapy</a>
                 </div>
             </div>
             <a href="{% url 'assessment' %}" class="{% if active_page == 'assessment' %}active{% endif %}">Assessment</a>
             <a href="{% url 'about' %}" class="{% if active_page == 'about' %}active{% endif %}">About</a>
-            <a href="{% url 'resources' %}" class="{% if active_page == 'resources' or active_page == 'blog' %}active{% endif %}">Resources &amp; Blog</a>
             <a href="{% url 'contact' %}" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a>
+            <div class="mm-group {% if active_page == 'resources' or active_page == 'concerns' or active_page == 'blog' or active_page == 'milestone' %}open{% endif %}">
+                <button type="button" class="mm-group-toggle {% if active_page == 'resources' or active_page == 'concerns' or active_page == 'blog' or active_page == 'milestone' %}active{% endif %}" aria-expanded="{% if active_page == 'resources' or active_page == 'concerns' or active_page == 'blog' or active_page == 'milestone' %}true{% else %}false{% endif %}">
+                    Learning Center
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="mm-submenu">
+                    <a href="{% url 'resources' %}" class="{% if active_page == 'resources' %}active{% endif %}">Learning Center Home</a>
+                    <a href="{% url 'concerns' %}" class="{% if active_page == 'concerns' %}active{% endif %}">Concerns</a>
+                    <a href="{% url 'blog_list' %}" class="{% if active_page == 'blog' %}active{% endif %}">Blogs &amp; Articles</a>
+                </div>
+            </div>
             <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book an Assessment</a>
             {% endwith %}
         </div>
@@ -224,7 +242,7 @@
                         <li><a href="{% url 'service_speech' %}">Speech and Language Therapy</a></li>
                         <li><a href="{% url 'service_early' %}">Early Intervention</a></li>
                         <li><a href="{% url 'service_se' %}">Special Education</a></li>
-                        <li><a href="{% url 'contact' %}">Child Physiotherapy</a></li>
+                        <li><a href="{% url 'service_physio' %}">Child Physiotherapy</a></li>
                         <li><a href="{% url 'service_psychology' %}">Psychology and Behaviour Support</a></li>
                     </ul>
                 </div>
@@ -234,7 +252,8 @@
                         <li><a href="{% url 'about' %}">About OTCloud</a></li>
                         <li><a href="{% url 'concerns' %}">Developmental Concerns</a></li>
                         <li><a href="{% url 'assessment' %}">Assessment Process</a></li>
-                        <li><a href="{% url 'resources' %}">Resources</a></li>
+                        <li><a href="{% url 'resources' %}">Learning Center</a></li>
+                        <li><a href="{% url 'blog_list' %}">Blogs &amp; Articles</a></li>
                         <li><a href="{% url 'about' %}#Center">Center Gallery</a></li>
                         <li><a href="{% url 'contact' %}">Contact Us</a></li>
                     </ul>
@@ -327,42 +346,6 @@
         })();
     </script>
 
-    <script>
-        // Scroll-reveal: blocks fade/slide up as they enter the viewport (desktop + motion-ok only)
-        (function () {
-            if (!document.documentElement.classList.contains('reveal-ready')) return;
-            if (!('IntersectionObserver' in window)) return;
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (en) {
-                    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-
-            function tag(el, i) {
-                el.classList.add('reveal');
-                if (i) el.style.transitionDelay = (Math.min(i, 6) * 70) + 'ms';
-                // Already in view on load → show immediately (no hide-flash, no anim); otherwise animate on scroll
-                if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('in');
-                else io.observe(el);
-            }
-
-            document.querySelectorAll('.section-head').forEach(function (el) { tag(el, 0); });
-
-            // Grids that are static columns on desktop — stagger-reveal their children
-            var groups = ['.cards-3', '.cards-4', '.cond-groups', '.asm-phil-cards', '.team-roles-grid',
-                '.myth-list', '.evaluate-grid', '.topic-bento', '.obs-features', '.workshop-grid',
-                '.prep-grid', '.svc-index-grid', '.why-grid', '.approaches-grid', '.success-grid',
-                '.teach-grid', '.roles-grid', '.stlc-grid', '.signs8-grid', '.blog-grid', '.area-grid',
-                '.decision-grid', '.showcase-grid', '.expect-grid', '.transparency-grid', '.logistics-grid',
-                '.values-grid', '.cv-pillars', '.Center-teaser', '.ic-grid', '.diff-grid',
-                '.power-grid', '.dark-grid', '.otc-grid'];
-            groups.forEach(function (sel) {
-                document.querySelectorAll(sel).forEach(function (grid) {
-                    Array.prototype.forEach.call(grid.children, function (child, i) { tag(child, i); });
-                });
-            });
-        })();
-    </script>
     <script>
         // Photo lightbox — click a photo anywhere on the page to see it full size
         (function () {

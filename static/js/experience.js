@@ -158,6 +158,129 @@
         });
     })();
 
+
+    /* ---------- Journey timelines (home + assessment) ---------- */
+    (function journeys() {
+        document.querySelectorAll('.journey-timeline').forEach(function (tl) {
+            var nodes = Array.prototype.slice.call(tl.querySelectorAll('.jt-node'));
+            if (!nodes.length) return;
+            var panels = tl.querySelectorAll('.jt-panel');
+            var fill = tl.querySelector('.jt-line-fill');
+            var total = nodes.length;
+
+            function go(step) {
+                nodes.forEach(function (n) {
+                    var s = parseInt(n.dataset.step, 10);
+                    n.classList.toggle('active', s === step);
+                    n.classList.toggle('done', s < step);
+                    n.setAttribute('aria-selected', s === step ? 'true' : 'false');
+                });
+                panels.forEach(function (pan) {
+                    pan.classList.toggle('active', parseInt(pan.dataset.step, 10) === step);
+                });
+                if (fill) fill.style.width = (total > 1 ? ((step - 1) / (total - 1)) * 100 : 0) + '%';
+            }
+            nodes.forEach(function (n) {
+                n.addEventListener('click', function () { go(parseInt(n.dataset.step, 10)); });
+            });
+            go(1);
+        });
+    })();
+
+
+    /* ---------- Scroll reveals ----------
+       One IntersectionObserver for the whole page. Elements are tagged once,
+       revealed once and then unobserved, so nothing runs on scroll afterwards.
+       Only opacity/transform animate, so the compositor does the work. */
+    (function reveals() {
+        var html = document.documentElement;
+        if (!html.classList.contains('reveal-ready')) return;   // small screens / reduced motion
+
+        // Containers whose direct children stagger in
+        var GROUPS = [
+            '.signs8-grid', '.skill-grid', '.cond-card-grid', '.notice-quad', '.chip-grid',
+            '.method-tiles', '.goal-grid', '.compact-grid', '.team-grid', '.values-3', '.vm-cards',
+            '.topic-grid', '.guide-grid', '.popular-grid', '.insight-list', '.blog-grid', '.cards-3',
+            '.cards-4', '.diff-grid', '.values-grid', '.cv-pillars', '.ic-grid', '.Center-teaser',
+            '.svc-index-grid', '.ot-gallery', '.slt-gallery', '.visit-grid', '.reach-panel',
+            '.prep-strip', '.journey-strip', '.proc-steps', '.why-rows', '.lc-split', '.acc-list',
+            '.faq-list', '.ot-what-grid', '.stack-grid', '.founder-split', '.obs-features',
+            '.topic-bento', '.myth-list', '.workshop-grid', '.prep-grid', '.why-grid', '.area-grid',
+            '.expect-grid', '.transparency-grid', '.logistics-grid', '.showcase-grid', '.ot-areas',
+            '.hero-tags', '.page-hero-tags', '.vm-pillars', '.guide-tiles', '.med-flags'
+        ];
+        // Single blocks that fade in on their own
+        var SINGLES = [
+            '.section-head', '.hp-cta', '.cta-split', '.med-panel', '.guidance-card', '.mq',
+            '.ot-highlight', '.asm-principles', '.booking-hub', '.journey-timeline', '.age-tabs',
+            '.pro-band-inner', '.concern-intro-text', '.seek-panel', '.article-links', '.takeaways'
+        ];
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+                if (!en.isIntersecting) return;
+                en.target.classList.add('in');
+                io.unobserve(en.target);
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+
+        var vh = window.innerHeight;
+        function tag(el, i) {
+            if (el.classList.contains('reveal')) return;
+            el.classList.add('reveal');
+            if (i) el.style.transitionDelay = Math.min(i, 7) * 65 + 'ms';
+            // Already on screen at load: show it straight away, no flash and no animation queue
+            if (el.getBoundingClientRect().top < vh * 0.92) el.classList.add('in');
+            else io.observe(el);
+        }
+
+        SINGLES.forEach(function (sel) {
+            document.querySelectorAll(sel).forEach(function (el) { tag(el, 0); });
+        });
+        GROUPS.forEach(function (sel) {
+            document.querySelectorAll(sel).forEach(function (group) {
+                Array.prototype.forEach.call(group.children, function (child, i) { tag(child, i); });
+            });
+        });
+    })();
+
+    /* ---------- Numbers that count up when they scroll into view ---------- */
+    (function counters() {
+        var els = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+        if (!els.length) return;
+        if (reduced) {
+            els.forEach(function (el) { el.textContent = el.dataset.prefix || '' ; el.textContent = (el.dataset.prefix || '') + Number(el.dataset.count).toLocaleString('en-IN') + (el.dataset.suffix || ''); });
+            return;
+        }
+
+        function run(el) {
+            var target = Number(el.dataset.count) || 0;
+            var suffix = el.dataset.suffix || '';
+            var prefix = el.dataset.prefix || '';
+            var start = null, dur = 1100;
+            function frame(t) {
+                if (start === null) start = t;
+                var p = Math.min((t - start) / dur, 1);
+                var eased = 1 - Math.pow(1 - p, 3);                 // ease-out cubic
+                el.textContent = prefix + Math.round(target * eased).toLocaleString('en-IN') + suffix;
+                if (p < 1) window.requestAnimationFrame(frame);
+            }
+            window.requestAnimationFrame(frame);
+        }
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+                if (!en.isIntersecting) return;
+                run(en.target);
+                io.unobserve(en.target);
+            });
+        }, { threshold: 0.4 });
+        els.forEach(function (el) {
+            el.textContent = (el.dataset.prefix || '') + '0' + (el.dataset.suffix || '');
+            io.observe(el);
+        });
+    })();
+
     /* ---------- Reveal safety net ----------
        The page's IntersectionObserver handles reveals; this scroll-based check
        is a fallback so no section can ever stay invisible if IO misbehaves. */

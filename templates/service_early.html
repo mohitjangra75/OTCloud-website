@@ -7,7 +7,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {% for q, a in faqs %}{ "@type": "Question", "name": "{{ q|escapejs }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ a|escapejs }}" } }{% if not forloop.last %},{% endif %}
+    {% for f in faqs %}{ "@type": "Question", "name": "{{ f.q|escapejs }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a|escapejs }}" } }{% if not forloop.last %},{% endif %}
     {% endfor %}
   ]
 }
@@ -16,171 +16,171 @@
 
 {% block content %}
 
-<!-- ============ HERO ============ -->
-<section class="svc-hero">
-    <div class="container svc-hero-grid">
-        <div>
-            <span class="badge"><span class="dot"></span> Early Intervention Programme</span>
-            <h1>Small Steps Today Can Shape a <span class="text-teal">Child's Tomorrow</span></h1>
-            <p class="hero-lead">The first few years of a child's life are a period of rapid brain development. Our clinical specialists provide personalized support to harness this window of opportunity, ensuring your child reaches their full potential.</p>
-            <div class="svc-hero-actions">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-primary">Book an Early Intervention Assessment</a>
-                <a href="#process" class="btn btn-ghost">View Process</a>
-            </div>
-        </div>
-        <div class="svc-hero-visual">
-            <div class="svc-hero-img">
-                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- ============ 01. HERO ============ -->
+{% include 'partials/page_hero.html' with image='assets/feeding-activity.webp' focus='center 12%' alt='Two young children sharing a snack during an early intervention session at OT Cloud.' badge='Early Intervention' title='Early Intervention for Children' sub='Building strong developmental foundations in the early years.' lead='Early intervention provides timely support for children who may need extra help with communication, movement, learning, play or everyday skills.' cta1_label='Book an Assessment' cta1_url='/assessment/#booking' cta2_label='Discuss Your Concern' cta2_url='/contact/' tags=hero_tags %}
 
-<!-- ============ WHAT IS EARLY INTERVENTION ============ -->
+<!-- ============ 02. WHAT IS EARLY INTERVENTION? ============ -->
 <section class="section tint">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">What is Early Intervention?</h2>
-            <p class="section-sub">Specialized support for infants and toddlers with developmental delays — helping children learn the foundational skills that develop during the first three years of life.</p>
+            <h2 class="section-title">What Is Early Intervention?</h2>
+            <p class="section-sub">Early intervention focuses on helping young children develop important skills
+                during the early years. It can address developmental delays and concerns through age-appropriate
+                therapy, play and everyday activities.</p>
         </div>
-        <div class="ei-domains">
-            {% for d in domains %}
-            <div class="ei-domain"><span class="eid-icon">{{ d.icon|safe }}</span><span class="eid-label">{{ d.label }}</span></div>
+        <div class="skill-grid">
+            {% for p in pillars %}
+            <div class="skill-card">
+                <span class="blk-head">
+                    <span class="skill-icon">{{ p.icon|safe }}</span>
+                    <h3>{{ p.title }}</h3>
+                </span>
+                <p>{{ p.desc }}</p>
+            </div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ POWER OF EARLY YEARS ============ -->
+<!-- ============ 03. WHEN SHOULD PARENTS CONSIDER EARLY INTERVENTION? ============ -->
 <section class="section">
-    <div class="container ei-power-grid">
-        <div class="ei-images">
-            <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-            <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div>
-        </div>
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:14px;">The Power of the Early Years</h2>
-            <p class="msg" style="margin-bottom:24px;">Research shows the brain is most adaptable in the earliest years. By intervening early, we can significantly influence a child's developmental trajectory.</p>
-            <div class="obs-features">
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><div><h4>Accelerated Learning</h4><p>Utilizing high neuroplasticity to master communication and motor skills.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><div><h4>Future Independence</h4><p>Building the foundation for self-care, preschool readiness, and social integration.</p></div></div>
-                <div class="obs-feat"><span class="of-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><h4>Family Empowerment</h4><p>Giving parents the tools to support their child's development in everyday life.</p></div></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ WHO CAN BENEFIT ============ -->
-<section class="section tint">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Who Can Benefit?</h2>
-            <p class="section-sub">Specific domains where our early intervention makes a measurable difference.</p>
+            <h2 class="section-title">Is My Child Developing as Expected?</h2>
+            <p class="section-sub">Parents often notice developmental differences first. Early intervention can be
+                considered when a child is having difficulty with:</p>
         </div>
-        <div class="signs8-grid">
-            {% for b in benefits %}
-            <div class="sign8-card"><span class="s8-icon">{{ b.icon|safe }}</span><h3>{{ b.title }}</h3><p>{{ b.desc }}</p></div>
+        <div class="signs8-grid five">
+            {% for s in signs %}
+            <div class="sign8-card">
+                <span class="blk-head">
+                    <span class="s8-icon">{{ s.icon|safe }}</span>
+                    <h3>{{ s.title }}</h3>
+                </span>
+                <p>{{ s.desc }}</p>
+            </div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ CONDITIONS SUPPORTED (dark) ============ -->
-<section class="assess-dark">
-    <div class="container ei-conditions">
-        <div>
-            <h2 class="section-title" style="text-align:left; color:#fff; margin-bottom:14px;">Conditions Supported</h2>
-            <p style="color:rgba(255,255,255,0.8); margin-bottom:28px; line-height:1.6;">While we focus on functional needs, our therapists are experts in supporting children with specific diagnoses including:</p>
-            <div class="ei-cond-list">
-                {% for c in conditions %}
-                <div class="ei-cond-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> {{ c }}</div>
+<!-- ============ 05. CONDITIONS & DEVELOPMENTAL CONCERNS ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Early Intervention for Different Developmental Needs</h2>
+            <p class="section-sub">Early intervention can be useful for children with:</p>
+        </div>
+        <div class="compact-grid">
+            {% for c in conditions %}
+            <a href="{% url 'concerns' %}#{{ c.anchor }}" class="compact-card">
+                <span class="cc-dot"></span>
+                <span class="cc-body">
+                    <span class="cc-title">{{ c.title }}</span>
+                    <span class="cc-line">{{ c.desc }}</span>
+                </span>
+                <span class="cc-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ 06. HOW OUR PROGRAM WORKS ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">From Understanding to Skill Development</h2>
+            <p class="section-sub">Every programme follows the same four stages, so you always know where your
+                child is in the process and what comes next.</p>
+        </div>
+        <ol class="journey-strip four">
+            {% for step in program %}
+            <li class="journey-step">
+                <span class="js-icon">{{ step.icon|safe }}</span>
+                <span class="js-num">0{{ forloop.counter }}</span>
+                <span class="js-title">{{ step.title }}</span>
+                <span class="js-desc">{{ step.desc }}</span>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>
+
+<!-- ============ 07. MULTIDISCIPLINARY SUPPORT ============ -->
+<section class="section tint">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Different Therapies, One Developmental Journey</h2>
+            <p class="section-sub">Children may need support across different developmental areas. Our team brings
+                together:</p>
+        </div>
+        <div class="team-orbit">
+            <div class="orbit-col">
+                {% for t in team|slice:":3" %}
+                <a href="{% url t.url %}" class="orbit-card">
+                    <span class="orbit-icon">{{ t.icon|safe }}</span>
+                    <span class="orbit-title">{{ t.title }}</span>
+                    <span class="orbit-go">→</span>
+                </a>
+                {% endfor %}
+            </div>
+            <div class="orbit-media">
+                <img src="{% static 'assets/therapist-child-interaction.webp' %}" alt="A young child working with an OT Cloud therapist." loading="lazy">
+            </div>
+            <div class="orbit-col">
+                {% for t in team|slice:"3:" %}
+                <a href="{% url t.url %}" class="orbit-card">
+                    <span class="orbit-icon">{{ t.icon|safe }}</span>
+                    <span class="orbit-title">{{ t.title }}</span>
+                    <span class="orbit-go">→</span>
+                </a>
                 {% endfor %}
             </div>
         </div>
-        <div class="ei-cond-img"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
     </div>
 </section>
 
-<!-- ============ COMPREHENSIVE ASSESSMENT ============ -->
+<!-- ============ 08. REAL THERAPY GALLERY ============ -->
 <section class="section">
     <div class="container">
-        <div class="section-head"><h2 class="section-title">A Comprehensive Assessment</h2></div>
-        <div class="assess-pills">{% for a in assess %}<span>{{ a }}</span>{% endfor %}</div>
-    </div>
-</section>
-
-<!-- ============ CLINICAL JOURNEY ============ -->
-<section class="section tint" id="process">
-    <div class="container">
-        <div class="section-head"><h2 class="section-title">Your Clinical Journey</h2></div>
-        <div class="process-track six">
-            <div class="process-step"><span class="process-num">1</span><h4>Consultation</h4><p>Initial talk to understand concerns.</p></div>
-            <div class="process-step"><span class="process-num">2</span><h4>Observation</h4><p>Clinical play observation in a natural setting.</p></div>
-            <div class="process-step"><span class="process-num">3</span><h4>Assessment</h4><p>Standardized testing and functional review.</p></div>
-            <div class="process-step"><span class="process-num">4</span><h4>Discussion</h4><p>Reviewing findings with clinical precision.</p></div>
-            <div class="process-step"><span class="process-num">5</span><h4>Goal Setting</h4><p>Defining what success looks like for you.</p></div>
-            <div class="process-step"><span class="process-num">6</span><h4>Programme</h4><p>Creating a bespoke intervention plan.</p></div>
+        <div class="section-head">
+            <h2 class="section-title">Early Intervention in Action</h2>
+            <p class="section-sub">A look at the activities that build early developmental skills.</p>
         </div>
-    </div>
-</section>
-
-<!-- ============ PLAY WITH PURPOSE ============ -->
-<section class="section">
-    <div class="container why-otc-grid">
-        <div>
-            <h2 class="section-title" style="text-align:left; margin-bottom:14px;">Play with Purpose</h2>
-            <p class="msg" style="margin-bottom:24px;">In early intervention, 'play' is the primary tool for clinical progress. Every activity is scientifically chosen to stimulate specific neural pathways and functional capabilities.</p>
-            <div class="ei-play-list">
-                <div class="service-item"><span class="service-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span><div class="service-txt"><h3>Play-based Learning</h3><p>Structured activities that feel like fun but build cognitive skills.</p></div></div>
-                <div class="service-item"><span class="service-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div class="service-txt"><h3>Sensory Experiences</h3><p>Guided exposure to textures and environments to build regulation.</p></div></div>
-                <div class="service-item"><span class="service-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div class="service-txt"><h3>Parent Coaching</h3><p>Real-time guidance on how to support your child at home.</p></div></div>
-            </div>
-        </div>
-        <div class="why-otc-img"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-    </div>
-</section>
-
-<!-- ============ PARENT PARTNERSHIP ============ -->
-<section class="section">
-    <div class="container">
-        <div class="ei-partner">
-            <div class="ei-partner-copy">
-                <h2>Parents: Our Greatest Partners</h2>
-                <p>You are the expert on your child. Our role is to provide the clinical framework while you provide the everyday environment where growth happens.</p>
-                <ul class="ei-partner-checks">
-                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Home routine integration</li>
-                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Communication strategies</li>
-                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Encouraging independence</li>
-                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Managing sensory meltdowns</li>
-                </ul>
-            </div>
-            <div class="ei-partner-img"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ MEASURING CHANGE ============ -->
-<section class="section tint">
-    <div class="container">
-        <div class="section-head"><h2 class="section-title">Measuring Meaningful Change</h2></div>
-        <div class="ei-progress">
-            {% for p in progress %}
-            <div class="ei-prog-item"><span class="num">{{ forloop.counter|stringformat:"02d" }}</span><p>{{ p }}</p></div>
+        <div class="slt-gallery gal-ei">
+            {% for g in gallery %}
+            <figure class="otg-item {{ g.slot }}{% if not g.image %} no-photo{% endif %}">
+                {% if g.image %}
+                <img src="{% static g.image %}" alt="{{ g.title }} — early intervention at OT Cloud." loading="lazy">
+                {% else %}
+                <div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo coming soon</span></div>
+                {% endif %}
+                <figcaption>
+                    <span class="otg-title">{{ g.title }}</span>
+                    <span class="otg-desc">{{ g.desc }}</span>
+                </figcaption>
+            </figure>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="section">
+<!-- ============ 09. FREQUENTLY ASKED QUESTIONS ============ -->
+<section class="section tint">
     <div class="container">
-        <div class="section-head"><h2 class="section-title">Frequently Asked Questions</h2></div>
-        <div class="asm-faq" id="ei-faq">
+        <div class="section-head">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="asm-faq faq-plus" id="ei-faq">
             <div class="faq-list">
-                {% for q, a in faqs %}
-                <details class="faq-item{% if forloop.first %} open{% endif %}"{% if forloop.first %} open{% endif %}>
-                    <summary><span class="q">{{ q }}</span><span class="faq-chevron"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-                    <div class="faq-body">{{ a }}</div>
+                {% for f in faqs %}
+                <details class="faq-item" {% if forloop.first %}open{% endif %}>
+                    <summary>
+                        <span class="q">{{ f.q }}</span>
+                        <span class="faq-pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line class="pm-v" x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </summary>
+                    <div class="faq-body"><p>{{ f.a }}</p></div>
                 </details>
                 {% endfor %}
             </div>
@@ -188,51 +188,20 @@
     </div>
 </section>
 
-<!-- ============ EDUCATIONAL RESOURCES ============ -->
-<section class="section tint">
-    <div class="container">
-        <div class="services-head">
-            <div>
-                <h2 class="section-title" style="text-align:left;">Educational Resources</h2>
-                <p style="color:var(--on-surface-variant); margin-top:8px;">Deepen your understanding of your child's development.</p>
-            </div>
-            <a href="{% url 'blog_list' %}" class="link-arrow">View All Articles →</a>
-        </div>
-        <div class="res-grid-4">
-            {% for i in "1234" %}
-            <a href="{% url 'blog_list' %}" class="resource-card">
-                <div class="rc-thumb"><div class="media-soon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg><span>Image Coming Soon</span></div></div>
-                <span class="rc-tag">Developmental Tip</span>
-                <h3>Supporting Social Interaction at Home</h3>
-                <p>Learn 5 simple strategies to help your toddler engage more during daily routines.</p>
-            </a>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
 <!-- ============ FINAL CTA ============ -->
 <section class="section">
     <div class="container">
-        <div class="con2-cta">
-            <h2>The Earlier We Understand, The Better We Can Support</h2>
-            <p>Taking the first step can feel overwhelming, but you're not alone. Our specialists are here to guide you and your child through every milestone.</p>
-            <div class="con2-cta-actions">
-                <a href="{% url 'assessment' %}#booking" class="btn btn-on-teal">Book Assessment</a>
-                <a href="tel:{{ site_tel }}" class="btn btn-navy"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Our center</a>
-                <a href="{{ site_whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp Us</a>
+        <div class="hp-cta">
+            <h2>Wondering Whether Your Child Needs Early Support?</h2>
+            <p>The early years are the easiest time to build foundational skills. Tell us what you have noticed
+                    and we will help you understand the next step.</p>
+            <div class="hp-cta-actions">
+                <a href="{% url 'contact' %}" class="btn btn-on-teal">Discuss Your Concern</a>
+                <a href="{% url 'assessment' %}#booking" class="btn btn-outline-light">Book an Assessment</a>
             </div>
+            <p class="hp-cta-note">Communication &middot; Movement &middot; Learning &middot; Play</p>
         </div>
     </div>
 </section>
-
-<script>
-    document.querySelectorAll('#ei-faq .faq-item').forEach(function (el) {
-        el.addEventListener('toggle', function () {
-            if (!el.open) return;
-            document.querySelectorAll('#ei-faq .faq-item').forEach(function (o) { if (o !== el) o.removeAttribute('open'); });
-        });
-    });
-</script>
 
 {% endblock %}

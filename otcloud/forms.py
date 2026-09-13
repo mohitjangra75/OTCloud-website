@@ -25,11 +25,11 @@ class AssessmentRequestForm(forms.ModelForm):
         ('other', 'Other'),
     ]
     area_of_concern = forms.ChoiceField(choices=CONCERN_OPTIONS, required=False)
-    phone = forms.CharField(required=False)
+    phone = forms.CharField(required=True)
 
     class Meta:
         model = AssessmentRequest
-        fields = ['child_name', 'child_dob', 'parent_name', 'phone', 'email',
+        fields = ['parent_name', 'phone', 'email', 'child_name', 'child_age',
                   'area_of_concern', 'message']
 
 

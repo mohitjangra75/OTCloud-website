@@ -1,22 +1,85 @@
+import html
+
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.safestring import mark_safe
 
 
 class BlogPost(models.Model):
+    """A post in the blog library. Everything published here is either a short
+    ARTICLE (700-1,200 words, one question) or a longer GUIDE (1,500+ words,
+    a whole topic) — both live under /blog/, never as separate site sections."""
+
     STATUS_CHOICES = [
         ('draft', 'Draft'),
         ('published', 'Published'),
     ]
+    KIND_CHOICES = [
+        ('article', 'Article — short, answers one question'),
+        ('guide', 'Guide — longer, covers a whole topic'),
+    ]
+    # Topics parents browse by. The key doubles as the /blog/topic/<slug>/ URL.
+    CATEGORY_CHOICES = [
+        ('child-development', 'Child Development'),
+        ('occupational-therapy', 'Occupational Therapy'),
+        ('speech-language', 'Speech & Language'),
+        ('sensory-processing', 'Sensory Processing'),
+        ('behaviour', 'Behaviour & Emotional Regulation'),
+        ('learning', 'Learning & School Readiness'),
+        ('parent-guides', 'Parent Guides'),
+    ]
+    SERVICE_CHOICES = [
+        ('service_ot', 'Occupational Therapy'),
+        ('service_speech', 'Speech and Language Therapy'),
+        ('service_early', 'Early Intervention'),
+        ('service_se', 'Special Education'),
+        ('service_psychology', 'Child Psychology'),
+        ('service_physio', 'Child Physiotherapy'),
+    ]
+    SERVICE_BLURBS = {
+        'service_ot': 'Learn how occupational therapy may support sensory regulation, motor skills '
+                      'and participation in everyday activities.',
+        'service_speech': 'Learn how speech and language therapy may support understanding, '
+                          'expression and social communication.',
+        'service_early': 'Learn how early intervention may support communication, play, movement '
+                         'and foundational learning skills in the early years.',
+        'service_se': 'Learn how special education support may help with learning, pre-academic '
+                      'skills and classroom participation.',
+        'service_psychology': 'Learn how psychology and behaviour support may help with emotions, '
+                              'attention, behaviour and everyday routines.',
+        'service_physio': 'Learn how child physiotherapy may support strength, balance, coordination, '
+                          'mobility and everyday movement.',
+    }
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True,
                             help_text='URL segment, e.g. "signs-of-speech-delay". Auto-filled from the title.')
+    kind = models.CharField('Type', max_length=10, choices=KIND_CHOICES, default='article')
+    category = models.CharField(max_length=30, choices=CATEGORY_CHOICES, default='child-development',
+                                help_text='Topic this post is filed under.')
     author = models.CharField(max_length=120, default='OT Cloud Team')
     cover_image = models.ImageField(upload_to='blog/', blank=True, null=True)
     excerpt = models.TextField(max_length=300, blank=True,
-                               help_text='Short summary shown on the blog list (optional).')
-    body = models.TextField(help_text='Write the article. Blank lines start new paragraphs.')
+                               help_text='Two-line summary shown on cards and as the article introduction.')
+    body = models.TextField(help_text='Blank lines start new paragraphs. Start a line with "## " for a '
+                                      'section heading, "### " for a sub-heading and "- " for a bullet.')
+    key_takeaways = models.TextField(blank=True,
+                                     help_text='One takeaway per line. Shown in a highlighted box under the introduction.')
+    reading_time = models.PositiveSmallIntegerField(default=0,
+                                                    help_text='Minutes. Leave at 0 to calculate it from the body.')
+    start_here = models.BooleanField(default=False,
+                                     help_text='Feature this post in the "Start Here" row at the top of the blog.')
+    from_therapy_team = models.BooleanField('Insight from the therapy team', default=False,
+                                            help_text='Show this post under "Insights from OTCloud".')
+    related_concern = models.CharField(max_length=60, blank=True,
+                                       help_text='Concern to link at the end of the post, e.g. "Sensory Processing".')
+    related_concern_note = models.CharField(max_length=220, blank=True,
+                                            help_text='One line describing that concern (optional).')
+    related_service = models.CharField(max_length=30, choices=SERVICE_CHOICES, blank=True,
+                                       help_text='OTCloud service to link at the end of the post (optional).')
+    views = models.PositiveIntegerField(default=0, editable=False,
+                                        help_text='Read count — drives the "Parents Are Reading" row.')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     published_at = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -30,6 +93,62 @@ class BlogPost(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog_detail', args=[self.slug])
+
+    def get_category_url(self):
+        return reverse('blog_topic', args=[self.category])
+
+    @property
+    def is_guide(self):
+        return self.kind == 'guide'
+
+    @property
+    def read_minutes(self):
+        """Stated reading time, or a ~200 words-per-minute estimate."""
+        if self.reading_time:
+            return self.reading_time
+        return max(1, round(len(self.body.split()) / 200))
+
+    @property
+    def takeaway_list(self):
+        return [line.strip().lstrip('-').strip()
+                for line in self.key_takeaways.splitlines() if line.strip()]
+
+    @property
+    def related_service_url(self):
+        return reverse(self.related_service) if self.related_service else ''
+
+    @property
+    def related_service_blurb(self):
+        return self.SERVICE_BLURBS.get(self.related_service, '')
+
+    @property
+    def body_html(self):
+        """Render the body: paragraphs, "## " headings and "- " bullets.
+        Everything is escaped first, so post content can never inject markup."""
+        blocks, bullets = [], []
+
+        def flush():
+            if bullets:
+                blocks.append('<ul>' + ''.join('<li>%s</li>' % b for b in bullets) + '</ul>')
+                bullets.clear()
+
+        for raw in self.body.splitlines():
+            line = raw.strip()
+            if not line:
+                flush()
+                continue
+            if line.startswith('## '):
+                flush()
+                blocks.append('<h2>%s</h2>' % html.escape(line[3:].strip()))
+            elif line.startswith('### '):
+                flush()
+                blocks.append('<h3>%s</h3>' % html.escape(line[4:].strip()))
+            elif line.startswith('- '):
+                bullets.append(html.escape(line[2:].strip()))
+            else:
+                blocks.append('<p>%s</p>' % html.escape(line))
+        flush()
+        return mark_safe(''.join(blocks))
 
 
 class AssessmentRequest(models.Model):
@@ -48,6 +167,8 @@ class AssessmentRequest(models.Model):
     ]
 
     child_name = models.CharField(max_length=120)
+    child_age = models.CharField('Child age', max_length=40, blank=True,
+                                 help_text='As given by the parent, e.g. "4 years 6 months".')
     child_dob = models.DateField('Child date of birth', null=True, blank=True)
     parent_name = models.CharField(max_length=120)
     email = models.EmailField()
