@@ -1,0 +1,18 @@
+{# Page links in fixed blocks (1-6, 7-12, ...). Needs `page`, `page_range` and `anchor`. #}
+{% if page.paginator.num_pages > 1 %}
+<nav class="blog-pagination" aria-label="Pages">
+    {% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}#{{ anchor }}" class="page-step" rel="prev" aria-label="Previous page"><span aria-hidden="true">←</span><span class="page-step-label">Previous</span></a>
+    {% endif %}
+    {% for n in page_range %}
+    {% if n == page.number %}
+    <span class="page-num current" aria-current="page">{{ n }}</span>
+    {% else %}
+    <a href="?page={{ n }}#{{ anchor }}" class="page-num">{{ n }}</a>
+    {% endif %}
+    {% endfor %}
+    {% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}#{{ anchor }}" class="page-step" rel="next" aria-label="Next page"><span class="page-step-label">Next</span><span aria-hidden="true">→</span></a>
+    {% endif %}
+</nav>
+{% endif %}

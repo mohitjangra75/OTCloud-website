@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
-from django.urls import path
+from django.urls import include, path
 
 from . import views
 from .sitemaps import BlogSitemap, BlogTopicSitemap, StaticViewSitemap
@@ -31,12 +31,14 @@ urlpatterns = [
     path('assessment/', views.assessment, name='assessment'),
     path('resources/', views.resources, name='resources'),
     path('blog/', views.blog_list, name='blog_list'),
+    path('blog/all/', views.blog_all, name='blog_all'),
     path('blog/topic/<slug:topic>/', views.blog_topic, name='blog_topic'),
     path('blog/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('contact/', views.contact, name='contact'),
     path('milestone-check/', views.milestone_check, name='milestone_check'),
     path('privacy/', views.privacy, name='privacy'),
     path('terms/', views.terms, name='terms'),
+    path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('robots.txt', views.robots_txt, name='robots_txt'),
 ]

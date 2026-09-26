@@ -3,3 +3,5 @@ Django==5.2.16
 pillow==12.3.0
 sqlparse==0.5.5
 python-dotenv==1.2.3
+django-ckeditor-5==0.2.20
+nh3==0.3.7

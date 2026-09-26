@@ -15,33 +15,29 @@ class AppointmentEnquiryAdmin(admin.ModelAdmin):
 
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'kind', 'category', 'status', 'start_here',
-                    'from_therapy_team', 'views', 'published_at')
-    list_filter = ('status', 'kind', 'category', 'start_here', 'from_therapy_team', 'published_at')
-    search_fields = ('title', 'excerpt', 'body')
-    list_editable = ('status', 'start_here', 'from_therapy_team')
+    list_display = ('title', 'category', 'status', 'published_at', 'views')
+    list_filter = ('status', 'category', 'published_at')
+    search_fields = ('title', 'meta_description', 'body')
+    list_editable = ('status',)
     prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'published_at'
     readonly_fields = ('views', 'created_at', 'updated_at')
     fieldsets = (
-        (None, {
-            'fields': ('title', 'slug', 'kind', 'category', 'author', 'status', 'published_at')
+        ('Post', {
+            'fields': ('title', 'slug', 'category', 'cover_image', 'cover_image_alt', 'body'),
         }),
-        ('Content', {
-            'fields': ('cover_image', 'excerpt', 'body', 'key_takeaways', 'reading_time')
+        ('SEO', {
+            'fields': ('meta_title', 'meta_description'),
+            'description': 'How the post appears in Google and when shared. Both are optional.',
         }),
-        ('Where it appears', {
-            'fields': ('start_here', 'from_therapy_team'),
-            'description': 'Start Here shows the post in the row at the top of the blog. '
-                           'Insights shows it under "Insights from OTCloud".'
-        }),
-        ('Linked pages', {
-            'fields': ('related_concern', 'related_concern_note', 'related_service'),
-            'description': 'Shown at the end of the post so parents can go from an article '
-                           'to the matching concern and service.'
+        ('Publishing', {
+            'fields': ('status', 'published_at', 'author'),
         }),
         ('Record', {'fields': ('views', 'created_at', 'updated_at'), 'classes': ('collapse',)}),
     )
+
+    class Media:
+        js = ('admin/blog_seo_counter.js',)
 
 
 @admin.register(AssessmentRequest)

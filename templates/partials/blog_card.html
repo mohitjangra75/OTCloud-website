@@ -1,0 +1,15 @@
+<article class="blog-card">
+    <a href="{{ post.get_absolute_url }}" class="thumb">
+        {% if post.cover_image %}<img src="{{ post.cover_image.url }}" alt="{{ post.image_alt }}" loading="lazy" decoding="async">
+        {% else %}<span class="ph">OT Cloud</span>{% endif %}
+    </a>
+    <div class="body">
+        <div class="meta">{{ post.get_category_display }}</div>
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.summary }}</p>
+        <div class="blog-card-foot">
+            <span class="read-time">{{ post.read_minutes }} min read</span>
+            <a href="{{ post.get_absolute_url }}" class="read-more">Read Article →</a>
+        </div>
+    </div>
+</article>

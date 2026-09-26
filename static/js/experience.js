@@ -200,7 +200,7 @@
         var GROUPS = [
             '.signs8-grid', '.skill-grid', '.cond-card-grid', '.notice-quad', '.chip-grid',
             '.method-tiles', '.goal-grid', '.compact-grid', '.team-grid', '.values-3', '.vm-cards',
-            '.topic-grid', '.guide-grid', '.popular-grid', '.insight-list', '.blog-grid', '.cards-3',
+            '.topic-grid', '.guide-grid', '.popular-grid', '.insight-list', '.blog-grid', '.blog-rows', '.cards-3',
             '.cards-4', '.diff-grid', '.values-grid', '.cv-pillars', '.ic-grid', '.Center-teaser',
             '.svc-index-grid', '.ot-gallery', '.slt-gallery', '.visit-grid', '.reach-panel',
             '.prep-strip', '.journey-strip', '.proc-steps', '.why-rows', '.lc-split', '.acc-list',
@@ -213,7 +213,7 @@
         var SINGLES = [
             '.section-head', '.hp-cta', '.cta-split', '.med-panel', '.guidance-card', '.mq',
             '.ot-highlight', '.asm-principles', '.booking-hub', '.journey-timeline', '.age-tabs',
-            '.pro-band-inner', '.concern-intro-text', '.seek-panel', '.article-links', '.takeaways'
+            '.pro-band-inner', '.concern-intro-text', '.seek-panel'
         ];
 
         var io = new IntersectionObserver(function (entries) {

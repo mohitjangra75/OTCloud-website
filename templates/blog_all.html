@@ -9,30 +9,30 @@
             <a href="{% url 'home' %}">Home</a> <span>→</span>
             <a href="{% url 'resources' %}">Learning Center</a> <span>→</span>
             <a href="{% url 'blog_list' %}">Blog</a> <span>→</span>
-            <span class="crumb-current">{{ topic_title }}</span>
+            <span class="crumb-current">All Blogs</span>
         </nav>
-        <h1>{{ topic_title }}</h1>
-        <p class="hero-lead">{{ topic_desc }}</p>
+        <h1>All Articles &amp; Guides</h1>
+        <p class="hero-lead">Everything the OT Cloud therapy team has published, newest first.</p>
         <nav class="blog-cat-nav" aria-label="Blog topics">
-            <a href="{% url 'blog_list' %}">All</a>
+            <a href="{% url 'blog_all' %}" class="active" aria-current="page">All</a>
             {% for t in topics %}
-            <a href="{% url 'blog_topic' t.slug %}" {% if t.slug == topic %}class="active" aria-current="page"{% endif %}>{{ t.title }}</a>
+            <a href="{% url 'blog_topic' t.slug %}">{{ t.title }}</a>
             {% endfor %}
         </nav>
     </div>
 </section>
 
-<section class="section tint">
+<section class="section tint" id="all-posts" style="scroll-margin-top:90px;">
     <div class="container">
         {% if posts %}
-        <div class="blog-grid">
+        <div class="blog-rows">
             {% for post in posts %}
             {% include 'partials/blog_card.html' %}
             {% endfor %}
         </div>
+        {% include 'partials/pagination.html' with page=posts anchor='all-posts' %}
         {% else %}
-        <p class="blog-empty">Nothing published under this topic yet. Explore the
-            <a href="{% url 'blog_list' %}">full blog</a> in the meantime.</p>
+        <p class="blog-empty">Nothing published yet. Check back soon.</p>
         {% endif %}
     </div>
 </section>

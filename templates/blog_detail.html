@@ -5,8 +5,9 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "{% if post.is_guide %}Article{% else %}BlogPosting{% endif %}",
+  "@type": "BlogPosting",
   "headline": "{{ post.title|escapejs }}",
+  "wordCount": {{ word_count }},
   "description": "{{ meta_description|escapejs }}",
   "articleSection": "{{ post.get_category_display|escapejs }}",
   {% if post.cover_image %}"image": "{{ request.scheme }}://{{ request.get_host }}{{ post.cover_image.url }}",{% endif %}
@@ -15,6 +16,18 @@
   "author": { "@type": "Organization", "name": "{{ post.author|escapejs }}" },
   "publisher": { "@type": "Organization", "name": "{{ site_name }}" },
   "mainEntityOfPage": "{{ canonical_url }}"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'blog_list' %}" },
+    { "@type": "ListItem", "position": 3, "name": "{{ topic_title|escapejs }}", "item": "{{ request.scheme }}://{{ request.get_host }}{{ post.get_category_url }}" },
+    { "@type": "ListItem", "position": 4, "name": "{{ post.title|escapejs }}", "item": "{{ canonical_url }}" }
+  ]
 }
 </script>
 {% endblock %}
@@ -35,12 +48,11 @@
             <!-- 2. Category  ·  3. Title -->
             <div class="article-cat">
                 <a href="{{ post.get_category_url }}">{{ post.get_category_display }}</a>
-                {% if post.is_guide %}<span class="article-kind">Parent Guide</span>{% endif %}
             </div>
             <h1>{{ post.title }}</h1>
 
             <!-- 4. Short introduction -->
-            {% if post.excerpt %}<p class="article-intro">{{ post.excerpt }}</p>{% endif %}
+            {% if post.meta_description %}<p class="article-intro">{{ post.meta_description }}</p>{% endif %}
 
             <!-- 5. Author / date / reading time -->
             <p class="article-byline">{{ post.author }}
@@ -48,41 +60,12 @@
                 <span class="sep">|</span> {{ post.read_minutes }} min read</p>
 
             {% if post.cover_image %}
-            <div class="article-cover"><img src="{{ post.cover_image.url }}" alt="{{ post.title }}"></div>
-            {% endif %}
-
-            <!-- 7. Key takeaways -->
-            {% if post.takeaway_list %}
-            <aside class="takeaways">
-                <h2>Key Takeaways</h2>
-                <ul>{% for point in post.takeaway_list %}<li>{{ point }}</li>{% endfor %}</ul>
-            </aside>
+            <div class="article-cover"><img src="{{ post.cover_image.url }}" alt="{{ post.image_alt }}" width="1200" height="630" fetchpriority="high"></div>
             {% endif %}
 
             <!-- 6. Main article -->
             <div class="article-body">{{ post.body_html }}</div>
 
-            <!-- 10 + 11. Related concern and service -->
-            {% if post.related_concern or post.related_service %}
-            <div class="article-links">
-                {% if post.related_concern %}
-                <div class="article-link-card">
-                    <span class="alc-label">Related Concern</span>
-                    <h3>{{ post.related_concern }}</h3>
-                    <p>{% if post.related_concern_note %}{{ post.related_concern_note }}{% else %}Learn more about this concern, what parents commonly observe and when professional guidance may be helpful.{% endif %}</p>
-                    <a href="{% url 'concerns' %}" class="link-arrow">Explore {{ post.related_concern }} Concerns →</a>
-                </div>
-                {% endif %}
-                {% if post.related_service %}
-                <div class="article-link-card">
-                    <span class="alc-label">Related OTCloud Service</span>
-                    <h3>{{ post.get_related_service_display }}</h3>
-                    <p>{{ post.related_service_blurb }}</p>
-                    <a href="{{ post.related_service_url }}" class="link-arrow">Explore {{ post.get_related_service_display }} →</a>
-                </div>
-                {% endif %}
-            </div>
-            {% endif %}
         </article>
     </div>
 </section>
@@ -96,24 +79,10 @@
         </div>
         <div class="blog-grid">
             {% for p in related %}
-            <article class="blog-card">
-                <a href="{{ p.get_absolute_url }}" class="thumb">
-                    {% if p.cover_image %}<img src="{{ p.cover_image.url }}" alt="{{ p.title }}" loading="lazy" decoding="async">
-                    {% else %}<span class="ph">OT Cloud</span>{% endif %}
-                </a>
-                <div class="body">
-                    <div class="meta">{{ p.get_category_display }}</div>
-                    <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
-                    {% if p.excerpt %}<p>{{ p.excerpt }}</p>{% endif %}
-                    <div class="blog-card-foot">
-                        <span class="read-time">{{ p.read_minutes }} min read</span>
-                        <a href="{{ p.get_absolute_url }}" class="read-more">{% if p.is_guide %}Read Guide →{% else %}Read Article →{% endif %}</a>
-                    </div>
-                </div>
-            </article>
+            {% include 'partials/blog_card.html' with post=p %}
             {% endfor %}
         </div>
-        <div class="blog-more"><a href="{% url 'blog_list' %}" class="btn btn-ghost">View All Articles →</a></div>
+        <div class="blog-more"><a href="{% url 'blog_all' %}" class="btn btn-ghost">View All Articles →</a></div>
     </div>
 </section>
 {% endif %}

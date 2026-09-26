@@ -1,0 +1,7 @@
+/* Django admin resets heading sizes; restore them inside the blog editor so structure is visible. */
+.ck.ck-editor__main .ck-content { font-size: 15px; line-height: 1.65; color: #222; }
+.ck.ck-editor__main .ck-content h2 { font-size: 1.6em; font-weight: 700; margin: 1.1em 0 .45em; color: #111; background: none; text-transform: none; letter-spacing: 0; padding: 0; }
+.ck.ck-editor__main .ck-content h3 { font-size: 1.3em; font-weight: 700; margin: 1em 0 .4em; color: #111; }
+.ck.ck-editor__main .ck-content h4 { font-size: 1.1em; font-weight: 700; margin: .9em 0 .35em; color: #111; }
+.ck.ck-editor__main .ck-content p { margin: 0 0 .8em; }
+.ck.ck-editor__main .ck-content blockquote { border-left: 4px solid #00685e; padding: .4em 1em; color: #333; }

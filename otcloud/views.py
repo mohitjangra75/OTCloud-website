@@ -1,10 +1,10 @@
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.core.paginator import Paginator
 from django.db.models import F
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
-from django.utils.text import Truncator
 
 
 from .forms import (AppointmentEnquiryForm, AssessmentRequestForm, ContactForm,
@@ -1516,12 +1516,19 @@ BLOG_TOPICS = [
     ('learning', 'Learning & School Readiness',
      'Learning skills, handwriting, attention, classroom participation and school readiness.',
      '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.4 4.6h5.8A3.4 3.4 0 0 1 12 7.7v12a2.8 2.8 0 0 0-2.8-2.6H2.4z"/><path d="M21.6 4.6h-5.8A3.4 3.4 0 0 0 12 7.7v12a2.8 2.8 0 0 1 2.8-2.6h6.8z"/></svg>'),
-    ('parent-guides', 'Parent Guides',
-     'Practical information to help parents understand concerns and navigate next steps.',
-     '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M19.5 4.8l1.1 2.4 2.4 1.1-2.4 1.1-1.1 2.4-1.1-2.4L16 8.3l2.4-1.1z"/></svg>'),
 ]
 
 TOPIC_LABELS = {key: label for (key, label, _b, _i) in BLOG_TOPICS}
+
+# One-line versions of the blurbs above, for the compact topic tiles on the blog hub.
+TOPIC_TAGLINES = {
+    'child-development': 'Milestones and early signs',
+    'occupational-therapy': 'Motor skills and everyday independence',
+    'speech-language': 'Talking, understanding and communication',
+    'sensory-processing': 'Sensory responses and regulation',
+    'behaviour': 'Routines, transitions and big feelings',
+    'learning': 'Attention, handwriting and school skills',
+}
 
 
 def _published():
@@ -1542,25 +1549,36 @@ def _top_up(posts, pool, count):
     return chosen
 
 
-def blog_list(request):
-    """Three jobs, three sections: a curated way in, a way to browse by topic,
-    and one combined feed of everything published (articles and guides alike)."""
-    published = _published()
-    articles = published.filter(kind='article')
+BLOG_FEED_PER_PAGE = 4
+BLOG_ALL_PER_PAGE = 12
+PAGE_LINKS_PER_BLOCK = 6
 
-    topics = [{'slug': key, 'title': label, 'desc': blurb, 'icon': icon,
+
+def _paginate(request, posts, per_page):
+    """Return the requested page plus the fixed block of page numbers around it:
+    pages 1-6 while on 1-6, then 7-12 while on 7-12, and so on."""
+    page = Paginator(posts, per_page).get_page(request.GET.get('page'))
+    start = (page.number - 1) // PAGE_LINKS_PER_BLOCK * PAGE_LINKS_PER_BLOCK + 1
+    end = min(start + PAGE_LINKS_PER_BLOCK - 1, page.paginator.num_pages)
+    return page, range(start, end + 1)
+
+
+def blog_list(request):
+    """Two jobs, two sections: a way to browse by topic, and one paginated feed
+    of everything published (articles and guides alike)."""
+    published = _published()
+
+    topics = [{'slug': key, 'title': label, 'desc': TOPIC_TAGLINES.get(key, blurb), 'icon': icon,
                'count': published.filter(category=key).count()}
               for (key, label, blurb, icon) in BLOG_TOPICS]
 
-    start_here = _top_up(published.filter(start_here=True), articles, 3)
-    start_ids = {p.pk for p in start_here}
-    feed = [p for p in published[:12] if p.pk not in start_ids][:9]
+    feed, page_range = _paginate(request, published, BLOG_FEED_PER_PAGE)
 
     return render(request, 'blog_list.html', {
         'active_page': 'blog',
         'topics': topics,
-        'start_here': start_here,
         'feed': feed,
+        'page_range': page_range,
         'meta_title': 'Blog | Practical Information for Understanding Your Child | OT Cloud',
         'meta_description': 'Clear, evidence-informed articles and parent guides on child development, '
                             'occupational therapy, speech and language, sensory processing, behaviour '
@@ -1568,7 +1586,23 @@ def blog_list(request):
     })
 
 
+def blog_all(request):
+    posts, page_range = _paginate(request, _published(), BLOG_ALL_PER_PAGE)
+    return render(request, 'blog_all.html', {
+        'active_page': 'blog',
+        'posts': posts,
+        'page_range': page_range,
+        'topics': [{'slug': k, 'title': l} for (k, l, _b, _i) in BLOG_TOPICS],
+        'meta_title': 'All Articles & Parent Guides | OT Cloud Blog',
+        'meta_description': 'Every article and parent guide from the OT Cloud therapy team, newest first — '
+                            'child development, therapy, speech, sensory processing, behaviour and learning.',
+    })
+
+
 def blog_topic(request, topic):
+    # Parent Guides was folded into the topical categories; keep old links working.
+    if topic == 'parent-guides':
+        return redirect('blog_list', permanent=True)
     if topic not in TOPIC_LABELS:
         raise Http404('Unknown topic')
     label = TOPIC_LABELS[topic]
@@ -1594,15 +1628,16 @@ def blog_detail(request, slug):
     published = _published().exclude(pk=post.pk)
     related = _top_up(published.filter(category=post.category), published, 3)
 
-    description = post.excerpt or Truncator(post.body).chars(160)
+    description = post.summary
     image = post.cover_image.url if post.cover_image else None
     return render(request, 'blog_detail.html', {
         'active_page': 'blog',
         'post': post,
         'related': related,
         'topic_title': TOPIC_LABELS.get(post.category, 'Blog'),
-        'meta_title': f'{post.title} | OT Cloud Blog',
+        'meta_title': post.meta_title or f'{post.title} | OT Cloud Blog',
         'meta_description': description,
+        'word_count': len(post.plain_text.split()),
         'meta_image': image,
         'og_type': 'article',
     })

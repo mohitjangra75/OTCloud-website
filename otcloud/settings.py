@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'django_ckeditor_5',
     'otcloud',
 ]
 
@@ -190,3 +191,28 @@ SITE_ANNOUNCEMENT = {
     'link_text': 'Reserve a seat',
     'link_url': '/contact/',
 }
+
+
+# Blog body editor (CKEditor 5). Headings start at H2 because the post title is the page's H1.
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'staff'
+CKEDITOR_5_CUSTOM_CSS = 'admin/ckeditor_content.css'
+_CKEDITOR_BLOG = {
+    'toolbar': ['heading', '|', 'bold', 'italic', 'link', '|', 'bulletedList', 'numberedList',
+                'blockQuote', '|', 'insertImage', 'insertTable', '|', 'undo', 'redo'],
+    'heading': {
+        'options': [
+            {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+            {'model': 'heading2', 'view': 'h2', 'title': 'Heading', 'class': 'ck-heading_heading2'},
+            {'model': 'heading3', 'view': 'h3', 'title': 'Sub-heading', 'class': 'ck-heading_heading3'},
+            {'model': 'heading4', 'view': 'h4', 'title': 'Small heading', 'class': 'ck-heading_heading4'},
+        ]
+    },
+    'image': {
+        'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:alignCenter',
+                    'imageStyle:alignRight'],
+        'styles': ['alignLeft', 'alignCenter', 'alignRight'],
+    },
+    'table': {'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells']},
+    'link': {'addTargetToExternalLinks': True},
+}
+CKEDITOR_5_CONFIGS = {'default': _CKEDITOR_BLOG, 'blog': _CKEDITOR_BLOG}

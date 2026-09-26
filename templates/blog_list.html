@@ -23,100 +23,49 @@
             <img src="{% static 'assets/speech-therapy-poster.webp' %}" alt="An OT Cloud therapist working with a child during a session." loading="eager">
         </div>
     </div>
-
-    <!-- category navigation -->
-    <div class="container">
-        <nav class="blog-cat-nav" aria-label="Blog topics">
-            {% for t in topics %}
-            <a href="{% url 'blog_topic' t.slug %}">{{ t.title }}</a>
-            {% endfor %}
-        </nav>
-    </div>
 </section>
 
-<!-- ============ 2. START HERE ============ -->
-{% if start_here %}
-<section class="section tint">
-    <div class="container">
-        <div class="section-head">
-            <h2 class="section-title">Start Here</h2>
-            <p class="section-sub">New to OTCloud or exploring a concern? Begin with these practical articles
-                that answer some of the most common questions parents have.</p>
-        </div>
-        <div class="blog-grid">
-            {% for post in start_here %}
-            <article class="blog-card">
-                <a href="{{ post.get_absolute_url }}" class="thumb">
-                    {% if post.cover_image %}<img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy" decoding="async">
-                    {% else %}<span class="ph">OT Cloud</span>{% endif %}
-                </a>
-                <div class="body">
-                    <div class="meta">{{ post.get_category_display }}</div>
-                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                    {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
-                    <a href="{{ post.get_absolute_url }}" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            {% endfor %}
-        </div>
-        <div class="blog-more"><a href="#latest-articles" class="btn btn-ghost">Browse everything →</a></div>
-    </div>
-</section>
-{% endif %}
-
-<!-- ============ 3. EXPLORE BY TOPIC ============ -->
+<!-- ============ 2. EXPLORE BY TOPIC ============ -->
 <section class="section">
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Explore by Topic</h2>
-            <p class="section-sub">Browse the library by the area you are trying to understand.</p>
+            <p class="section-sub">Pick the area you want to understand.</p>
         </div>
         <div class="topic-grid">
             {% for t in topics %}
             <a href="{% url 'blog_topic' t.slug %}" class="topic-tile">
                 <span class="tt-icon">{{ t.icon|safe }}</span>
-                <h3>{{ t.title }}</h3>
-                <p>{{ t.desc }}</p>
-                <span class="tt-foot">
-                    <span class="tt-count">{{ t.count }} post{{ t.count|pluralize }}</span>
-                    <span class="link-arrow">Explore →</span>
+                <span class="tt-text">
+                    <h3>{{ t.title }}</h3>
+                    <p>{{ t.desc }}</p>
                 </span>
+                <span class="tt-count">{{ t.count }} post{{ t.count|pluralize }}</span>
+                <span class="tt-arrow" aria-hidden="true">→</span>
             </a>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ============ 4. EVERYTHING WE PUBLISH ============ -->
+<!-- ============ 3. EVERYTHING WE PUBLISH ============ -->
 <section class="section tint" id="latest-articles" style="scroll-margin-top:90px;">
     <div class="container">
-        <div class="section-head">
-            <h2 class="section-title">Latest Articles &amp; Guides</h2>
-            <p class="section-sub">Short reads on a single question, and longer parent guides that cover a whole
-                topic — newest first.</p>
+        <div class="section-head-split">
+            <div class="section-head">
+                <h2 class="section-title">Latest Articles &amp; Guides</h2>
+                <p class="section-sub">Short reads on a single question, and longer parent guides that cover a whole
+                    topic — newest first.</p>
+            </div>
+            {% if feed %}<a href="{% url 'blog_all' %}" class="btn btn-primary">Explore All Blogs →</a>{% endif %}
         </div>
         {% if feed %}
-        <div class="blog-grid">
+        <div class="blog-grid blog-grid-4">
             {% for post in feed %}
-            <article class="blog-card">
-                <a href="{{ post.get_absolute_url }}" class="thumb">
-                    {% if post.cover_image %}<img src="{{ post.cover_image.url }}" alt="{{ post.title }}" loading="lazy" decoding="async">
-                    {% else %}<span class="ph">OT Cloud</span>{% endif %}
-                    {% if post.is_guide %}<span class="card-flag guide">Parent Guide</span>
-                    {% elif post.from_therapy_team %}<span class="card-flag team">From the Therapy Team</span>{% endif %}
-                </a>
-                <div class="body">
-                    <div class="meta">{{ post.get_category_display }}</div>
-                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                    {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
-                    <div class="blog-card-foot">
-                        <span class="read-time">{{ post.read_minutes }} min read</span>
-                        <a href="{{ post.get_absolute_url }}" class="read-more">{% if post.is_guide %}Read Guide →{% else %}Read Article →{% endif %}</a>
-                    </div>
-                </div>
-            </article>
+            {% include 'partials/blog_card.html' %}
             {% endfor %}
         </div>
+        {% include 'partials/pagination.html' with page=feed anchor='latest-articles' %}
         {% else %}
         <p class="blog-empty">Nothing published yet. Check back soon.</p>
         {% endif %}

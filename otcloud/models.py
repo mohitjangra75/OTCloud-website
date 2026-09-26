@@ -1,24 +1,28 @@
 import html
 
+import nh3
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.html import strip_tags
 from django.utils.safestring import mark_safe
+from django.utils.text import Truncator
+from django_ckeditor_5.fields import CKEditor5Field
+
+# nh3's safe defaults, plus target on links so the editor's "open in new tab" survives cleaning.
+BODY_ATTRIBUTES = {**nh3.ALLOWED_ATTRIBUTES, 'a': nh3.ALLOWED_ATTRIBUTES.get('a', set()) | {'target'}}
 
 
 class BlogPost(models.Model):
-    """A post in the blog library. Everything published here is either a short
-    ARTICLE (700-1,200 words, one question) or a longer GUIDE (1,500+ words,
-    a whole topic) — both live under /blog/, never as separate site sections."""
+    """A post in the blog library, filed under one topic and written in the rich-text editor."""
 
     STATUS_CHOICES = [
         ('draft', 'Draft'),
         ('published', 'Published'),
     ]
-    KIND_CHOICES = [
-        ('article', 'Article — short, answers one question'),
-        ('guide', 'Guide — longer, covers a whole topic'),
-    ]
+    # Editor classes kept when the body is cleaned: image alignment and figure types.
+    BODY_CLASSES = {'figure': {'image', 'table', 'image-style-align-left', 'image-style-align-center',
+                               'image-style-align-right', 'image-style-side'}}
     # Topics parents browse by. The key doubles as the /blog/topic/<slug>/ URL.
     CATEGORY_CHOICES = [
         ('child-development', 'Child Development'),
@@ -27,61 +31,31 @@ class BlogPost(models.Model):
         ('sensory-processing', 'Sensory Processing'),
         ('behaviour', 'Behaviour & Emotional Regulation'),
         ('learning', 'Learning & School Readiness'),
-        ('parent-guides', 'Parent Guides'),
     ]
-    SERVICE_CHOICES = [
-        ('service_ot', 'Occupational Therapy'),
-        ('service_speech', 'Speech and Language Therapy'),
-        ('service_early', 'Early Intervention'),
-        ('service_se', 'Special Education'),
-        ('service_psychology', 'Child Psychology'),
-        ('service_physio', 'Child Physiotherapy'),
-    ]
-    SERVICE_BLURBS = {
-        'service_ot': 'Learn how occupational therapy may support sensory regulation, motor skills '
-                      'and participation in everyday activities.',
-        'service_speech': 'Learn how speech and language therapy may support understanding, '
-                          'expression and social communication.',
-        'service_early': 'Learn how early intervention may support communication, play, movement '
-                         'and foundational learning skills in the early years.',
-        'service_se': 'Learn how special education support may help with learning, pre-academic '
-                      'skills and classroom participation.',
-        'service_psychology': 'Learn how psychology and behaviour support may help with emotions, '
-                              'attention, behaviour and everyday routines.',
-        'service_physio': 'Learn how child physiotherapy may support strength, balance, coordination, '
-                          'mobility and everyday movement.',
-    }
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True,
                             help_text='URL segment, e.g. "signs-of-speech-delay". Auto-filled from the title.')
-    kind = models.CharField('Type', max_length=10, choices=KIND_CHOICES, default='article')
-    category = models.CharField(max_length=30, choices=CATEGORY_CHOICES, default='child-development',
-                                help_text='Topic this post is filed under.')
+    category = models.CharField('Topic', max_length=30, choices=CATEGORY_CHOICES, default='child-development')
     author = models.CharField(max_length=120, default='OT Cloud Team')
-    cover_image = models.ImageField(upload_to='blog/', blank=True, null=True)
-    excerpt = models.TextField(max_length=300, blank=True,
-                               help_text='Two-line summary shown on cards and as the article introduction.')
-    body = models.TextField(help_text='Blank lines start new paragraphs. Start a line with "## " for a '
-                                      'section heading, "### " for a sub-heading and "- " for a bullet.')
-    key_takeaways = models.TextField(blank=True,
-                                     help_text='One takeaway per line. Shown in a highlighted box under the introduction.')
-    reading_time = models.PositiveSmallIntegerField(default=0,
-                                                    help_text='Minutes. Leave at 0 to calculate it from the body.')
-    start_here = models.BooleanField(default=False,
-                                     help_text='Feature this post in the "Start Here" row at the top of the blog.')
-    from_therapy_team = models.BooleanField('Insight from the therapy team', default=False,
-                                            help_text='Show this post under "Insights from OTCloud".')
-    related_concern = models.CharField(max_length=60, blank=True,
-                                       help_text='Concern to link at the end of the post, e.g. "Sensory Processing".')
-    related_concern_note = models.CharField(max_length=220, blank=True,
-                                            help_text='One line describing that concern (optional).')
-    related_service = models.CharField(max_length=30, choices=SERVICE_CHOICES, blank=True,
-                                       help_text='OTCloud service to link at the end of the post (optional).')
-    views = models.PositiveIntegerField(default=0, editable=False,
-                                        help_text='Read count — drives the "Parents Are Reading" row.')
+    cover_image = models.ImageField(upload_to='blog/', blank=True, null=True,
+                                    help_text='Shown on cards and when the post is shared. 1200 × 630 px works best.')
+    cover_image_alt = models.CharField('Cover image description', max_length=150, blank=True,
+                                       help_text='Describe the image for screen readers and search engines. '
+                                                 'Leave blank to use the title.')
+    body = CKEditor5Field(config_name='blog')
+
+    # SEO
+    meta_title = models.CharField('SEO title', max_length=70, blank=True,
+                                  help_text='Title shown in Google results (up to about 60 characters). '
+                                            'Leave blank to use the post title.')
+    meta_description = models.CharField('Meta description', max_length=180, blank=True,
+                                        help_text='One or two sentences (about 150–160 characters) shown in Google '
+                                                  'results and on blog cards. Leave blank to use the opening of the post.')
+
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    published_at = models.DateTimeField(default=timezone.now)
+    published_at = models.DateTimeField('Publish date', default=timezone.now)
+    views = models.PositiveIntegerField(default=0, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -98,57 +72,32 @@ class BlogPost(models.Model):
         return reverse('blog_topic', args=[self.category])
 
     @property
-    def is_guide(self):
-        return self.kind == 'guide'
+    def plain_text(self):
+        # Space before each tag so words either side of one (e.g. "</li><li>") stay apart.
+        return html.unescape(strip_tags(self.body.replace('<', ' <')))
+
+    @property
+    def summary(self):
+        """Card and search-result summary: the meta description, else the post's opening."""
+        return self.meta_description or Truncator(' '.join(self.plain_text.split())).chars(160)
+
+    @property
+    def seo_title(self):
+        return self.meta_title or self.title
+
+    @property
+    def image_alt(self):
+        return self.cover_image_alt or self.title
 
     @property
     def read_minutes(self):
-        """Stated reading time, or a ~200 words-per-minute estimate."""
-        if self.reading_time:
-            return self.reading_time
-        return max(1, round(len(self.body.split()) / 200))
-
-    @property
-    def takeaway_list(self):
-        return [line.strip().lstrip('-').strip()
-                for line in self.key_takeaways.splitlines() if line.strip()]
-
-    @property
-    def related_service_url(self):
-        return reverse(self.related_service) if self.related_service else ''
-
-    @property
-    def related_service_blurb(self):
-        return self.SERVICE_BLURBS.get(self.related_service, '')
+        """About 200 words a minute."""
+        return max(1, round(len(self.plain_text.split()) / 200))
 
     @property
     def body_html(self):
-        """Render the body: paragraphs, "## " headings and "- " bullets.
-        Everything is escaped first, so post content can never inject markup."""
-        blocks, bullets = [], []
-
-        def flush():
-            if bullets:
-                blocks.append('<ul>' + ''.join('<li>%s</li>' % b for b in bullets) + '</ul>')
-                bullets.clear()
-
-        for raw in self.body.splitlines():
-            line = raw.strip()
-            if not line:
-                flush()
-                continue
-            if line.startswith('## '):
-                flush()
-                blocks.append('<h2>%s</h2>' % html.escape(line[3:].strip()))
-            elif line.startswith('### '):
-                flush()
-                blocks.append('<h3>%s</h3>' % html.escape(line[4:].strip()))
-            elif line.startswith('- '):
-                bullets.append(html.escape(line[2:].strip()))
-            else:
-                blocks.append('<p>%s</p>' % html.escape(line))
-        flush()
-        return mark_safe(''.join(blocks))
+        """The editor's HTML, cleaned so only formatting tags survive (no scripts or inline handlers)."""
+        return mark_safe(nh3.clean(self.body, attributes=BODY_ATTRIBUTES, allowed_classes=self.BODY_CLASSES))
 
 
 class AssessmentRequest(models.Model):
