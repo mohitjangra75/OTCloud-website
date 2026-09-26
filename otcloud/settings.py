@@ -13,8 +13,13 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load secrets from BASE_DIR/.env (gitignored). Real environment variables take precedence.
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -138,7 +143,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email
 # Real delivery uses Gmail SMTP and activates automatically once EMAIL_HOST_PASSWORD
-# (a Gmail App Password) is set in the environment. Without it, mail prints to the console.
+# (a Gmail App Password) is set in .env or the environment. Without it, mail prints to the console.
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'otcloudcenter@gmail.com')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
