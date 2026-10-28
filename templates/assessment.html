@@ -306,12 +306,15 @@
                     <div class="asm-step"><div class="asm-step-node" id="asm-node-3">3</div><span class="asm-step-label">Concern</span></div>
                 </div>
 
-                {% if form.errors %}
+                {% if form.phone.value and form.phone.errors %}
+                <div class="form-error-note">{{ form.phone.errors|first }}</div>
+                {% elif form.errors %}
                 <div class="form-error-note">Please provide the parent/guardian name, a mobile number, a valid email and your child's name.</div>
                 {% endif %}
 
                 <form method="post" action="{% url 'assessment' %}#booking" id="assessment-form" novalidate>
                     {% csrf_token %}
+                    {% include 'partials/honeypot.html' %}
                     <div class="asm-form-step active" id="asm-step-1">
                         <div class="asm-field"><label>Parent / Guardian Name</label><input type="text" name="parent_name" placeholder="Full name" value="{{ form.parent_name.value|default:'' }}"></div>
                         <div class="asm-field-row">

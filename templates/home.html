@@ -142,12 +142,9 @@
                 <h3 class="mq-h">First, how old is your child?</h3>
                 <p class="mq-sub">We'll show the milestones most children reach by this age.</p>
                 <div class="mq-ages">
-                    <button type="button" class="mq-age" data-age="12m">By 12 months</button>
-                    <button type="button" class="mq-age" data-age="2y">By 2 years</button>
-                    <button type="button" class="mq-age" data-age="3y">By 3 years</button>
-                    <button type="button" class="mq-age" data-age="4y">By 4 years</button>
-                    <button type="button" class="mq-age" data-age="5y">By 5 years</button>
-                    <button type="button" class="mq-age" data-age="6y">5+ years (school age)</button>
+                    {% for key, label in age_bands %}
+                    <button type="button" class="mq-age" data-age="{{ key }}">{{ label }}</button>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -243,9 +240,11 @@
         <h3 id="msModalTitle">Almost done — where should we send your result?</h3>
         <p class="ms-modal-sub">Share a mobile number or an email address (either one is enough) and our team will get back to you with guidance based on your answers.</p>
         {% if ms_form.non_field_errors %}<div class="form-error-note">{{ ms_form.non_field_errors|first }}</div>
+        {% elif ms_form.phone.errors %}<div class="form-error-note">{{ ms_form.phone.errors|first }}</div>
         {% elif ms_form.errors %}<div class="form-error-note">Please check the details below and try again.</div>{% endif %}
         <form method="post" action="{% url 'home' %}#milestone-check" class="ms-form">
             {% csrf_token %}
+            {% include 'partials/honeypot.html' %}
             <div class="asm-field">
                 <label for="msName">Your Name</label>
                 <input type="text" id="msName" name="parent_name" placeholder="Parent / guardian name" required value="{{ ms_form.parent_name.value|default:'' }}">

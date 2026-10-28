@@ -7,9 +7,14 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 
-from .forms import (AppointmentEnquiryForm, AssessmentRequestForm, ContactForm,
-                    MilestoneEnquiryForm)
+from .forms import (MILESTONE_AGE_BANDS, AppointmentEnquiryForm, AssessmentRequestForm,
+                    ContactForm, MilestoneEnquiryForm)
 from .models import BlogPost
+
+
+def _is_bot(request):
+    """Real visitors never see the honeypot input (partials/honeypot.html); bots fill it."""
+    return bool(request.POST.get('website'))
 
 
 def _notify(subject, body, reply_to=None):
@@ -140,21 +145,25 @@ def home(request):
     if request.method == 'POST':
         ms_form = MilestoneEnquiryForm(request.POST)
         if ms_form.is_valid():
-            obj = ms_form.save()
-            _notify(
-                f'New milestone check enquiry: {obj.parent_name}',
-                f'Parent: {obj.parent_name}\nPhone: {obj.phone or "—"}\nEmail: {obj.email or "—"}\n'
-                f'Child age band: {obj.child_age or "—"}\n'
-                f'Milestones ticked: {obj.milestones_done}/{obj.milestones_total} '
-                f'({obj.not_yet} marked "not yet")',
-                reply_to=obj.email or None,
-            )
+            # Bots get the same thank-you redirect so they can't tell they were caught,
+            # but nothing is saved or emailed.
+            if ms_form.came_from_quiz() and not _is_bot(request):
+                obj = ms_form.save()
+                _notify(
+                    f'New milestone check enquiry: {obj.parent_name}',
+                    f'Parent: {obj.parent_name}\nPhone: {obj.phone or "—"}\nEmail: {obj.email or "—"}\n'
+                    f'Child age band: {obj.child_age or "—"}\n'
+                    f'Milestones ticked: {obj.milestones_done}/{obj.milestones_total} '
+                    f'({obj.not_yet} marked "not yet")',
+                    reply_to=obj.email or None,
+                )
             return redirect(f"{reverse('home')}?ms=1#milestone-check")
     else:
         ms_form = MilestoneEnquiryForm()
 
     return render(request, 'home.html', {
         **meta,
+        'age_bands': MILESTONE_AGE_BANDS,
         'ms_form': ms_form,
         'ms_submitted': request.GET.get('ms') == '1',
     })
@@ -1462,14 +1471,15 @@ def assessment(request):
     if request.method == 'POST':
         form = AssessmentRequestForm(request.POST)
         if form.is_valid():
-            obj = form.save()
-            _notify(
-                f'New assessment request: {obj.child_name}',
-                f'Parent: {obj.parent_name}\nPhone: {obj.phone or "—"}\nEmail: {obj.email}\n'
-                f'Child: {obj.child_name} (age {obj.child_age or "—"})\n'
-                f'Concern: {obj.area_of_concern or "—"}\n\n{obj.message}',
-                reply_to=obj.email,
-            )
+            if not _is_bot(request):
+                obj = form.save()
+                _notify(
+                    f'New assessment request: {obj.child_name}',
+                    f'Parent: {obj.parent_name}\nPhone: {obj.phone or "—"}\nEmail: {obj.email}\n'
+                    f'Child: {obj.child_name} (age {obj.child_age or "—"})\n'
+                    f'Concern: {obj.area_of_concern or "—"}\n\n{obj.message}',
+                    reply_to=obj.email,
+                )
             return redirect(f"{reverse('assessment')}?submitted=1#booking")
     else:
         form = AssessmentRequestForm()
@@ -1653,14 +1663,15 @@ def contact(request):
     if request.method == 'POST':
         form = AppointmentEnquiryForm(request.POST)
         if form.is_valid():
-            obj = form.save()
-            _notify(
-                f'New appointment enquiry: {obj.child_name}',
-                f'Parent: {obj.parent_name}\nChild: {obj.child_name} (age {obj.child_age or "—"})\n'
-                f'Phone: {obj.phone}\nConcern: {obj.area_of_concern or "—"}\n'
-                f'Prefers: {obj.get_contact_method_display() or "—"} · {obj.get_preferred_time_display() or "—"}\n\n'
-                f'{obj.message}',
-            )
+            if not _is_bot(request):
+                obj = form.save()
+                _notify(
+                    f'New appointment enquiry: {obj.child_name}',
+                    f'Parent: {obj.parent_name}\nChild: {obj.child_name} (age {obj.child_age or "—"})\n'
+                    f'Phone: {obj.phone}\nConcern: {obj.area_of_concern or "—"}\n'
+                    f'Prefers: {obj.get_contact_method_display() or "—"} · {obj.get_preferred_time_display() or "—"}\n\n'
+                    f'{obj.message}',
+                )
             return redirect(f"{reverse('contact')}?submitted=1#booking-hub")
     else:
         form = AppointmentEnquiryForm()

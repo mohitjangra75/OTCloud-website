@@ -68,9 +68,11 @@
                     <p>Thank you. A clinical coordinator will reach out shortly to help you take the next step.</p>
                 </div>
                 {% else %}
-                {% if form.errors %}<div class="form-error-note">Please provide the parent name, child name, and a contact number.</div>{% endif %}
+                {% if form.phone.value and form.phone.errors %}<div class="form-error-note">{{ form.phone.errors|first }}</div>
+                {% elif form.errors %}<div class="form-error-note">Please provide the parent name, child name, and a contact number.</div>{% endif %}
                 <form method="post" action="{% url 'contact' %}#booking-hub">
                     {% csrf_token %}
+                    {% include 'partials/honeypot.html' %}
                     <div class="asm-field-row">
                         <div class="asm-field"><label>Parent Name</label><input type="text" name="parent_name" placeholder="Your full name" value="{{ form.parent_name.value|default:'' }}"></div>
                         <div class="asm-field"><label>Child Name</label><input type="text" name="child_name" placeholder="Child's name" value="{{ form.child_name.value|default:'' }}"></div>
